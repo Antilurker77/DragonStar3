@@ -20,6 +20,7 @@ enum class MonsterID;
 #include <SFML/Window.hpp>
 #include "../command/moveCommand.hpp"
 #include "../core/gameState.hpp"
+#include "../core/saveFile.hpp"
 #include "../core/tileMath.hpp"
 #include "../data/tile.hpp"
 #include "../entity/actor.hpp"
@@ -57,6 +58,9 @@ public:
 
 	// Creates the seeds for all dungeon floors and generates the current dungeon floor.
 	void GenerateSeeds(uint64_t seed);
+
+	// Loads the current save file.
+	void LoadGame();
 
 	// Sets the camera reference.
 	void SetCamera(Camera* c);
@@ -122,6 +126,9 @@ public:
 	// Returns the actor at the designated position.
 	Actor* GetActorAtTile(sf::Vector2i tile);
 
+	// Returns the actor at the given index.
+	Actor* GetActorByIndex(size_t index);
+
 	// Returns all the actors in the designated area.
 	std::vector<Actor*> GetActorsInArea(std::vector<sf::Vector2i>& area);
 
@@ -181,6 +188,9 @@ private:
 	void updateWorld(float secondsPerUpdate);
 	GameState updateUI(float secondsPerUpdate);
 
+	// Saves the current game state into the save file struct.
+	void saveGame();
+
 	// Moves the actor X floors and generates the dungeon.
 	// Negative values will move the player up.
 	void moveFloors(int floors);
@@ -221,6 +231,7 @@ private:
 
 	// ==================
 	const int totalFloors = 100;
+	uint64_t masterSeed = 0ull;
 	std::vector<uint64_t> floorSeeds;
 
 	int currentFloor = 1;
@@ -240,6 +251,8 @@ private:
 
 	Actor* activeActor = nullptr;
 	CommandPtr command = nullptr;
+
+	SaveFile saveFile;
 
 	// ==================
 	static std::vector<Encounter> encounterTable;

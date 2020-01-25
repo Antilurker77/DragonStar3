@@ -23,6 +23,12 @@ Shop::Shop(sf::Vector2i spawnLocation, int itemLevel, uint64_t seed) {
 	generateInventory();
 }
 
+void Shop::Load(std::array<ItemSave, 24>& items) {
+	for (size_t i = 0; i < items.size(); i++) {
+		inventory[i] = Item(items[i]);
+	}
+}
+
 sf::Vector2i Shop::GetLocation() {
 	return location;
 }

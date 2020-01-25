@@ -9,6 +9,7 @@
 #pragma once
 
 class Actor;
+class DungeonScene;
 
 enum class AuraID;
 enum class EventType;
@@ -23,9 +24,13 @@ class Aura {
 public:
 	Aura();
 	Aura(AuraID id, int rank, Actor* user, size_t userIndex);
+	Aura(AuraID, int rank, int duration, int nextTick, int stacks, size_t userIndex);
 
 	// Sets the ID of this aura.
 	void Initialize(AuraID id);
+
+	// Sets the owner pointer.
+	void SetOwnerPointer(DungeonScene* dungeonScene);
 
 	// Ticks down the duration of the aura.
 	void Tick(Actor* owner);
@@ -45,6 +50,12 @@ public:
 	// Returns the current duration of the aura.
 	int GetCurrentDuration();
 
+	// Returns when the next tick of the aura will happen.
+	int GetNextTick();
+
+	// Returns the number of stacks this aura has.
+	int GetCurrentStackSize();
+
 	// Returns true if the aura's stack count is 0.
 	bool IsExpired();
 
@@ -59,6 +70,9 @@ public:
 
 	// Returns the aura ID.
 	AuraID GetAuraID();
+
+	// Returns the rank of the aura.
+	int GetRank();
 
 	// Returns true if the buff has a duration.
 	bool HasDuration();

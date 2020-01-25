@@ -16,6 +16,7 @@ class Player;
 #include <vector>
 #include <SFML\Graphics.hpp>
 #include "tooltip.hpp"
+#include "../core/saveFile.hpp"
 #include "../data/item.hpp"
 
 struct InventorySlot {
@@ -26,6 +27,9 @@ struct InventorySlot {
 class Inventory {
 public:
 	Inventory();
+
+	// Loads saved data into inventory.
+	void Load(int playerGold, std::array<ItemSave, 40>& items);
 
 	// Get input.
 	void GetInput(sf::RenderWindow& window, sf::Event& ev);
@@ -42,6 +46,9 @@ public:
 
 	// Returns the amount of gold in the player's inventory.
 	int GetGold();
+
+	// Returns the player's inventory.
+	std::array<InventorySlot, 40>& GetInventory();
 
 	// Add or removes gold from the player's inventory. Will never drop below 0.
 	void ChangeGold(int amount);

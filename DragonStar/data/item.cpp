@@ -23,19 +23,37 @@ Item::Item(ItemID id) {
 	Initialize(id);
 }
 
+Item::Item(ItemSave& itemSave) {
+	rarity = static_cast<Rarity>(itemSave.Rarity);
+	Initialize(static_cast<ItemID>(itemSave.ItemID));
+	
+	randomStatMods.reserve(itemSave.StatModTypes.size());
+	for (size_t i = 0; i < itemSave.StatModTypes.size(); i++) {
+		if (itemSave.StatModElements[i] == 0) {
+			randomStatMods.push_back(StatMod(static_cast<StatModType>(itemSave.StatModTypes[i]), itemSave.StatModValues[i]));
+		}
+		else {
+			randomStatMods.push_back(StatMod(static_cast<StatModType>(itemSave.StatModTypes[i]), itemSave.StatModValues[i], static_cast<Element>(itemSave.StatModElements[i])));
+		}
+	}
+}
+
 void Item::Initialize(ItemID id) {
 	itemID = id;
-	itemData = &itemList[id];
 
-	if (itemList[itemID].InvokeAbility != static_cast<AbilityID>(0)) {
-		invokedAbility = Ability(itemData->InvokeAbility, 0);
-	}
+	if (id != ItemID::Undefined) {
+		itemData = &itemList[id];
 
-	if (itemList[itemID].ItemType != ItemType::Equipment) {
-		rarity = Rarity::Item;
-	}
-	else if (itemList[itemID].Artifact) {
-		rarity = Rarity::FixedArtifact;
+		if (itemList[itemID].InvokeAbility != static_cast<AbilityID>(0)) {
+			invokedAbility = Ability(itemData->InvokeAbility, 0);
+		}
+
+		if (itemList[itemID].ItemType != ItemType::Equipment) {
+			rarity = Rarity::Item;
+		}
+		else if (itemList[itemID].Artifact) {
+			rarity = Rarity::FixedArtifact;
+		}
 	}
 }
 

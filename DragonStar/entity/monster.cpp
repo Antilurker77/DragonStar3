@@ -31,6 +31,30 @@ Monster::Monster(MonsterID id, sf::Vector2i spawnLocation, size_t index) {
 	Warp(spawnLocation);
 }
 
+Monster::Monster(ActorSave& actorSave, size_t index) {
+	this->index = index;
+	Initialize(static_cast<MonsterID>(actorSave.MonsterID));
+	Warp(sf::Vector2i(actorSave.XLocation, actorSave.YLocation));
+
+	currentHP = actorSave.CurrentHP;
+	currentMP = actorSave.CurrentMP;
+	currentSP = actorSave.CurrentSP;
+	exhaustion = actorSave.Exhaustion;
+
+	flags = actorSave.Flags;
+
+	for (size_t i = 0; i < abilities.size(); i++) {
+		abilities[i].SetCooldownAndCharges(actorSave.AbilityCooldowns[i], actorSave.AbilityCharges[i]);
+	}
+
+	auras.clear();
+	auras.reserve(actorSave.AuraIDs.size());
+	for (size_t i = 0; i < actorSave.AuraIDs.size(); i++) {
+		Aura aura(static_cast<AuraID>(actorSave.AuraIDs[i]), actorSave.AuraRanks[i], actorSave.AuraDurations[i], actorSave.AuraNextTicks[i], actorSave.AuraStacks[i], actorSave.AuraSource[i]);
+		auras.push_back(aura);
+	}
+}
+
 void Monster::Initialize(MonsterID id) {
 	monsterID = id;
 	monsterData = &monsterList[monsterID];

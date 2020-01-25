@@ -11,5 +11,6 @@
 enum class GameState {
 	UnknownState = 0,
 	MainMenu,
+	CharacterCreation,
 	Dungeon
 };

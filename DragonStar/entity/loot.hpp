@@ -12,6 +12,7 @@ class Inventory;
 
 #include <vector>
 #include "entity.hpp"
+#include "../core/saveFile.hpp"
 #include "../data/item.hpp"
 
 class Loot : public Entity {
@@ -19,6 +20,7 @@ public:
 	Loot(sf::Vector2i spawnPosition, int goldAmount);
 	Loot(sf::Vector2i spawnPosition, std::vector<Item> droppedItems);
 	Loot(sf::Vector2i spawnPosition, int goldAmount, std::vector<Item> droppedItems);
+	Loot(LootSave& lootSave);
 
 	// Returns the tile location of this loot pile.
 	sf::Vector2i GetLocation();

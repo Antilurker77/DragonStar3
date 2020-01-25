@@ -105,6 +105,17 @@ Inventory::Inventory() {
 	Initialize();
 }
 
+void Inventory::Load(int playerGold, std::array<ItemSave, 40>& items) {
+	gold = 0;
+	ChangeGold(playerGold); // also sets gold text
+
+	for (size_t i = 0; i < items.size(); i++) {
+		inventorySlots[i].StackCount = items[i].StackSize;
+		inventorySlots[i].Item = Item(items[i]);
+	}
+	Initialize();
+}
+
 void Inventory::GetInput(sf::RenderWindow& window, sf::Event& ev) {
 	sf::Mouse mouse;
 	leftClick = false;
@@ -352,6 +363,10 @@ void Inventory::Initialize() {
 
 int Inventory::GetGold() {
 	return gold;
+}
+
+std::array<InventorySlot, 40>& Inventory::GetInventory() {
+	return inventorySlots;
 }
 
 void Inventory::ChangeGold(int amount) {

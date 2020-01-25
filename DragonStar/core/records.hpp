@@ -28,6 +28,12 @@ class Record {
 public:
 	Record();
 
+	// Sets the kill counts and found artifacts.
+	void Load(std::vector<int>& artifacts, std::vector<int>& slain, std::vector<int>& count);
+
+	// Sets identified items. Must be done after dungeon generation.
+	void LoadIdentities(std::vector<int> identifiedItems);
+
 	// Randomizes the identifaction tables based on the given seed.
 	void RandomizeIdentities(uint64_t seed);
 
@@ -36,6 +42,15 @@ public:
 
 	// Returns true if the player has slain this monster at least once.
 	bool HasKilled(MonsterID id);
+
+	// Returns how many of each monster has been slain.
+	std::unordered_map<MonsterID, int> GetKillCounts();
+
+	// Returns which artifacts have been spawned.
+	std::vector<ItemID> GetSpawnedArtifacts();
+
+	// Returns which items have been identified.
+	std::vector<ItemID> GetIdentifiedItems();
 
 	// Returns the label for an item.
 	std::string GetLabel(ItemID id);

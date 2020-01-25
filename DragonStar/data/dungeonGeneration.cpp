@@ -235,7 +235,7 @@ void DungeonScene::spawnLoot() {
 			}
 		}
 
-		if (Random::RandomInt(1, 100) >= 50) {
+		if (Random::RandomInt(1, 100, mt) >= 50) {
 			int gold = Random::RandomInt(1, 5 + currentFloor, mt);
 			lootPiles.push_back(Loot(loc, gold));
 		}

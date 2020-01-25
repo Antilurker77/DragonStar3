@@ -22,6 +22,7 @@ Player::Player() {
 	isPlayer = true;
 	level = 1;
 	isFemale = true;
+	index = 0;
 
 	Initialize(RaceID::Human);
 
@@ -55,6 +56,45 @@ Player::Player() {
 	abilityPoints = 2;
 }
 
+Player::Player(ActorSave& actorSave, PlayerSave& playerSave) {
+	index = 0;
+	isPlayer = true;
+	
+	name = playerSave.PlayerName;
+	level = playerSave.PlayerLevel;
+	exp = playerSave.PlayerEXP;
+	statPoints = playerSave.StatPoints;
+	abilityPoints = playerSave.AbilityPoints;
+	isFemale = true; // todo: save gender
+
+	Initialize(static_cast<RaceID>(playerSave.RaceID));
+
+	currentHP = actorSave.CurrentHP;
+	currentMP = actorSave.CurrentMP;
+	currentSP = actorSave.CurrentSP;
+	exhaustion = actorSave.Exhaustion;
+	Warp(sf::Vector2i(actorSave.XLocation, actorSave.YLocation));
+
+	for (size_t i = 0; i < playerSave.Equipment.size(); i++) {
+		equipment[i] = Item(playerSave.Equipment[i]);
+	}
+
+	abilities.clear();
+	abilities.reserve(playerSave.Abilities.size());
+	for (size_t i = 0; i < playerSave.Abilities.size(); i++) {
+		Ability ability(static_cast<AbilityID>(playerSave.Abilities[i]), playerSave.AbilityRanks[i]);
+		ability.SetCooldownAndCharges(actorSave.AbilityCooldowns[i], actorSave.AbilityCharges[i]);
+		abilities.push_back(ability);
+	}
+
+	auras.clear();
+	auras.reserve(actorSave.AuraIDs.size());
+	for (size_t i = 0; i < actorSave.AuraIDs.size(); i++) {
+		Aura aura(static_cast<AuraID>(actorSave.AuraIDs[i]), actorSave.AuraRanks[i], actorSave.AuraDurations[i], actorSave.AuraNextTicks[i], actorSave.AuraStacks[i], actorSave.AuraSource[i]);
+		auras.push_back(aura);
+	}
+}
+
 void Player::Initialize(RaceID id) {
 	raceID = id;
 
@@ -77,6 +117,10 @@ void Player::Initialize(RaceID id) {
 	filepath += isFemale ? "_f.png" : "_m.png";
 	sprites[0].setTexture(*assetManager.LoadTexture(filepath));
 	setEquipmentSprites();
+}
+
+RaceID Player::GetRaceID() {
+	return raceID;
 }
 
 void Player::Equip(InventorySlot& inventorySlot) {

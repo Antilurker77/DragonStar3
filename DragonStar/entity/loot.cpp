@@ -36,6 +36,19 @@ Loot::Loot(sf::Vector2i spawnPosition, int goldAmount, std::vector<Item> itemsDr
 	MoveToTile(spawnPosition);
 }
 
+Loot::Loot(LootSave& lootSave) {
+	sprites.resize(1);
+	location.x = lootSave.XLocation;
+	location.y = lootSave.YLocation;
+	gold = lootSave.Gold;
+	items.reserve(lootSave.Items.size());
+	for (auto& item : lootSave.Items) {
+		items.push_back(Item(item));
+	}
+	setSpriteGraphic();
+	MoveToTile(location);
+}
+
 sf::Vector2i Loot::GetLocation() {
 	return location;
 }

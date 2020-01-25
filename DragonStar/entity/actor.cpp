@@ -255,6 +255,14 @@ void Actor::AddAura(AuraID auraID, int rank, Actor* source) {
 	actorHUD.UpdateElements(*this);
 }
 
+void Actor::SetAuraOwnerPointer() {
+	if (dungeonScene != nullptr) {
+		for (auto& au : auras) {
+			au.SetOwnerPointer(dungeonScene);
+		}
+	}
+}
+
 void Actor::RemoveAuraStack(AuraID id) {
 	for (auto& a : auras) {
 		if (a.GetAuraID() == id) {
@@ -885,6 +893,98 @@ std::vector<sf::Vector2i> Actor::GetTargetArea(AbilityID id, sf::Vector2i cursor
 	}
 
 	return result;
+}
+
+std::vector<int> Actor::GetAbilityCooldowns() {
+	std::vector<int> result;
+	result.reserve(abilities.size());
+
+	for (auto& a : abilities) {
+		result.push_back(a.GetCurrentCooldown());
+	}
+
+	return result;
+}
+
+std::vector<int> Actor::GetAbilityCharges() {
+	std::vector<int> result;
+	result.reserve(abilities.size());
+
+	for (auto& a : abilities) {
+		result.push_back(a.GetCurrentCharges());
+	}
+
+	return result;
+}
+
+std::vector<int> Actor::GetAuraIDs() {
+	std::vector<int> result;
+	result.reserve(auras.size());
+
+	for (auto& a : auras) {
+		result.push_back(static_cast<int>(a.GetAuraID()));
+	}
+
+	return result;
+}
+
+std::vector<int> Actor::GetAuraRanks() {
+	std::vector<int> result;
+	result.reserve(auras.size());
+
+	for (auto& a : auras) {
+		result.push_back(a.GetRank());
+	}
+
+	return result;
+}
+
+std::vector<int> Actor::GetAuraDurations() {
+	std::vector<int> result;
+	result.reserve(auras.size());
+
+	for (auto& a : auras) {
+		result.push_back(a.GetCurrentDuration());
+	}
+
+	return result;
+}
+
+std::vector<int> Actor::GetAuraNextTicks() {
+	std::vector<int> result;
+	result.reserve(auras.size());
+
+	for (auto& a : auras) {
+		result.push_back(a.GetNextTick());
+	}
+
+	return result;
+}
+
+std::vector<int> Actor::GetAuraStacks() {
+	std::vector<int> result;
+	result.reserve(auras.size());
+
+	for (auto& a : auras) {
+		result.push_back(a.GetCurrentStackSize());
+	}
+
+	return result;
+}
+
+std::vector<size_t> Actor::GetAuraSources() {
+	std::vector<size_t> result;
+	result.reserve(auras.size());
+
+	for (auto& a : auras) {
+		result.push_back(a.GetSourceIndex());
+	}
+
+	return result;
+}
+
+std::array<int, 16> Actor::GetFlags() {
+	return flags;
 }
 
 int Actor::getStatFromEquipment(int base, StatModType statModType, EventOptions& eventOptions) {

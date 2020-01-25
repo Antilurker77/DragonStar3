@@ -26,6 +26,8 @@ class DungeonScene;
 
 class Actor : public Entity {
 public:
+	// Sets the aura pointers.
+	
 	// Updates this actor's HUD element.
 	void UpdateHUD(float secondsPerUpdate);
 
@@ -90,6 +92,9 @@ public:
 	// Adds an aura to this actor. Will increase the stack of an existing aura if possible. Will add to duration if an aura already exists. 
 	// Unique auras will be overwritten if the source is different.
 	void AddAura(AuraID auraID, int rank, Actor* source);
+
+	// Sets the pointer reference for the actor's auras.
+	void SetAuraOwnerPointer();
 
 	// Removes a stack of the specified aura, if possible.
 	void RemoveAuraStack(AuraID auraID);
@@ -332,6 +337,35 @@ public:
 
 	// Returns the target area of a given ability.
 	std::vector<sf::Vector2i> GetTargetArea(AbilityID id, sf::Vector2i cursor);
+
+	// ==== Saving ====
+
+	// Returns the ability cooldowns.
+	std::vector<int> GetAbilityCooldowns();
+
+	// Returns the number of charges for each ability.
+	std::vector<int> GetAbilityCharges();
+
+	// Returns the IDs of the auras currently on the actor.
+	std::vector<int> GetAuraIDs();
+
+	// Returns the ranks of the auras currently on the actor.
+	std::vector<int> GetAuraRanks();
+
+	// Returns the aura durations.
+	std::vector<int> GetAuraDurations();
+
+	// Returns when the next tick of the auras will happen.
+	std::vector<int> GetAuraNextTicks();
+
+	// Returns the aura stacks.
+	std::vector<int> GetAuraStacks();
+
+	// Returns the aura source indexes.
+	std::vector<size_t> GetAuraSources();
+
+	// Returns the flags.
+	std::array<int, 16> GetFlags();
 
 protected:
 	// Returns the base stat of a designated StatModType. If no base exists, return 0.

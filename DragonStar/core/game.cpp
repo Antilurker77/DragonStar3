@@ -78,12 +78,21 @@ void Game::update(float secondsPerUpdate) {
 	switch (gameState) {
 		case GameState::MainMenu:
 			gameState = mainMenuScene.Update(secondsPerUpdate, window);
-			
-			// Transition from Main Menu to Dungeon, generate dungeon.
+
+			// Transition from Main Menu to Dungeon, load game.
+			if (gameState == GameState::Dungeon) {
+				dungeonScene.LoadGame();
+				dungeonScene.SetCamera(&camera);
+			}
+
+			break;
+		case GameState::CharacterCreation:
+			gameState = GameState::Dungeon; // todo: character creation
+			// Transition from Character Creation to Dungeon, generate dungeon.
 			if (gameState == GameState::Dungeon) {
 				dungeonScene.GenerateSeeds(Random::RandomSeed());
 				dungeonScene.SetCamera(&camera);
-			}
+			}		
 			break;
 		case GameState::Dungeon:
 			gameState = dungeonScene.Update(secondsPerUpdate);

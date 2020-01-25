@@ -321,7 +321,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 
 		ad.Range = { 350 };
 		ad.UseTime = { 200 };
-		ad.Cooldown = { 0 };
+		ad.Cooldown = { 2000 };
 		ad.MaxCharges = { 1 };
 		ad.HPCost = { 0 };
 		ad.MPCost = { 20 };

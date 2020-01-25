@@ -30,6 +30,9 @@ public:
 	// Reduces cooldown by 1 tick.
 	void DecrementCooldown();
 
+	// Sets the cooldown and number of charges an ability has.
+	void SetCooldownAndCharges(int cooldown, int charges);
+
 	// Returns the current rank of the ability. 0 = Ability Rank 1
 	int GetCurrentRank();
 
@@ -48,6 +51,9 @@ public:
 
 	// Returns the remaining cooldown of the ability.
 	int GetCurrentCooldown();
+
+	// Returns the current number of charges the ability has.
+	int GetCurrentCharges();
 
 	// Returns the range of the ability. 100 Range = 1 Tile
 	int GetRangeValue(Actor* user);

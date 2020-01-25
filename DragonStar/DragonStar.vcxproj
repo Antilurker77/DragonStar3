@@ -99,7 +99,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\SFML-2.5.1_64\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\SFML-2.5.1_64\include;D:\cereal-1.3.0\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -129,7 +129,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\SFML-2.5.1_64\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\SFML-2.5.1_64\include;D:\cereal-1.3.0\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -201,6 +201,7 @@
     <ClInclude Include="command\waitCommand.hpp" />
     <ClInclude Include="core\combat.hpp" />
     <ClInclude Include="core\records.hpp" />
+    <ClInclude Include="core\saveFile.hpp" />
     <ClInclude Include="data\ability.hpp" />
     <ClInclude Include="data\abilityData.hpp" />
     <ClInclude Include="data\aura.hpp" />

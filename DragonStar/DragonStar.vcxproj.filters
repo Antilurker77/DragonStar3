@@ -359,5 +359,8 @@
     <ClInclude Include="scene\mainMenuScene.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="core\saveFile.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

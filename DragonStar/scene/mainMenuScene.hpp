@@ -40,5 +40,6 @@ private:
 	// UI
 	sf::Text titleText;
 	Button newGameButton;
+	Button loadGameButton;
 	Button quitButton;
 };

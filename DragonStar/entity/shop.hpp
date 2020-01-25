@@ -13,12 +13,16 @@ class Inventory;
 #include <array>
 #include <vector>
 #include "entity.hpp"
+#include "../core/saveFile.hpp"
 #include "../data/item.hpp"
 
 class Shop : public Entity {
 public:
 	// Initializes the shop with a random inventory.
 	Shop(sf::Vector2i spawnLocation, int itemLevel, uint64_t seed);
+
+	// Loads an inventory into the shop.
+	void Load(std::array<ItemSave, 24>& items);
 
 	// Returns the tile location of this shop.
 	sf::Vector2i GetLocation();

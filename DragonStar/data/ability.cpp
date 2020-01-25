@@ -47,6 +47,11 @@ void Ability::DecrementCooldown() {
 	}
 }
 
+void Ability::SetCooldownAndCharges(int cooldown, int charges) {
+	this->remainingCooldown = cooldown;
+	this->charges = charges;
+}
+
 int Ability::GetCurrentRank() {
 	return currentRank;
 }
@@ -92,6 +97,10 @@ bool Ability::IsPassive() {
 
 int Ability::GetCurrentCooldown() {
 	return remainingCooldown;
+}
+
+int Ability::GetCurrentCharges() {
+	return charges;
 }
 
 int Ability::GetRangeValue(Actor* user) {

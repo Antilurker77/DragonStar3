@@ -16,6 +16,7 @@ class Actor;
 #include "ability.hpp"
 #include "itemData.hpp"
 #include "statMod.hpp"
+#include "../core/saveFile.hpp"
 
 enum class Element;
 enum class EquipType;
@@ -42,6 +43,7 @@ class Item {
 public:
 	Item();
 	Item(ItemID id);
+	Item(ItemSave& itemSave);
 
 	// Sets the item's properties based on the given ID.
 	void Initialize(ItemID id);

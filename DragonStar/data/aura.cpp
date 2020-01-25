@@ -7,6 +7,7 @@
 #include "aura.hpp"
 
 #include "../entity/actor.hpp"
+#include "../scene/dungeonScene.hpp"
 
 Aura::Aura() {
 
@@ -19,6 +20,15 @@ Aura::Aura(AuraID id, int rank, Actor* user, size_t userIndex) {
 	Initialize(id);
 }
 
+Aura::Aura(AuraID id, int rank, int duration, int nextTick, int stacks, size_t userIndex) {
+	currentRank = rank;
+	sourceIndex = userIndex;
+	Initialize(id);
+	currentDuration = duration;
+	currentStacks = stacks;
+	this->nextTick = nextTick;
+}
+
 void Aura::Initialize(AuraID id) {
 	auraID = id;
 	auraData = &auraList[id];
@@ -26,6 +36,10 @@ void Aura::Initialize(AuraID id) {
 	currentDuration = auraData->BaseDuration[currentRank];
 	nextTick = auraData->TickRate;
 	currentStacks = 1;
+}
+
+void Aura::SetOwnerPointer(DungeonScene* dungeonScene) {
+	source = dungeonScene->GetActorByIndex(sourceIndex);
 }
 
 void Aura::Tick(Actor* owner) {
@@ -138,12 +152,24 @@ int Aura::GetCurrentDuration() {
 	return currentDuration;
 }
 
+int Aura::GetNextTick() {
+	return nextTick;
+}
+
+int Aura::GetCurrentStackSize() {
+	return currentStacks;
+}
+
 bool Aura::IsExpired() {
 	return currentStacks == 0;
 }
 
 AuraID Aura::GetAuraID() {
 	return auraID;
+}
+
+int Aura::GetRank() {
+	return currentRank;
 }
 
 bool Aura::HasDuration() {

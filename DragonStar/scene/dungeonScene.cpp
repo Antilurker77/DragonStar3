@@ -8,9 +8,11 @@
 
 #include <iostream>
 #include <algorithm>
+#include <fstream>
 #include <iomanip>
 #include <sstream>
 #include <vector>
+#include <cereal/archives/binary.hpp>
 #include "../command/abilityCommand.hpp"
 #include "../command/itemCommand.hpp"
 #include "../command/moveCommand.hpp"
@@ -50,12 +52,68 @@ DungeonScene::DungeonScene() {
 }
 
 void DungeonScene::GenerateSeeds(uint64_t seed) {
+	masterSeed = seed;
 	std::mt19937_64 mt(seed);
 	floorSeeds.clear();
 	floorSeeds.resize(totalFloors);
 	std::generate(floorSeeds.begin(), floorSeeds.end(), [&mt](){return Random::RandomSeed(mt); });
 	generateDungeon();
 	records.RandomizeIdentities(Random::RandomSeed(mt));
+}
+
+void DungeonScene::LoadGame() {
+	{
+		std::ifstream file("save.sav", std::ios::binary);
+		cereal::BinaryInputArchive archive(file);
+		archive(saveFile);
+	}
+
+	masterSeed = saveFile.Seed;
+	currentFloor = saveFile.CurrentFloor;
+
+	records.Load(saveFile.SpawnedArtifacts, saveFile.SlainMonsters, saveFile.SlainMonsterCount);
+
+	GenerateSeeds(masterSeed);
+
+	records.LoadIdentities(saveFile.IdentifiedItems);
+
+	actors.clear();
+	// load player
+	actors.push_back(std::make_unique<Player>(saveFile.Actors[0], saveFile.Player));
+
+	// load monsters
+	for (size_t i = 1; i < saveFile.Actors.size(); i++) {
+		actors.push_back(std::make_unique<Monster>(saveFile.Actors[i], i));
+	}
+
+	// set aura pointer references
+	// must be done after actor list is complete
+	for (auto& actor : actors) {
+		actor->SetAuraOwnerPointer();
+	}
+
+	// load loot
+	lootPiles.clear();
+	lootPiles.reserve(saveFile.Loot.size());
+	for (auto& loot : saveFile.Loot) {
+		lootPiles.push_back(Loot(loot));
+	}
+
+	// load inventory
+	inventory.Load(saveFile.PlayerGold, saveFile.Inventory);
+
+	// load shops
+	for (size_t i = 0; i < shops.size(); i++) {
+		shops[i].Load(saveFile.ShopItems[i]);
+	}
+
+	// load vision
+	for (size_t x = 0; x < saveFile.Vision.size(); x++) {
+		for (size_t y = 0; y < saveFile.Vision[x].size(); y++) {
+			vision[x][y] = static_cast<VisionState>(saveFile.Vision[x][y]);
+		}
+	}
+	buildVisionVertexArray();
 }
 
 void DungeonScene::SetCamera(Camera* c) {
@@ -121,6 +179,7 @@ void DungeonScene::ReadInput(sf::RenderWindow& window) {
 
 		switch (ev.type) {
 		case sf::Event::Closed:
+			saveGame();
 			window.close();
 			break;
 		case sf::Event::MouseButtonReleased:
@@ -163,6 +222,7 @@ void DungeonScene::ReadInput(sf::RenderWindow& window) {
 			}
 			// Quit
 			if (ev.key.code == sf::Keyboard::Escape) {
+				saveGame();
 				window.close();
 				break;
 			}
@@ -648,6 +708,10 @@ Actor* DungeonScene::GetActorAtTile(sf::Vector2i tile) {
 	return nullptr;
 }
 
+Actor* DungeonScene::GetActorByIndex(size_t index) {
+	return actors[index].get();
+}
+
 std::vector<Actor*> DungeonScene::GetActorsInArea(std::vector<sf::Vector2i>& area) {
 	std::vector<Actor*> result;
 	result.reserve(area.size());
@@ -919,6 +983,7 @@ void DungeonScene::updateWorld(float secondsPerUpdate) {
 	if (activeActor != nullptr && activeActor->IsPlayer() && changeFloors) {
 		command = nullptr;
 		moveFloors(1);
+		saveGame();
 
 		targeting = false;
 		targetingAbility = nullptr;
@@ -1016,6 +1081,199 @@ GameState DungeonScene::updateUI(float secondsPerUpdate) {
 	messageLog.Update(secondsPerUpdate);
 
 	return GameState::Dungeon;
+}
+
+void DungeonScene::saveGame() {
+	saveFile.Seed = masterSeed;
+	saveFile.CurrentFloor = currentFloor;
+
+	saveFile.Vision.clear();
+	for (size_t x = 0; x < vision.size(); x++) {
+		std::vector<int> col;
+		for (size_t y = 0; y < vision[x].size(); y++) {
+			col.push_back(static_cast<int>(vision[x][y]));
+		}
+		saveFile.Vision.push_back(col);
+	}
+
+	saveFile.Player.PlayerName = actors[0]->GetName();
+
+	Player* player = static_cast<Player*>(actors[0].get());
+	saveFile.Player.PlayerLevel = player->GetLevel();
+	saveFile.Player.PlayerEXP = player->GetCurrentEXP();
+	saveFile.Player.RaceID = static_cast<int>(player->GetRaceID());
+	saveFile.Player.StatPoints = player->GetStatPoints();
+	saveFile.Player.AbilityPoints = player->GetAbilityPoints();
+
+	saveFile.Player.Abilities.clear();
+	saveFile.Player.AbilityRanks.clear();
+	auto playerAbilities = player->GetAbilities();
+	saveFile.Player.Abilities.reserve(playerAbilities->size());
+	saveFile.Player.AbilityRanks.reserve(playerAbilities->size());
+	for (auto& ability : *playerAbilities) {
+		saveFile.Player.Abilities.push_back(static_cast<int>(ability.GetAbilityID()));
+		saveFile.Player.AbilityRanks.push_back(ability.GetCurrentRank());
+	}
+
+	saveFile.Actors.clear();
+	saveFile.Actors.reserve(actors.size());
+	for (auto& actor : actors) {
+		ActorSave actorSave;
+		sf::Vector2i loc = actor->GetLocation();
+
+		actorSave.CurrentHP = actor->GetCurrentHP();
+		actorSave.CurrentMP = actor->GetCurrentMP();
+		actorSave.CurrentSP = actor->GetCurrentSP();
+		actorSave.Exhaustion = actor->GetExhaustion();
+		actorSave.XLocation = loc.x;
+		actorSave.YLocation = loc.y;
+
+		actorSave.AbilityCooldowns = actor->GetAbilityCooldowns();
+		actorSave.AbilityCharges = actor->GetAbilityCharges();
+
+		actorSave.AuraIDs = actor->GetAuraIDs();
+		actorSave.AuraRanks = actor->GetAuraRanks();
+		actorSave.AuraDurations = actor->GetAuraDurations();
+		actorSave.AuraNextTicks = actor->GetAuraNextTicks();
+		actorSave.AuraStacks = actor->GetAuraStacks();
+		actorSave.AuraSource = actor->GetAuraSources();
+		actorSave.Flags = actor->GetFlags();
+
+		if (!actor->IsPlayer()) {
+			Monster* monster = static_cast<Monster*>(actor.get());
+			actorSave.MonsterID = static_cast<int>(monster->GetMonsterID());
+		}
+		else {
+			actorSave.MonsterID = 0;
+		}
+
+		saveFile.Actors.push_back(actorSave);
+	}
+
+	auto spawnedArtifacts = records.GetSpawnedArtifacts();
+	saveFile.SpawnedArtifacts.clear();
+	saveFile.SpawnedArtifacts.reserve(spawnedArtifacts.size());
+	for (auto& id : spawnedArtifacts) {
+		saveFile.SpawnedArtifacts.push_back(static_cast<int>(id));
+	}
+
+	auto identifiedItems = records.GetIdentifiedItems();
+	saveFile.IdentifiedItems.clear();
+	saveFile.IdentifiedItems.reserve(identifiedItems.size());
+	for (auto& id : identifiedItems) {
+		saveFile.IdentifiedItems.push_back(static_cast<int>(id));
+	}
+
+	auto killCount = records.GetKillCounts();
+	saveFile.SlainMonsters.clear();
+	saveFile.SlainMonsters.reserve(killCount.size());
+	saveFile.SlainMonsterCount.clear();
+	saveFile.SlainMonsterCount.reserve(killCount.size());
+	for (auto& kc : killCount) {
+		saveFile.SlainMonsters.push_back(static_cast<int>(kc.first));
+		saveFile.SlainMonsterCount.push_back(kc.second);
+	}
+
+	auto equipment = player->GetEquipment();
+	for (size_t i = 0; i < equipment.size(); i++) {
+		saveFile.Player.Equipment[i].ItemID = static_cast<int>(equipment[i].GetItemID());
+		saveFile.Player.Equipment[i].Rarity = static_cast<int>(equipment[i].GetRarity());
+		saveFile.Player.Equipment[i].StackSize = 1;
+		auto statMods = equipment[i].GetRandomStatMods();
+		for (size_t j = 0; j < statMods.size(); j++) {
+			saveFile.Player.Equipment[i].StatModTypes.push_back(static_cast<int>(statMods[j].statModType));
+			saveFile.Player.Equipment[i].StatModValues.push_back(statMods[j].value);
+			if (!statMods[j].elements.empty()) {
+				saveFile.Player.Equipment[i].StatModElements.push_back(static_cast<int>(statMods[j].elements[0]));
+			}
+			else {
+				saveFile.Player.Equipment[i].StatModElements.push_back(0);
+			}
+		}
+	}
+
+	saveFile.Loot.clear();
+	saveFile.Loot.reserve(lootPiles.size());
+	for (auto& l : lootPiles) {
+		LootSave lootSave;
+		sf::Vector2i loc = l.GetLocation();
+		lootSave.XLocation = loc.x;
+		lootSave.YLocation = loc.y;
+		lootSave.Gold = l.GetGold();
+		auto items = l.GetItems();
+		for (auto& item : items) {
+			ItemSave itemSave;
+			itemSave.ItemID = static_cast<int>(item.GetItemID());
+			itemSave.Rarity = static_cast<int>(item.GetRarity());
+			itemSave.StackSize = 1;
+			auto statMods = item.GetRandomStatMods();
+			for (auto& sm : statMods) {
+				itemSave.StatModTypes.push_back(static_cast<int>(sm.statModType));
+				itemSave.StatModValues.push_back(sm.value);
+				if (!sm.elements.empty()) {
+					itemSave.StatModElements.push_back(static_cast<int>(sm.elements[0]));
+				}
+				else {
+					itemSave.StatModElements.push_back(0);
+				}
+			}
+			lootSave.Items.push_back(itemSave);
+		}
+		saveFile.Loot.push_back(lootSave);
+	}
+
+	saveFile.PlayerGold = inventory.GetGold();
+	auto slots = inventory.GetInventory();
+	for (size_t i = 0; i < slots.size(); i++) {
+		saveFile.Inventory[i].StackSize = slots[i].StackCount;
+		saveFile.Inventory[i].ItemID = static_cast<int>(slots[i].Item.GetItemID());
+		saveFile.Inventory[i].Rarity = static_cast<int>(slots[i].Item.GetRarity());
+		saveFile.Inventory[i].StatModTypes.clear();
+		saveFile.Inventory[i].StatModValues.clear();
+		saveFile.Inventory[i].StatModElements.clear();
+		auto statMods = slots[i].Item.GetRandomStatMods();
+		for (auto& sm : statMods) {
+			saveFile.Inventory[i].StatModTypes.push_back(static_cast<int>(sm.statModType));
+			saveFile.Inventory[i].StatModValues.push_back(sm.value);
+			if (!sm.elements.empty()) {
+				saveFile.Inventory[i].StatModElements.push_back(static_cast<int>(sm.elements[0]));
+			}
+			else {
+				saveFile.Inventory[i].StatModElements.push_back(0);
+			}
+		}
+	}
+
+	saveFile.ShopItems.clear();
+	saveFile.ShopItems.reserve(shops.size());
+	for (auto& shop : shops) {
+		auto items = shop.GetInventory();
+		std::array<ItemSave, 24> itemSaves;
+		for (size_t i = 0; i < items.size(); i++) {
+			itemSaves[i].StackSize = 1;
+			itemSaves[i].ItemID = static_cast<int>(items[i].GetItemID());
+			itemSaves[i].Rarity = static_cast<int>(items[i].GetRarity());
+			auto statMods = items[i].GetRandomStatMods();
+			for (auto& sm : statMods) {
+				itemSaves[i].StatModTypes.push_back(static_cast<int>(sm.statModType));
+				itemSaves[i].StatModValues.push_back(sm.value);
+				if (!sm.elements.empty()) {
+					itemSaves[i].StatModElements.push_back(static_cast<int>(sm.elements[0]));
+				}
+				else {
+					itemSaves[i].StatModElements.push_back(0);
+				}
+			}
+		}
+		saveFile.ShopItems.push_back(itemSaves);
+	}
+
+	// create save file
+	{
+		std::ofstream file("save.sav", std::ios::binary);
+		cereal::BinaryOutputArchive archive(file);
+		archive(saveFile);
+	}
 }
 
 void DungeonScene::moveFloors(int floors) {

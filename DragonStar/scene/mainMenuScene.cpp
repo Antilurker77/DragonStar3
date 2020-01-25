@@ -16,6 +16,7 @@ MainMenuScene::MainMenuScene() {
 	titleText.setFont(*assetManager.LoadFont(settings.Font));
 
 	newGameButton.SetString("New Game");
+	loadGameButton.SetString("Load Game");
 	quitButton.SetString("Quit Game");
 }
 
@@ -52,6 +53,12 @@ GameState MainMenuScene::Update(float secondsPerUpdate, sf::RenderWindow& window
 
 	if (newGameButton.Update(secondsPerUpdate, mousePos)) {
 		if (leftClick) {
+			gs = GameState::CharacterCreation;
+		}
+	}
+
+	if (loadGameButton.Update(secondsPerUpdate, mousePos)) {
+		if (leftClick) {
 			gs = GameState::Dungeon;
 		}
 	}
@@ -68,6 +75,7 @@ GameState MainMenuScene::Update(float secondsPerUpdate, sf::RenderWindow& window
 void MainMenuScene::Draw(sf::RenderTarget& window, float timeRatio) {
 	window.draw(titleText);
 	newGameButton.Render(window);
+	loadGameButton.Render(window);
 	quitButton.Render(window);
 }
 
@@ -84,5 +92,9 @@ void MainMenuScene::SetPositions() {
 
 	pos.x = settings.ScreenWidth / 2.f;
 	pos.y = settings.ScreenHeight / 2.f + 100.f;
+	loadGameButton.SetPosition(static_cast<int>(pos.x), static_cast<int>(pos.y));
+
+	pos.x = settings.ScreenWidth / 2.f;
+	pos.y = settings.ScreenHeight / 2.f + 150.f;
 	quitButton.SetPosition(static_cast<int>(pos.x), static_cast<int>(pos.y));
 }

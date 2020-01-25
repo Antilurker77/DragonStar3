@@ -17,15 +17,20 @@ struct InventorySlot;
 
 #include <array>
 #include <unordered_map>
+#include "../core/saveFile.hpp"
 #include "../data/item.hpp"
 #include "../data/raceData.hpp"
 
 class Player : public Actor {
 public:
 	Player();
+	Player(ActorSave& actorSave, PlayerSave& playerSave);
 
 	// Initializes the race for the player.
 	void Initialize(RaceID id);
+
+	// Returns the race ID for the player.
+	RaceID GetRaceID();
 
 	// Attempts to equip an item. Automatically picks the correct slot based
 	// on the item type. For rings, equips to empty slots first. Otherwise,

@@ -168,6 +168,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 		itd.TeachableAbilities = {
 			AbilityID::PowerStrike,
 			AbilityID::ThunderStrike,
+			AbilityID::RendingSlash,
 			AbilityID::ImpactWave,
 			AbilityID::Cleave,
 			AbilityID::TornadoStrike,

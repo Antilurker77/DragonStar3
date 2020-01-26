@@ -27,6 +27,7 @@ enum class AbilityID {
 	MagicMissile,
 	PhoenixRaid,
 	PowerStrike,
+	RendingSlash,
 	ShadowEnergy,
 	Shock,
 	Stalagmite,

@@ -261,6 +261,91 @@ static std::unordered_map<AuraID, AuraData> initList() {
 
 		return ad;
 	}();
+	list[AuraID::RendingSlash] = [] {
+		AuraData ad;
+
+		ad.Name = "Rending Slash";
+		ad.Icon = "placeholder.png";
+		ad.AuraID = AuraID::RendingSlash;
+
+		ad.Categories = {
+			Category::Damaging,
+			Category::OverTime,
+			Category::Skill,
+			Category::Attack,
+			Category::SingleTarget
+		};
+		ad.Elements = {
+			Element::Physical
+		};
+
+		ad.MaxRank = 4;
+
+		ad.BaseDuration = { 1000, 1000, 1000, 1000, 1000 };
+		ad.MaxDuration = { 1300, 1300, 1300, 1300, 1300 };
+		ad.MaxStacks = { 1, 1, 1, 1, 1 };
+
+		ad.Values = {
+			{100, 111, 122, 133, 144}
+		};
+		ad.StatMods = {};
+
+		ad.IsBuff = false;
+		ad.Unique = false;
+		ad.UniqueByActor = true;
+		ad.ConsumeOnUse = false;
+		ad.StacksExpireOneByOne = false;
+		ad.MultiplyStatModsByStacks = false;
+
+		ad.IsRest = false;
+		ad.IsStun = false;
+		ad.IsDisarm = false;
+		ad.IsSilence = false;
+		ad.IsSnare = false;
+
+		ad.CanCrit = true;
+		ad.BonusArmorPen = { 0, 0, 0, 0, 0 };
+		ad.BonusResistancePen = { 0, 0, 0, 0, 0 };
+		ad.BonusCritChance = { 0, 0, 0, 0, 0 };
+		ad.BonusCritPower = { 0, 0, 0, 0, 0 };
+		ad.BonusDoubleStrikeChance = { 0, 0, 0, 0, 0 };
+		ad.BonusHPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusMPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusSPLeech = { 0, 0, 0, 0, 0 };
+
+		ad.GetDescription = [Values = ad.Values](Actor* user, EventOptions& eventOptions, int rank){
+			std::string desc;
+			std::string value;
+
+			if (user == nullptr) {
+				value = "#damage " + std::to_string(Values[0][rank] / 10) + "% Attack Power #default ";
+			}
+			else {
+				value = "#damage " + std::to_string(Combat::SpellDamageEstimate(user, eventOptions, Values[0][rank])) + " #default ";
+			}
+			desc = "Deals " + value + "physical damage every 1s.";
+
+			return desc;
+		};
+
+		ad.OnApplication = [Values = ad.Values](Actor* user, Actor* target, EventOptions& eventOptions, int rank) {
+			return;
+		};
+
+		ad.OnTick = [Values = ad.Values](Actor* user, Actor* target, EventOptions& eventOptions, int rank) {
+			Combat::SkillDamage(user, target, eventOptions, Values[0][rank]);
+		};
+
+		ad.OnExpiry = [Values = ad.Values](Actor* user, Actor* target, EventOptions& eventOptions, int rank) {
+			return;
+		};
+
+		ad.OnEvent = [Values = ad.Values](EventType eventType, EventOptions& auraOptions, int rank, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return ad;
+	}();
 	list[AuraID::ShadowEnergy] = [] {
 		AuraData ad;
 

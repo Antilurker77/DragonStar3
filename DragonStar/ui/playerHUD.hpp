@@ -30,6 +30,9 @@ class PlayerHUD {
 public:
 	PlayerHUD();
 
+	// Loads ability shortcuts into the bar.
+	void Load(std::array<int, 24> shortcutAbilities);
+
 	// Gets input.
 	void GetInput(sf::RenderWindow& window, sf::Event& ev);
 
@@ -46,10 +49,13 @@ public:
 	// Sets a shortcut in the specified slot to the specified ability.
 	void SetShortcut(size_t index, AbilityID id);
 
+	// Returns all shortcuts.
+	std::array<Shortcut, 24> GetShortcuts();
+
 	// Checks to see if there is a ability at this locaiton.
 	void GetDraggableAbility(sf::Vector2i location, AbilityID& id);
 
-	// Rekeases the ability from the cursor and assigns it to the slot.
+	// Releases the ability from the cursor and assigns it to the slot.
 	void ReleaseDraggableAbility(sf::Vector2i location, AbilityID& id);
 
 private:

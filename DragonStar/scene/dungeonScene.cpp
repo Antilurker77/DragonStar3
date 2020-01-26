@@ -107,6 +107,9 @@ void DungeonScene::LoadGame() {
 		shops[i].Load(saveFile.ShopItems[i]);
 	}
 
+	// load ability bar
+	playerHUD.Load(saveFile.ShortcutAbilities);
+
 	// load vision
 	for (size_t x = 0; x < saveFile.Vision.size(); x++) {
 		for (size_t y = 0; y < saveFile.Vision[x].size(); y++) {
@@ -1266,6 +1269,11 @@ void DungeonScene::saveGame() {
 			}
 		}
 		saveFile.ShopItems.push_back(itemSaves);
+	}
+
+	auto shortcuts = playerHUD.GetShortcuts();
+	for (size_t i = 0; i < shortcuts.size(); i++) {
+		saveFile.ShortcutAbilities[i] = static_cast<int>(shortcuts[i].AbilityID);
 	}
 
 	// create save file

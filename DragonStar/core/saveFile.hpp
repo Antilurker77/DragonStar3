@@ -146,6 +146,8 @@ struct SaveFile {
 	int PlayerGold;
 	std::array<ItemSave, 40> Inventory;
 
+	std::array<int, 24> ShortcutAbilities;
+
 	template<class Archive>
 	void serialize(Archive& archive) {
 		archive(
@@ -161,7 +163,8 @@ struct SaveFile {
 			SlainMonsterCount,
 			Actors,
 			PlayerGold,
-			Inventory
+			Inventory,
+			ShortcutAbilities
 		);
 	}
 };

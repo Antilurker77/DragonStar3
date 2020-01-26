@@ -88,6 +88,23 @@ PlayerHUD::PlayerHUD() {
 	Initialize();
 }
 
+void PlayerHUD::Load(std::array<int, 24> shortcutAbilities) {
+	for (size_t i = 0; i < shortcuts.size(); i++) {
+		if (shortcutAbilities[i] != 0) {
+			AbilityID id = static_cast<AbilityID>(shortcutAbilities[i]);
+			shortcuts[i].AbilityID = id;
+
+			// set the icon
+			Ability a(id, 0);
+			shortcutIcons[i].setTexture(*assetManager.LoadTexture(a.GetIcon()));
+			displayShortcutIcons[i] = true;
+		}
+		else {
+			displayShortcutIcons[i] = false;
+		}
+	}
+}
+
 void PlayerHUD::GetInput(sf::RenderWindow& window, sf::Event& ev) {
 	sf::Mouse mouse;
 	mousePos = mouse.getPosition(window);
@@ -514,6 +531,10 @@ void PlayerHUD::SetShortcut(size_t index, AbilityID id) {
 	Ability a(id, 0);
 	shortcutIcons[index].setTexture(*assetManager.LoadTexture(a.GetIcon()));
 	displayShortcutIcons[index] = true;
+}
+
+std::array<Shortcut, 24> PlayerHUD::GetShortcuts() {
+	return shortcuts;
 }
 
 void PlayerHUD::GetDraggableAbility(sf::Vector2i location, AbilityID& id) {

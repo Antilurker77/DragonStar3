@@ -261,6 +261,78 @@ static std::unordered_map<AuraID, AuraData> initList() {
 
 		return ad;
 	}();
+	list[AuraID::Chilled] = []{
+		AuraData ad;
+
+		ad.Name = "Chilled";
+		ad.Icon = "placeholder.png";
+		ad.AuraID = AuraID::Chilled;
+
+		ad.Categories = {};
+		ad.Elements = { Element::Ice };
+
+		ad.MaxRank = 4;
+
+		ad.BaseDuration = { 500, 500, 500, 500, 500 };
+		ad.MaxDuration = { 500, 500, 500, 500, 500 };
+		ad.MaxStacks = { 1, 1, 1, 1, 1 };
+
+		ad.Values = {
+			{ 250, 250, 250, 250, 250 }
+		};
+		ad.StatMods = {};
+
+		ad.IsBuff = false;
+		ad.Unique = true;
+		ad.UniqueByActor = true;
+		ad.ConsumeOnUse = false;
+		ad.StacksExpireOneByOne = false;
+		ad.MultiplyStatModsByStacks = false;
+
+		ad.IsRest = false;
+		ad.IsStun = false;
+		ad.IsDisarm = false;
+		ad.IsSilence = false;
+		ad.IsSnare = true;
+
+		ad.CanCrit = false;
+		ad.BonusArmorPen = { 0, 0, 0, 0, 0 };
+		ad.BonusResistancePen = { 0, 0, 0, 0, 0 };
+		ad.BonusCritChance = { 0, 0, 0, 0, 0 };
+		ad.BonusCritPower = { 0, 0, 0, 0, 0 };
+		ad.BonusDoubleStrikeChance = { 0, 0, 0, 0, 0 };
+		ad.BonusHPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusMPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusSPLeech = { 0, 0, 0, 0, 0 };
+
+		ad.GetDescription = [Values = ad.Values](Actor* user, EventOptions& eventOptions, int rank){
+			std::string desc;
+			std::string value;
+
+			value = std::to_string(Values[0][rank] / 10);
+			desc = "Movement speed reduced by " + value + "%.";
+
+			return desc;
+		};
+
+		ad.OnApplication = [Values = ad.Values](Actor* user, Actor* target, EventOptions& eventOptions, int rank) {
+
+		};
+
+		ad.OnTick = [Values = ad.Values](Actor* user, Actor* target, EventOptions& eventOptions, int rank) {
+
+		};
+
+		ad.OnExpiry = [Values = ad.Values](Actor* user, Actor* target, EventOptions& eventOptions, int rank) {
+
+		};
+
+		ad.OnEvent = [Values = ad.Values](EventType eventType, EventOptions& auraOptions, int rank, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return ad;
+	}();
 	list[AuraID::RendingSlash] = [] {
 		AuraData ad;
 

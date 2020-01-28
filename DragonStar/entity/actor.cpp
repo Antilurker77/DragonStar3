@@ -110,13 +110,13 @@ bool Actor::IsReadyToAct() {
 }
 
 void Actor::Walk(sf::Vector2i destination, int moveMod) {
-	int cost = getBaseStat(StatModType::MovementSpeed) * GetMovementSpeed() / 1000;
+	int cost = getBaseStat(StatModType::MovementSpeed) * 1000 / GetMovementSpeed();
 	cost = cost * moveMod / 1000;
 	// diagonal
 	if (location.x != destination.x && location.y != destination.y) {
 		cost = cost * 1414 / 1000;
 	}
-	
+	//messageLog.AddMessage("MS: " + std::to_string(GetMovementSpeed()) + ", Move Cost: " + std::to_string(cost));
 	// actual movement and exhaustion
 	exhaustion += cost;
 	location = destination;

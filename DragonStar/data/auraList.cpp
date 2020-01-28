@@ -278,9 +278,15 @@ static std::unordered_map<AuraID, AuraData> initList() {
 		ad.MaxStacks = { 1, 1, 1, 1, 1 };
 
 		ad.Values = {
-			{ 250, 250, 250, 250, 250 }
+			{ -250, -250, -250, -250, -250 }
 		};
-		ad.StatMods = {};
+		ad.StatMods = {
+			{ StatMod(StatModType::MovementSpeed, ad.Values[0][0]) },
+			{ StatMod(StatModType::MovementSpeed, ad.Values[0][1]) },
+			{ StatMod(StatModType::MovementSpeed, ad.Values[0][2]) },
+			{ StatMod(StatModType::MovementSpeed, ad.Values[0][3]) },
+			{ StatMod(StatModType::MovementSpeed, ad.Values[0][4]) }
+		};
 
 		ad.IsBuff = false;
 		ad.Unique = true;

@@ -115,10 +115,7 @@ public:
 	std::vector<sf::Vector2i> GetProjectilePath(sf::Vector2i start, sf::Vector2i goal);
 
 	// Returns the point of impact for a projectile.
-	sf::Vector2i GetProjectileImpactTile(sf::Vector2i start, sf::Vector2i goal);
-
-	// Returns the point of impact for a projectile.
-	sf::Vector2i GetProjectileImpactTile(std::vector<sf::Vector2i> line);
+	sf::Vector2i GetProjectileImpactTile(sf::Vector2i start, sf::Vector2i goal, bool isPlayer);
 
 	// Returns the player actor, which should always be the first actor in the vector.
 	Actor* GetPlayer();

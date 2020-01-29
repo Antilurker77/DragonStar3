@@ -190,7 +190,7 @@ void DungeonScene::ReadInput(sf::RenderWindow& window) {
 				if (targeting) {
 					std::vector<sf::Vector2i> range = targetingAbility->GetRange(actors[0].get(), this);
 					sf::Vector2i target = TileMath::Closest(cursorTileLocation, range);
-					target = GetProjectileImpactTile(actors[0]->GetLocation(), target);
+					target = GetProjectileImpactTile(actors[0]->GetLocation(), target, true);
 
 					if (usingItem) {
 						command = std::make_unique<ItemCommand>(this, &inventory, target, usingItemIndex);
@@ -661,30 +661,17 @@ std::vector<sf::Vector2i> DungeonScene::GetProjectilePath(sf::Vector2i start, sf
 	return result;
 }
 
-sf::Vector2i DungeonScene::GetProjectileImpactTile(sf::Vector2i start, sf::Vector2i goal) {
+sf::Vector2i DungeonScene::GetProjectileImpactTile(sf::Vector2i start, sf::Vector2i goal, bool isPlayer) {
 	std::vector<sf::Vector2i> line = GetProjectilePath(start, goal);
 	sf::Vector2i result = line[0];
 
 	for (auto t : line) {
 		if (t != start) {
 			result = t;
-			if (IsOccupiedByActor(t)) {
+			if (IsOccupiedByActor(t) && isPlayer) {
 				break;
 			}
-		}
-	}
-
-	return result;
-}
-
-sf::Vector2i DungeonScene::GetProjectileImpactTile(std::vector<sf::Vector2i> line) {
-	sf::Vector2i result = line[0];
-	sf::Vector2i start = line[0];
-
-	for (auto t : line) {
-		if (t != start) {
-			result = t;
-			if (IsOccupiedByActor(t)) {
+			else if (!isPlayer && IsOccupiedByActor(t) && GetActorAtTile(t)->IsPlayer()) {
 				break;
 			}
 		}

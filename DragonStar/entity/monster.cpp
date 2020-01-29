@@ -199,7 +199,7 @@ CommandPtr Monster::CalcAI() {
 						sf::Vector2i targetTile = *i;
 						// Projectile Test
 						if (ability->IsProjectile()) {
-							sf::Vector2i impactPoint = dungeonScene->GetProjectileImpactTile(location, targetTile);
+							sf::Vector2i impactPoint = dungeonScene->GetProjectileImpactTile(location, targetTile, false);
 							if (targetTile == impactPoint) {
 								ai.second = targetTile;
 								inRange = true;

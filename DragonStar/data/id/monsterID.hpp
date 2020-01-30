@@ -15,6 +15,7 @@ enum class MonsterID {
 	TargetDummy,
 	GiantRat,
 	GreenSlime,
+	KoboldCrossbowman,
 	KoboldGeomancer,
 	KoboldMiner,
 	KoboldScout,

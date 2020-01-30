@@ -217,6 +217,68 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		return md;
 	}();
+	list[MonsterID::KoboldCrossbowman] = [] {
+		MonsterData md;
+
+		md.Name = "Kobold Crossbowman";
+		md.Title = "";
+		md.Filename = "kobold_crossbowman.png";
+
+		md.IsUnique = false;
+		md.IsBoss = false;
+		md.CanFly = false;
+		md.CanSwim = false;
+		md.CanTunnel = false;
+
+		md.IsStationary = false;
+		md.ChaseTurns = 3;
+
+		md.Level = 1;
+
+		md.BaseHP = 25;
+		md.BaseMP = 20;
+		md.BaseSP = 100;
+
+		md.BaseSTR = 4;
+		md.BaseDEX = 8;
+		md.BaseMAG = 1;
+		md.BaseVIT = 4;
+		md.BaseSPI = 5;
+
+		md.BaseArmor = 15;
+		md.BaseMagicArmor = 0;
+		md.BaseEvasion = 15;
+
+		md.BaseAttackPower = 8;
+		md.BaseSpellPower = 0;
+
+		md.BaseHitChance = 750;
+		md.BaseAttackRange = 350;
+		md.BaseAttackSpeed = 250;
+		md.BaseWeaponDamageMultiplier = 1000;
+		md.AttackElement = Element::Physical;
+		md.AttackType = EquipType::Undefined;
+
+		md.BaseLineOfSight = 350;
+		md.BaseMoveCost = 90;
+
+		md.EXPDrop = 10;
+		md.GoldDrop = 4;
+		md.LootDrop = 2500;
+
+		md.StatMods = {};
+		md.Abilities = {};
+
+		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
+			std::pair<AbilityID, sf::Vector2i> ai;
+			ai.second = dungeonScene->GetPlayer()->GetLocation();
+			ai.first = AbilityID::Attack;
+
+			return ai;
+		};
+
+		return md;
+	}();
 	list[MonsterID::KoboldGeomancer] = [] {
 		MonsterData md;
 

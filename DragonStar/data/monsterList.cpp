@@ -350,6 +350,80 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		return md;
 	}();
+	list[MonsterID::Imp] = [] {
+		MonsterData md;
+
+		md.Name = "Imp";
+		md.Title = "";
+		md.Filename = "imp.png";
+
+		md.IsUnique = false;
+		md.IsBoss = false;
+		md.CanFly = false;
+		md.CanSwim = false;
+		md.CanTunnel = false;
+
+		md.IsStationary = false;
+		md.ChaseTurns = 3;
+
+		md.Level = 1;
+
+		md.BaseHP = 24;
+		md.BaseMP = 20;
+		md.BaseSP = 100;
+
+		md.BaseSTR = 4;
+		md.BaseDEX = 4;
+		md.BaseMAG = 5;
+		md.BaseVIT = 4;
+		md.BaseSPI = 5;
+
+		md.BaseArmor = 12;
+		md.BaseMagicArmor = 5;
+		md.BaseEvasion = 7;
+
+		md.BaseAttackPower = 6;
+		md.BaseSpellPower = 5;
+
+		md.BaseHitChance = 700;
+		md.BaseAttackRange = 100;
+		md.BaseAttackSpeed = 180;
+		md.BaseWeaponDamageMultiplier = 1000;
+		md.AttackElement = Element::Physical;
+		md.AttackType = EquipType::Undefined;
+
+		md.BaseLineOfSight = 250;
+		md.BaseMoveCost = 80;
+
+		md.EXPDrop = 6;
+		md.GoldDrop = 3;
+		md.LootDrop = 1250;
+
+		md.StatMods = {
+			StatMod(StatModType::Resistance, 300, Element::Dark),
+			StatMod(StatModType::Resistance, -300, Element::Light)
+		};
+		md.Abilities = {
+			{AbilityID::BoltOfDarkness, 0}
+		};
+
+		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
+			std::pair<AbilityID, sf::Vector2i> ai;
+			ai.second = dungeonScene->GetPlayer()->GetLocation();
+
+			// Has a 50% chance to cast Bolt of Darkness.
+			if (monster->IsAbilityUsable(AbilityID::BoltOfDarkness) && Random::RandomInt(1, 100) <= 50) {
+				ai.first = AbilityID::BoltOfDarkness;
+			}
+			else {
+				ai.first = AbilityID::Attack;
+			}
+
+			return ai;
+		};
+
+		return md;
+	}();
 	list[MonsterID::KoboldCrossbowman] = [] {
 		MonsterData md;
 

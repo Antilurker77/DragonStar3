@@ -17,6 +17,7 @@ enum class MonsterID {
 	CaveBat,
 	GiantRat,
 	GreenSlime,
+	Imp,
 	KoboldCrossbowman,
 	KoboldGeomancer,
 	KoboldMiner,

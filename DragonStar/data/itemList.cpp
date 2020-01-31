@@ -94,6 +94,42 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		return itd;
 	}();
+	list[ItemID::PotionSpeed] = [] {
+		ItemData itd;
+
+		itd.Name = "Potion of Speed";
+		itd.IconFilePath = "potion.png";
+		itd.EquipFilePath = "";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::PotionSpeed;
+		itd.ItemType = ItemType::Potion;
+
+		itd.InvokeAbility = AbilityID::PotionSpeed;
+
+		itd.MaxStacks = 10;
+
+		itd.BaseValue = 250;
+
+		itd.Artifact = false;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::Undefined;
+		itd.AttackElement = Element::Undefined;
+		itd.HitChance = 0;
+		itd.AttackRange = 0;
+		itd.AttackSpeed = 0;
+		itd.WeaponDamageMultiplier = 0;
+
+		itd.ImplicitStatMods = {};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
 
 	// Scrolls
 

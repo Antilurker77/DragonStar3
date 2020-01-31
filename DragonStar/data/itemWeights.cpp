@@ -612,8 +612,9 @@ static std::vector<ItemWeight> initPotionWeights() {
 
 	// MinItemLevel, MaxItemLevel, Weight, ItemID
 	list = {
-		{1, 25, 1000, ItemID::PotionMinorHealing},
-		{1, 100, 100, ItemID::PotionFruitJuice}
+		{1,  25, 1000, ItemID::PotionMinorHealing},
+		{1, 100,  100, ItemID::PotionFruitJuice},
+		{1, 100,   50, ItemID::PotionSpeed}
 	};
 
 	return list;
@@ -626,7 +627,7 @@ static std::vector<ItemWeight> initTomeWeights() {
 	list = {
 		{1, 100, 1000, ItemID::TomeCombatBasics},
 		{1, 100, 1000, ItemID::TomeMagicForBeginners},
-		{1, 100, 750, ItemID::TomeArtOfFlame}
+		{1, 100,  750, ItemID::TomeArtOfFlame}
 	};
 
 	return list;

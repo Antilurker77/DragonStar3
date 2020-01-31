@@ -21,7 +21,8 @@ std::vector<std::string> Record::potionColors = {
 
 std::vector<ItemID> Record::potionList = {
 	ItemID::PotionFruitJuice,
-	ItemID::PotionMinorHealing
+	ItemID::PotionMinorHealing,
+	ItemID::PotionSpeed
 };
 
 Record::Record() {

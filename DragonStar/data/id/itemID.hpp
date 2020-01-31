@@ -14,6 +14,7 @@ enum class ItemID {
 	// Potions
 	PotionFruitJuice,
 	PotionMinorHealing,
+	PotionSpeed,
 
 	// Scrolls
 

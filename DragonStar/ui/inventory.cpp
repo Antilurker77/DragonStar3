@@ -11,6 +11,7 @@
 #include "../core/settings.hpp"
 #include "../data/id/element.hpp"
 #include "../data/id/equipType.hpp"
+#include "../data/id/itemID.hpp"
 #include "../entity/player.hpp"
 #include "../scene/dungeonScene.hpp"
 
@@ -89,18 +90,18 @@ Inventory::Inventory() {
 	//AddItem(shield);
 
 	Item rations;
-	rations.Initialize(static_cast<ItemID>(5));
+	rations.Initialize(ItemID::Rations);
 	AddItem(rations);
 	AddItem(rations);
 
 	Item book;
-	book.Initialize(static_cast<ItemID>(3));
+	book.Initialize(ItemID::TomeCombatBasics);
 	AddItem(book);
 
-	book.Initialize(static_cast<ItemID>(4));
+	book.Initialize(ItemID::TomeMagicForBeginners);
 	AddItem(book);
 
-	book.Initialize(static_cast<ItemID>(5));
+	book.Initialize(ItemID::TomeArtOfFlame);
 	AddItem(book);
 
 	ChangeGold(100);

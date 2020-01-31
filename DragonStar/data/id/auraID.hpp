@@ -20,6 +20,7 @@ enum class AuraID {
 	FlameStrike,
 	RendingSlash,
 	ShadowEnergy,
+	Speed,
 	ThunderStrike,
 	Venom
 };

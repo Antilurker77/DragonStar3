@@ -41,6 +41,7 @@ enum class AbilityID {
 	// Potions
 	PotionFruitJuice,
 	PotionMinorHealing,
+	PotionSpeed,
 
 	// Scrolls
 

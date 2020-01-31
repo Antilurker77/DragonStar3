@@ -32,7 +32,7 @@ Player::Player() {
 	//equipment[1].Initialize(ItemID::LastDefender);
 	//equipment[4].Initialize(ItemID::ArenaGauntlets);
 	//equipment[5].Initialize(ItemID::Windriders);
-	equipment[8].Initialize(ItemID::DebugRing);
+	//equipment[8].Initialize(ItemID::DebugRing);
 	setEquipmentSprites();
 
 	// test

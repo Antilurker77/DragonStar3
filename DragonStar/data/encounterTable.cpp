@@ -15,47 +15,34 @@ std::vector<Encounter> DungeonScene::encounterTable = {
 		{MonsterID::TargetDummy,  500}
 	}},
 
-	// test worm spam for ai bug
-	//{1, 100, 1000, {
-	//	{MonsterID::Worm, 1000},
-	//	{MonsterID::Worm, 1000},
-	//	{MonsterID::Worm, 1000},
-	//	{MonsterID::Worm, 1000},
-	//	{MonsterID::Worm, 1000},
-	//	{MonsterID::Worm, 1000},
-	//	{MonsterID::Worm, 1000},
-	//	{MonsterID::Worm, 1000},
-	//	{MonsterID::Worm, 1000}
-	//}}
-
-	{1,	100, 1000, {
+	{1,	5, 1000, {
 		{MonsterID::GiantRat, 1000}
 	}},
 
-	{1,	100, 300, {
+	{1,	10, 300, {
 		{MonsterID::GiantRat, 1000},
 		{MonsterID::GiantRat, 1000}
 	}},
 
-	{1, 100, 1000, {
+	{1, 5, 1000, {
 		{MonsterID::CaveBat, 1000}
 	}},
 
-	{1, 100, 1000, {
+	{1, 5, 1000, {
 		{MonsterID::WorkerAnt, 1000}
 	}},
 
-	{1,	100, 750, {
+	{1,	5, 750, {
 		{MonsterID::GreenSlime, 1000}
 	}},
 
-	{1, 100, 500, {
+	{1, 5, 500, {
 		{MonsterID::Jackal, 1000},
 		{MonsterID::Jackal, 1000},
 		{MonsterID::Jackal, 1000}
 	}},
 
-	{1,	100, 1000, {
+	{1,	3, 1000, {
 		{MonsterID::Worm, 1000},
 		{MonsterID::Worm, 1000},
 		{MonsterID::Worm, 500},
@@ -63,34 +50,33 @@ std::vector<Encounter> DungeonScene::encounterTable = {
 		{MonsterID::Worm, 500}
 	}},
 
-	{1,	100, 500, {
+	{2,	10, 500, {
 		{MonsterID::KoboldMiner, 1000},
-		{MonsterID::KoboldMiner, 750},
 		{MonsterID::KoboldMiner, 750}
 	}},
 
-	{1, 100, 800, {
+	{2, 100, 800, {
 		{MonsterID::KoboldScout, 1000},
 		{MonsterID::KoboldMiner, 500}
 	}},
 
-	{1, 100, 700, {
+	{2, 10, 700, {
 		{MonsterID::KoboldGeomancer, 1000}
 	}},
 
-	{1, 100, 800, {
+	{2, 10, 800, {
 		{MonsterID::KoboldCrossbowman, 1000}
 	}},
 
-	{1, 100, 1000, {
+	{3, 10, 1000, {
 		{MonsterID::ArcaneSentry, 1000}
 	}},
 
-	{1, 100, 500, {
+	{3, 10, 500, {
 		{MonsterID::Imp, 1000}
 	}},
 
-	{2, 100, 1000, {
+	{4, 10, 1000, {
 		{MonsterID::LesserFlameblade, 1000}
 	}},
 };

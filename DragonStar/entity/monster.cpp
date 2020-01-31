@@ -234,6 +234,7 @@ CommandPtr Monster::CalcAI() {
 							int cost = dungeonScene->GetPathCost(path);
 							if (cost < cheapest) {
 								ai.second = path.front();
+								cheapest = cost;
 								searching = false;
 							}
 						}

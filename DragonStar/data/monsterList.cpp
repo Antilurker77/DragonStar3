@@ -392,7 +392,7 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.AttackElement = Element::Physical;
 		md.AttackType = EquipType::Undefined;
 
-		md.BaseLineOfSight = 250;
+		md.BaseLineOfSight = 350;
 		md.BaseMoveCost = 80;
 
 		md.EXPDrop = 6;
@@ -771,6 +771,68 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 			else {
 				ai.first = AbilityID::Attack;
 			}
+
+			return ai;
+		};
+
+		return md;
+	}();
+	list[MonsterID::WorkerAnt] = [] {
+		MonsterData md;
+
+		md.Name = "Worker Ant";
+		md.Title = "";
+		md.Filename = "worker_ant.png";
+
+		md.IsUnique = false;
+		md.IsBoss = false;
+		md.CanFly = false;
+		md.CanSwim = false;
+		md.CanTunnel = false;
+
+		md.IsStationary = false;
+		md.ChaseTurns = 3;
+
+		md.Level = 1;
+
+		md.BaseHP = 15;
+		md.BaseMP = 3;
+		md.BaseSP = 100;
+
+		md.BaseSTR = 3;
+		md.BaseDEX = 3;
+		md.BaseMAG = 1;
+		md.BaseVIT = 2;
+		md.BaseSPI = 1;
+
+		md.BaseArmor = 5;
+		md.BaseMagicArmor = 0;
+		md.BaseEvasion = 5;
+
+		md.BaseAttackPower = 4;
+		md.BaseSpellPower = 0;
+
+		md.BaseHitChance = 700;
+		md.BaseAttackRange = 100;
+		md.BaseAttackSpeed = 200;
+		md.BaseWeaponDamageMultiplier = 1000;
+		md.AttackElement = Element::Physical;
+		md.AttackType = EquipType::Undefined;
+
+		md.BaseLineOfSight = 200;
+		md.BaseMoveCost = 90;
+
+		md.EXPDrop = 2;
+		md.GoldDrop = 0;
+		md.LootDrop = 0;
+
+		md.StatMods = {};
+		md.Abilities = {};
+
+		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
+			std::pair<AbilityID, sf::Vector2i> ai;
+			ai.second = dungeonScene->GetPlayer()->GetLocation();
+			ai.first = AbilityID::Attack;
 
 			return ai;
 		};

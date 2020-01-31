@@ -54,6 +54,9 @@ public:
 	// Initializes the item as a random poition.
 	void InitPotion(int itemLevel);
 
+	// Initializes the item as a random tome.
+	void InitTome(int itemLevel);
+
 	// Initializes the item as a random piece of equipment.
 	void InitEquipment(int itemLevel);
 	
@@ -149,6 +152,7 @@ private:
 	static std::unordered_map<EquipType, std::vector<AffixWeight>> affixWeights;
 
 	static std::vector<ItemWeight> potionWeights;
+	static std::vector<ItemWeight> tomeWeights;
 
 	Ability invokedAbility;
 	ItemID itemID{};

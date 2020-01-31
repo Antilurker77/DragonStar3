@@ -619,9 +619,23 @@ static std::vector<ItemWeight> initPotionWeights() {
 	return list;
 }
 
+static std::vector<ItemWeight> initTomeWeights() {
+	std::vector<ItemWeight> list;
+
+	// MinItemLevel, MaxItemLevel, Weight, ItemID
+	list = {
+		{1, 100, 1000, ItemID::TomeCombatBasics},
+		{1, 100, 1000, ItemID::TomeMagicForBeginners},
+		{1, 100, 750, ItemID::TomeArtOfFlame}
+	};
+
+	return list;
+}
+
 std::vector<std::pair<EquipType, int>> Item::equipTypeWeights = initEquipTypeWeights();
 std::unordered_map<EquipType, std::vector<ItemWeight>> Item::baseTypeWeights = initBaseTypeWeights();
 std::unordered_map<EquipType, std::vector<ItemWeight>> Item::artifactWeights = initArtifactWeights();
 std::unordered_map<EquipType, std::vector<AffixWeight>> Item::affixWeights = initAffixWeights();
 
 std::vector<ItemWeight> Item::potionWeights = initPotionWeights();
+std::vector<ItemWeight> Item::tomeWeights = initTomeWeights();

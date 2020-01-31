@@ -76,19 +76,7 @@ void Item::InitRandomItem(int itemLevel) {
 
 	// Tome
 	else if (random >= 1) {
-		int randTome = Random::RandomInt(1, 2);
-		switch (randTome) {
-		case 1:
-			Initialize(ItemID::TomeCombatBasics);
-			break;
-		case 2:
-			Initialize(ItemID::TomeMagicForBeginners);
-			break;
-		default:
-			Initialize(ItemID::TomeCombatBasics);
-			break;
-		}
-		
+		InitTome(itemLevel);
 	}
 	else {
 
@@ -109,6 +97,22 @@ void Item::InitPotion(int itemLevel) {
 	}
 
 	Initialize(potionToGenerate);
+}
+
+void Item::InitTome(int itemLevel) {
+	bool choosenItem = false;
+	ItemID tomeToGenerate{};
+
+	while (!choosenItem) {
+		size_t size = tomeWeights.size();
+		ItemWeight& itemWeight = tomeWeights[Random::RandomSizeT(0, size - 1)];
+		if (itemLevel >= itemWeight.MinItemLevel && itemLevel <= itemWeight.MaxItemLevel && Random::RandomInt(1, 1000) <= itemWeight.Weight) {
+			choosenItem = true;
+			tomeToGenerate = itemWeight.ItemID;
+		}
+	}
+
+	Initialize(tomeToGenerate);
 }
 
 void Item::InitEquipment(int itemLevel) {

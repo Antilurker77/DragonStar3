@@ -8,6 +8,7 @@
 
 #include "../core/random.hpp"
 #include "id/abilityID.hpp"
+#include "id/auraID.hpp"
 #include "id/element.hpp"
 #include "id/equipType.hpp"
 #include "id/monsterID.hpp"
@@ -555,6 +556,85 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 			std::pair<AbilityID, sf::Vector2i> ai;
 			ai.second = dungeonScene->GetPlayer()->GetLocation();
 			ai.first = AbilityID::Attack;
+
+			return ai;
+		};
+
+		return md;
+	}();
+	list[MonsterID::LesserFlameblade] = [] {
+		MonsterData md;
+
+		md.Name = "Lesser Flameblade";
+		md.Title = "";
+		md.Filename = "lesser_flameblade.png";
+
+		md.IsUnique = false;
+		md.IsBoss = false;
+		md.CanFly = false;
+		md.CanSwim = false;
+		md.CanTunnel = false;
+
+		md.IsStationary = false;
+		md.ChaseTurns = 3;
+
+		md.Level = 2;
+
+		md.BaseHP = 46;
+		md.BaseMP = 8;
+		md.BaseSP = 100;
+
+		md.BaseSTR = 8;
+		md.BaseDEX = 6;
+		md.BaseMAG = 8;
+		md.BaseVIT = 8;
+		md.BaseSPI = 4;
+
+		md.BaseArmor = 0;
+		md.BaseMagicArmor = 0;
+		md.BaseEvasion = 1;
+
+		md.BaseAttackPower = 7;
+		md.BaseSpellPower = 7;
+
+		md.BaseHitChance = 750;
+		md.BaseAttackRange = 150;
+		md.BaseAttackSpeed = 200;
+		md.BaseWeaponDamageMultiplier = 1000;
+		md.AttackElement = Element::Fire;
+		md.AttackType = EquipType::Sword;
+
+		md.BaseLineOfSight = 350;
+		md.BaseMoveCost = 125;
+
+		md.EXPDrop = 20;
+		md.GoldDrop = 9;
+		md.LootDrop = 3000;
+
+		md.StatMods = {
+			StatMod(StatModType::Resistance, 1000, Element::Fire),
+			StatMod(StatModType::Resistance, -300, Element::Water)
+		};
+		md.Abilities = {
+			{AbilityID::FlameStrike, 0},
+			{AbilityID::FieryTouch, 0}
+		};
+
+		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
+			std::pair<AbilityID, sf::Vector2i> ai;
+			ai.second = dungeonScene->GetPlayer()->GetLocation();
+			
+			// Flame Strike as often as possible.
+			if (monster->IsAbilityUsable(AbilityID::FlameStrike)) {
+				ai.first = AbilityID::FlameStrike;
+			}
+			// Fiery Touch if Flame Strike buff is active.
+			else if (monster->IsAbilityUsable(AbilityID::FieryTouch) && monster->HasAura(AuraID::FlameStrike)) {
+				ai.first = AbilityID::FieryTouch;
+			}
+			else {
+				ai.first = AbilityID::Attack;
+			}
 
 			return ai;
 		};

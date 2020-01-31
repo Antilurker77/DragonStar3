@@ -231,6 +231,16 @@ std::vector<Aura>& Actor::GetAuras() {
 	return auras;
 }
 
+bool Actor::HasAura(AuraID id) {
+	for (auto& au : auras) {
+		if (au.GetAuraID() == id) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
 void Actor::AddAura(AuraID auraID, int rank, Actor* source) {
 	size_t sourceIndex = source->GetIndex();
 	for (size_t i = 0; i < auras.size(); i++) {

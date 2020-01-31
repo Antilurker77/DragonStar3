@@ -89,6 +89,9 @@ public:
 	// Returns auras the actor has.
 	std::vector<Aura>& GetAuras();
 
+	// Returns true if the actor has at least one stack or instance of the specified aura.
+	bool HasAura(AuraID id);
+
 	// Adds an aura to this actor. Will increase the stack of an existing aura if possible. Will add to duration if an aura already exists. 
 	// Unique auras will be overwritten if the source is different.
 	void AddAura(AuraID auraID, int rank, Actor* source);

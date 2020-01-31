@@ -153,6 +153,68 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		return md;
 	}();
+	list[MonsterID::CaveBat] = [] {
+		MonsterData md;
+
+		md.Name = "Cave Bat";
+		md.Title = "";
+		md.Filename = "cave_bat.png";
+
+		md.IsUnique = false;
+		md.IsBoss = false;
+		md.CanFly = true;
+		md.CanSwim = false;
+		md.CanTunnel = false;
+
+		md.IsStationary = false;
+		md.ChaseTurns = 3;
+
+		md.Level = 1;
+
+		md.BaseHP = 15;
+		md.BaseMP = 6;
+		md.BaseSP = 100;
+
+		md.BaseSTR = 5;
+		md.BaseDEX = 8;
+		md.BaseMAG = 2;
+		md.BaseVIT = 2;
+		md.BaseSPI = 2;
+
+		md.BaseArmor = 1;
+		md.BaseMagicArmor = 0;
+		md.BaseEvasion = 15;
+
+		md.BaseAttackPower = 6;
+		md.BaseSpellPower = 0;
+
+		md.BaseHitChance = 700;
+		md.BaseAttackRange = 100;
+		md.BaseAttackSpeed = 200;
+		md.BaseWeaponDamageMultiplier = 1000;
+		md.AttackElement = Element::Physical;
+		md.AttackType = EquipType::Undefined;
+
+		md.BaseLineOfSight = 450;
+		md.BaseMoveCost = 70;
+
+		md.EXPDrop = 5;
+		md.GoldDrop = 0;
+		md.LootDrop = 0;
+
+		md.StatMods = {};
+		md.Abilities = {};
+
+		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
+			std::pair<AbilityID, sf::Vector2i> ai;
+			ai.second = dungeonScene->GetPlayer()->GetLocation();
+			ai.first = AbilityID::Attack;
+
+			return ai;
+		};
+
+		return md;
+	}();
 	list[MonsterID::GiantRat] = [] {
 		MonsterData md;
 

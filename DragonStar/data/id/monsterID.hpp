@@ -18,6 +18,7 @@ enum class MonsterID {
 	GiantRat,
 	GreenSlime,
 	Imp,
+	Jackal,
 	KoboldCrossbowman,
 	KoboldGeomancer,
 	KoboldMiner,

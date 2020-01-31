@@ -49,6 +49,12 @@ std::vector<Encounter> DungeonScene::encounterTable = {
 		{MonsterID::GreenSlime, 1000}
 	}},
 
+	{1, 100, 500, {
+		{MonsterID::Jackal, 1000},
+		{MonsterID::Jackal, 1000},
+		{MonsterID::Jackal, 1000}
+	}},
+
 	{1,	100, 1000, {
 		{MonsterID::Worm, 1000},
 		{MonsterID::Worm, 1000},

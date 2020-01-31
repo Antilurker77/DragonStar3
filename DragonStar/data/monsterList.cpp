@@ -424,6 +424,77 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		return md;
 	}();
+	list[MonsterID::Jackal] = [] {
+		MonsterData md;
+
+		md.Name = "Jackal";
+		md.Title = "";
+		md.Filename = "jackal.png";
+
+		md.IsUnique = false;
+		md.IsBoss = false;
+		md.CanFly = false;
+		md.CanSwim = false;
+		md.CanTunnel = false;
+
+		md.IsStationary = false;
+		md.ChaseTurns = 3;
+
+		md.Level = 1;
+
+		md.BaseHP = 18;
+		md.BaseMP = 1;
+		md.BaseSP = 100;
+
+		md.BaseSTR = 5;
+		md.BaseDEX = 6;
+		md.BaseMAG = 1;
+		md.BaseVIT = 3;
+		md.BaseSPI = 1;
+
+		md.BaseArmor = 5;
+		md.BaseMagicArmor = 0;
+		md.BaseEvasion = 12;
+
+		md.BaseAttackPower = 5;
+		md.BaseSpellPower = 0;
+
+		md.BaseHitChance = 600;
+		md.BaseAttackRange = 100;
+		md.BaseAttackSpeed = 180;
+		md.BaseWeaponDamageMultiplier = 1000;
+		md.AttackElement = Element::Physical;
+		md.AttackType = EquipType::Undefined;
+
+		md.BaseLineOfSight = 250;
+		md.BaseMoveCost = 80;
+
+		md.EXPDrop = 4;
+		md.GoldDrop = 0;
+		md.LootDrop = 0;
+
+		md.StatMods = {};
+		md.Abilities = {
+			{AbilityID::Bite, 0}
+		};
+
+		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
+			std::pair<AbilityID, sf::Vector2i> ai;
+			ai.second = dungeonScene->GetPlayer()->GetLocation();
+
+			// Has a 50% chance to use Bite.
+			if (monster->IsAbilityUsable(AbilityID::Bite) && Random::RandomInt(1, 100) <= 50) {
+				ai.first = AbilityID::Bite;
+			}
+			else {
+				ai.first = AbilityID::Attack;
+			}
+
+			return ai;
+		};
+
+		return md;
+	}();
 	list[MonsterID::KoboldCrossbowman] = [] {
 		MonsterData md;
 

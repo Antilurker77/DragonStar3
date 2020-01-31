@@ -1170,6 +1170,9 @@ void DungeonScene::saveGame() {
 		saveFile.Player.Equipment[i].Rarity = static_cast<int>(equipment[i].GetRarity());
 		saveFile.Player.Equipment[i].StackSize = 1;
 		auto statMods = equipment[i].GetRandomStatMods();
+		saveFile.Player.Equipment[i].StatModTypes.clear();
+		saveFile.Player.Equipment[i].StatModValues.clear();
+		saveFile.Player.Equipment[i].StatModElements.clear();
 		for (size_t j = 0; j < statMods.size(); j++) {
 			saveFile.Player.Equipment[i].StatModTypes.push_back(static_cast<int>(statMods[j].statModType));
 			saveFile.Player.Equipment[i].StatModValues.push_back(statMods[j].value);

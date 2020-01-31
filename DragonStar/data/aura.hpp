@@ -44,6 +44,9 @@ public:
 	// Removes a stack of this aura.
 	void RemoveStack();
 
+	// Tells this aura if it was activated or not.
+	void WasUsed(bool used);
+
 	// Returns the index for the owner of this aura.
 	size_t GetSourceIndex();
 
@@ -57,7 +60,7 @@ public:
 	int GetCurrentStackSize();
 
 	// Returns true if the aura's stack count is 0.
-	bool IsExpired();
+	bool IsExpired(Actor* owner);
 
 	// Returns the name of this aura, including it's rank.
 	std::string GetName();
@@ -108,4 +111,5 @@ private:
 	int currentDuration = 0;
 	int nextTick = 0;
 	int currentStacks = 0;
+	bool wasUsed = false;
 };

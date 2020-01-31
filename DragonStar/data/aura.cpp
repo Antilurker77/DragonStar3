@@ -66,6 +66,19 @@ void Aura::Tick(Actor* owner) {
 			}
 		}
 	}
+
+	if (wasUsed && auraData->ConsumeOnUse) {
+		EventOptions eo = getEventOptions();
+		auraData->OnExpiry(source, owner, eo, currentRank);
+		if (auraData->StacksExpireOneByOne) {
+			currentStacks--;
+			currentDuration = auraData->BaseDuration[currentRank];
+		}
+		else {
+			currentStacks = 0;
+		}
+	}
+	wasUsed = false;
 }
 
 void Aura::OnEvent(EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
@@ -95,6 +108,10 @@ void Aura::RemoveStack() {
 	if (currentStacks > 0) {
 		currentStacks--;
 	}
+}
+
+void Aura::WasUsed(bool used) {
+	wasUsed = used;
 }
 
 std::string Aura::GetName() {
@@ -160,7 +177,19 @@ int Aura::GetCurrentStackSize() {
 	return currentStacks;
 }
 
-bool Aura::IsExpired() {
+bool Aura::IsExpired(Actor* owner) {
+	if (wasUsed && auraData->ConsumeOnUse) {
+		EventOptions eo = getEventOptions();
+		auraData->OnExpiry(source, owner, eo, currentRank);
+		if (auraData->StacksExpireOneByOne) {
+			currentStacks--;
+			currentDuration = auraData->BaseDuration[currentRank];
+		}
+		else {
+			currentStacks = 0;
+		}
+	}
+	
 	return currentStacks == 0;
 }
 

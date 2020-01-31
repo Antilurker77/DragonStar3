@@ -100,6 +100,9 @@ Inventory::Inventory() {
 	book.Initialize(static_cast<ItemID>(4));
 	AddItem(book);
 
+	book.Initialize(static_cast<ItemID>(5));
+	AddItem(book);
+
 	ChangeGold(100);
 
 	Initialize();

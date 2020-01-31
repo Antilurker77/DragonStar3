@@ -276,7 +276,7 @@ void Actor::RemoveAuraStack(AuraID id) {
 
 void Actor::RemoveExpiredAuras() {
 	if (!auras.empty()) {
-		auto removed = std::remove_if(auras.begin(), auras.end(), [](Aura& au){ return au.IsExpired(); });
+		auto removed = std::remove_if(auras.begin(), auras.end(), [&](Aura& au){ return au.IsExpired(this); });
 		auras.erase(removed, auras.end());
 	}
 }
@@ -1096,8 +1096,13 @@ int Actor::getStat(int base, StatModType statModType, EventOptions& eventOptions
 
 	// Auras
 	for (auto& aura : auras) {
+		int testValue = result;
 		for (auto& sm : aura.GetStatMods()) {
 			statModCheck(sm);
+		}
+
+		if (consumeBuffs && testValue != result) {
+			aura.WasUsed(consumeBuffs);
 		}
 	}
 

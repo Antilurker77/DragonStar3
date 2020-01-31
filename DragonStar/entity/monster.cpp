@@ -264,7 +264,8 @@ CommandPtr Monster::CalcAI() {
 					}
 
 					// Move if better location was found, wait if otherwise.
-					if (ai.second == location) {
+					// Stationary monsters always wait.
+					if (ai.second == location || monsterData->IsStationary) {
 						result = std::make_unique<WaitCommand>(25);
 					}
 					else {
@@ -309,7 +310,8 @@ CommandPtr Monster::CalcAI() {
 				}
 			}
 			// If the monster fails to find a tile it can move to, don't move.
-			if (destination.x != -1) {
+			// Stationary monsters do not move.
+			if (destination.x != -1 && !monsterData->IsStationary) {
 				result = std::make_unique<MoveCommand>(*dungeonScene, destination);
 			}
 		}
@@ -330,7 +332,7 @@ CommandPtr Monster::CalcAI() {
 				walkable.emplace_back(t);
 			}
 		}
-		if (!walkable.empty()) {
+		if (!walkable.empty() && !monsterData->IsStationary) {
 			sf::Vector2i destination = walkable[Random::RandomSizeT(0, walkable.size() - 1)];
 			result = std::make_unique<MoveCommand>(*dungeonScene, destination);
 		}

@@ -82,6 +82,76 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 	}();
 
 	// Common
+	list[MonsterID::ArcaneSentry] = [] {
+		MonsterData md;
+
+		md.Name = "Arcane Sentry";
+		md.Title = "";
+		md.Filename = "arcane_sentry.png";
+
+		md.IsUnique = false;
+		md.IsBoss = false;
+		md.CanFly = false;
+		md.CanSwim = false;
+		md.CanTunnel = false;
+
+		md.IsStationary = true;
+		md.ChaseTurns = 3;
+
+		md.Level = 1;
+
+		md.BaseHP = 12;
+		md.BaseMP = 20;
+		md.BaseSP = 100;
+
+		md.BaseSTR = 3;
+		md.BaseDEX = 2;
+		md.BaseMAG = 10;
+		md.BaseVIT = 6;
+		md.BaseSPI = 10;
+
+		md.BaseArmor = 10;
+		md.BaseMagicArmor = 15;
+		md.BaseEvasion = 1;
+
+		md.BaseAttackPower = 4;
+		md.BaseSpellPower = 5;
+
+		md.BaseHitChance = 750;
+		md.BaseAttackRange = 350;
+		md.BaseAttackSpeed = 200;
+		md.BaseWeaponDamageMultiplier = 1000;
+		md.AttackElement = Element::Arcane;
+		md.AttackType = EquipType::Wand;
+
+		md.BaseLineOfSight = 350;
+		md.BaseMoveCost = 100;
+
+		md.EXPDrop = 15;
+		md.GoldDrop = 0;
+		md.LootDrop = 1500;
+
+		md.StatMods = {};
+		md.Abilities = {
+			{AbilityID::MagicMissile, 0}
+		};
+
+		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
+			std::pair<AbilityID, sf::Vector2i> ai;
+			ai.second = dungeonScene->GetPlayer()->GetLocation();
+
+			if (monster->IsAbilityUsable(AbilityID::MagicMissile)) {
+				ai.first = AbilityID::MagicMissile;
+			}
+			else {
+				ai.first = AbilityID::Attack;
+			}
+
+			return ai;
+		};
+
+		return md;
+	}();
 	list[MonsterID::GiantRat] = [] {
 		MonsterData md;
 

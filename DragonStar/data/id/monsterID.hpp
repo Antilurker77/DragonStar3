@@ -13,6 +13,7 @@ enum class MonsterID {
 
 	// Common
 	TargetDummy,
+	ArcaneSentry,
 	GiantRat,
 	GreenSlime,
 	KoboldCrossbowman,

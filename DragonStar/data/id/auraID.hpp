@@ -17,6 +17,7 @@ enum class AuraID {
 	ArcanistGloves,
 	Boulder,
 	Chilled,
+	FlameStrike,
 	RendingSlash,
 	ShadowEnergy,
 	ThunderStrike,

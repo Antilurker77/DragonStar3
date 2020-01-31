@@ -898,6 +898,99 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 
 		return ad;
 	}();
+	list[AbilityID::FieryTouch] = [] {
+		AbilityData ad;
+
+		ad.Name = "Fiery Touch";
+		ad.Icon = "placeholder.png";
+		ad.ID = AbilityID::FieryTouch;
+
+		ad.Categories = {
+			Category::SingleTarget,
+			Category::Damaging,
+			Category::Spell,
+			Category::Direct
+		};
+		ad.Elements = { Element::Fire };
+		ad.RequiredWeaponTypes = {};
+
+		ad.IsPassive = false;
+		ad.MaxRank = 4;
+
+		ad.Range = { 150, 150, 150, 150, 150 };
+		ad.UseTime = { 100, 100, 100, 100, 100 };
+		ad.Cooldown = { 0, 0, 0, 0, 0 };
+		ad.MaxCharges = { 1, 1, 1, 1, 1 };
+		ad.HPCost = { 0, 0, 0, 0, 0 };
+		ad.MPCost = { 8, 8, 8, 8, 8 };
+		ad.SPCost = { 0, 0, 0, 0, 0 };
+
+		ad.Values = {
+			{ 1400, 1470, 1540, 1610, 1680 }
+		};
+		ad.PassiveBonuses = {};
+
+		ad.CanDodge = true;
+		ad.CanBlock = true;
+		ad.CanCounter = false;
+		ad.CanCrit = true;
+		ad.CanDoubleStrike = false;
+
+		ad.HitChance = { 800, 800, 800, 800, 800 };
+		ad.BonusArmorPen = { 0, 0, 0, 0, 0 };
+		ad.BonusResistancePen = { 0, 0, 0, 0, 0 };
+		ad.BonusCritChance = { 0, 0, 0, 0, 0 };
+		ad.BonusCritPower = { 0, 0, 0, 0, 0 };
+		ad.BonusDoubleStrikeChance = { 0, 0, 0, 0, 0 };
+		ad.BonusHPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusMPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusSPLeech = { 0, 0, 0, 0, 0 };
+
+		ad.FixedRange = false;
+		ad.HideRange = false;
+
+		ad.IsProjectile = true;
+		ad.IgnoreLineOfSight = false;
+
+		ad.AreaIgnoreLineOfSight = false;
+		ad.AreaIgnoreBodyBlock = false;
+
+		ad.GetTargetArea = [&](Actor* user, DungeonScene* dungeonScene, sf::Vector2i cursorTarget, int rank) {
+			return std::vector<sf::Vector2i>{ cursorTarget };
+		};
+
+		ad.GetExtraArea = [&](Actor* user, DungeonScene* dungeonScene, sf::Vector2i cursorTarget, int rank) {
+			return std::vector<sf::Vector2i>{};
+		};
+
+		ad.CustomUseCondition = []() {
+			return true;
+		};
+		ad.GetDescription = [Values = ad.Values](Actor* user, EventOptions& eventOptions, int rank) {
+			std::string desc;
+			std::string value;
+
+			if (user == nullptr) {
+				value = "#damage " + std::to_string(Values[0][rank] / 10) + "% Spell Power #default ";
+			}
+			else {
+				value = "#damage " + std::to_string(Combat::SpellDamageEstimate(user, eventOptions, Values[0][rank])) + " #default ";
+			}
+
+			desc = "Burn the target with your hands, dealing " + value + "fire damage.";
+			return desc;
+		};
+		ad.Execute = [Values = ad.Values](Actor* user, std::vector<Actor*>& targets, sf::Vector2i cursor, std::vector<sf::Vector2i>& targetArea, EventOptions& eventOptions, int rank) {
+			if (!targets.empty()) {
+				Combat::SpellDamage(user, targets[0], eventOptions, Values[0][rank]);
+			}
+		};
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return ad;
+	}();
 	list[AbilityID::FlameBolt] = [] {
 		AbilityData ad;
 
@@ -983,6 +1076,108 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		ad.Execute = [Values = ad.Values](Actor* user, std::vector<Actor*>& targets, sf::Vector2i cursor, std::vector<sf::Vector2i>& targetArea, EventOptions& eventOptions, int rank) {
 			if (!targets.empty()) {
 				Combat::SpellDamage(user, targets[0], eventOptions, Values[0][rank]);
+			}
+		};
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return ad;
+	}();
+	list[AbilityID::FlameStrike] = [] {
+		AbilityData ad;
+
+		ad.Name = "Flame Strike";
+		ad.Icon = "placeholder.png";
+		ad.ID = AbilityID::FlameStrike;
+
+		ad.Categories = {
+			Category::SingleTarget,
+			Category::Damaging,
+			Category::Attack,
+			Category::Skill,
+			Category::Direct
+		};
+		ad.Elements = { Element::Fire };
+		ad.RequiredWeaponTypes = {
+			EquipType::Sword,
+			EquipType::Axe,
+			EquipType::Mace,
+			EquipType::Dagger,
+			EquipType::Spear,
+			EquipType::Staff
+		};
+
+		ad.IsPassive = false;
+		ad.MaxRank = 4;
+
+		ad.Range = { -1, -1, -1, -1, -1 };
+		ad.UseTime = { -1000, -1000, -1000, -1000, -1000 };
+		ad.Cooldown = { 1500, 1500, 1500, 1500, 1500 };
+		ad.MaxCharges = { 1, 1, 1, 1, 1 };
+		ad.HPCost = { 0, 0, 0, 0, 0 };
+		ad.MPCost = { 0, 0, 0, 0, 0 };
+		ad.SPCost = { 30, 30, 30, 30, 30 };
+
+		ad.Values = {
+			{ 1500, 1575, 1650, 1725, 1800 }
+		};
+		ad.PassiveBonuses = {};
+
+		ad.CanDodge = true;
+		ad.CanBlock = true;
+		ad.CanCounter = true;
+		ad.CanCrit = true;
+		ad.CanDoubleStrike = true;
+
+		ad.HitChance = { -1, -1, -1, -1, -1 };
+		ad.BonusArmorPen = { 0, 0, 0, 0, 0 };
+		ad.BonusResistancePen = { 0, 0, 0, 0, 0 };
+		ad.BonusCritChance = { 0, 0, 0, 0, 0 };
+		ad.BonusCritPower = { 0, 0, 0, 0, 0 };
+		ad.BonusDoubleStrikeChance = { 0, 0, 0, 0, 0 };
+		ad.BonusHPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusMPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusSPLeech = { 0, 0, 0, 0, 0 };
+
+		ad.FixedRange = false;
+		ad.HideRange = false;
+
+		ad.IsProjectile = true;
+		ad.IgnoreLineOfSight = false;
+
+		ad.AreaIgnoreLineOfSight = false;
+		ad.AreaIgnoreBodyBlock = false;
+
+		ad.GetTargetArea = [&](Actor* user, DungeonScene* dungeonScene, sf::Vector2i cursorTarget, int rank) {
+			return std::vector<sf::Vector2i>{ cursorTarget };
+		};
+
+		ad.GetExtraArea = [&](Actor* user, DungeonScene* dungeonScene, sf::Vector2i cursorTarget, int rank) {
+			return std::vector<sf::Vector2i>{};
+		};
+
+		ad.CustomUseCondition = []() {
+			return true;
+		};
+		ad.GetDescription = [Values = ad.Values](Actor* user, EventOptions& eventOptions, int rank) {
+			std::string desc;
+			std::string dmg;
+
+			if (user == nullptr) {
+				dmg = "#damage " + std::to_string(Values[0][rank] / 10) + "% Attack Power #default ";
+			}
+			else {
+				dmg = "#damage " + std::to_string(Combat::SkillDamageEstimate(user, eventOptions, Values[0][rank])) + " #default ";
+			}
+
+			desc = "Coat your weapon in flames and strike the target, dealing " + dmg + "fire damage. Increases the damage of your next fire ability by 10%. Lasts 5s.";
+			return desc;
+		};
+		ad.Execute = [Values = ad.Values](Actor* user, std::vector<Actor*>& targets, sf::Vector2i cursor, std::vector<sf::Vector2i>& targetArea, EventOptions& eventOptions, int rank) {
+			if (!targets.empty()) {
+				Combat::SkillDamage(user, targets[0], eventOptions, Values[0][rank]);
+				Combat::AddAuraStack(user, user, AuraID::FlameStrike, rank);
 			}
 		};
 		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {

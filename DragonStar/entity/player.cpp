@@ -429,10 +429,10 @@ int Player::getBaseStat(StatModType statModType) {
 
 	switch (statModType) {
 		case StatModType::HP:
-			result = raceList[raceID].BaseHP;
+			result = raceList[raceID].BaseHP + (level - 1) * raceList[raceID].BaseHP / 10;
 			break;
 		case StatModType::MP:
-			result = raceList[raceID].BaseMP;
+			result = raceList[raceID].BaseMP + (level - 1) * raceList[raceID].BaseMP / 10;
 			break;
 		case StatModType::SP:
 			result = raceList[raceID].BaseSP;

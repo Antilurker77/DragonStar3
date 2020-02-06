@@ -19,8 +19,8 @@ static std::unordered_map<RaceID, RaceData> initList() {
 		rd.Name = "Human";
 		rd.Filename = "human";
 
-		rd.BaseHP = 45;
-		rd.BaseMP = 18;
+		rd.BaseHP = 50;
+		rd.BaseMP = 20;
 		rd.BaseSP = 100;
 
 		rd.BaseSTR = 10;
@@ -32,10 +32,7 @@ static std::unordered_map<RaceID, RaceData> initList() {
 		rd.BaseLineOfSight = 350;
 		rd.BaseMoveCost = 100;
 
-		rd.StatMods = {
-			StatMod(StatModType::HPPerLevel, 5),
-			StatMod(StatModType::MPPerLevel, 2)
-		};
+		rd.StatMods = {};
 		rd.Abilities = {};
 
 		return rd;

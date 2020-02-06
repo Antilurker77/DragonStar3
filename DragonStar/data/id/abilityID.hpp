@@ -52,5 +52,10 @@ enum class AbilityID {
 	// Passive
 	Constitution,
 	Focus,
+	ImprovedDexterity,
+	ImprovedMagic,
+	ImprovedSpirit,
+	ImprovedStrength,
+	ImprovedVitality,
 	ManaSpring,
 };

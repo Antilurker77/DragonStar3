@@ -3228,6 +3228,456 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 
 		return ad;
 	}();
+	list[AbilityID::ImprovedDexterity] = [] {
+		AbilityData ad;
+
+		ad.Name = "Improved Dexterity";
+		ad.Icon = "placeholder.png";
+		ad.ID = AbilityID::ImprovedDexterity;
+
+		ad.Categories = {
+			Category::Passive
+		};
+		ad.Elements = {};
+		ad.RequiredWeaponTypes = {};
+
+		ad.IsPassive = true;
+		ad.MaxRank = 4;
+
+		ad.Range = { 0, 0, 0, 0, 0 };
+		ad.UseTime = { 0, 0, 0, 0, 0 };
+		ad.Cooldown = { 0, 0, 0, 0, 0 };
+		ad.MaxCharges = { 0, 0, 0, 0, 0 };
+		ad.HPCost = { 0, 0, 0, 0, 0 };
+		ad.MPCost = { 0, 0, 0, 0, 0 };
+		ad.SPCost = { 0, 0, 0, 0, 0 };
+
+		ad.Values = {
+			{ 20, 40, 60, 80, 100 }
+		};
+		ad.PassiveBonuses = {
+			{ { StatMod(StatModType::DEXMulti, ad.Values[0][0]) } },
+			{ { StatMod(StatModType::DEXMulti, ad.Values[0][1]) } },
+			{ { StatMod(StatModType::DEXMulti, ad.Values[0][2]) } },
+			{ { StatMod(StatModType::DEXMulti, ad.Values[0][3]) } },
+			{ { StatMod(StatModType::DEXMulti, ad.Values[0][4]) } }
+
+		};
+
+		ad.CanDodge = false;
+		ad.CanBlock = false;
+		ad.CanCounter = false;
+		ad.CanCrit = false;
+		ad.CanDoubleStrike = false;
+
+		ad.HitChance = { 0, 0, 0, 0, 0 };
+		ad.BonusArmorPen = { 0, 0, 0, 0, 0 };
+		ad.BonusResistancePen = { 0, 0, 0, 0, 0 };
+		ad.BonusCritChance = { 0, 0, 0, 0, 0 };
+		ad.BonusCritPower = { 0, 0, 0, 0, 0 };
+		ad.BonusDoubleStrikeChance = { 0, 0, 0, 0, 0 };
+		ad.BonusHPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusMPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusSPLeech = { 0, 0, 0, 0, 0 };
+
+		ad.FixedRange = false;
+		ad.HideRange = false;
+
+		ad.IsProjectile = false;
+		ad.IgnoreLineOfSight = false;
+
+		ad.AreaIgnoreLineOfSight = false;
+		ad.AreaIgnoreBodyBlock = false;
+
+		ad.GetTargetArea = [&](Actor* user, DungeonScene* dungeonScene, sf::Vector2i cursorTarget, int rank) {
+			return std::vector<sf::Vector2i>{ cursorTarget };
+		};
+
+		ad.GetExtraArea = [&](Actor* user, DungeonScene* dungeonScene, sf::Vector2i cursorTarget, int rank) {
+			return std::vector<sf::Vector2i>{};
+		};
+
+		ad.CustomUseCondition = []() {
+			return true;
+		};
+		ad.GetDescription = [Values = ad.Values](Actor* user, EventOptions& eventOptions, int rank) {
+			std::string desc;
+			std::string value = std::to_string(Values[0][rank] / 10);
+
+			desc = "Increases your dexterity by " + value + "%.";
+			return desc;
+		};
+		ad.Execute = [Values = ad.Values](Actor* user, std::vector<Actor*>& targets, sf::Vector2i cursor, std::vector<sf::Vector2i>& targetArea, EventOptions& eventOptions, int rank) {
+			if (!targets.empty()) {
+				Combat::SpellDamage(user, targets[0], eventOptions, Values[0][rank]);
+			}
+		};
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return ad;
+	}();
+	list[AbilityID::ImprovedMagic] = [] {
+		AbilityData ad;
+
+		ad.Name = "Improved Magic";
+		ad.Icon = "placeholder.png";
+		ad.ID = AbilityID::ImprovedMagic;
+
+		ad.Categories = {
+			Category::Passive
+		};
+		ad.Elements = {};
+		ad.RequiredWeaponTypes = {};
+
+		ad.IsPassive = true;
+		ad.MaxRank = 4;
+
+		ad.Range = { 0, 0, 0, 0, 0 };
+		ad.UseTime = { 0, 0, 0, 0, 0 };
+		ad.Cooldown = { 0, 0, 0, 0, 0 };
+		ad.MaxCharges = { 0, 0, 0, 0, 0 };
+		ad.HPCost = { 0, 0, 0, 0, 0 };
+		ad.MPCost = { 0, 0, 0, 0, 0 };
+		ad.SPCost = { 0, 0, 0, 0, 0 };
+
+		ad.Values = {
+			{ 20, 40, 60, 80, 100 }
+		};
+		ad.PassiveBonuses = {
+			{ { StatMod(StatModType::MAGMulti, ad.Values[0][0]) } },
+			{ { StatMod(StatModType::MAGMulti, ad.Values[0][1]) } },
+			{ { StatMod(StatModType::MAGMulti, ad.Values[0][2]) } },
+			{ { StatMod(StatModType::MAGMulti, ad.Values[0][3]) } },
+			{ { StatMod(StatModType::MAGMulti, ad.Values[0][4]) } }
+
+		};
+
+		ad.CanDodge = false;
+		ad.CanBlock = false;
+		ad.CanCounter = false;
+		ad.CanCrit = false;
+		ad.CanDoubleStrike = false;
+
+		ad.HitChance = { 0, 0, 0, 0, 0 };
+		ad.BonusArmorPen = { 0, 0, 0, 0, 0 };
+		ad.BonusResistancePen = { 0, 0, 0, 0, 0 };
+		ad.BonusCritChance = { 0, 0, 0, 0, 0 };
+		ad.BonusCritPower = { 0, 0, 0, 0, 0 };
+		ad.BonusDoubleStrikeChance = { 0, 0, 0, 0, 0 };
+		ad.BonusHPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusMPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusSPLeech = { 0, 0, 0, 0, 0 };
+
+		ad.FixedRange = false;
+		ad.HideRange = false;
+
+		ad.IsProjectile = false;
+		ad.IgnoreLineOfSight = false;
+
+		ad.AreaIgnoreLineOfSight = false;
+		ad.AreaIgnoreBodyBlock = false;
+
+		ad.GetTargetArea = [&](Actor* user, DungeonScene* dungeonScene, sf::Vector2i cursorTarget, int rank) {
+			return std::vector<sf::Vector2i>{ cursorTarget };
+		};
+
+		ad.GetExtraArea = [&](Actor* user, DungeonScene* dungeonScene, sf::Vector2i cursorTarget, int rank) {
+			return std::vector<sf::Vector2i>{};
+		};
+
+		ad.CustomUseCondition = []() {
+			return true;
+		};
+		ad.GetDescription = [Values = ad.Values](Actor* user, EventOptions& eventOptions, int rank) {
+			std::string desc;
+			std::string value = std::to_string(Values[0][rank] / 10);
+
+			desc = "Increases your magic by " + value + "%.";
+			return desc;
+		};
+		ad.Execute = [Values = ad.Values](Actor* user, std::vector<Actor*>& targets, sf::Vector2i cursor, std::vector<sf::Vector2i>& targetArea, EventOptions& eventOptions, int rank) {
+			if (!targets.empty()) {
+				Combat::SpellDamage(user, targets[0], eventOptions, Values[0][rank]);
+			}
+		};
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return ad;
+	}();
+	list[AbilityID::ImprovedSpirit] = [] {
+		AbilityData ad;
+
+		ad.Name = "Improved Spirit";
+		ad.Icon = "placeholder.png";
+		ad.ID = AbilityID::ImprovedSpirit;
+
+		ad.Categories = {
+			Category::Passive
+		};
+		ad.Elements = {};
+		ad.RequiredWeaponTypes = {};
+
+		ad.IsPassive = true;
+		ad.MaxRank = 4;
+
+		ad.Range = { 0, 0, 0, 0, 0 };
+		ad.UseTime = { 0, 0, 0, 0, 0 };
+		ad.Cooldown = { 0, 0, 0, 0, 0 };
+		ad.MaxCharges = { 0, 0, 0, 0, 0 };
+		ad.HPCost = { 0, 0, 0, 0, 0 };
+		ad.MPCost = { 0, 0, 0, 0, 0 };
+		ad.SPCost = { 0, 0, 0, 0, 0 };
+
+		ad.Values = {
+			{ 20, 40, 60, 80, 100 }
+		};
+		ad.PassiveBonuses = {
+			{ { StatMod(StatModType::SPIMulti, ad.Values[0][0]) } },
+			{ { StatMod(StatModType::SPIMulti, ad.Values[0][1]) } },
+			{ { StatMod(StatModType::SPIMulti, ad.Values[0][2]) } },
+			{ { StatMod(StatModType::SPIMulti, ad.Values[0][3]) } },
+			{ { StatMod(StatModType::SPIMulti, ad.Values[0][4]) } }
+
+		};
+
+		ad.CanDodge = false;
+		ad.CanBlock = false;
+		ad.CanCounter = false;
+		ad.CanCrit = false;
+		ad.CanDoubleStrike = false;
+
+		ad.HitChance = { 0, 0, 0, 0, 0 };
+		ad.BonusArmorPen = { 0, 0, 0, 0, 0 };
+		ad.BonusResistancePen = { 0, 0, 0, 0, 0 };
+		ad.BonusCritChance = { 0, 0, 0, 0, 0 };
+		ad.BonusCritPower = { 0, 0, 0, 0, 0 };
+		ad.BonusDoubleStrikeChance = { 0, 0, 0, 0, 0 };
+		ad.BonusHPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusMPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusSPLeech = { 0, 0, 0, 0, 0 };
+
+		ad.FixedRange = false;
+		ad.HideRange = false;
+
+		ad.IsProjectile = false;
+		ad.IgnoreLineOfSight = false;
+
+		ad.AreaIgnoreLineOfSight = false;
+		ad.AreaIgnoreBodyBlock = false;
+
+		ad.GetTargetArea = [&](Actor* user, DungeonScene* dungeonScene, sf::Vector2i cursorTarget, int rank) {
+			return std::vector<sf::Vector2i>{ cursorTarget };
+		};
+
+		ad.GetExtraArea = [&](Actor* user, DungeonScene* dungeonScene, sf::Vector2i cursorTarget, int rank) {
+			return std::vector<sf::Vector2i>{};
+		};
+
+		ad.CustomUseCondition = []() {
+			return true;
+		};
+		ad.GetDescription = [Values = ad.Values](Actor* user, EventOptions& eventOptions, int rank) {
+			std::string desc;
+			std::string value = std::to_string(Values[0][rank] / 10);
+
+			desc = "Increases your spirit by " + value + "%.";
+			return desc;
+		};
+		ad.Execute = [Values = ad.Values](Actor* user, std::vector<Actor*>& targets, sf::Vector2i cursor, std::vector<sf::Vector2i>& targetArea, EventOptions& eventOptions, int rank) {
+			if (!targets.empty()) {
+				Combat::SpellDamage(user, targets[0], eventOptions, Values[0][rank]);
+			}
+		};
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return ad;
+	}();
+	list[AbilityID::ImprovedStrength] = [] {
+		AbilityData ad;
+
+		ad.Name = "Improved Strength";
+		ad.Icon = "placeholder.png";
+		ad.ID = AbilityID::ImprovedStrength;
+
+		ad.Categories = {
+			Category::Passive
+		};
+		ad.Elements = {};
+		ad.RequiredWeaponTypes = {};
+
+		ad.IsPassive = true;
+		ad.MaxRank = 4;
+
+		ad.Range = { 0, 0, 0, 0, 0 };
+		ad.UseTime = { 0, 0, 0, 0, 0 };
+		ad.Cooldown = { 0, 0, 0, 0, 0 };
+		ad.MaxCharges = { 0, 0, 0, 0, 0 };
+		ad.HPCost = { 0, 0, 0, 0, 0 };
+		ad.MPCost = { 0, 0, 0, 0, 0 };
+		ad.SPCost = { 0, 0, 0, 0, 0 };
+
+		ad.Values = {
+			{ 20, 40, 60, 80, 100 }
+		};
+		ad.PassiveBonuses = {
+			{ { StatMod(StatModType::STRMulti, ad.Values[0][0]) } },
+			{ { StatMod(StatModType::STRMulti, ad.Values[0][1]) } },
+			{ { StatMod(StatModType::STRMulti, ad.Values[0][2]) } },
+			{ { StatMod(StatModType::STRMulti, ad.Values[0][3]) } },
+			{ { StatMod(StatModType::STRMulti, ad.Values[0][4]) } }
+
+		};
+
+		ad.CanDodge = false;
+		ad.CanBlock = false;
+		ad.CanCounter = false;
+		ad.CanCrit = false;
+		ad.CanDoubleStrike = false;
+
+		ad.HitChance = { 0, 0, 0, 0, 0 };
+		ad.BonusArmorPen = { 0, 0, 0, 0, 0 };
+		ad.BonusResistancePen = { 0, 0, 0, 0, 0 };
+		ad.BonusCritChance = { 0, 0, 0, 0, 0 };
+		ad.BonusCritPower = { 0, 0, 0, 0, 0 };
+		ad.BonusDoubleStrikeChance = { 0, 0, 0, 0, 0 };
+		ad.BonusHPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusMPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusSPLeech = { 0, 0, 0, 0, 0 };
+
+		ad.FixedRange = false;
+		ad.HideRange = false;
+
+		ad.IsProjectile = false;
+		ad.IgnoreLineOfSight = false;
+
+		ad.AreaIgnoreLineOfSight = false;
+		ad.AreaIgnoreBodyBlock = false;
+
+		ad.GetTargetArea = [&](Actor* user, DungeonScene* dungeonScene, sf::Vector2i cursorTarget, int rank) {
+			return std::vector<sf::Vector2i>{ cursorTarget };
+		};
+
+		ad.GetExtraArea = [&](Actor* user, DungeonScene* dungeonScene, sf::Vector2i cursorTarget, int rank) {
+			return std::vector<sf::Vector2i>{};
+		};
+
+		ad.CustomUseCondition = []() {
+			return true;
+		};
+		ad.GetDescription = [Values = ad.Values](Actor* user, EventOptions& eventOptions, int rank) {
+			std::string desc;
+			std::string value = std::to_string(Values[0][rank] / 10);
+
+			desc = "Increases your strength by " + value + "%.";
+			return desc;
+		};
+		ad.Execute = [Values = ad.Values](Actor* user, std::vector<Actor*>& targets, sf::Vector2i cursor, std::vector<sf::Vector2i>& targetArea, EventOptions& eventOptions, int rank) {
+			if (!targets.empty()) {
+				Combat::SpellDamage(user, targets[0], eventOptions, Values[0][rank]);
+			}
+		};
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return ad;
+	}();
+	list[AbilityID::ImprovedVitality] = [] {
+		AbilityData ad;
+
+		ad.Name = "Improved Vitality";
+		ad.Icon = "placeholder.png";
+		ad.ID = AbilityID::ImprovedVitality;
+
+		ad.Categories = {
+			Category::Passive
+		};
+		ad.Elements = {};
+		ad.RequiredWeaponTypes = {};
+
+		ad.IsPassive = true;
+		ad.MaxRank = 4;
+
+		ad.Range = { 0, 0, 0, 0, 0 };
+		ad.UseTime = { 0, 0, 0, 0, 0 };
+		ad.Cooldown = { 0, 0, 0, 0, 0 };
+		ad.MaxCharges = { 0, 0, 0, 0, 0 };
+		ad.HPCost = { 0, 0, 0, 0, 0 };
+		ad.MPCost = { 0, 0, 0, 0, 0 };
+		ad.SPCost = { 0, 0, 0, 0, 0 };
+
+		ad.Values = {
+			{ 20, 40, 60, 80, 100 }
+		};
+		ad.PassiveBonuses = {
+			{ { StatMod(StatModType::VITMulti, ad.Values[0][0]) } },
+			{ { StatMod(StatModType::VITMulti, ad.Values[0][1]) } },
+			{ { StatMod(StatModType::VITMulti, ad.Values[0][2]) } },
+			{ { StatMod(StatModType::VITMulti, ad.Values[0][3]) } },
+			{ { StatMod(StatModType::VITMulti, ad.Values[0][4]) } }
+
+		};
+
+		ad.CanDodge = false;
+		ad.CanBlock = false;
+		ad.CanCounter = false;
+		ad.CanCrit = false;
+		ad.CanDoubleStrike = false;
+
+		ad.HitChance = { 0, 0, 0, 0, 0 };
+		ad.BonusArmorPen = { 0, 0, 0, 0, 0 };
+		ad.BonusResistancePen = { 0, 0, 0, 0, 0 };
+		ad.BonusCritChance = { 0, 0, 0, 0, 0 };
+		ad.BonusCritPower = { 0, 0, 0, 0, 0 };
+		ad.BonusDoubleStrikeChance = { 0, 0, 0, 0, 0 };
+		ad.BonusHPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusMPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusSPLeech = { 0, 0, 0, 0, 0 };
+
+		ad.FixedRange = false;
+		ad.HideRange = false;
+
+		ad.IsProjectile = false;
+		ad.IgnoreLineOfSight = false;
+
+		ad.AreaIgnoreLineOfSight = false;
+		ad.AreaIgnoreBodyBlock = false;
+
+		ad.GetTargetArea = [&](Actor* user, DungeonScene* dungeonScene, sf::Vector2i cursorTarget, int rank) {
+			return std::vector<sf::Vector2i>{ cursorTarget };
+		};
+
+		ad.GetExtraArea = [&](Actor* user, DungeonScene* dungeonScene, sf::Vector2i cursorTarget, int rank) {
+			return std::vector<sf::Vector2i>{};
+		};
+
+		ad.CustomUseCondition = []() {
+			return true;
+		};
+		ad.GetDescription = [Values = ad.Values](Actor* user, EventOptions& eventOptions, int rank) {
+			std::string desc;
+			std::string value = std::to_string(Values[0][rank] / 10);
+
+			desc = "Increases your vitality by " + value + "%.";
+			return desc;
+		};
+		ad.Execute = [Values = ad.Values](Actor* user, std::vector<Actor*>& targets, sf::Vector2i cursor, std::vector<sf::Vector2i>& targetArea, EventOptions& eventOptions, int rank) {
+			if (!targets.empty()) {
+				Combat::SpellDamage(user, targets[0], eventOptions, Values[0][rank]);
+			}
+		};
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return ad;
+	}();
 	list[AbilityID::ManaSpring] = [] {
 		AbilityData ad;
 

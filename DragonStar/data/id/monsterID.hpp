@@ -28,5 +28,6 @@ enum class MonsterID {
 	Worm,
 
 	// Unique
-	Fenrok
+	Fenrok,
+	Incindia,
 };

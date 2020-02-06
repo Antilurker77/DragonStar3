@@ -83,7 +83,13 @@ std::vector<Encounter> DungeonScene::encounterTable = {
 
 std::vector<Encounter> DungeonScene::uniqueEncounterTable = {
 	// MinDepth, MaxDepth, Weight, Monsters{ID, Chance}
-	{1, 100, 1000, {
+	{2, 100, 1000, {
 		{MonsterID::Fenrok, 1000}
+	}},
+
+	{5, 100, 1000, {
+		{MonsterID::Incindia, 1000},
+		{MonsterID::LesserFlameblade, 1000},
+		{MonsterID::LesserFlameblade, 1000}
 	}}
 };

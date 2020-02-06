@@ -1052,6 +1052,84 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		return md;
 	}();
+	list[MonsterID::Incindia] = [] {
+		MonsterData md;
+
+		md.Name = "Incindia";
+		md.Title = "The Flame Sorceress";
+		md.Filename = "incindia.png";
+
+		md.IsUnique = true;
+		md.IsBoss = false;
+		md.CanFly = false;
+		md.CanSwim = false;
+		md.CanTunnel = false;
+
+		md.IsStationary = false;
+		md.ChaseTurns = 5;
+
+		md.Level = 3;
+
+		md.BaseHP = 300;
+		md.BaseMP = 80;
+		md.BaseSP = 100;
+
+		md.BaseSTR = 8;
+		md.BaseDEX = 12;
+		md.BaseMAG = 15;
+		md.BaseVIT = 10;
+		md.BaseSPI = 15;
+
+		md.BaseArmor = 10;
+		md.BaseMagicArmor = 5;
+		md.BaseEvasion = 10;
+
+		md.BaseAttackPower = 6;
+		md.BaseSpellPower = 14;
+
+		md.BaseHitChance = 750;
+		md.BaseAttackRange = 150;
+		md.BaseAttackSpeed = 250;
+		md.BaseWeaponDamageMultiplier = 1000;
+		md.AttackElement = Element::Physical;
+		md.AttackType = EquipType::Staff;
+
+		md.BaseLineOfSight = 350;
+		md.BaseMoveCost = 80;
+
+		md.EXPDrop = 50;
+		md.GoldDrop = 40;
+		md.LootDrop = 5000;
+
+		md.StatMods = {
+			StatMod(StatModType::Resistance, 300, Element::Fire)
+		};
+		md.Abilities = {
+			{ AbilityID::FlameBolt, 1 },
+			{ AbilityID::DragonfireBolt, 0}
+		};
+
+		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
+			std::pair<AbilityID, sf::Vector2i> ai;
+			ai.second = dungeonScene->GetPlayer()->GetLocation();
+
+			// Dragonfire Bolt: Use on cooldown.
+			if (monster->IsAbilityUsable(AbilityID::DragonfireBolt)) {
+				ai.first = AbilityID::DragonfireBolt;
+			}
+			// Flame Bolt: Use as filler.
+			else if (monster->IsAbilityUsable(AbilityID::FlameBolt)) {
+				ai.first = AbilityID::FlameBolt;
+			}
+			else {
+				ai.first = AbilityID::Attack;
+			}
+
+			return ai;
+		};
+
+		return md;
+	}();
 
 	return list;
 }

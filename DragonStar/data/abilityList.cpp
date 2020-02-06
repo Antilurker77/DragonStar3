@@ -898,6 +898,103 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 
 		return ad;
 	}();
+	list[AbilityID::ElementalEnergy] = [] {
+		AbilityData ad;
+
+		ad.Name = "Elemental Energy";
+		ad.Icon = "placeholder.png";
+		ad.ID = AbilityID::ElementalEnergy;
+
+		ad.Categories = {
+			Category::SingleTarget,
+			Category::Spell,
+			Category::Direct
+		};
+		ad.Elements = { 
+			Element::Arcane,
+			Element::Fire,
+			Element::Water,
+			Element::Lightning,
+			Element::Ice,
+			Element::Poison,
+			Element::Light,
+			Element::Dark
+		};
+		ad.RequiredWeaponTypes = {};
+
+		ad.IsPassive = false;
+		ad.MaxRank = 4;
+
+		ad.Range = { 0, 0, 0, 0, 0 };
+		ad.UseTime = { 0, 0, 0, 0, 0 };
+		ad.Cooldown = { 6000, 6000, 6000, 6000, 6000 };
+		ad.MaxCharges = { 1, 1, 1, 1, 1 };
+		ad.HPCost = { 0, 0, 0, 0, 0 };
+		ad.MPCost = { 10, 10, 10, 10, 10 };
+		ad.SPCost = { 0, 0, 0, 0, 0 };
+
+		ad.Values = {
+			{ 200, 210, 220, 230, 240 }, // Elemental Damage Increase
+			{ 1500, 1500, 1500, 1500, 1500 } // Duration
+		};
+		ad.PassiveBonuses = {};
+
+		ad.CanDodge = false;
+		ad.CanBlock = false;
+		ad.CanCounter = false;
+		ad.CanCrit = false;
+		ad.CanDoubleStrike = false;
+
+		ad.HitChance = { 1000, 1000, 1000, 1000, 1000 };
+		ad.BonusArmorPen = { 0, 0, 0, 0, 0 };
+		ad.BonusResistancePen = { 0, 0, 0, 0, 0 };
+		ad.BonusCritChance = { 0, 0, 0, 0, 0 };
+		ad.BonusCritPower = { 0, 0, 0, 0, 0 };
+		ad.BonusDoubleStrikeChance = { 0, 0, 0, 0, 0 };
+		ad.BonusHPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusMPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusSPLeech = { 0, 0, 0, 0, 0 };
+
+		ad.FixedRange = true;
+		ad.HideRange = false;
+
+		ad.IsProjectile = false;
+		ad.IgnoreLineOfSight = false;
+
+		ad.AreaIgnoreLineOfSight = false;
+		ad.AreaIgnoreBodyBlock = false;
+
+		ad.GetTargetArea = [&](Actor* user, DungeonScene* dungeonScene, sf::Vector2i cursorTarget, int rank) {
+			return std::vector<sf::Vector2i>{ cursorTarget };
+		};
+
+		ad.GetExtraArea = [&](Actor* user, DungeonScene* dungeonScene, sf::Vector2i cursorTarget, int rank) {
+			return std::vector<sf::Vector2i>{};
+		};
+
+		ad.CustomUseCondition = []() {
+			return true;
+		};
+		ad.GetDescription = [Values = ad.Values](Actor* user, EventOptions& eventOptions, int rank) {
+			std::string desc;
+			std::string value;
+			std::string duration;
+
+			value = std::to_string(Values[0][rank] / 10);
+			duration = std::to_string(Values[1][rank] / 100);
+
+			desc = "Channel raw elemental energy, increasing elemental damage dealt by " + value + "% for " + duration + "s.";
+			return desc;
+		};
+		ad.Execute = [Values = ad.Values](Actor* user, std::vector<Actor*>& targets, sf::Vector2i cursor, std::vector<sf::Vector2i>& targetArea, EventOptions& eventOptions, int rank) {
+			Combat::AddAuraStack(user, user, AuraID::ElementalEnergy, rank);
+		};
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return ad;
+	}();
 	list[AbilityID::FieryTouch] = [] {
 		AbilityData ad;
 

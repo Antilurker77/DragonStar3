@@ -339,6 +339,93 @@ static std::unordered_map<AuraID, AuraData> initList() {
 
 		return ad;
 	}();
+	list[AuraID::ElementalEnergy] = [] {
+		AuraData ad;
+
+		ad.Name = "Elemental Energy";
+		ad.Icon = "placeholder.png";
+		ad.AuraID = AuraID::ElementalEnergy;
+
+		ad.Categories = { Category::Spell };
+		ad.Elements = {
+			Element::Arcane,
+			Element::Fire,
+			Element::Water,
+			Element::Ice,
+			Element::Lightning,
+			Element::Poison,
+			Element::Light,
+			Element::Dark
+		};
+
+		ad.MaxRank = 4;
+
+		ad.BaseDuration = { 1500, 1500, 1500, 1500, 1500 };
+		ad.MaxDuration = { 1500, 1500, 1500, 1500, 1500 };
+		ad.MaxStacks = { 1 };
+
+		ad.Values = {
+			{ 200, 210, 220, 230, 240 } // Elemental Damage
+		};
+		ad.StatMods = {
+			{ StatMod(StatModType::Damage, ad.Values[0][0], ad.Elements) },
+			{ StatMod(StatModType::Damage, ad.Values[0][1], ad.Elements) },
+			{ StatMod(StatModType::Damage, ad.Values[0][2], ad.Elements) },
+			{ StatMod(StatModType::Damage, ad.Values[0][3], ad.Elements) },
+			{ StatMod(StatModType::Damage, ad.Values[0][4], ad.Elements) }
+		};
+
+		ad.IsBuff = true;
+		ad.Unique = true;
+		ad.UniqueByActor = true;
+		ad.ConsumeOnUse = false;
+		ad.StacksExpireOneByOne = false;
+		ad.MultiplyStatModsByStacks = false;
+
+		ad.IsRest = false;
+		ad.IsStun = false;
+		ad.IsDisarm = false;
+		ad.IsSilence = false;
+		ad.IsSnare = false;
+
+		ad.CanCrit = false;
+		ad.BonusArmorPen = { 0, 0, 0, 0, 0 };
+		ad.BonusResistancePen = { 0, 0, 0, 0, 0 };
+		ad.BonusCritChance = { 0, 0, 0, 0, 0 };
+		ad.BonusCritPower = { 0, 0, 0, 0, 0 };
+		ad.BonusDoubleStrikeChance = { 0, 0, 0, 0, 0 };
+		ad.BonusHPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusMPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusSPLeech = { 0, 0, 0, 0, 0 };
+
+		ad.GetDescription = [Values = ad.Values](Actor* user, EventOptions& eventOptions, int rank){
+			std::string desc;
+			std::string value;
+
+			value = std::to_string(Values[0][rank] / 10);
+			desc = "Increases elemental damage dealt by " + value + "%.";
+
+			return desc;
+		};
+
+		ad.OnApplication = [Values = ad.Values](Actor* user, Actor* target, EventOptions& eventOptions, int rank) {
+
+		};
+
+		ad.OnTick = [Values = ad.Values](Actor* user, Actor* target, EventOptions& eventOptions, int rank) {
+
+		};
+
+		ad.OnExpiry = [Values = ad.Values](Actor* user, Actor* target, EventOptions& eventOptions, int rank) {
+
+		};
+
+		ad.OnEvent = [Values = ad.Values](EventType eventType, EventOptions& auraOptions, int rank, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return ad;
+	}();
 	list[AuraID::FlameStrike] = [] {
 		AuraData ad;
 

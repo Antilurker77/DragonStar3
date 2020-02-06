@@ -17,6 +17,7 @@ enum class AbilityID {
 	Boulder,
 	Chopper,
 	Cleave,
+	CrushArmor,
 	DragonBreath,
 	DragonfireBolt,
 	ElementalEnergy,

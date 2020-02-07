@@ -71,6 +71,25 @@ sf::Vector2f Tooltip::GetSize() {
 void Tooltip::SetTooltip(Actor& actor) {
 	tooltipText.clear();
 
+	// converts seconds into string
+	auto convertToSec = [](int i) {
+		std::string s;
+		if (i > 999) {
+			s = std::to_string(i / 100) + "s";
+		}
+		else {
+			// make sure it always shows two decimals if use time is less than 10s
+			std::string remainder = std::to_string(i % 100);
+			if (remainder.length() == 1) {
+				remainder = "0" + remainder;
+			}
+
+			s = std::to_string(i / 100) + "." + remainder + "s";
+		}
+
+		return s;
+	};
+
 	// name
 	std::string name;
 	if (actor.IsPlayer()) {
@@ -82,7 +101,20 @@ void Tooltip::SetTooltip(Actor& actor) {
 	name += actor.GetName();
 	titleText.setString(name);
 
-	size_t charsPerLine = std::max(actor.GetName().size(), static_cast<size_t>(15));
+	size_t longest = actor.GetName().size();
+	auto auras = actor.GetAuras();
+	for (auto& aura : auras) {
+		std::string s = "  ";
+		s += aura.GetName();
+		int duration = aura.GetCurrentDuration();
+		if (duration > 0) {
+			s += " [" + convertToSec(duration) + "]";
+		}
+		if (s.size() > longest) {
+			longest = s.size();
+		}
+	}
+	size_t charsPerLine = std::max(longest, static_cast<size_t>(15));
 
 	// Level
 	std::string level = "Level " + std::to_string(actor.GetLevel());
@@ -120,6 +152,25 @@ void Tooltip::SetTooltip(Actor& actor) {
 	sfe::RichText mpspText;
 	mpspText.setString(mpsp);
 	tooltipText.push_back(mpspText);
+
+	// Auras
+	for (auto& aura : auras) {
+		std::string s = "  ";
+		if (aura.IsBuff()) {
+			s += "#player ";
+		}
+		else {
+			s += "#monster ";
+		}
+		s += aura.GetName();
+		int duration = aura.GetCurrentDuration();
+		if (duration > 0) {
+			s += " [" + convertToSec(duration) + "]";
+		}
+		sfe::RichText rs;
+		rs.setString(s);
+		tooltipText.push_back(rs);
+	}
 
 	// set sizes
 	setSizes();

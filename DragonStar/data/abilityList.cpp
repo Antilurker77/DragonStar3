@@ -912,7 +912,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		AbilityData ad;
 
 		ad.Name = "Dragonfire Bolt";
-		ad.Icon = "placeholder.png";
+		ad.Icon = "dragonfire_bolt.png";
 		ad.ID = AbilityID::DragonfireBolt;
 
 		ad.Categories = {

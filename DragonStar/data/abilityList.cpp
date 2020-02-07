@@ -1288,7 +1288,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		AbilityData ad;
 
 		ad.Name = "Flame Strike";
-		ad.Icon = "placeholder.png";
+		ad.Icon = "flame_strike.png";
 		ad.ID = AbilityID::FlameStrike;
 
 		ad.Categories = {

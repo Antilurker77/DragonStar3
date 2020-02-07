@@ -508,7 +508,7 @@ static std::unordered_map<AuraID, AuraData> initList() {
 		AuraData ad;
 
 		ad.Name = "Flame Strike";
-		ad.Icon = "placeholder.png";
+		ad.Icon = "flame_strike.png";
 		ad.AuraID = AuraID::FlameStrike;
 
 		ad.Categories = {};

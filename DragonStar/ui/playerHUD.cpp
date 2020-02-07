@@ -378,8 +378,8 @@ void PlayerHUD::Update(Actor* player, DungeonScene& dungeonScene, float secondsP
 
 	// aura tooltips, must be done after initilization
 	if (!displayTooltip) {
-		for (size_t i = 0; i < buffIcons.size(); i++) {
-			if (buffIcons[i].getGlobalBounds().contains(mouseF)) {
+		for (size_t i = 0; i < buffBackgrounds.size(); i++) {
+			if (buffBackgrounds[i].getGlobalBounds().contains(mouseF)) {
 				tooltip.SetTooltip(auras[buffIndex[i]]);
 				displayTooltip = true;
 				auto size = tooltip.GetSize();
@@ -390,8 +390,8 @@ void PlayerHUD::Update(Actor* player, DungeonScene& dungeonScene, float secondsP
 	}
 
 	if (!displayTooltip) {
-		for (size_t i = 0; i < debuffIcons.size(); i++) {
-			if (debuffIcons[i].getGlobalBounds().contains(mouseF)) {
+		for (size_t i = 0; i < debuffBackgrounds.size(); i++) {
+			if (debuffBackgrounds[i].getGlobalBounds().contains(mouseF)) {
 				tooltip.SetTooltip(auras[debuffIndex[i]]);
 				displayTooltip = true;
 				auto size = tooltip.GetSize();

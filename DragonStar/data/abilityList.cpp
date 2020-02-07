@@ -107,7 +107,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				Combat::SkillDamage(user, targets[0], eventOptions, Values[0][rank]);
 			}
 		};
-		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
 		};
 
@@ -201,7 +201,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				Combat::SkillDamage(user, targets[0], eventOptions, Values[0][rank]);
 			}
 		};
-		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
 		};
 
@@ -294,7 +294,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				Combat::SpellDamage(user, targets[0], eventOptions, Values[0][rank]);
 			}
 		};
-		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
 		};
 
@@ -387,7 +387,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				Combat::SpellDamage(user, targets[0], eventOptions, Values[0][rank]);
 			}
 		};
-		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
 		};
 
@@ -485,7 +485,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				}
 			}
 		};
-		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
 		};
 
@@ -585,7 +585,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				Combat::SkillDamage(user, targets[0], eventOptions, Values[0][rank]);
 			}
 		};
-		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
 		};
 
@@ -693,7 +693,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				Combat::SkillDamage(user, target, eventOptions, Values[0][rank]);
 			}
 		};
-		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
 		};
 
@@ -796,7 +796,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				}
 			}
 		};
-		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
 		};
 
@@ -902,7 +902,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				Combat::AttackDamage(user, target, eventOptions, Values[0][rank]);
 			}
 		};
-		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
 		};
 
@@ -995,7 +995,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				Combat::SpellDamage(user, targets[0], eventOptions, Values[0][rank]);
 			}
 		};
-		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
 		};
 
@@ -1092,7 +1092,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		ad.Execute = [Values = ad.Values](Actor* user, std::vector<Actor*>& targets, sf::Vector2i cursor, std::vector<sf::Vector2i>& targetArea, EventOptions& eventOptions, int rank) {
 			Combat::AddAuraStack(user, user, AuraID::ElementalEnergy, rank);
 		};
-		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
 		};
 
@@ -1185,7 +1185,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				Combat::SpellDamage(user, targets[0], eventOptions, Values[0][rank]);
 			}
 		};
-		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
 		};
 
@@ -1278,7 +1278,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				Combat::SpellDamage(user, targets[0], eventOptions, Values[0][rank]);
 			}
 		};
-		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
 		};
 
@@ -1380,7 +1380,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				Combat::AddAuraStack(user, user, AuraID::FlameStrike, rank);
 			}
 		};
-		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
 		};
 
@@ -1474,7 +1474,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				Combat::SpellHeal(user, targets[0], eventOptions, Values[0][rank], AttributeType::HP);
 			}
 		};
-		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
 		};
 
@@ -1570,7 +1570,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				}
 			}
 		};
-		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
 		};
 
@@ -1675,7 +1675,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				Combat::SkillDamage(user, target, eventOptions, Values[0][rank]);
 			}
 		};
-		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
 		};
 
@@ -1768,7 +1768,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				Combat::SpellDamage(user, targets[0], eventOptions, Values[0][rank]);
 			}
 		};
-		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
 		};
 
@@ -1869,7 +1869,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				Combat::SkillDamage(user, targets[0], eventOptions, Values[0][rank]);
 			}
 		};
-		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
 		};
 
@@ -1978,7 +1978,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				}
 			}
 		};
-		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
 		};
 
@@ -2070,7 +2070,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				Combat::AddAuraStack(user, targets[0], AuraID::ShadowEnergy, rank);
 			}
 		};
-		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
 		};
 
@@ -2163,7 +2163,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				Combat::SpellDamage(user, targets[0], eventOptions, Values[0][rank]);
 			}
 		};
-		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
 		};
 
@@ -2256,7 +2256,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				Combat::SpellDamage(user, targets[0], eventOptions, Values[0][rank]);
 			}
 		};
-		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
 		};
 
@@ -2364,7 +2364,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				}
 			}
 		};
-		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
 		};
 
@@ -2471,7 +2471,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				}
 			}
 		};
-		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
 		};
 
@@ -2574,7 +2574,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				}
 			}
 		};
-		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
 		};
 
@@ -2667,7 +2667,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				Combat::SpellDamage(user, targets[0], eventOptions, Values[0][rank]);
 			}
 		};
-		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
 		};
 
@@ -2763,7 +2763,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				Combat::FixedHeal(user, targets[0], eventOptions, Values[2][rank], AttributeType::SP);
 			}
 		};
-		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
 		};
 
@@ -2854,7 +2854,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				Combat::FixedHeal(user, targets[0], eventOptions, Values[0][rank], AttributeType::HP);
 			}
 		};
-		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
 		};
 
@@ -2938,7 +2938,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				Combat::AddAuraStack(user, targets[0], AuraID::Speed, rank);
 			}
 		};
-		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
 		};
 
@@ -3026,7 +3026,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				Combat::AddAuraStack(user, targets[0], AuraID::Resting, rank);
 			}
 		};
-		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
 		};
 
@@ -3125,7 +3125,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				Combat::SpellDamage(user, targets[0], eventOptions, Values[0][rank]);
 			}
 		};
-		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
 		};
 
@@ -3222,7 +3222,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				Combat::SpellDamage(user, targets[0], eventOptions, Values[0][rank]);
 			}
 		};
-		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
 		};
 
@@ -3312,7 +3312,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				Combat::SpellDamage(user, targets[0], eventOptions, Values[0][rank]);
 			}
 		};
-		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
 		};
 
@@ -3402,7 +3402,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				Combat::SpellDamage(user, targets[0], eventOptions, Values[0][rank]);
 			}
 		};
-		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
 		};
 
@@ -3492,7 +3492,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				Combat::SpellDamage(user, targets[0], eventOptions, Values[0][rank]);
 			}
 		};
-		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
 		};
 
@@ -3582,7 +3582,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				Combat::SpellDamage(user, targets[0], eventOptions, Values[0][rank]);
 			}
 		};
-		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
 		};
 
@@ -3672,7 +3672,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				Combat::SpellDamage(user, targets[0], eventOptions, Values[0][rank]);
 			}
 		};
-		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
 		};
 
@@ -3769,7 +3769,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				Combat::SpellDamage(user, targets[0], eventOptions, Values[0][rank]);
 			}
 		};
-		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
 		};
 

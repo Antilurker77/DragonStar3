@@ -234,7 +234,7 @@ void Ability::Execute(Actor* user, std::vector<Actor*>& targets, sf::Vector2i cu
 
 void Ability::OnEvent(EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
 	if (abilityData != nullptr) {
-		abilityData->OnEvent(eventType, user, target, eventOptions, eventResult, amount);
+		abilityData->OnEvent(eventType, user, target, eventOptions, eventResult, amount, this);
 	}
 }
 

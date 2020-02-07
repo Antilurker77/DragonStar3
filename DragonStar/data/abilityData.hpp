@@ -77,5 +77,5 @@ struct AbilityData {
 	std::function<bool()> CustomUseCondition;
 	std::function<std::string(Actor* user, EventOptions& eventOptions, int rank)> GetDescription;
 	std::function<void(Actor* user, std::vector<Actor*>& targets, sf::Vector2i cursor, std::vector<sf::Vector2i>& targetArea, EventOptions& eventOptions, int rank)> Execute;
-	std::function<void(EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount)> OnEvent;
+	std::function<void(EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability)> OnEvent;
 };

@@ -23,7 +23,9 @@ enum class ItemID {
 	// Tomes
 	TomeCombatBasics,
 	TomeMagicForBeginners,
+	TomeIntroductionToSpirituality,
 	TomeArtOfFlame,
+	TomeBodyMindAndSoul,
 
 	// Rations
 	Rations,

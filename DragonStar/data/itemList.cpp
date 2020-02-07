@@ -268,6 +268,48 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		return itd;
 	}();
+	list[ItemID::TomeIntroductionToSpirituality] = [] {
+		ItemData itd;
+
+		itd.Name = "Tome: Introduction to Spirituality";
+		itd.IconFilePath = "tome.png";
+		itd.EquipFilePath = "";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::TomeIntroductionToSpirituality;
+		itd.ItemType = ItemType::Tome;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 200;
+
+		itd.Artifact = false;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::Undefined;
+		itd.AttackElement = Element::Undefined;
+		itd.HitChance = 0;
+		itd.AttackRange = 0;
+		itd.AttackSpeed = 0;
+		itd.WeaponDamageMultiplier = 0;
+
+		itd.TeachableAbilities = {
+			AbilityID::BoltOfLight,
+			AbilityID::BoltOfDarkness,
+			AbilityID::Heal
+		};
+
+		itd.ImplicitStatMods = {};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
 	list[ItemID::TomeArtOfFlame] = [] {
 		ItemData itd;
 
@@ -300,6 +342,50 @@ static std::unordered_map<ItemID, ItemData> initList() {
 			AbilityID::DragonfireBolt,
 			AbilityID::FieryTouch,
 			AbilityID::FlameStrike
+		};
+
+		itd.ImplicitStatMods = {};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
+	list[ItemID::TomeBodyMindAndSoul] = [] {
+		ItemData itd;
+
+		itd.Name = "Tome: Body, Mind, and Soul";
+		itd.IconFilePath = "tome.png";
+		itd.EquipFilePath = "";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::TomeBodyMindAndSoul;
+		itd.ItemType = ItemType::Tome;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 200;
+
+		itd.Artifact = false;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::Undefined;
+		itd.AttackElement = Element::Undefined;
+		itd.HitChance = 0;
+		itd.AttackRange = 0;
+		itd.AttackSpeed = 0;
+		itd.WeaponDamageMultiplier = 0;
+
+		itd.TeachableAbilities = {
+			AbilityID::ImprovedStrength,
+			AbilityID::ImprovedDexterity,
+			AbilityID::ImprovedMagic,
+			AbilityID::ImprovedVitality,
+			AbilityID::ImprovedSpirit
 		};
 
 		itd.ImplicitStatMods = {};

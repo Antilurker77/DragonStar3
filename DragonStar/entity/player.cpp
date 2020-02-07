@@ -349,6 +349,14 @@ void Player::OnEvent(EventType eventType, Actor* target, EventOptions& eventOpti
 	}
 }
 
+EquipType Player::GetWeaponEquipType() {
+	EquipType result = EquipType::Undefined;
+	if (!equipment[0].IsNull()) {
+		result = equipment[0].GetEquipType();
+	}
+	return result;
+}
+
 int Player::GetWeaponHitChance() {
 	int result = 700; // unarmed hit chance
 	if (!equipment[0].IsNull()) {

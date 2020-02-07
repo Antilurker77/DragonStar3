@@ -12,6 +12,7 @@
 #include "../core/random.hpp"
 #include "../core/tileMath.hpp"
 #include "../entity/actor.hpp"
+#include "../entity/player.hpp"
 #include "../scene/dungeonScene.hpp"
 
 Ability::Ability() {
@@ -84,6 +85,15 @@ bool Ability::IsUsable(Actor* user) {
 	}
 	if (abilityData->SPCost[checkRank] > user->GetCurrentSP()) {
 		return false;
+	}
+
+	if (user->IsPlayer()) {
+		Player* player = static_cast<Player*>(user);
+		EquipType weaponType = player->GetWeaponEquipType();
+		auto& allowedTypes = abilityData->RequiredWeaponTypes;
+		if (!allowedTypes.empty() && std::find(allowedTypes.begin(), allowedTypes.end(), weaponType) == allowedTypes.end()) {
+			return false;
+		}
 	}
 
 	// todo: status checks

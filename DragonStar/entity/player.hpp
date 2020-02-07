@@ -61,6 +61,7 @@ public:
 
 	void OnEvent(EventType eventType, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount);
 
+	EquipType GetWeaponEquipType();
 	int GetWeaponHitChance();
 	int GetAttackRange();
 	int GetAttackSpeed();

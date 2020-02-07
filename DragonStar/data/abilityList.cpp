@@ -1459,13 +1459,13 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 			std::string amount;
 
 			if (user == nullptr) {
-				amount = "#heal " + std::to_string(Values[0][rank]) + "% Spell Power#default ";
+				amount = "#heal " + std::to_string(Values[0][rank] / 10) + "% Spell Power #default ";
 			}
 			else {
-				amount = "#heal " + std::to_string(Combat::SpellHealEstimate(user, eventOptions, Values[0][rank])) + "#default ";
+				amount = "#heal " + std::to_string(Combat::SpellHealEstimate(user, eventOptions, Values[0][rank])) + " #default ";
 			}
 
-			desc = "Call upon divine energy, restoring " + amount + " HP.";
+			desc = "Call upon divine energy, restoring " + amount + "HP.";
 			return desc;
 			return desc;
 		};

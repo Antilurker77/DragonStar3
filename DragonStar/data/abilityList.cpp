@@ -1102,7 +1102,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		AbilityData ad;
 
 		ad.Name = "Fiery Touch";
-		ad.Icon = "placeholder.png";
+		ad.Icon = "fiery_touch.png";
 		ad.ID = AbilityID::FieryTouch;
 
 		ad.Categories = {
@@ -1119,7 +1119,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 
 		ad.Range = { 150, 150, 150, 150, 150 };
 		ad.UseTime = { 100, 100, 100, 100, 100 };
-		ad.Cooldown = { 0, 0, 0, 0, 0 };
+		ad.Cooldown = { 750, 750, 750, 750, 750 };
 		ad.MaxCharges = { 1, 1, 1, 1, 1 };
 		ad.HPCost = { 0, 0, 0, 0, 0 };
 		ad.MPCost = { 8, 8, 8, 8, 8 };

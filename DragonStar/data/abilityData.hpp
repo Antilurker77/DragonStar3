@@ -14,6 +14,7 @@ enum class Element;
 enum class EquipType;
 enum class EventType;
 
+class Ability;
 class Actor;
 class DungeonScene;
 

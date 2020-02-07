@@ -81,7 +81,7 @@ public:
 	int Heal(int amount, AttributeType attribute);
 
 	// Character spends the specified amount of resources.
-	void SpendResource(int amount, AttributeType attribute);
+	void SpendResource(int amount, EventOptions& eventOptions, AttributeType attribute);
 
 	// Causes the actor to heal from their OnKill stats. This healing does not scale with any bonuses.
 	void HealOnKill(EventOptions& eventOptions);
@@ -271,6 +271,18 @@ public:
 
 	// Returns the on-hit damage of the actor.
 	int GetOnHitDamage(EventOptions& eventOptions, bool consumeBuffs);
+
+	// Returns the cooldown reduction of the actor. 1 Cooldown Reduction = 0.1% Cooldown Reduction
+	int GetCooldownReduction(EventOptions& eventOptions, bool consumeBuffs);
+
+	// Returns the HP cost reduction of the actor. 1 HP Cost Reduction = 0.1% HP Cost Reduction
+	int GetHPCostReduction(EventOptions& eventOptions, bool consumeBuffs);
+
+	// Returns the MP cost reduction of the actor. 1 MP Cost Reduction = 0.1% MP Cost Reduction
+	int GetMPCostReduction(EventOptions& eventOptions, bool consumeBuffs);
+
+	// Returns the SP cost reduction of the actor. 1 SP Cost Reduction = 0.1% SP Cost Reduction
+	int GetSPCostReduction(EventOptions& eventOptions, bool consumeBuffs);
 
 	// Returns the death resistance of the actor. 1 Death Resistance = 0.1% Death Resistance
 	int GetDeathResistance(EventOptions& eventOptions, bool consumeBuffs);

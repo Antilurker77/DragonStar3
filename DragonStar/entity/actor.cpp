@@ -198,15 +198,18 @@ int Actor::Heal(int amount, AttributeType attribute) {
 	return result;
 }
 
-void Actor::SpendResource(int amount, AttributeType attribute) {
+void Actor::SpendResource(int amount, EventOptions& eventOptions, AttributeType attribute) {
 	switch (attribute) {
 		case AttributeType::HP:
+			amount = amount * (1000 - GetHPCostReduction(eventOptions, true)) / 1000;
 			currentHP = std::max(currentHP - amount, 0);
 			break;
 		case AttributeType::MP:
+			amount = amount * (1000 - GetMPCostReduction(eventOptions, true)) / 1000;
 			currentMP = std::max(currentMP - amount, 0);
 			break;
 		case AttributeType::SP:
+			amount = amount * (1000 - GetSPCostReduction(eventOptions, true)) / 1000;
 			currentSP = std::max(currentSP - amount, 0);
 			break;
 		default:
@@ -783,6 +786,30 @@ int Actor::GetCounterChance(EventOptions& eventOptions, bool consumeBuffs) {
 int Actor::GetOnHitDamage(EventOptions& eventOptions, bool consumeBuffs) {
 	int result = getStat(0, StatModType::OnHitDamage, eventOptions, false, consumeBuffs);
 	result = std::max(0, result);
+	return result;
+}
+
+int Actor::GetCooldownReduction(EventOptions& eventOptions, bool consumeBuffs) {
+	int result = getStat(0, StatModType::CooldownReduction, eventOptions, false, consumeBuffs);
+	result = std::min(1000, result);
+	return result;
+}
+
+int Actor::GetHPCostReduction(EventOptions& eventOptions, bool consumeBuffs) {
+	int result = getStat(0, StatModType::HPCostReduction, eventOptions, false, consumeBuffs);
+	result = std::min(1000, result);
+	return result;
+}
+
+int Actor::GetMPCostReduction(EventOptions& eventOptions, bool consumeBuffs) {
+	int result = getStat(0, StatModType::MPCostReduction, eventOptions, false, consumeBuffs);
+	result = std::min(1000, result);
+	return result;
+}
+
+int Actor::GetSPCostReduction(EventOptions& eventOptions, bool consumeBuffs) {
+	int result = getStat(0, StatModType::SPCostReduction, eventOptions, false, consumeBuffs);
+	result = std::min(1000, result);
 	return result;
 }
 

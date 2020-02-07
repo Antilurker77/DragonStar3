@@ -370,8 +370,8 @@ void Tooltip::SetTooltip(Actor* user, Ability& ability) {
 
 	// Active Ability
 	if (!ability.IsPassive()) {
-		int mpCost = ability.GetMPCost();
-		int spCost = ability.GetSPCost();
+		int mpCost = ability.GetMPCost(user);
+		int spCost = ability.GetSPCost(user);
 
 		if (mpCost > 0) {
 			s += "#spell " + std::to_string(mpCost) + " MP";

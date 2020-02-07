@@ -75,6 +75,7 @@ enum class StatModType {
 	CounterChance,
 	OnHitDamage,
 	CooldownReduction,
+	HPCostReduction,
 	MPCostReduction,
 	SPCostReduction,
 	DeathResistance,

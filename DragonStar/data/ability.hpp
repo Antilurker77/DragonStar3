@@ -102,10 +102,10 @@ public:
 	int GetCooldown(Actor* user);
 
 	// Returns the MP cost of the ability.
-	int GetMPCost();
+	int GetMPCost(Actor* user);
 
 	// Returns the SP cost of the ability.
-	int GetSPCost();
+	int GetSPCost(Actor* user);
 
 	// Returns the passive bonuses of the abilites.
 	std::vector<StatMod> GetStatMods();

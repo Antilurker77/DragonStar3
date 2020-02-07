@@ -76,14 +76,17 @@ bool Ability::IsUsable(Actor* user) {
 		return false;
 	}
 
-	// todo: resource cost reduction
-	if (abilityData->HPCost[checkRank] > user->GetCurrentHP()) {
+	EventOptions eo = getEventOptions();
+	int hpCost = abilityData->HPCost[checkRank] * (1000 - user->GetHPCostReduction(eo, false)) / 1000;
+	if (hpCost > 0 && hpCost > user->GetCurrentHP()) {
 		return false;
 	}
-	if (abilityData->MPCost[checkRank] > user->GetCurrentMP()) {
+	int mpCost = abilityData->MPCost[checkRank] * (1000 - user->GetMPCostReduction(eo, false)) / 1000;
+	if (mpCost > 0 && mpCost > user->GetCurrentMP()) {
 		return false;
 	}
-	if (abilityData->SPCost[checkRank] > user->GetCurrentSP()) {
+	int spCost = abilityData->SPCost[checkRank] * (1000 - user->GetSPCostReduction(eo, false)) / 1000;
+	if (spCost > 0 && spCost > user->GetCurrentSP()) {
 		return false;
 	}
 
@@ -197,10 +200,9 @@ void Ability::Execute(Actor* user, std::vector<Actor*>& targets, sf::Vector2i cu
 	}
 
 	// spend resources
-	// todo: cost reduction
-	user->SpendResource(abilityData->HPCost[currentRank], AttributeType::HP);
-	user->SpendResource(abilityData->MPCost[currentRank], AttributeType::MP);
-	user->SpendResource(abilityData->SPCost[currentRank], AttributeType::SP);
+	user->SpendResource(abilityData->HPCost[currentRank], eventOptions, AttributeType::HP);
+	user->SpendResource(abilityData->MPCost[currentRank], eventOptions, AttributeType::MP);
+	user->SpendResource(abilityData->SPCost[currentRank], eventOptions, AttributeType::SP);
 
 	// use ability
 	abilityData->Execute(user, targets, cursor, area, eventOptions, currentRank);
@@ -224,7 +226,7 @@ void Ability::Execute(Actor* user, std::vector<Actor*>& targets, sf::Vector2i cu
 	if (abilityData->Cooldown[currentRank] > 0) {
 		charges--;
 		if (charges == 0) {
-			remainingCooldown = abilityData->Cooldown[currentRank];
+			remainingCooldown = abilityData->Cooldown[currentRank] * (1000 - user->GetCooldownReduction(eventOptions, true)) / 1000;
 		}
 	}
 
@@ -309,19 +311,34 @@ int Ability::GetCooldown(Actor* user) {
 
 	if (cooldown > 0) {
 		if (user != nullptr) {
-			// todo: cooldown reduction
+			EventOptions eo = getEventOptions();
+			cooldown = cooldown * (1000 - user->GetCooldownReduction(eo, false)) / 1000;
 		}
 	}
 
 	return cooldown;
 }
 
-int Ability::GetMPCost() {
-	return abilityData->MPCost[currentRank];
+int Ability::GetMPCost(Actor* user) {
+	int result = abilityData->MPCost[currentRank];
+	
+	if (user != nullptr) {
+		EventOptions eo = getEventOptions();
+		result = result * (1000 - user->GetMPCostReduction(eo, false)) / 1000;
+	}
+
+	return result;
 }
 
-int Ability::GetSPCost() {
-	return abilityData->SPCost[currentRank];
+int Ability::GetSPCost(Actor* user) {
+	int result = abilityData->SPCost[currentRank];
+
+	if (user != nullptr) {
+		EventOptions eo = getEventOptions();
+		result = result * (1000 - user->GetSPCostReduction(eo, false)) / 1000;
+	}
+
+	return result;
 }
 
 std::vector<StatMod> Ability::GetStatMods() {

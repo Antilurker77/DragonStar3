@@ -324,9 +324,12 @@ void Tooltip::SetTooltip(Item& item, bool displayCost) {
 		if (records.IsIdentified(item.GetItemID()) || item.GetItemType() == ItemType::Consumable) {
 			Ability* ability = item.GetInvokedAbility();
 			s = ability->GetDescription(nullptr);
-			sfe::RichText desc;
-			desc.setString(s);
-			tooltipText.push_back(desc);
+			auto sv = WordWrap::WrapString(s, textPerLine);
+			for (auto& line : sv) {
+				sfe::RichText desc;
+				desc.setString(line);
+				tooltipText.push_back(desc);
+			}			
 		}
 		else {
 			s = "Drink me.";

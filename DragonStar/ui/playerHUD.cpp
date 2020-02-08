@@ -39,6 +39,12 @@ PlayerHUD::PlayerHUD() {
 		cooldownText[i].setCharacterSize(10u);
 		cooldownText[i].setOutlineThickness(1.f);
 		displayCooldownText[i] = false;
+
+		chargeText[i].setFont(*assetManager.LoadFont(settings.Font));
+		chargeText[i].setFillColor(sf::Color(255, 255, 255, 255));
+		chargeText[i].setCharacterSize(14u);
+		chargeText[i].setOutlineThickness(1.f);
+		displayChargeText[i] = false;
 	}
 
 	// hp bar
@@ -342,14 +348,24 @@ void PlayerHUD::Update(Actor* player, DungeonScene& dungeonScene, float secondsP
 			}
 			else {
 				displayUnavailableSquare[i] = true;
-				int cooldown = ab->GetCurrentCooldown();
-				if (cooldown > 0) {
-					cooldownText[i].setString(convertToSec(cooldown));
-					displayCooldownText[i] = true;
-				}
-				else {
-					displayCooldownText[i] = false;
-				}
+			}
+
+			int cooldown = ab->GetCurrentCooldown();
+			if (cooldown > 0) {
+				cooldownText[i].setString(convertToSec(cooldown));
+				displayCooldownText[i] = true;
+			}
+			else {
+				displayCooldownText[i] = false;
+			}
+
+			int charges = ab->GetCurrentCharges();
+			if (charges > 1) {
+				chargeText[i].setString(std::to_string(charges));
+				displayChargeText[i] = true;
+			}
+			else {
+				displayChargeText[i] = false;
 			}
 		}
 		// todo: items
@@ -417,6 +433,9 @@ void PlayerHUD::Draw(sf::RenderTarget& window, float timeRatio) {
 			if (displayCooldownText[i]) {
 				window.draw(cooldownText[i]);
 			}
+			if (displayChargeText[i]) {
+				window.draw(chargeText[i]);
+			}
 		}
 	}
 
@@ -476,6 +495,7 @@ void PlayerHUD::Initialize() {
 		shortcutIcons[i].setPosition(pos);
 		unavailableSquare[i].setPosition(pos);
 		cooldownText[i].setPosition(pos.x + 2.f, pos.y + 28.f);
+		chargeText[i].setPosition(pos.x + 2.f, pos.y + 2.f);
 	}
 
 	// hp bar

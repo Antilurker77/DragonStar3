@@ -76,6 +76,8 @@ private:
 	std::array<bool, 24> displayUnavailableSquare;
 	std::array<sf::Text, 24> cooldownText;
 	std::array<bool, 24> displayCooldownText;
+	std::array<sf::Text, 24> chargeText;
+	std::array<bool, 24> displayChargeText;
 
 	sf::RectangleShape hpBarBackground;
 	sf::RectangleShape hpBar;

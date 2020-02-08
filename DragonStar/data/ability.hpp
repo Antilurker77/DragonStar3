@@ -28,7 +28,7 @@ public:
 	bool IsNull();
 
 	// Reduces cooldown by 1 tick.
-	void DecrementCooldown();
+	void DecrementCooldown(Actor* user);
 
 	// Sets the cooldown and number of charges an ability has.
 	void SetCooldownAndCharges(int cooldown, int charges);

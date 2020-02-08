@@ -36,13 +36,14 @@ bool Ability::IsNull() {
 	return abilityData == nullptr;
 }
 
-void Ability::DecrementCooldown() {
+void Ability::DecrementCooldown(Actor* user) {
 	if (abilityData != nullptr && charges < abilityData->MaxCharges[currentRank]) {
 		remainingCooldown--;
 		if (remainingCooldown == 0) {
 			charges++;
-			if (charges < abilityList[abilityID].MaxCharges[currentRank]) {
-				remainingCooldown = abilityList[abilityID].Cooldown[currentRank];
+			if (charges < abilityData->MaxCharges[currentRank]) {
+				EventOptions eo = getEventOptions();
+				remainingCooldown = abilityData->Cooldown[currentRank] * (1000 - user->GetCooldownReduction(eo, true)) / 1000;
 			}
 		}
 	}
@@ -225,7 +226,7 @@ void Ability::Execute(Actor* user, std::vector<Actor*>& targets, sf::Vector2i cu
 	// trigger cooldown
 	if (abilityData->Cooldown[currentRank] > 0) {
 		charges--;
-		if (charges == 0) {
+		if (remainingCooldown == 0) {
 			remainingCooldown = abilityData->Cooldown[currentRank] * (1000 - user->GetCooldownReduction(eventOptions, true)) / 1000;
 		}
 	}

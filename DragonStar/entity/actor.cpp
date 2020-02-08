@@ -52,7 +52,7 @@ void Actor::DecrementExhaustion() {
 		au.Tick(this);
 	}
 	for (auto& ab : abilities) {
-		ab.DecrementCooldown();
+		ab.DecrementCooldown(this);
 	}
 	
 	// HP Regen

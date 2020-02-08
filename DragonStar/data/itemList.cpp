@@ -140,7 +140,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 		ItemData itd;
 
 		itd.Name = "Rations";
-		itd.IconFilePath = "potion.png";
+		itd.IconFilePath = "ration.png";
 		itd.EquipFilePath = "";
 
 		itd.HideHair = false;

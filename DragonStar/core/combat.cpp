@@ -787,7 +787,6 @@ void Combat::AwardPrizes(Actor* user, Actor* target, EventOptions& eventOptions)
 				item.InitRandomItem(itemLevel);
 				items.push_back(item);
 
-				// todo: scroll, tome, ect.
 			}
 
 			user->GetDungeonScene()->DropLoot(target->GetLocation(), goldDropped, items);

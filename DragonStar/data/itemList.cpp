@@ -251,6 +251,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		itd.TeachableAbilities = {
 			AbilityID::MagicMissile,
+			AbilityID::MysticBlast,
 			AbilityID::FlameBolt,
 			AbilityID::WaterBolt,
 			AbilityID::Shock,

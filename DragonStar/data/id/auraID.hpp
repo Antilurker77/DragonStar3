@@ -20,6 +20,7 @@ enum class AuraID {
 	CrushArmor,
 	ElementalEnergy,
 	FlameStrike,
+	MysticBlast,
 	RendingSlash,
 	ShadowEnergy,
 	Speed,

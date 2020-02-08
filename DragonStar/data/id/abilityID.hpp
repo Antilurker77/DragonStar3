@@ -28,6 +28,7 @@ enum class AbilityID {
 	Icicle,
 	ImpactWave,
 	MagicMissile,
+	MysticBlast,
 	PhoenixRaid,
 	PowerStrike,
 	RendingSlash,

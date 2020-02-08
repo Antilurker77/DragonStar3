@@ -348,7 +348,7 @@ EventResult Combat::AttackDamage(Actor* user, Actor* target, EventOptions& event
 
 		// Inflict damage.
 		result.TotalDamage = target->TakeDamage(damageResult);
-		result.DidKill = !target->IsAlive();
+		result.DidKill = !target->IsAlive() && result.TotalDamage > 0;
 
 		// Apply leech.
 		applyLeech(user, eventOptions, result.TotalDamage);
@@ -359,7 +359,9 @@ EventResult Combat::AttackDamage(Actor* user, Actor* target, EventOptions& event
 		user->OnEvent(EventType::Damage, target, eventOptions, result, damage);
 		target->OnEvent(EventType::Damaged, user, eventOptions, result, damage);
 
-		// todo: leech / on hit heal
+		if (result.DidKill) {
+			Combat::AwardPrizes(user, target, eventOptions);
+		}
 
 	}
 	else {
@@ -432,7 +434,7 @@ EventResult Combat::SkillDamage(Actor* user, Actor* target, EventOptions& eventO
 
 		// Inflict damage.
 		result.TotalDamage = target->TakeDamage(damageResult);
-		result.DidKill = !target->IsAlive();
+		result.DidKill = !target->IsAlive() && result.TotalDamage > 0;
 
 		// Apply leech.
 		applyLeech(user, eventOptions, result.TotalDamage);
@@ -443,7 +445,9 @@ EventResult Combat::SkillDamage(Actor* user, Actor* target, EventOptions& eventO
 		user->OnEvent(EventType::Damage, target, eventOptions, result, damage);
 		target->OnEvent(EventType::Damaged, target, eventOptions, result, damage);
 
-		// todo: leech / on hit heal
+		if (result.DidKill) {
+			Combat::AwardPrizes(user, target, eventOptions);
+		}
 
 	}
 	else {
@@ -511,7 +515,7 @@ EventResult Combat::SpellDamage(Actor* user, Actor* target, EventOptions& eventO
 
 		// Inflict damage.
 		result.TotalDamage = target->TakeDamage(damageResult);
-		result.DidKill = !target->IsAlive();
+		result.DidKill = !target->IsAlive() && result.TotalDamage > 0;
 
 		user->OnEvent(EventType::Damage, target, eventOptions, result, damage);
 		target->OnEvent(EventType::Damaged, user, eventOptions, result, damage);
@@ -522,7 +526,9 @@ EventResult Combat::SpellDamage(Actor* user, Actor* target, EventOptions& eventO
 		// Output.
 		outputDamage(user, target, eventOptions, result);
 
-
+		if (result.DidKill) {
+			Combat::AwardPrizes(user, target, eventOptions);
+		}
 
 	}
 	else {
@@ -625,7 +631,7 @@ EventResult Combat::FixedDamage(Actor* user, Actor* target, EventOptions& eventO
 
 		// Inflict damage.
 		result.TotalDamage = target->TakeDamage(damageResult);
-		result.DidKill = !target->IsAlive();
+		result.DidKill = !target->IsAlive() && result.TotalDamage > 0;
 
 		user->OnEvent(EventType::Damage, target, eventOptions, result, damage);
 		target->OnEvent(EventType::Damaged, user, eventOptions, result, damage);
@@ -636,7 +642,9 @@ EventResult Combat::FixedDamage(Actor* user, Actor* target, EventOptions& eventO
 		// Output.
 		outputDamage(user, target, eventOptions, result);
 
-		// todo: leech / on hit heal
+		if (result.DidKill) {
+			Combat::AwardPrizes(user, target, eventOptions);
+		}
 
 	}
 	else {
@@ -738,73 +746,71 @@ int Combat::SpellHealEstimate(Actor* user, EventOptions& eventOptions, int coeff
 	return static_cast<int>(heal / 1000);
 }
 
-void Combat::AwardPrizes(Actor* user, std::vector<Actor*>& targets, EventOptions& eventOptions) {
-	for (auto t : targets) {
-		if (!t->IsAlive()) {
-			// Only non-players can drop items and award EXP.
-			if (!t->IsPlayer()) {
-				Monster* monster = static_cast<Monster*>(t);
+void Combat::AwardPrizes(Actor* user, Actor* target, EventOptions& eventOptions) {
+	if (!target->IsAlive()) {
+		// Only non-players can drop items and award EXP.
+		if (!target->IsPlayer()) {
+			Monster* monster = static_cast<Monster*>(target);
 				
-				// Drops
-				int dropCount = 0;
-				int goldDropped = 0;
-				std::vector<Item> items;
-				int itemLevel = (user->GetDungeonScene()->GetCurrentFloor() + monster->GetLevel()) / 2;
+			// Drops
+			int dropCount = 0;
+			int goldDropped = 0;
+			std::vector<Item> items;
+			int itemLevel = (user->GetDungeonScene()->GetCurrentFloor() + monster->GetLevel()) / 2;
 
-				int gold = monster->GetGoldDrop();
-				int lootPoints = monster->GetLootPoints();
-				int randomLootPoints = Random::RandomInt(0, lootPoints / 2) + Random::RandomInt(0, lootPoints / 2);
+			int gold = monster->GetGoldDrop();
+			int lootPoints = monster->GetLootPoints();
+			int randomLootPoints = Random::RandomInt(0, lootPoints / 2) + Random::RandomInt(0, lootPoints / 2);
 
-				// Uniques always drop at least one item.
-				if (monster->IsUnique()) {
-					randomLootPoints = std::max(1000, randomLootPoints);
-				}
+			// Uniques always drop at least one item.
+			if (monster->IsUnique()) {
+				randomLootPoints = std::max(1000, randomLootPoints);
+			}
 
-				dropCount = randomLootPoints / 1000;
-				if (Random::RandomInt(1, 1000) <= randomLootPoints % 1000) {
-					dropCount++;
-				}
+			dropCount = randomLootPoints / 1000;
+			if (Random::RandomInt(1, 1000) <= randomLootPoints % 1000) {
+				dropCount++;
+			}
 				
-				bool monsterDroppedGold = false;
-				for (int i = 0; i < dropCount; i++) {
-					if (!monsterDroppedGold && gold > 0) {
-						// 50% Chance to Drop Gold for Every Item Generation
-						// Unique Monsters Always Drop Gold
-						if (Random::RandomInt(1, 1000) <= 500 || monster->IsUnique()) {
-							goldDropped = gold * Random::RandomInt(900, 1100) / 1000;
-							monsterDroppedGold = true;
-							continue;
-						}
+			bool monsterDroppedGold = false;
+			for (int i = 0; i < dropCount; i++) {
+				if (!monsterDroppedGold && gold > 0) {
+					// 50% Chance to Drop Gold for Every Item Generation
+					// Unique Monsters Always Drop Gold
+					if (Random::RandomInt(1, 1000) <= 500 || monster->IsUnique()) {
+						goldDropped = gold * Random::RandomInt(900, 1100) / 1000;
+						monsterDroppedGold = true;
+						continue;
 					}
-					Item item;
-					item.InitRandomItem(itemLevel);
-					items.push_back(item);
-
-					// todo: scroll, tome, ect.
 				}
+				Item item;
+				item.InitRandomItem(itemLevel);
+				items.push_back(item);
 
-				user->GetDungeonScene()->DropLoot(t->GetLocation(), goldDropped, items);
+				// todo: scroll, tome, ect.
+			}
 
-				// EXP
-				// Only players can earn EXP.
-				if (user->IsPlayer()) {
-					Player* player = static_cast<Player*>(user);
-					messageLog.AddMessage("#player " + player->GetName() + " #default earned #randart " + std::to_string(monster->GetEXPReward() * player->GetEXPBoost() / 1000) + " EXP #default from defeating #monster " + t->GetName() + "#default .");
-					player->AwardEXP(monster->GetEXPReward());
+			user->GetDungeonScene()->DropLoot(target->GetLocation(), goldDropped, items);
+
+			// EXP
+			// Only players can earn EXP.
+			if (user->IsPlayer()) {
+				Player* player = static_cast<Player*>(user);
+				messageLog.AddMessage("#player " + player->GetName() + " #default earned #randart " + std::to_string(monster->GetEXPReward() * player->GetEXPBoost() / 1000) + " EXP #default from defeating #monster " + target->GetName() + "#default .");
+				player->AwardEXP(monster->GetEXPReward());
 					
-					// Record the kill.
-					records.MarkKilled(monster->GetMonsterID());
-				}
+				// Record the kill.
+				records.MarkKilled(monster->GetMonsterID());
 			}
+		}
 
-			// Trigger death events, including healing from kills.
-			if (user != t) {
-				int64_t value = 0;
-				EventResult result;
-				user->HealOnKill(eventOptions);
+		// Trigger death events, including healing from kills.
+		if (user != target) {
+			int64_t value = 0;
+			EventResult result;
+			user->HealOnKill(eventOptions);
 
-				t->OnEvent(EventType::Death, user, eventOptions, result, value);
-			}
+			target->OnEvent(EventType::Death, user, eventOptions, result, value);
 		}
 	}
 }

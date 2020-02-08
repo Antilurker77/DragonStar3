@@ -111,5 +111,5 @@ namespace Combat {
 	int SpellHealEstimate(Actor* user, EventOptions& eventOptions, int coefficient);
 
 	// Awards prizes from defeated monsters and triggers OnDeath events.
-	void AwardPrizes(Actor* user, std::vector<Actor*>& targets, EventOptions& eventOptions);
+	void AwardPrizes(Actor* user, Actor* target, EventOptions& eventOptions);
 }

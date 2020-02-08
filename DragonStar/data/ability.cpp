@@ -231,7 +231,7 @@ void Ability::Execute(Actor* user, std::vector<Actor*>& targets, sf::Vector2i cu
 	}
 
 	// award prizes and trigger death events
-	Combat::AwardPrizes(user, targets, eventOptions);
+	//Combat::AwardPrizes(user, targets, eventOptions);
 }
 
 void Ability::OnEvent(EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {

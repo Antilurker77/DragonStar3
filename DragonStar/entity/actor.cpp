@@ -338,6 +338,15 @@ bool Actor::IsStunned() {
 	return false;
 }
 
+bool Actor::IsDisarmed() {
+	for (auto& aura : auras) {
+		if (aura.IsDisarm()) {
+			return true;
+		}
+	}
+	return false;
+}
+
 int Actor::GetCurrentHP() {
 	return currentHP;
 }

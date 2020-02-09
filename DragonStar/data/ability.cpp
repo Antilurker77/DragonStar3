@@ -101,6 +101,12 @@ bool Ability::IsUsable(Actor* user) {
 	}
 
 	// todo: status checks
+	if (user->IsDisarmed()) {
+		auto& categories = abilityData->Categories;
+		if (std::find(categories.begin(), categories.end(), Category::Skill) != categories.end()) {
+			return false;
+		}
+	}
 
 	return true;
 }

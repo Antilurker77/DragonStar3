@@ -95,6 +95,9 @@ public:
 	// Returns true if the aura stuns.
 	bool IsStun();
 
+	// Returns true if the aura disarms.
+	bool IsDisarm();
+
 	// Returns the stat mods for this aura.
 	std::vector<StatMod> GetStatMods();
 

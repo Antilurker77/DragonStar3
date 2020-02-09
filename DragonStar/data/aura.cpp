@@ -231,6 +231,12 @@ bool Aura::IsStun() {
 	return false;
 }
 
+bool Aura::IsDisarm() {
+	if (auraData != nullptr) {
+		return auraData->IsDisarm;
+	}
+	return false;
+}
 
 std::vector<StatMod> Aura::GetStatMods() {
 	if (!auraData->StatMods.empty()) {

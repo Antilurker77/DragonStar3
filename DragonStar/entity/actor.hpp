@@ -128,6 +128,9 @@ public:
 	// Returns true if the actor is stunned.
 	bool IsStunned();
 
+	// Returns true if the actor is disarmed.
+	bool IsDisarmed();
+
 	// Returns the current HP of the actor.
 	int GetCurrentHP();
 

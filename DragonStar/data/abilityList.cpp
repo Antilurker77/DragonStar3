@@ -802,6 +802,89 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 
 		return ad;
 	}();
+	list[AbilityID::Disarm] = [] {
+		AbilityData ad;
+
+		ad.Name = "Disarm";
+		ad.Icon = "placeholder.png";
+		ad.ID = AbilityID::Disarm;
+
+		ad.Categories = {
+			Category::SingleTarget
+		};
+		ad.Elements = {};
+		ad.RequiredWeaponTypes = {};
+
+		ad.IsPassive = false;
+		ad.MaxRank = 4;
+
+		ad.Range = { -1, -1, -1, -1, -1 };
+		ad.UseTime = { -1000, -1000, -1000, -1000, -1000 };
+		ad.Cooldown = { 3000, 3000, 3000, 3000, 3000 };
+		ad.MaxCharges = { 1, 1, 1, 1, 1 };
+		ad.HPCost = { 0, 0, 0, 0, 0 };
+		ad.MPCost = { 0, 0, 0, 0, 0 };
+		ad.SPCost = { 35, 33, 33, 30, 30 };
+
+		ad.Values = {
+			{ 800, 800, 900, 900, 1000 }
+		};
+		ad.PassiveBonuses = {};
+
+		ad.CanDodge = false;
+		ad.CanBlock = false;
+		ad.CanCounter = true;
+		ad.CanCrit = false;
+		ad.CanDoubleStrike = false;
+
+		ad.HitChance = { 1000, 1000, 1000, 1000, 1000 };
+		ad.BonusArmorPen = { 0, 0, 0, 0, 0 };
+		ad.BonusResistancePen = { 0, 0, 0, 0, 0 };
+		ad.BonusCritChance = { 0, 0, 0, 0, 0 };
+		ad.BonusCritPower = { 0, 0, 0, 0, 0 };
+		ad.BonusDoubleStrikeChance = { 0, 0, 0, 0, 0 };
+		ad.BonusHPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusMPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusSPLeech = { 0, 0, 0, 0, 0 };
+
+		ad.FixedRange = false;
+		ad.HideRange = false;
+
+		ad.IsProjectile = true;
+		ad.IgnoreLineOfSight = false;
+
+		ad.AreaIgnoreLineOfSight = false;
+		ad.AreaIgnoreBodyBlock = false;
+
+		ad.GetTargetArea = [&](Actor* user, DungeonScene* dungeonScene, sf::Vector2i cursorTarget, int rank) {
+			return std::vector<sf::Vector2i>{ cursorTarget };
+		};
+
+		ad.GetExtraArea = [&](Actor* user, DungeonScene* dungeonScene, sf::Vector2i cursorTarget, int rank) {
+			return std::vector<sf::Vector2i>{};
+		};
+
+		ad.CustomUseCondition = []() {
+			return true;
+		};
+		ad.GetDescription = [Values = ad.Values](Actor* user, EventOptions& eventOptions, int rank) {
+			std::string desc;
+			std::string duration = std::to_string(Values[0][rank] / 100);
+
+			desc = "Disarm the target for " + duration + "s, preventing it from using weapon skills.";
+			return desc;
+		};
+		ad.Execute = [Values = ad.Values](Actor* user, std::vector<Actor*>& targets, sf::Vector2i cursor, std::vector<sf::Vector2i>& targetArea, EventOptions& eventOptions, int rank) {
+			if (!targets.empty()) {
+				Combat::AddAuraStack(user, targets[0], AuraID::Disarm, rank);
+			}
+		};
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
+
+		};
+
+		return ad;
+	}();
 	list[AbilityID::DragonBreath] = [] {
 		AbilityData ad;
 

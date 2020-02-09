@@ -18,6 +18,7 @@ enum class AbilityID {
 	Chopper,
 	Cleave,
 	CrushArmor,
+	Disarm,
 	DragonBreath,
 	DragonfireBolt,
 	ElementalEnergy,

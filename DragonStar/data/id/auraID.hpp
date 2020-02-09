@@ -18,6 +18,7 @@ enum class AuraID {
 	Boulder,
 	Chilled,
 	CrushArmor,
+	Disarm,
 	ElementalEnergy,
 	FlameStrike,
 	MysticBlast,

@@ -417,6 +417,82 @@ static std::unordered_map<AuraID, AuraData> initList() {
 
 		return ad;
 	}();
+	list[AuraID::Disarm] = [] {
+		AuraData ad;
+
+		ad.Name = "Disarm";
+		ad.Icon = "placeholder.png";
+		ad.AuraID = AuraID::Disarm;
+
+		ad.Categories = {
+
+		};
+		ad.Elements = {
+			Element::Physical
+		};
+
+		ad.MaxRank = 4;
+
+		ad.BaseDuration = { 800, 800, 900, 900, 1000 };
+		ad.MaxDuration = { 800, 800, 900, 900, 1000 };
+		ad.MaxStacks = { 1, 1, 1, 1, 1 };
+
+		ad.Values = {
+			{ 800, 800, 900, 900, 1000 }
+		};
+		ad.StatMods = {};
+
+		ad.IsBuff = false;
+		ad.Unique = true;
+		ad.UniqueByActor = true;
+		ad.ConsumeOnUse = false;
+		ad.StacksExpireOneByOne = false;
+		ad.MultiplyStatModsByStacks = false;
+
+		ad.IsRest = false;
+		ad.IsStun = false;
+		ad.IsDisarm = true;
+		ad.IsSilence = false;
+		ad.IsSnare = false;
+
+		ad.CanCrit = false;
+		ad.BonusArmorPen = { 0, 0, 0, 0, 0 };
+		ad.BonusResistancePen = { 0, 0, 0, 0, 0 };
+		ad.BonusCritChance = { 0, 0, 0, 0, 0 };
+		ad.BonusCritPower = { 0, 0, 0, 0, 0 };
+		ad.BonusDoubleStrikeChance = { 0, 0, 0, 0, 0 };
+		ad.BonusHPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusMPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusSPLeech = { 0, 0, 0, 0, 0 };
+
+		ad.GetDescription = [Values = ad.Values](Actor* user, EventOptions& eventOptions, int rank){
+			std::string desc;
+			std::string value;
+
+			value = std::to_string(Values[0][rank] / 100);
+			desc = "Disarmed for " + value + "s.";
+
+			return desc;
+		};
+
+		ad.OnApplication = [Values = ad.Values](Actor* user, Actor* target, EventOptions& eventOptions, int rank) {
+
+		};
+
+		ad.OnTick = [Values = ad.Values](Actor* user, Actor* target, EventOptions& eventOptions, int rank) {
+
+		};
+
+		ad.OnExpiry = [Values = ad.Values](Actor* user, Actor* target, EventOptions& eventOptions, int rank) {
+
+		};
+
+		ad.OnEvent = [Values = ad.Values](EventType eventType, EventOptions& auraOptions, int rank, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return ad;
+	}();
 	list[AuraID::ElementalEnergy] = [] {
 		AuraData ad;
 

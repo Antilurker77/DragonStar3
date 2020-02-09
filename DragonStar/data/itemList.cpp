@@ -206,6 +206,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 			AbilityID::ThunderStrike,
 			AbilityID::RendingSlash,
 			AbilityID::CrushArmor,
+			AbilityID::Disarm,
 			AbilityID::ImpactWave,
 			AbilityID::Cleave,
 			AbilityID::TornadoStrike,

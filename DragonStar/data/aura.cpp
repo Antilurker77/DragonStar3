@@ -47,7 +47,7 @@ void Aura::Tick(Actor* owner) {
 		nextTick--;
 		if (nextTick == 0) {
 			EventOptions eo = getEventOptions();
-			auraData->OnTick(source, owner, eo, currentRank);
+			auraData->OnTick(source, owner, eo, currentRank, this);
 			nextTick = auraData->TickRate;
 		}
 	}
@@ -56,7 +56,7 @@ void Aura::Tick(Actor* owner) {
 		currentDuration--;
 		if (currentDuration == 0) {
 			EventOptions eo = getEventOptions();
-			auraData->OnExpiry(source, owner, eo, currentRank);
+			auraData->OnExpiry(source, owner, eo, currentRank, this);
 			if (auraData->StacksExpireOneByOne) {
 				currentStacks--;
 				currentDuration = auraData->BaseDuration[currentRank];
@@ -69,7 +69,7 @@ void Aura::Tick(Actor* owner) {
 
 	if (wasUsed && auraData->ConsumeOnUse) {
 		EventOptions eo = getEventOptions();
-		auraData->OnExpiry(source, owner, eo, currentRank);
+		auraData->OnExpiry(source, owner, eo, currentRank, this);
 		if (auraData->StacksExpireOneByOne) {
 			currentStacks--;
 			currentDuration = auraData->BaseDuration[currentRank];
@@ -84,7 +84,7 @@ void Aura::Tick(Actor* owner) {
 void Aura::OnEvent(EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
 	if (auraData != nullptr) {
 		EventOptions auraOptions = getEventOptions();
-		auraData->OnEvent(eventType, auraOptions, currentRank, user, target, eventOptions, eventResult, amount);
+		auraData->OnEvent(eventType, auraOptions, currentRank, this, user, target, eventOptions, eventResult, amount);
 	}
 }
 
@@ -154,7 +154,7 @@ std::string Aura::GetName() {
 
 std::string Aura::GetDescription() {
 	auto eo = getEventOptions();
-	return auraData->GetDescription(source, eo, currentRank);
+	return auraData->GetDescription(source, eo, currentRank, this);
 }
 
 std::string Aura::GetIcon() {
@@ -180,7 +180,7 @@ int Aura::GetCurrentStackSize() {
 bool Aura::IsExpired(Actor* owner) {
 	if (wasUsed && auraData->ConsumeOnUse) {
 		EventOptions eo = getEventOptions();
-		auraData->OnExpiry(source, owner, eo, currentRank);
+		auraData->OnExpiry(source, owner, eo, currentRank, this);
 		if (auraData->StacksExpireOneByOne) {
 			currentStacks--;
 			currentDuration = auraData->BaseDuration[currentRank];

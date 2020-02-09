@@ -14,6 +14,7 @@ enum class Element;
 enum class EventType;
 
 class Actor;
+class Aura;
 struct EventOptions;
 
 #include <functional>
@@ -63,9 +64,9 @@ struct AuraData {
 	std::vector<int> BonusMPLeech;
 	std::vector<int> BonusSPLeech;
 
-	std::function<std::string(Actor* user, EventOptions& eventOptions, int rank)> GetDescription;
-	std::function<void(Actor* user, Actor* target, EventOptions& eventOptions, int rank)> OnApplication; // Called when the aura is applied.
-	std::function<void(Actor* user, Actor* target, EventOptions& eventOptions, int rank)> OnTick; // Called when the aura ticks.
-	std::function<void(Actor* user, Actor* target, EventOptions& eventOptions, int rank)> OnExpiry; // Called when a stack of the aura is lost.
-	std::function<void(EventType eventType, EventOptions& auraOptions, int rank, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount)> OnEvent;
+	std::function<std::string(Actor* user, EventOptions& eventOptions, int rank, Aura* aura)> GetDescription;
+	std::function<void(Actor* user, Actor* target, EventOptions& eventOptions, int rank, Aura* aura)> OnApplication; // Called when the aura is applied.
+	std::function<void(Actor* user, Actor* target, EventOptions& eventOptions, int rank, Aura* aura)> OnTick; // Called when the aura ticks.
+	std::function<void(Actor* user, Actor* target, EventOptions& eventOptions, int rank, Aura* aura)> OnExpiry; // Called when a stack of the aura is lost.
+	std::function<void(EventType eventType, EventOptions& auraOptions, int rank, Aura* aura, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount)> OnEvent;
 };

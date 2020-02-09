@@ -350,6 +350,76 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		return md;
 	}();
+	list[MonsterID::Cobra] = [] {
+		MonsterData md;
+
+		md.Name = "Cobra";
+		md.Title = "";
+		md.Filename = "cobra.png";
+
+		md.IsUnique = false;
+		md.IsBoss = false;
+		md.CanFly = false;
+		md.CanSwim = false;
+		md.CanTunnel = false;
+
+		md.IsStationary = false;
+		md.ChaseTurns = 3;
+
+		md.Level = 4;
+
+		md.BaseHP = 10;
+		md.BaseMP = 6;
+		md.BaseSP = 120;
+
+		md.BaseSTR = 15;
+		md.BaseDEX = 25;
+		md.BaseMAG = 5;
+		md.BaseVIT = 10;
+		md.BaseSPI = 3;
+
+		md.BaseArmor = 10;
+		md.BaseMagicArmor = 0;
+		md.BaseEvasion = 20;
+
+		md.BaseAttackPower = 10;
+		md.BaseSpellPower = 0;
+
+		md.BaseHitChance = 700;
+		md.BaseAttackRange = 100;
+		md.BaseAttackSpeed = 150;
+		md.BaseWeaponDamageMultiplier = 1000;
+		md.AttackElement = Element::Physical;
+		md.AttackType = EquipType::Undefined;
+
+		md.BaseLineOfSight = 200;
+		md.BaseMoveCost = 75;
+
+		md.EXPDrop = 7;
+		md.GoldDrop = 0;
+		md.LootDrop = 0;
+
+		md.StatMods = {};
+		md.Abilities = {
+			{AbilityID::CobraBite, 0}
+		};
+
+		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
+			std::pair<AbilityID, sf::Vector2i> ai;
+			ai.second = dungeonScene->GetPlayer()->GetLocation();
+			
+			if (monster->IsAbilityUsable(AbilityID::CobraBite)) {
+				ai.first = AbilityID::CobraBite;
+			}
+			else {
+				ai.first = AbilityID::Attack;
+			}
+
+			return ai;
+		};
+
+		return md;
+	}();
 	list[MonsterID::GiantRat] = [] {
 		MonsterData md;
 

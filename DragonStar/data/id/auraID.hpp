@@ -17,6 +17,7 @@ enum class AuraID {
 	ArcanistGloves,
 	Boulder,
 	Chilled,
+	CobraBite,
 	CrushArmor,
 	Disarm,
 	ElementalEnergy,

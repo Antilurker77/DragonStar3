@@ -28,6 +28,7 @@ enum class AbilityID {
 	FlameStrike,
 	Heal,
 	Icicle,
+	Ignite,
 	ImpactWave,
 	MagicMissile,
 	MysticBlast,

@@ -22,6 +22,7 @@ enum class AuraID {
 	Disarm,
 	ElementalEnergy,
 	FlameStrike,
+	Ignite,
 	MysticBlast,
 	RendingSlash,
 	ShadowEnergy,

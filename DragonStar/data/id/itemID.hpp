@@ -21,6 +21,7 @@ enum class ItemID {
 	// Rods
 
 	// Tomes
+	TomeTesting,
 	TomeCombatBasics,
 	TomeMagicForBeginners,
 	TomeIntroductionToSpirituality,

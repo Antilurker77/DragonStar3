@@ -186,7 +186,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 			std::string desc;
 			std::string value;
 
-			if (user == nullptr) {
+			if (user != nullptr) {
 				value = std::to_string(Combat::AttackDamageEstimate(user, eventOptions, Values[0][rank]));
 			}
 			else {
@@ -775,7 +775,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 			std::string dotDamage;
 			std::string duration = std::to_string(Values[2][rank] / 100);
 
-			if (user == nullptr) {
+			if (user != nullptr) {
 				value = std::to_string(Combat::AttackDamageEstimate(user, eventOptions, Values[0][rank]));
 				dotDamage = std::to_string(Combat::AttackDamageEstimate(user, eventOptions, Values[1][rank]));
 			}
@@ -2530,7 +2530,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 			std::string reduction = std::to_string(Values[1][rank] / 10);
 			std::string duration = std::to_string(Values[2][rank] / 100);
 
-			if (user == nullptr) {
+			if (user != nullptr) {
 				value = std::to_string(Combat::AttackDamageEstimate(user, eventOptions, Values[0][rank]));
 			}
 			else {

@@ -153,6 +153,68 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		return md;
 	}();
+	list[MonsterID::BrownSnake] = [] {
+		MonsterData md;
+
+		md.Name = "Brown Snake";
+		md.Title = "";
+		md.Filename = "brown_snake.png";
+
+		md.IsUnique = false;
+		md.IsBoss = false;
+		md.CanFly = false;
+		md.CanSwim = false;
+		md.CanTunnel = false;
+
+		md.IsStationary = false;
+		md.ChaseTurns = 3;
+
+		md.Level = 1;
+
+		md.BaseHP = 18;
+		md.BaseMP = 3;
+		md.BaseSP = 100;
+
+		md.BaseSTR = 5;
+		md.BaseDEX = 10;
+		md.BaseMAG = 2;
+		md.BaseVIT = 3;
+		md.BaseSPI = 2;
+
+		md.BaseArmor = 5;
+		md.BaseMagicArmor = 0;
+		md.BaseEvasion = 15;
+
+		md.BaseAttackPower = 6;
+		md.BaseSpellPower = 0;
+
+		md.BaseHitChance = 700;
+		md.BaseAttackRange = 100;
+		md.BaseAttackSpeed = 150;
+		md.BaseWeaponDamageMultiplier = 1000;
+		md.AttackElement = Element::Physical;
+		md.AttackType = EquipType::Undefined;
+
+		md.BaseLineOfSight = 200;
+		md.BaseMoveCost = 75;
+
+		md.EXPDrop = 4;
+		md.GoldDrop = 0;
+		md.LootDrop = 0;
+
+		md.StatMods = {};
+		md.Abilities = {};
+
+		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
+			std::pair<AbilityID, sf::Vector2i> ai;
+			ai.second = dungeonScene->GetPlayer()->GetLocation();
+			ai.first = AbilityID::Attack;
+
+			return ai;
+		};
+
+		return md;
+	}();
 	list[MonsterID::CaveBat] = [] {
 		MonsterData md;
 

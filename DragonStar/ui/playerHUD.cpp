@@ -291,7 +291,7 @@ void PlayerHUD::Update(Actor* player, DungeonScene& dungeonScene, float secondsP
 		durationText.setOutlineColor(sf::Color(0, 0, 0, 255));
 
 		sf::Text stackText;
-		stackText.setCharacterSize(12u);
+		stackText.setCharacterSize(16u);
 		stackText.setFont(*assetManager.LoadFont(settings.Font));
 		stackText.setOutlineThickness(1.f);
 		stackText.setOutlineColor(sf::Color(0, 0, 0, 255));
@@ -307,6 +307,12 @@ void PlayerHUD::Update(Actor* player, DungeonScene& dungeonScene, float secondsP
 				displayDuration = true;
 				std::string s(convertToSec(aura.GetCurrentDuration()));
 				durationText.setString(s);
+			}
+
+			if (aura.GetCurrentStackSize() > 1) {
+				displayStacks = true;
+				std::string s = std::to_string(aura.GetCurrentStackSize());
+				stackText.setString(s);
 			}
 
 			buffBackgrounds.push_back(background);
@@ -325,6 +331,12 @@ void PlayerHUD::Update(Actor* player, DungeonScene& dungeonScene, float secondsP
 				displayDuration = true;
 				std::string s(convertToSec(aura.GetCurrentDuration()));
 				durationText.setString(s);
+			}
+
+			if (aura.GetCurrentStackSize() > 1) {
+				displayStacks = true;
+				std::string s = std::to_string(aura.GetCurrentStackSize());
+				stackText.setString(s);
 			}
 
 			debuffBackgrounds.push_back(background);
@@ -527,6 +539,9 @@ void PlayerHUD::Initialize() {
 		if (displayBuffDurationText[i]) {
 			buffDurationText[i].setPosition(localPos.x + 1.f, localPos.y + 26.f);
 		}
+		if (displayBuffStackText[i]) {
+			buffStackText[i].setPosition(localPos.x + 1.f, localPos.y + 1.f);
+		}
 	}
 
 	for (size_t i = 0; i < debuffBackgrounds.size(); i++) {
@@ -539,6 +554,9 @@ void PlayerHUD::Initialize() {
 
 		if (displayDebuffDurationText[i]) {
 			debuffDurationText[i].setPosition(localPos.x + 1.f, localPos.y + 26.f);
+		}
+		if (displayDebuffStackText[i]) {
+			debuffStackText[i].setPosition(localPos.x + 1.f, localPos.y + 1.f);
 		}
 	}
 }

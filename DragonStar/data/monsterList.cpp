@@ -153,6 +153,79 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		return md;
 	}();
+	list[MonsterID::BlueSlime] = [] {
+		MonsterData md;
+
+		md.Name = "Blue Slime";
+		md.Title = "";
+		md.Filename = "blue_slime.png";
+
+		md.IsUnique = false;
+		md.IsBoss = false;
+		md.CanFly = false;
+		md.CanSwim = false;
+		md.CanTunnel = false;
+
+		md.IsStationary = false;
+		md.ChaseTurns = 3;
+
+		md.Level = 5;
+
+		md.BaseHP = 40;
+		md.BaseMP = 6;
+		md.BaseSP = 100;
+
+		md.BaseSTR = 12;
+		md.BaseDEX = 15;
+		md.BaseMAG = 1;
+		md.BaseVIT = 14;
+		md.BaseSPI = 2;
+
+		md.BaseArmor = 0;
+		md.BaseMagicArmor = 0;
+		md.BaseEvasion = 12;
+
+		md.BaseAttackPower = 10;
+		md.BaseSpellPower = 0;
+
+		md.BaseHitChance = 700;
+		md.BaseAttackRange = 100;
+		md.BaseAttackSpeed = 225;
+		md.BaseWeaponDamageMultiplier = 1000;
+		md.AttackElement = Element::Physical;
+		md.AttackType = EquipType::Undefined;
+
+		md.BaseLineOfSight = 350;
+		md.BaseMoveCost = 125;
+
+		md.EXPDrop = 8;
+		md.GoldDrop = 9;
+		md.LootDrop = 2500;
+
+		md.StatMods = {
+			StatMod(StatModType::Resistance, 600, Element::Water),
+			StatMod(StatModType::Resistance, 300, Element::Poison)
+		};
+		md.Abilities = {
+			{AbilityID::SlimeSplash, 0}
+		};
+
+		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
+			std::pair<AbilityID, sf::Vector2i> ai;
+			ai.second = dungeonScene->GetPlayer()->GetLocation();
+			
+			if (monster->IsAbilityUsable(AbilityID::SlimeSplash)) {
+				ai.first = AbilityID::SlimeSplash;
+			}
+			else {
+				ai.first = AbilityID::Attack;
+			}
+
+			return ai;
+		};
+
+		return md;
+	}();
 	list[MonsterID::BrownSnake] = [] {
 		MonsterData md;
 

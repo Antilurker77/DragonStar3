@@ -24,6 +24,7 @@ enum class AuraID {
 	MysticBlast,
 	RendingSlash,
 	ShadowEnergy,
+	SlimeSplash,
 	Speed,
 	ThunderStrike,
 	Venom

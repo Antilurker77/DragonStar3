@@ -99,17 +99,17 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.IsStationary = true;
 		md.ChaseTurns = 3;
 
-		md.Level = 1;
+		md.Level = 3;
 
 		md.BaseHP = 12;
 		md.BaseMP = 20;
 		md.BaseSP = 100;
 
 		md.BaseSTR = 3;
-		md.BaseDEX = 2;
-		md.BaseMAG = 10;
+		md.BaseDEX = 15;
+		md.BaseMAG = 15;
 		md.BaseVIT = 6;
-		md.BaseSPI = 10;
+		md.BaseSPI = 20;
 
 		md.BaseArmor = 10;
 		md.BaseMagicArmor = 15;
@@ -176,7 +176,7 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.BaseSP = 100;
 
 		md.BaseSTR = 5;
-		md.BaseDEX = 10;
+		md.BaseDEX = 20;
 		md.BaseMAG = 2;
 		md.BaseVIT = 3;
 		md.BaseSPI = 2;
@@ -238,7 +238,7 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.BaseSP = 100;
 
 		md.BaseSTR = 5;
-		md.BaseDEX = 8;
+		md.BaseDEX = 15;
 		md.BaseMAG = 2;
 		md.BaseVIT = 2;
 		md.BaseSPI = 2;
@@ -300,7 +300,7 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.BaseSP = 100;
 
 		md.BaseSTR = 5;
-		md.BaseDEX = 6;
+		md.BaseDEX = 9;
 		md.BaseMAG = 1;
 		md.BaseVIT = 4;
 		md.BaseSPI = 1;
@@ -370,7 +370,7 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.BaseSP = 100;
 
 		md.BaseSTR = 5;
-		md.BaseDEX = 7;
+		md.BaseDEX = 10;
 		md.BaseMAG = 1;
 		md.BaseVIT = 8;
 		md.BaseSPI = 1;
@@ -435,7 +435,7 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.BaseSP = 100;
 
 		md.BaseSTR = 4;
-		md.BaseDEX = 4;
+		md.BaseDEX = 9;
 		md.BaseMAG = 5;
 		md.BaseVIT = 4;
 		md.BaseSPI = 5;
@@ -509,7 +509,7 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.BaseSP = 100;
 
 		md.BaseSTR = 5;
-		md.BaseDEX = 6;
+		md.BaseDEX = 9;
 		md.BaseMAG = 1;
 		md.BaseVIT = 3;
 		md.BaseSPI = 1;
@@ -573,14 +573,14 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.IsStationary = false;
 		md.ChaseTurns = 3;
 
-		md.Level = 1;
+		md.Level = 2;
 
 		md.BaseHP = 25;
 		md.BaseMP = 20;
 		md.BaseSP = 100;
 
-		md.BaseSTR = 4;
-		md.BaseDEX = 8;
+		md.BaseSTR = 5;
+		md.BaseDEX = 18;
 		md.BaseMAG = 1;
 		md.BaseVIT = 4;
 		md.BaseSPI = 5;
@@ -635,15 +635,15 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.IsStationary = false;
 		md.ChaseTurns = 3;
 
-		md.Level = 1;
+		md.Level = 2;
 
 		md.BaseHP = 25;
 		md.BaseMP = 40;
 		md.BaseSP = 100;
 
-		md.BaseSTR = 2;
-		md.BaseDEX = 4;
-		md.BaseMAG = 6;
+		md.BaseSTR = 5;
+		md.BaseDEX = 14;
+		md.BaseMAG = 10;
 		md.BaseVIT = 3;
 		md.BaseSPI = 5;
 
@@ -711,14 +711,14 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.IsStationary = false;
 		md.ChaseTurns = 3;
 
-		md.Level = 1;
+		md.Level = 2;
 
 		md.BaseHP = 30;
 		md.BaseMP = 10;
 		md.BaseSP = 100;
 
 		md.BaseSTR = 6;
-		md.BaseDEX = 6;
+		md.BaseDEX = 10;
 		md.BaseMAG = 2;
 		md.BaseVIT = 5;
 		md.BaseSPI = 3;
@@ -783,14 +783,14 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.IsStationary = false;
 		md.ChaseTurns = 3;
 
-		md.Level = 1;
+		md.Level = 2;
 
 		md.BaseHP = 30;
 		md.BaseMP = 20;
 		md.BaseSP = 100;
 
-		md.BaseSTR = 7;
-		md.BaseDEX = 7;
+		md.BaseSTR = 10;
+		md.BaseDEX = 14;
 		md.BaseMAG = 1;
 		md.BaseVIT = 6;
 		md.BaseSPI = 5;
@@ -847,15 +847,15 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.IsStationary = false;
 		md.ChaseTurns = 3;
 
-		md.Level = 2;
+		md.Level = 3;
 
 		md.BaseHP = 46;
 		md.BaseMP = 8;
 		md.BaseSP = 100;
 
-		md.BaseSTR = 8;
-		md.BaseDEX = 6;
-		md.BaseMAG = 8;
+		md.BaseSTR = 12;
+		md.BaseDEX = 16;
+		md.BaseMAG = 12;
 		md.BaseVIT = 8;
 		md.BaseSPI = 4;
 
@@ -933,7 +933,7 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.BaseSP = 100;
 
 		md.BaseSTR = 3;
-		md.BaseDEX = 3;
+		md.BaseDEX = 6;
 		md.BaseMAG = 1;
 		md.BaseVIT = 2;
 		md.BaseSPI = 1;
@@ -1052,14 +1052,14 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.IsStationary = false;
 		md.ChaseTurns = 5;
 
-		md.Level = 1;
+		md.Level = 2;
 
 		md.BaseHP = 200;
 		md.BaseMP = 10;
 		md.BaseSP = 100;
 
-		md.BaseSTR = 8;
-		md.BaseDEX = 12;
+		md.BaseSTR = 9;
+		md.BaseDEX = 14;
 		md.BaseMAG = 8;
 		md.BaseVIT = 10;
 		md.BaseSPI = 10;
@@ -1130,15 +1130,15 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.IsStationary = false;
 		md.ChaseTurns = 5;
 
-		md.Level = 3;
+		md.Level = 5;
 
 		md.BaseHP = 300;
-		md.BaseMP = 80;
+		md.BaseMP = 120;
 		md.BaseSP = 100;
 
 		md.BaseSTR = 8;
-		md.BaseDEX = 12;
-		md.BaseMAG = 15;
+		md.BaseDEX = 15;
+		md.BaseMAG = 16;
 		md.BaseVIT = 10;
 		md.BaseSPI = 15;
 

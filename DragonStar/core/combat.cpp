@@ -150,7 +150,9 @@ static int64_t applyArmor(Actor* user, Actor* target, EventOptions& eventOptions
 static int64_t applyResistance(Actor* user, Actor* target, EventOptions& eventOptions, int64_t damage) {
 	int64_t result = damage;
 	int resistance = target->GetResistance(eventOptions, true);
-	resistance = resistance * (1000 - user->GetResistancePen(eventOptions, true)) / 1000;
+	if (resistance > 0) { // stops resistance pen from applying to negative resistance values
+		resistance = resistance * (1000 - std::min(1000, user->GetResistancePen(eventOptions, true) + eventOptions.BonusResistancePen)) / 1000;
+	}
 	result = result * (1000 - resistance) / 1000;
 	return result;
 }

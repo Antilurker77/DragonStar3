@@ -46,13 +46,17 @@ struct EventOptions {
 
 	int BaseHitChance = 0;
 	int BonusArmorPen = 0;
-	int BonusResistencePen = 0;
+	int BonusResistancePen = 0;
 	int BonusCritChance = 0;
 	int BonusCritPower = 0;
 	int BonusDoubleStrikeChance = 0;
 	int BonusHPLeech = 0;
 	int BonusMPLeech = 0;
 	int BonusSPLeech = 0;
+
+	int SnapshotDamage = 0;
+	int SnapshotCritChance = 0;
+	int SnapshotResistancePen = 0;
 };
 
 // Struct that stores the results of a combat event.

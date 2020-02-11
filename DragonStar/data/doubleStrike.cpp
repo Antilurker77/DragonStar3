@@ -32,7 +32,7 @@ static EventOptions initDoubleStrikeEO() {
 
 	eo.BaseHitChance = -1;
 	eo.BonusArmorPen = 0;
-	eo.BonusResistencePen = 0;
+	eo.BonusResistancePen = 0;
 	eo.BonusCritChance = 0;
 	eo.BonusCritPower = 0;
 	eo.BonusDoubleStrikeChance = 0;

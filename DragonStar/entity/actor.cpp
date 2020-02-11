@@ -244,25 +244,25 @@ bool Actor::HasAura(AuraID id) {
 	return false;
 }
 
-void Actor::AddAura(AuraID auraID, int rank, Actor* source) {
+void Actor::AddAura(AuraID auraID, int rank, int ssDamage, int ssCritChance, int ssResPen, Actor* source) {
 	size_t sourceIndex = source->GetIndex();
 	for (size_t i = 0; i < auras.size(); i++) {
 		if (auras[i].GetAuraID() == auraID) {
 			// Unique Aura: Refresh duration and change ownership.
 			if (auras[i].IsUnique()) {
-				auras[i].Refresh(source, sourceIndex, rank);
+				auras[i].Refresh(source, sourceIndex, rank, ssDamage, ssCritChance, ssResPen);
 				return;
 			}
 			// Unique By Actor Aura: Refresh duration if source actors match.
 			else if (auras[i].IsUniqueByActor() && auras[i].GetSourceIndex() == sourceIndex) {
-				auras[i].Refresh(source, sourceIndex, rank);
+				auras[i].Refresh(source, sourceIndex, rank, ssDamage, ssCritChance, ssResPen);
 				return;
 			}
 		}
 	}
 
 	// Did not match existing auras, safe to add.
-	Aura aura(auraID, rank, source, sourceIndex);
+	Aura aura(auraID, rank, ssDamage, ssCritChance, ssResPen, source, sourceIndex);
 	auras.push_back(aura);
 
 	actorHUD.UpdateElements(*this);
@@ -880,6 +880,23 @@ int Actor::GetEXPBoost() {
 	return result;
 }
 
+int Actor::GetSnapshotDamage(EventOptions& eventOptions, bool consumeBuffs) {
+	int result = getStat(1000, StatModType::SnapshotDamage, eventOptions, true, consumeBuffs);
+	result = std::max(0, result);
+	return result;
+}
+
+int Actor::GetSnapshotCritChance(EventOptions& eventOptions, bool consumeBuffs) {
+	int result = getStat(0, StatModType::SnapshotCritChance, eventOptions, false, consumeBuffs);
+	return result;
+}
+
+int Actor::GetSnapshotResistancePen(EventOptions& eventOptions, bool consumeBuffs) {
+	int result = getStat(0, StatModType::SnapshotResistancePen, eventOptions, false, consumeBuffs);
+	result = std::max(0, result);
+	return result;
+}
+
 bool Actor::IsPlayer() {
 	return isPlayer;
 }
@@ -1013,6 +1030,39 @@ std::vector<int> Actor::GetAuraStacks() {
 
 	for (auto& a : auras) {
 		result.push_back(a.GetCurrentStackSize());
+	}
+
+	return result;
+}
+
+std::vector<int> Actor::GetAuraSnapshotDamage() {
+	std::vector<int> result;
+	result.reserve(auras.size());
+
+	for (auto& a : auras) {
+		result.push_back(a.GetSnapshotDamage());
+	}
+
+	return result;
+}
+
+std::vector<int> Actor::GetAuraSnapshotCritChance() {
+	std::vector<int> result;
+	result.reserve(auras.size());
+
+	for (auto& a : auras) {
+		result.push_back(a.GetSnapshotCritChance());
+	}
+
+	return result;
+}
+
+std::vector<int> Actor::GetAuraSnapshotResistancePen() {
+	std::vector<int> result;
+	result.reserve(auras.size());
+
+	for (auto& a : auras) {
+		result.push_back(a.GetSnapshotResistancePen());
 	}
 
 	return result;

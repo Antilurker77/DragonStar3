@@ -71,6 +71,9 @@ struct ActorSave {
 	std::vector<int> AuraDurations;
 	std::vector<int> AuraNextTicks;
 	std::vector<int> AuraStacks;
+	std::vector<int> AuraSSDamage;
+	std::vector<int> AuraSSCritChance;
+	std::vector<int> AuraSSResPen;
 	std::vector<size_t> AuraSource;
 
 	template<class Archive>
@@ -91,6 +94,9 @@ struct ActorSave {
 			AuraDurations,
 			AuraNextTicks,
 			AuraStacks,
+			AuraSSDamage,
+			AuraSSCritChance,
+			AuraSSResPen,
 			AuraSource
 		);
 	}

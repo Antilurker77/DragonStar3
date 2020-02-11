@@ -90,7 +90,7 @@ Player::Player(ActorSave& actorSave, PlayerSave& playerSave) {
 	auras.clear();
 	auras.reserve(actorSave.AuraIDs.size());
 	for (size_t i = 0; i < actorSave.AuraIDs.size(); i++) {
-		Aura aura(static_cast<AuraID>(actorSave.AuraIDs[i]), actorSave.AuraRanks[i], actorSave.AuraDurations[i], actorSave.AuraNextTicks[i], actorSave.AuraStacks[i], actorSave.AuraSource[i]);
+		Aura aura(static_cast<AuraID>(actorSave.AuraIDs[i]), actorSave.AuraRanks[i], actorSave.AuraDurations[i], actorSave.AuraNextTicks[i], actorSave.AuraStacks[i], actorSave.AuraSSDamage[i], actorSave.AuraSSCritChance[i], actorSave.AuraSSResPen[i], actorSave.AuraSource[i]);
 		auras.push_back(aura);
 	}
 }

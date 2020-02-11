@@ -86,5 +86,8 @@ enum class StatModType {
 	MovementSpeed,
 	SightRadius,
 	GoldFind,
-	EXPBoost
+	EXPBoost,
+	SnapshotDamage,
+	SnapshotCritChance,
+	SnapshotResistancePen,
 };

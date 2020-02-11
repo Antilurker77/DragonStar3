@@ -23,8 +23,8 @@ enum class EventType;
 class Aura {
 public:
 	Aura();
-	Aura(AuraID id, int rank, Actor* user, size_t userIndex);
-	Aura(AuraID, int rank, int duration, int nextTick, int stacks, size_t userIndex);
+	Aura(AuraID id, int rank, int ssDamage, int ssCritChance, int ssResPen, Actor* user, size_t userIndex);
+	Aura(AuraID, int rank, int duration, int nextTick, int stacks, int ssDamage, int ssCritChance, int ssResPen, size_t userIndex);
 
 	// Sets the ID of this aura.
 	void Initialize(AuraID id);
@@ -39,7 +39,7 @@ public:
 	void OnEvent(EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount);
 
 	// Adds a stack if possible, and refreshes the aura to it's max duration.
-	void Refresh(Actor* newSource, size_t newSourceIndex, int rank);
+	void Refresh(Actor* newSource, size_t newSourceIndex, int rank, int ssDamage, int ssCritChance, int ssResPen);
 
 	// Removes a stack of this aura.
 	void RemoveStack();
@@ -58,6 +58,15 @@ public:
 
 	// Returns the number of stacks this aura has.
 	int GetCurrentStackSize();
+
+	// Returns the current snapshot damage value.
+	int GetSnapshotDamage();
+
+	// Returns the current snapshot crit chance value.
+	int GetSnapshotCritChance();
+
+	// Returns the current snapshot resistance penetration value.
+	int GetSnapshotResistancePen();
 
 	// Returns true if the aura's stack count is 0.
 	bool IsExpired(Actor* owner);
@@ -115,4 +124,8 @@ private:
 	int nextTick = 0;
 	int currentStacks = 0;
 	bool wasUsed = false;
+
+	int snapshotDamage = 1000;
+	int snapshotCritChance = 0;
+	int snapshotResistancePen = 0;
 };

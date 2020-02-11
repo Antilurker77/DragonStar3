@@ -13,20 +13,26 @@ Aura::Aura() {
 
 }
 
-Aura::Aura(AuraID id, int rank, Actor* user, size_t userIndex) {
+Aura::Aura(AuraID id, int rank, int ssDamage, int ssCritChance, int ssResPen, Actor* user, size_t userIndex) {
 	currentRank = rank;
 	source = user;
 	sourceIndex = userIndex;
+	snapshotDamage = ssDamage;
+	snapshotCritChance = ssCritChance;
+	snapshotResistancePen = ssResPen;
 	Initialize(id);
 }
 
-Aura::Aura(AuraID id, int rank, int duration, int nextTick, int stacks, size_t userIndex) {
+Aura::Aura(AuraID id, int rank, int duration, int nextTick, int stacks, int ssDamage, int ssCritChance, int ssResPen, size_t userIndex) {
 	currentRank = rank;
 	sourceIndex = userIndex;
 	Initialize(id);
 	currentDuration = duration;
 	currentStacks = stacks;
 	this->nextTick = nextTick;
+	snapshotDamage = ssDamage;
+	snapshotCritChance = ssCritChance;
+	snapshotResistancePen = ssResPen;
 }
 
 void Aura::Initialize(AuraID id) {
@@ -88,10 +94,13 @@ void Aura::OnEvent(EventType eventType, Actor* user, Actor* target, EventOptions
 	}
 }
 
-void Aura::Refresh(Actor* newSource, size_t newSourceIndex, int rank) {
+void Aura::Refresh(Actor* newSource, size_t newSourceIndex, int rank, int ssDamage, int ssCritChance, int ssResPen) {
 	source = newSource;
 	sourceIndex = newSourceIndex;
 	currentRank = rank;
+	snapshotDamage = ssDamage;
+	snapshotCritChance = ssCritChance;
+	snapshotResistancePen = ssResPen;
 
 	currentDuration += auraData->BaseDuration[currentRank];
 	int maxDuration = auraData->MaxDuration[currentRank];
@@ -175,6 +184,18 @@ int Aura::GetNextTick() {
 
 int Aura::GetCurrentStackSize() {
 	return currentStacks;
+}
+
+int Aura::GetSnapshotDamage() {
+	return snapshotDamage;
+}
+
+int Aura::GetSnapshotCritChance() {
+	return snapshotCritChance;
+}
+
+int Aura::GetSnapshotResistancePen() {
+	return snapshotResistancePen;
 }
 
 bool Aura::IsExpired(Actor* owner) {
@@ -263,13 +284,17 @@ EventOptions Aura::getEventOptions() {
 
 	eo.BaseHitChance = 1000;
 	eo.BonusArmorPen = auraData->BonusArmorPen[currentRank];
-	eo.BonusResistencePen = auraData->BonusResistancePen[currentRank];
+	eo.BonusResistancePen = auraData->BonusResistancePen[currentRank];
 	eo.BonusCritChance = auraData->BonusCritChance[currentRank];
 	eo.BonusCritPower = auraData->BonusCritPower[currentRank];
 	eo.BonusDoubleStrikeChance = auraData->BonusDoubleStrikeChance[currentRank];
 	eo.BonusHPLeech = auraData->BonusHPLeech[currentRank];
 	eo.BonusMPLeech = auraData->BonusMPLeech[currentRank];
 	eo.BonusSPLeech = auraData->BonusSPLeech[currentRank];
+
+	eo.SnapshotDamage = snapshotDamage;
+	eo.SnapshotCritChance = snapshotCritChance;
+	eo.SnapshotResistancePen = snapshotResistancePen;
 
 	return eo;
 }

@@ -379,7 +379,7 @@ EventOptions Ability::getEventOptions() {
 
 		eventOptions.BaseHitChance = abilityData->HitChance[currentRank];
 		eventOptions.BonusArmorPen = abilityData->BonusArmorPen[currentRank];
-		eventOptions.BonusResistencePen = abilityData->BonusResistancePen[currentRank];
+		eventOptions.BonusResistancePen = abilityData->BonusResistancePen[currentRank];
 		eventOptions.BonusCritChance = abilityData->BonusCritChance[currentRank];
 		eventOptions.BonusCritPower = abilityData->BonusCritPower[currentRank];
 		eventOptions.BonusDoubleStrikeChance = abilityData->BonusDoubleStrikeChance[currentRank];

@@ -204,7 +204,8 @@ static std::unordered_map<ItemID, ItemData> initList() {
 		itd.TeachableAbilities = {
 			AbilityID::SlimeSplash,
 			AbilityID::CobraBite,
-			AbilityID::Ignite
+			AbilityID::Ignite,
+			AbilityID::FlameStrike
 		};
 
 		itd.ImplicitStatMods = {};
@@ -1491,7 +1492,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 				if (std::find(eventOptions.Categories.begin(), eventOptions.Categories.end(), Category::Direct) != eventOptions.Categories.end()) {
 					if (std::find(eventOptions.Categories.begin(), eventOptions.Categories.end(), Category::Spell) != eventOptions.Categories.end()) {
 						if (eventResult.DidCrit) {
-							Combat::AddAuraStack(user, user, AuraID::ArcanistGloves, 0);
+							Combat::AddAuraStack(user, user, eventOptions, AuraID::ArcanistGloves, 0);
 						}
 					}
 				}

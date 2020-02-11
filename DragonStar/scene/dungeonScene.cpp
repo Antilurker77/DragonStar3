@@ -1127,6 +1127,9 @@ void DungeonScene::saveGame() {
 		actorSave.AuraNextTicks = actor->GetAuraNextTicks();
 		actorSave.AuraStacks = actor->GetAuraStacks();
 		actorSave.AuraSource = actor->GetAuraSources();
+		actorSave.AuraSSDamage = actor->GetAuraSnapshotDamage();
+		actorSave.AuraSSCritChance = actor->GetAuraSnapshotCritChance();
+		actorSave.AuraSSResPen = actor->GetAuraSnapshotResistancePen();
 		actorSave.Flags = actor->GetFlags();
 
 		if (!actor->IsPlayer()) {

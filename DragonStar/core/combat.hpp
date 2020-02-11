@@ -54,7 +54,7 @@ struct EventOptions {
 	int BonusMPLeech = 0;
 	int BonusSPLeech = 0;
 
-	int SnapshotDamage = 0;
+	int SnapshotDamage = 1000;
 	int SnapshotCritChance = 0;
 	int SnapshotResistancePen = 0;
 };
@@ -97,7 +97,7 @@ namespace Combat {
 	EventResult FixedHeal(Actor* user, Actor* target, EventOptions& eventOptions, int amount, AttributeType healingType);
 
 	// Adds a stack of the specified aura to the target.
-	void AddAuraStack(Actor* user, Actor* target, AuraID id, int rank);
+	void AddAuraStack(Actor* user, Actor* target, EventOptions& eventOptions, AuraID id, int rank);
 
 	// Removes a stack of the specified aura, if possible.
 	void RemoveAuraStack(Actor* target, AuraID id);

@@ -56,7 +56,7 @@ static bool blockRoll(Actor* user, Actor* target, EventOptions& eventOptions) {
 
 // Crit roll.
 static bool critRoll(Actor* user, Actor* target, EventOptions& eventOptions) {
-	int critChance = eventOptions.BonusCritChance + user->GetCritChance(eventOptions, true) + target->GetCritProtection(eventOptions, true);
+	int critChance = eventOptions.BonusCritChance + eventOptions.SnapshotCritChance + user->GetCritChance(eventOptions, true) + target->GetCritProtection(eventOptions, true);
 
 	if (critChance > 0) {
 		int roll = Random::RandomInt(1, 1000);
@@ -103,6 +103,7 @@ static int64_t applyOnHitDamage(Actor* user, Actor* target, EventOptions& eventO
 static int64_t applyDamageDealt(Actor* user, EventOptions& eventOptions, int64_t damage, bool consumeBuffs) {
 	int64_t result = damage;
 	result = result * user->GetDamage(eventOptions, consumeBuffs) / 1000;
+	result = result * eventOptions.SnapshotDamage / 1000;
 	return result;
 }
 
@@ -150,8 +151,9 @@ static int64_t applyArmor(Actor* user, Actor* target, EventOptions& eventOptions
 static int64_t applyResistance(Actor* user, Actor* target, EventOptions& eventOptions, int64_t damage) {
 	int64_t result = damage;
 	int resistance = target->GetResistance(eventOptions, true);
+	int resistancePen = std::min(1000, user->GetResistancePen(eventOptions, true) + eventOptions.BonusResistancePen + eventOptions.SnapshotResistancePen);
 	if (resistance > 0) { // stops resistance pen from applying to negative resistance values
-		resistance = resistance * (1000 - std::min(1000, user->GetResistancePen(eventOptions, true) + eventOptions.BonusResistancePen)) / 1000;
+		resistance = resistance * (1000 - resistancePen) / 1000;
 	}
 	result = result * (1000 - resistance) / 1000;
 	return result;
@@ -700,8 +702,8 @@ EventResult Combat::FixedHeal(Actor* user, Actor* target, EventOptions& eventOpt
 	return result;
 }
 
-void Combat::AddAuraStack(Actor* user, Actor* target, AuraID id, int rank) {
-	target->AddAura(id, rank, user);
+void Combat::AddAuraStack(Actor* user, Actor* target, EventOptions& eventOptions, AuraID id, int rank) {
+	target->AddAura(id, rank, user->GetSnapshotDamage(eventOptions, true), user->GetSnapshotCritChance(eventOptions, true), user->GetSnapshotResistancePen(eventOptions, true), user);
 }
 
 void Combat::RemoveAuraStack(Actor* target, AuraID id) {

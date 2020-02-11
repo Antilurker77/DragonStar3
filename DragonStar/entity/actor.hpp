@@ -94,7 +94,7 @@ public:
 
 	// Adds an aura to this actor. Will increase the stack of an existing aura if possible. Will add to duration if an aura already exists. 
 	// Unique auras will be overwritten if the source is different.
-	void AddAura(AuraID auraID, int rank, Actor* source);
+	void AddAura(AuraID auraID, int rank, int ssDamage, int ssCritChance, int ssResPen, Actor* source);
 
 	// Sets the pointer reference for the actor's auras.
 	void SetAuraOwnerPointer();
@@ -314,6 +314,15 @@ public:
 	// Returns the EXP multiplier for the current actor. 1 EXP Boost = 0.1% EXP Boost
 	int GetEXPBoost();
 
+	// Returns the aura snapshot damage bonus. 1 Damage = 0.1% Damage
+	int GetSnapshotDamage(EventOptions& eventOptions, bool consumeBuffs);
+
+	// Returns the aura snapshot critical strike chance bonus. 1 Crit Chance = 0.1% Crit Chance
+	int GetSnapshotCritChance(EventOptions& eventOptions, bool consumeBuffs);
+
+	// Returns the aura snapshot resistance penetration bonus. 1 Resistance Pen = 0.1% Resistance Pen
+	int GetSnapshotResistancePen(EventOptions& eventOptions, bool consumeBuffs);
+
 	// Returns the base hit chance of the actor's weapon. Unarmed attacks have a hit chance of 500 (50%), monsters have their's set in their data.
 	virtual int GetWeaponHitChance() = 0;
 
@@ -378,6 +387,15 @@ public:
 
 	// Returns the aura stacks.
 	std::vector<int> GetAuraStacks();
+
+	// Returns the aura snapshot damage values;
+	std::vector<int> GetAuraSnapshotDamage();
+
+	// Returns the aura snapshot crit chance values;
+	std::vector<int> GetAuraSnapshotCritChance();
+
+	// Returns the aura snapshot resistance penetration values;
+	std::vector<int> GetAuraSnapshotResistancePen();
 
 	// Returns the aura source indexes.
 	std::vector<size_t> GetAuraSources();

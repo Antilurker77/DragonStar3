@@ -481,7 +481,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 			if (!targets.empty()) {
 				EventResult result = Combat::SpellDamage(user, targets[0], eventOptions, Values[0][rank]);
 				if (result.DidHit) {
-					Combat::AddAuraStack(user, targets[0], AuraID::Boulder, rank);
+					Combat::AddAuraStack(user, targets[0], eventOptions, AuraID::Boulder, rank);
 				}
 			}
 		};
@@ -791,7 +791,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 			if (!targets.empty()) {
 				auto result = Combat::SkillDamage(user, targets[0], eventOptions, Values[0][rank]);
 				if (result.DidHit) {
-					Combat::AddAuraStack(user, targets[0], AuraID::CobraBite, rank);
+					Combat::AddAuraStack(user, targets[0], eventOptions, AuraID::CobraBite, rank);
 				}
 			}
 		};
@@ -894,7 +894,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 			if (!targets.empty()) {
 				EventResult result = Combat::SkillDamage(user, targets[0], eventOptions, Values[0][rank]);
 				if (result.DidHit) {
-					Combat::AddAuraStack(user, targets[0], AuraID::CrushArmor, rank);
+					Combat::AddAuraStack(user, targets[0], eventOptions, AuraID::CrushArmor, rank);
 				}
 			}
 		};
@@ -978,7 +978,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		};
 		ad.Execute = [Values = ad.Values](Actor* user, std::vector<Actor*>& targets, sf::Vector2i cursor, std::vector<sf::Vector2i>& targetArea, EventOptions& eventOptions, int rank) {
 			if (!targets.empty()) {
-				Combat::AddAuraStack(user, targets[0], AuraID::Disarm, rank);
+				Combat::AddAuraStack(user, targets[0], eventOptions, AuraID::Disarm, rank);
 			}
 		};
 		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
@@ -1275,7 +1275,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 			return desc;
 		};
 		ad.Execute = [Values = ad.Values](Actor* user, std::vector<Actor*>& targets, sf::Vector2i cursor, std::vector<sf::Vector2i>& targetArea, EventOptions& eventOptions, int rank) {
-			Combat::AddAuraStack(user, user, AuraID::ElementalEnergy, rank);
+			Combat::AddAuraStack(user, user, eventOptions, AuraID::ElementalEnergy, rank);
 		};
 		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 
@@ -1562,7 +1562,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		ad.Execute = [Values = ad.Values](Actor* user, std::vector<Actor*>& targets, sf::Vector2i cursor, std::vector<sf::Vector2i>& targetArea, EventOptions& eventOptions, int rank) {
 			if (!targets.empty()) {
 				Combat::SkillDamage(user, targets[0], eventOptions, Values[0][rank]);
-				Combat::AddAuraStack(user, user, AuraID::FlameStrike, rank);
+				Combat::AddAuraStack(user, user, eventOptions, AuraID::FlameStrike, rank);
 			}
 		};
 		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
@@ -1751,7 +1751,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 			if (!targets.empty()) {
 				EventResult result = Combat::SpellDamage(user, targets[0], eventOptions, Values[0][rank]);
 				if (result.DidHit) {
-					Combat::AddAuraStack(user, targets[0], AuraID::Chilled, rank);
+					Combat::AddAuraStack(user, targets[0], eventOptions, AuraID::Chilled, rank);
 				}
 			}
 		};
@@ -1846,7 +1846,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		};
 		ad.Execute = [Values = ad.Values](Actor* user, std::vector<Actor*>& targets, sf::Vector2i cursor, std::vector<sf::Vector2i>& targetArea, EventOptions& eventOptions, int rank) {
 			if (!targets.empty()) {
-				Combat::AddAuraStack(user, targets[0], AuraID::Ignite, rank);
+				Combat::AddAuraStack(user, targets[0], eventOptions, AuraID::Ignite, rank);
 			}
 		};
 		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
@@ -2143,7 +2143,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 			if (!targets.empty()) {
 				auto result = Combat::SpellDamage(user, targets[0], eventOptions, Values[0][rank]);
 				if (result.DidHit) {
-					Combat::AddAuraStack(user, targets[0], AuraID::MysticBlast, rank);
+					Combat::AddAuraStack(user, targets[0], eventOptions, AuraID::MysticBlast, rank);
 				}
 			}
 		};
@@ -2353,7 +2353,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 			if (!targets.empty()) {
 				EventResult result = Combat::SkillDamage(user, targets[0], eventOptions, Values[0][rank]);
 				if (result.DidHit) {
-					Combat::AddAuraStack(user, targets[0], AuraID::RendingSlash, rank);
+					Combat::AddAuraStack(user, targets[0], eventOptions, AuraID::RendingSlash, rank);
 				}
 			}
 		};
@@ -2446,7 +2446,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		ad.Execute = [Values = ad.Values](Actor* user, std::vector<Actor*>& targets, sf::Vector2i cursor, std::vector<sf::Vector2i>& targetArea, EventOptions& eventOptions, int rank) {
 			messageLog.AddMessage(user->GetName() + " casts Shadow Energy.");
 			if (!targets.empty()) {
-				Combat::AddAuraStack(user, targets[0], AuraID::ShadowEnergy, rank);
+				Combat::AddAuraStack(user, targets[0], eventOptions, AuraID::ShadowEnergy, rank);
 			}
 		};
 		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
@@ -2638,7 +2638,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 			if (!targets.empty()) {
 				auto result = Combat::SkillDamage(user, targets[0], eventOptions, Values[0][rank]);
 				if (result.DidHit) {
-					Combat::AddAuraStack(user, targets[0], AuraID::SlimeSplash, rank);
+					Combat::AddAuraStack(user, targets[0], eventOptions, AuraID::SlimeSplash, rank);
 				}
 			}
 		};
@@ -2839,7 +2839,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 			if (!targets.empty()) {
 				EventResult result = Combat::SkillDamage(user, targets[0], eventOptions, Values[0][rank]);
 				if (result.DidHit) {
-					Combat::AddAuraStack(user, targets[0], AuraID::ThunderStrike, rank);
+					Combat::AddAuraStack(user, targets[0], eventOptions, AuraID::ThunderStrike, rank);
 				}
 			}
 		};
@@ -3033,23 +3033,23 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 			std::string dotDuration;
 
 			if (user == nullptr) {
-				value = "#damage " + std::to_string(Values[0][rank] / 10) + "% Spell Power#default ";
-				dotValue = "#damage " + std::to_string(Values[1][rank] / 10) + "% Spell Power#default ";
+				value = "#damage " + std::to_string(Values[0][rank] / 10) + "% Spell Power #default ";
+				dotValue = "#damage " + std::to_string(Values[1][rank] / 10) + "% Spell Power #default ";
 			}
 			else {
-				value = "#damage " + std::to_string(Combat::SpellDamageEstimate(user, eventOptions, Values[0][rank])) + "#default ";
-				dotValue = "#damage " + std::to_string(Combat::SpellDamageEstimate(user, eventOptions, Values[1][rank])) + "#default ";
+				value = "#damage " + std::to_string(Combat::SpellDamageEstimate(user, eventOptions, Values[0][rank])) + " #default ";
+				dotValue = "#damage " + std::to_string(Combat::SpellDamageEstimate(user, eventOptions, Values[1][rank])) + " #default ";
 			}
 			dotDuration = std::to_string(Values[2][rank] / 100);
 
-			desc = "Fling venom at your target, dealing " + value + " poison damage and an additional " + dotValue + " poison damage every 1s for " + dotDuration + "s.";
+			desc = "Fling venom at your target, dealing " + value + "poison damage and an additional " + dotValue + " poison damage every 1s for " + dotDuration + "s.";
 			return desc;
 		};
 		ad.Execute = [Values = ad.Values](Actor* user, std::vector<Actor*>& targets, sf::Vector2i cursor, std::vector<sf::Vector2i>& targetArea, EventOptions& eventOptions, int rank) {
 			if (!targets.empty()) {
 				auto result = Combat::SpellDamage(user, targets[0], eventOptions, Values[0][rank]);
 				if (result.DidHit) {
-					Combat::AddAuraStack(user, targets[0], AuraID::Venom, rank);
+					Combat::AddAuraStack(user, targets[0], eventOptions, AuraID::Venom, rank);
 				}
 			}
 		};
@@ -3414,7 +3414,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		};
 		ad.Execute = [Values = ad.Values](Actor* user, std::vector<Actor*>& targets, sf::Vector2i cursor, std::vector<sf::Vector2i>& targetArea, EventOptions& eventOptions, int rank) {
 			if (!targets.empty()) {
-				Combat::AddAuraStack(user, targets[0], AuraID::Speed, rank);
+				Combat::AddAuraStack(user, targets[0], eventOptions, AuraID::Speed, rank);
 			}
 		};
 		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
@@ -3502,7 +3502,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		ad.Execute = [Values = ad.Values](Actor* user, std::vector<Actor*>& targets, sf::Vector2i cursor, std::vector<sf::Vector2i>& targetArea, EventOptions& eventOptions, int rank) {
 			messageLog.AddMessage(user->GetName() + " begins to rest.");
 			if (!targets.empty()) {
-				Combat::AddAuraStack(user, targets[0], AuraID::Resting, rank);
+				Combat::AddAuraStack(user, targets[0], eventOptions, AuraID::Resting, rank);
 			}
 		};
 		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {

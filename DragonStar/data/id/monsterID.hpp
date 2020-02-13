@@ -27,6 +27,7 @@ enum class MonsterID {
 	KoboldMiner,
 	KoboldScout,
 	LesserFlameblade,
+	Wolf,
 	WorkerAnt,
 	Worm,
 

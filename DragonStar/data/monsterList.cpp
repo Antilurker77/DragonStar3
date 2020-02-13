@@ -1053,6 +1053,77 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		return md;
 	}();
+	list[MonsterID::Wolf] = [] {
+		MonsterData md;
+
+		md.Name = "Wolf";
+		md.Title = "";
+		md.Filename = "wolf.png";
+
+		md.IsUnique = false;
+		md.IsBoss = false;
+		md.CanFly = false;
+		md.CanSwim = false;
+		md.CanTunnel = false;
+
+		md.IsStationary = false;
+		md.ChaseTurns = 3;
+
+		md.Level = 5;
+
+		md.BaseHP = 42;
+		md.BaseMP = 5;
+		md.BaseSP = 100;
+
+		md.BaseSTR = 14;
+		md.BaseDEX = 21;
+		md.BaseMAG = 5;
+		md.BaseVIT = 15;
+		md.BaseSPI = 5;
+
+		md.BaseArmor = 12;
+		md.BaseMagicArmor = 0;
+		md.BaseEvasion = 16;
+
+		md.BaseAttackPower = 10;
+		md.BaseSpellPower = 0;
+
+		md.BaseHitChance = 700;
+		md.BaseAttackRange = 100;
+		md.BaseAttackSpeed = 180;
+		md.BaseWeaponDamageMultiplier = 1000;
+		md.AttackElement = Element::Physical;
+		md.AttackType = EquipType::Undefined;
+
+		md.BaseLineOfSight = 250;
+		md.BaseMoveCost = 80;
+
+		md.EXPDrop = 8;
+		md.GoldDrop = 0;
+		md.LootDrop = 0;
+
+		md.StatMods = {};
+		md.Abilities = {
+			{AbilityID::Bite, 0}
+		};
+
+		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
+			std::pair<AbilityID, sf::Vector2i> ai;
+			ai.second = dungeonScene->GetPlayer()->GetLocation();
+
+			// Has a 50% chance to use Bite.
+			if (monster->IsAbilityUsable(AbilityID::Bite) && Random::RandomInt(1, 100) <= 50) {
+				ai.first = AbilityID::Bite;
+			}
+			else {
+				ai.first = AbilityID::Attack;
+			}
+
+			return ai;
+		};
+
+		return md;
+	}();
 	list[MonsterID::WorkerAnt] = [] {
 		MonsterData md;
 

@@ -238,7 +238,7 @@ std::string DataString::StatModString(StatMod& statMod) {
 	if (std::find(percentMods.begin(), percentMods.end(), statMod.statModType) != percentMods.end()) {
 		result += std::to_string(statMod.value / 10) + "." + std::to_string(statMod.value % 10) + "% ";
 	}
-	else if (statMod.statModType == StatModType::SightRadius) {
+	else if (statMod.statModType == StatModType::SightRadius || statMod.statModType == StatModType::Range) {
 		result += std::to_string(statMod.value / 100) + "." + std::to_string(statMod.value % 100) + " ";
 	}
 	else {

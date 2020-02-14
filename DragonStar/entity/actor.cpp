@@ -19,6 +19,22 @@ void Actor::DrawHUD(sf::RenderTarget& window, float timeRatio) {
 	}
 }
 
+void Actor::UpdateFCT(float secondsPerUpdate) {
+	fctManager.Update(GetLocation(), secondsPerUpdate);
+}
+
+void Actor::DrawFCT(sf::RenderTarget& window, float timeRatio) {
+	fctManager.Draw(window, timeRatio);
+}
+
+void Actor::ClearFCT() {
+	fctManager.Clear();
+}
+
+void Actor::AddAuraFCT(std::string name, bool isBuff, bool isExpired) {
+	fctManager.AddAuraUnit(name, isBuff, isExpired);
+}
+
 void Actor::SetDungeonScene(DungeonScene* ds) {
 	dungeonScene = ds;
 }
@@ -151,7 +167,7 @@ void Actor::UseAbility(DungeonScene* dungeonScene, AbilityID id, sf::Vector2i cu
 	actorHUD.UpdateElements(*this);
 }
 
-int Actor::TakeDamage(int damage) {
+int Actor::TakeDamage(int damage, bool isCrit, std::vector<Element>& elements) {
 	int result = damage;
 
 	if (result > currentHP) {
@@ -160,10 +176,12 @@ int Actor::TakeDamage(int damage) {
 
 	currentHP -= result;
 	actorHUD.UpdateElements(*this);
+	fctManager.AddValueUnit(result, isCrit, elements, false, AttributeType::HP);
+
 	return result;
 }
 
-int Actor::Heal(int amount, AttributeType attribute) {
+int Actor::Heal(int amount, bool isCrit, AttributeType attribute) {
 	int result = amount;
 
 	switch (attribute) {
@@ -195,6 +213,7 @@ int Actor::Heal(int amount, AttributeType attribute) {
 	}
 
 	actorHUD.UpdateElements(*this);
+	fctManager.AddValueUnit(result, isCrit, {}, true, attribute);
 	return result;
 }
 
@@ -251,11 +270,13 @@ void Actor::AddAura(AuraID auraID, int rank, int ssDamage, int ssCritChance, int
 			// Unique Aura: Refresh duration and change ownership.
 			if (auras[i].IsUnique()) {
 				auras[i].Refresh(source, sourceIndex, rank, ssDamage, ssCritChance, ssResPen);
+				fctManager.AddAuraUnit(auras[i].GetName(), auras[i].IsBuff(), false);
 				return;
 			}
 			// Unique By Actor Aura: Refresh duration if source actors match.
 			else if (auras[i].IsUniqueByActor() && auras[i].GetSourceIndex() == sourceIndex) {
 				auras[i].Refresh(source, sourceIndex, rank, ssDamage, ssCritChance, ssResPen);
+				fctManager.AddAuraUnit(auras[i].GetName(), auras[i].IsBuff(), false);
 				return;
 			}
 		}
@@ -264,6 +285,7 @@ void Actor::AddAura(AuraID auraID, int rank, int ssDamage, int ssCritChance, int
 	// Did not match existing auras, safe to add.
 	Aura aura(auraID, rank, ssDamage, ssCritChance, ssResPen, source, sourceIndex);
 	auras.push_back(aura);
+	fctManager.AddAuraUnit(aura.GetName(), aura.IsBuff(), false);
 
 	actorHUD.UpdateElements(*this);
 }
@@ -289,7 +311,13 @@ void Actor::RemoveAuraStack(AuraID id) {
 
 void Actor::RemoveExpiredAuras() {
 	if (!auras.empty()) {
-		auto removed = std::remove_if(auras.begin(), auras.end(), [&](Aura& au){ return au.IsExpired(this); });
+		auto removed = std::remove_if(auras.begin(), auras.end(), [&](Aura& au){ 
+			if (au.IsExpired(this)) {
+				this->AddAuraFCT(au.GetName(), au.IsBuff(), true);
+				return true;
+			}
+			return false;
+		});
 		auras.erase(removed, auras.end());
 	}
 }

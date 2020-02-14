@@ -9,6 +9,7 @@
 
 #pragma once
 
+enum class Element;
 enum class EventType;
 enum class StatModType;
 class DungeonScene;
@@ -23,6 +24,7 @@ class DungeonScene;
 #include "../data/aura.hpp"
 #include "../data/statMod.hpp"
 #include "../ui/actorHUD.hpp"
+#include "../ui/fctManager.hpp"
 
 class Actor : public Entity {
 public:
@@ -34,6 +36,18 @@ public:
 	// Draws this actor's HUD element.
 	void DrawHUD(sf::RenderTarget& window, float timeRatio);
 	
+	// Updates this actor's FCT manager.
+	void UpdateFCT(float secondsPerUpdate);
+
+	// Draws this actor's FCTs.
+	void DrawFCT(sf::RenderTarget& window, float timeRatio);
+
+	// Clears all floating combat text from this actor.
+	void ClearFCT();
+
+	// Adds an aura unit to the FCT manager.
+	void AddAuraFCT(std::string name, bool isBuff, bool isExpired);
+
 	// Sets the DungeonScene reference.
 	void SetDungeonScene(DungeonScene* ds);
 	
@@ -75,10 +89,11 @@ public:
 	void UseAbility(DungeonScene* dungeonScene, AbilityID id, sf::Vector2i cursor);
 
 	// Inflicts damage to the character, then returns the amount of damage dealt. Damage cannot exceed the character's current health.
-	int TakeDamage(int damage);
+	// Creates floating combat text from damage taken.
+	int TakeDamage(int damage, bool isCrit, std::vector<Element>& elements);
 
 	// Heals the characters selected attribute by the specified amount. Returns the amount healed, which cannot exceed the character's healt.
-	int Heal(int amount, AttributeType attribute);
+	int Heal(int amount, bool isCrit, AttributeType attribute);
 
 	// Character spends the specified amount of resources.
 	void SpendResource(int amount, EventOptions& eventOptions, AttributeType attribute);
@@ -445,4 +460,5 @@ protected:
 
 	// UI
 	ActorHUD actorHUD;
+	FCTManager fctManager;
 };

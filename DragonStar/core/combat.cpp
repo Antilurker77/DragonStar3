@@ -184,21 +184,21 @@ static void applyLeech(Actor* user, EventOptions& eventOptions, int damage) {
 	int hpLeech = user->GetHPLeech(eventOptions, true) + eventOptions.BonusHPLeech;
 	int hpAmount = damage * hpLeech / 1000;
 	if (hpAmount > 0) {
-		user->Heal(hpAmount, AttributeType::HP);
+		user->Heal(hpAmount, false, AttributeType::HP);
 	}
 
 	// MP Leech
 	int mpLeech = user->GetMPLeech(eventOptions, true) + eventOptions.BonusMPLeech;
 	int mpAmount = damage * mpLeech / 1000;
 	if (mpAmount > 0) {
-		user->Heal(mpAmount, AttributeType::MP);
+		user->Heal(mpAmount, false, AttributeType::MP);
 	}
 
 	// SP Leech
 	int spLeech = user->GetSPLeech(eventOptions, true) + eventOptions.BonusSPLeech;
 	int spAmount = damage * spLeech / 1000;
 	if (spAmount > 0) {
-		user->Heal(spAmount, AttributeType::SP);
+		user->Heal(spAmount, false, AttributeType::SP);
 	}
 }
 
@@ -351,7 +351,7 @@ EventResult Combat::AttackDamage(Actor* user, Actor* target, EventOptions& event
 		damageResult = applyVariance(damage, true);
 
 		// Inflict damage.
-		result.TotalDamage = target->TakeDamage(damageResult);
+		result.TotalDamage = target->TakeDamage(damageResult, result.DidCrit, eventOptions.Elements);
 		result.DidKill = !target->IsAlive() && result.TotalDamage > 0;
 
 		// Apply leech.
@@ -437,7 +437,7 @@ EventResult Combat::SkillDamage(Actor* user, Actor* target, EventOptions& eventO
 		damageResult = applyVariance(damage, true);
 
 		// Inflict damage.
-		result.TotalDamage = target->TakeDamage(damageResult);
+		result.TotalDamage = target->TakeDamage(damageResult, result.DidCrit, eventOptions.Elements);
 		result.DidKill = !target->IsAlive() && result.TotalDamage > 0;
 
 		// Apply leech.
@@ -518,7 +518,7 @@ EventResult Combat::SpellDamage(Actor* user, Actor* target, EventOptions& eventO
 		damageResult = applyVariance(damage, true);
 
 		// Inflict damage.
-		result.TotalDamage = target->TakeDamage(damageResult);
+		result.TotalDamage = target->TakeDamage(damageResult, result.DidCrit, eventOptions.Elements);
 		result.DidKill = !target->IsAlive() && result.TotalDamage > 0;
 
 		user->OnEvent(EventType::Damage, target, eventOptions, result, damage);
@@ -572,7 +572,7 @@ EventResult Combat::SpellHeal(Actor* user, Actor* target, EventOptions& eventOpt
 
 	// Apply variance.
 	healResult = applyVariance(heal, true);
-	result.TotalHealing = target->Heal(healResult, healingType);
+	result.TotalHealing = target->Heal(healResult, result.DidCrit, healingType);
 
 	// Output.
 	outputHealing(user, target, eventOptions, result, healingType);
@@ -634,7 +634,7 @@ EventResult Combat::FixedDamage(Actor* user, Actor* target, EventOptions& eventO
 		damageResult = applyVariance(damage);
 
 		// Inflict damage.
-		result.TotalDamage = target->TakeDamage(damageResult);
+		result.TotalDamage = target->TakeDamage(damageResult, result.DidCrit, eventOptions.Elements);
 		result.DidKill = !target->IsAlive() && result.TotalDamage > 0;
 
 		user->OnEvent(EventType::Damage, target, eventOptions, result, damage);
@@ -691,7 +691,7 @@ EventResult Combat::FixedHeal(Actor* user, Actor* target, EventOptions& eventOpt
 
 	// Variance.
 	healResult = applyVariance(healAmount);
-	result.TotalHealing = target->Heal(healResult, healingType);
+	result.TotalHealing = target->Heal(healResult, result.DidCrit, healingType);
 
 	// Output.
 	outputHealing(user, target, eventOptions, result, healingType);

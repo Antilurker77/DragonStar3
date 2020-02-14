@@ -410,6 +410,11 @@ void DungeonScene::DrawWorld(sf::RenderWindow& window, float timeRatio) {
 	if (displayTooltip) {
 		tooltip.Draw(window, timeRatio);
 	}
+
+	for (auto& a : actors) {
+		a->DrawFCT(window, timeRatio);
+	}
+
 }
 
 void DungeonScene::DrawUI(sf::RenderWindow& window, float timeRatio) {
@@ -910,6 +915,7 @@ void DungeonScene::updateWorld(float secondsPerUpdate) {
 	for (auto& a : actors) {
 		a->Update(secondsPerUpdate);
 		a->UpdateHUD(secondsPerUpdate);
+		a->UpdateFCT(secondsPerUpdate);
 
 		// Remove auras from dead actors.
 		if (!a->IsAlive()) {

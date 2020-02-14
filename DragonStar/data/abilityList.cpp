@@ -904,6 +904,108 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 
 		return ad;
 	}();
+	list[AbilityID::CrushingBlow] = [] {
+		AbilityData ad;
+
+		ad.Name = "Crushing Blow";
+		ad.Icon = "placeholder.png";
+		ad.ID = AbilityID::CrushingBlow;
+
+		ad.Categories = {
+			Category::SingleTarget,
+			Category::Damaging,
+			Category::Attack,
+			Category::Skill,
+			Category::Direct
+		};
+		ad.Elements = {};
+		ad.RequiredWeaponTypes = {
+			EquipType::Mace
+		};
+
+		ad.IsPassive = false;
+		ad.MaxRank = 4;
+
+		ad.Range = { -1, -1, -1, -1, -1 };
+		ad.UseTime = { -1000, -1000, -1000, -1000, -1000 };
+		ad.Cooldown = { 2000, 2000, 2000, 2000, 2000 };
+		ad.MaxCharges = { 1, 1, 1, 1, 1 };
+		ad.HPCost = { 0, 0, 0, 0, 0 };
+		ad.MPCost = { 0, 0, 0, 0, 0 };
+		ad.SPCost = { 60, 60, 60, 60, 60 };
+
+		ad.Values = {
+			{ 2400, 2520, 2640, 2760, 2880 }, // Damage
+			{ 300, 300, 300, 300, 300 } // Stun Duration
+		};
+		ad.PassiveBonuses = {};
+
+		ad.CanDodge = true;
+		ad.CanBlock = true;
+		ad.CanCounter = true;
+		ad.CanCrit = true;
+		ad.CanDoubleStrike = true;
+
+		ad.HitChance = { -1, -1, -1, -1, -1 };
+		ad.BonusArmorPen = { 0, 0, 0, 0, 0 };
+		ad.BonusResistancePen = { 0, 0, 0, 0, 0 };
+		ad.BonusCritChance = { 0, 0, 0, 0, 0 };
+		ad.BonusCritPower = { 0, 0, 0, 0, 0 };
+		ad.BonusDoubleStrikeChance = { 0, 0, 0, 0, 0 };
+		ad.BonusHPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusMPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusSPLeech = { 0, 0, 0, 0, 0 };
+
+		ad.FixedRange = false;
+		ad.HideRange = false;
+
+		ad.IsProjectile = true;
+		ad.IgnoreLineOfSight = false;
+
+		ad.AreaIgnoreLineOfSight = false;
+		ad.AreaIgnoreBodyBlock = false;
+
+		ad.GetTargetArea = [&](Actor* user, DungeonScene* dungeonScene, sf::Vector2i cursorTarget, int rank) {
+			return std::vector<sf::Vector2i>{ cursorTarget };
+		};
+
+		ad.GetExtraArea = [&](Actor* user, DungeonScene* dungeonScene, sf::Vector2i cursorTarget, int rank) {
+			return std::vector<sf::Vector2i>{};
+		};
+
+		ad.CustomUseCondition = []() {
+			return true;
+		};
+		ad.GetDescription = [Values = ad.Values](Actor* user, EventOptions& eventOptions, int rank) {
+			std::string desc;
+			std::string dmg;
+			std::string stun = std::to_string(Values[1][rank] / 100);
+
+			if (user == nullptr) {
+				dmg = "#damage " + std::to_string(Values[0][rank] / 10) + "% Attack Power #default ";
+			}
+			else {
+				dmg = "#damage " + std::to_string(Combat::SkillDamageEstimate(user, eventOptions, Values[0][rank])) + " #default ";
+			}
+
+			desc = "Swing your mace to deal a massive blow to the target, dealing " + dmg + "weapon damage. If Crushing Blow deals at least 20% of the target's max HP as damage, the target is stunned for " + stun + "s. Requires a mace.";
+			return desc;
+		};
+		ad.Execute = [Values = ad.Values](Actor* user, std::vector<Actor*>& targets, sf::Vector2i cursor, std::vector<sf::Vector2i>& targetArea, EventOptions& eventOptions, int rank) {
+			if (!targets.empty()) {
+				EventResult result = Combat::SkillDamage(user, targets[0], eventOptions, Values[0][rank]);
+				int hpThreshold = targets[0]->GetMaxHP() * 20 / 100;
+				if (result.DidHit && result.TotalDamage >= hpThreshold) {
+					Combat::AddAuraStack(user, targets[0], eventOptions, AuraID::CrushingBlow, rank);
+				}
+			}
+		};
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
+
+		};
+
+		return ad;
+	}();
 	list[AbilityID::Disarm] = [] {
 		AbilityData ad;
 

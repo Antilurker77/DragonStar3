@@ -19,6 +19,7 @@ enum class AbilityID {
 	Cleave,
 	CobraBite,
 	CrushArmor,
+	CrushingBlow,
 	Disarm,
 	DragonBreath,
 	DragonfireBolt,

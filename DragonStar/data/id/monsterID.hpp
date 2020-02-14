@@ -19,6 +19,7 @@ enum class MonsterID {
 	BrownSnake,
 	CaveBat,
 	Cobra,
+	FireAnt,
 	GiantRat,
 	GreenSlime,
 	Imp,

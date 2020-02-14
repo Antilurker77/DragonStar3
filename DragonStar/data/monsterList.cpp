@@ -496,6 +496,77 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		return md;
 	}();
+	list[MonsterID::FireAnt] = [] {
+		MonsterData md;
+
+		md.Name = "Fire Ant";
+		md.Title = "";
+		md.Filename = "fire_ant.png";
+
+		md.IsUnique = false;
+		md.IsBoss = false;
+		md.CanFly = false;
+		md.CanSwim = false;
+		md.CanTunnel = false;
+
+		md.IsStationary = false;
+		md.ChaseTurns = 3;
+
+		md.Level = 5;
+
+		md.BaseHP = 15;
+		md.BaseMP = 8;
+		md.BaseSP = 100;
+
+		md.BaseSTR = 14;
+		md.BaseDEX = 16;
+		md.BaseMAG = 14;
+		md.BaseVIT = 10;
+		md.BaseSPI = 8;
+
+		md.BaseArmor = 15;
+		md.BaseMagicArmor = 5;
+		md.BaseEvasion = 10;
+
+		md.BaseAttackPower = 11;
+		md.BaseSpellPower = 9;
+
+		md.BaseHitChance = 700;
+		md.BaseAttackRange = 100;
+		md.BaseAttackSpeed = 200;
+		md.BaseWeaponDamageMultiplier = 1000;
+		md.AttackElement = Element::Physical;
+		md.AttackType = EquipType::Undefined;
+
+		md.BaseLineOfSight = 350;
+		md.BaseMoveCost = 90;
+
+		md.EXPDrop = 4;
+		md.GoldDrop = 0;
+		md.LootDrop = 0;
+
+		md.StatMods = {};
+		md.Abilities = {
+			{AbilityID::Ignite, 0}
+		};
+
+		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
+			std::pair<AbilityID, sf::Vector2i> ai;
+			ai.second = dungeonScene->GetPlayer()->GetLocation();
+
+			// Ignite: Use on Cooldown
+			if (monster->IsAbilityUsable(AbilityID::Ignite)) {
+				ai.first = AbilityID::Ignite;
+			}
+			else {
+				ai.first = AbilityID::Attack;
+			}
+
+			return ai;
+		};
+
+		return md;
+	}();
 	list[MonsterID::GiantRat] = [] {
 		MonsterData md;
 

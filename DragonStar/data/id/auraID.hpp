@@ -24,6 +24,7 @@ enum class AuraID {
 	ElementalEnergy,
 	FlameStrike,
 	Ignite,
+	Maul,
 	MysticBlast,
 	RendingSlash,
 	ShadowEnergy,

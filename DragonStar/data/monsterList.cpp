@@ -226,6 +226,82 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		return md;
 	}();
+	list[MonsterID::BrownBear] = [] {
+		MonsterData md;
+
+		md.Name = "Brown Bear";
+		md.Title = "";
+		md.Filename = "brown_bear.png";
+
+		md.IsUnique = false;
+		md.IsBoss = false;
+		md.CanFly = false;
+		md.CanSwim = false;
+		md.CanTunnel = false;
+
+		md.IsStationary = false;
+		md.ChaseTurns = 3;
+
+		md.Level = 6;
+
+		md.BaseHP = 50;
+		md.BaseMP = 4;
+		md.BaseSP = 100;
+
+		md.BaseSTR = 22;
+		md.BaseDEX = 19;
+		md.BaseMAG = 5;
+		md.BaseVIT = 20;
+		md.BaseSPI = 5;
+
+		md.BaseArmor = 25;
+		md.BaseMagicArmor = 0;
+		md.BaseEvasion = 5;
+
+		md.BaseAttackPower = 12;
+		md.BaseSpellPower = 0;
+
+		md.BaseHitChance = 700;
+		md.BaseAttackRange = 100;
+		md.BaseAttackSpeed = 220;
+		md.BaseWeaponDamageMultiplier = 1000;
+		md.AttackElement = Element::Physical;
+		md.AttackType = EquipType::Undefined;
+
+		md.BaseLineOfSight = 350;
+		md.BaseMoveCost = 100;
+
+		md.EXPDrop = 10;
+		md.GoldDrop = 0;
+		md.LootDrop = 0;
+
+		md.StatMods = {};
+		md.Abilities = {
+			{AbilityID::Maul, 0},
+			{AbilityID::CrushingBlow, 0}
+		};
+
+		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
+			std::pair<AbilityID, sf::Vector2i> ai;
+			ai.second = dungeonScene->GetPlayer()->GetLocation();
+
+			// Use Crushing Blow on cooldown.
+			if (monster->IsAbilityUsable(AbilityID::CrushingBlow)) {
+				ai.first = AbilityID::CrushingBlow;
+			}
+			// Has a 50% chance to use Maul.
+			else if (monster->IsAbilityUsable(AbilityID::Maul) && Random::RandomInt(1, 100) <= 50) {
+				ai.first = AbilityID::Maul;
+			}
+			else {
+				ai.first = AbilityID::Attack;
+			}
+
+			return ai;
+		};
+
+		return md;
+	}();
 	list[MonsterID::BrownSnake] = [] {
 		MonsterData md;
 

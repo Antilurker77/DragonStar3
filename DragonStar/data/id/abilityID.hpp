@@ -32,6 +32,7 @@ enum class AbilityID {
 	Ignite,
 	ImpactWave,
 	MagicMissile,
+	Maul,
 	MysticBlast,
 	PhoenixRaid,
 	PowerStrike,

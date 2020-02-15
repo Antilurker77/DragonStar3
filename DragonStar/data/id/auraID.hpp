@@ -26,6 +26,7 @@ enum class AuraID {
 	Ignite,
 	Maul,
 	MysticBlast,
+	PoisonArrow,
 	RendingSlash,
 	ShadowEnergy,
 	SlimeSplash,

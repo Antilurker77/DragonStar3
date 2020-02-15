@@ -2453,6 +2453,113 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 
 		return ad;
 	}();
+	list[AbilityID::PoisonArrow] = [] {
+		AbilityData ad;
+
+		ad.Name = "Poison Arrow";
+		ad.Icon = "placeholder.png";
+		ad.ID = AbilityID::PoisonArrow;
+
+		ad.Categories = {
+			Category::SingleTarget,
+			Category::Damaging,
+			Category::Attack,
+			Category::Skill,
+			Category::Direct
+		};
+		ad.Elements = {
+			Element::Poison
+		};
+		ad.RequiredWeaponTypes = {
+			EquipType::Bow
+		};
+
+		ad.IsPassive = false;
+		ad.MaxRank = 4;
+
+		ad.Range = { -1, -1, -1, -1, -1 };
+		ad.UseTime = { -1000, -1000, -1000, -1000, -1000 };
+		ad.Cooldown = { 1200, 1200, 1200, 1200, 1200 };
+		ad.MaxCharges = { 1, 1, 1, 1, 1 };
+		ad.HPCost = { 0, 0, 0, 0, 0 };
+		ad.MPCost = { 0, 0, 0, 0, 0 };
+		ad.SPCost = { 25, 25, 25, 25, 25 };
+
+		ad.Values = {
+			{ 1000, 1000, 1000, 1000, 1000 }, // Damage
+			{ 600, 600, 600, 600, 600 }, // Poison Duration
+			{ 100, 113, 126, 140, 154 } // Poison Damage
+		};
+		ad.PassiveBonuses = {};
+
+		ad.CanDodge = true;
+		ad.CanBlock = true;
+		ad.CanCounter = true;
+		ad.CanCrit = true;
+		ad.CanDoubleStrike = true;
+
+		ad.HitChance = { -1, -1, -1, -1, -1 };
+		ad.BonusArmorPen = { 0, 0, 0, 0, 0 };
+		ad.BonusResistancePen = { 0, 0, 0, 0, 0 };
+		ad.BonusCritChance = { 0, 0, 0, 0, 0 };
+		ad.BonusCritPower = { 0, 0, 0, 0, 0 };
+		ad.BonusDoubleStrikeChance = { 0, 0, 0, 0, 0 };
+		ad.BonusHPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusMPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusSPLeech = { 0, 0, 0, 0, 0 };
+
+		ad.FixedRange = false;
+		ad.HideRange = false;
+
+		ad.IsProjectile = true;
+		ad.IgnoreLineOfSight = false;
+
+		ad.AreaIgnoreLineOfSight = false;
+		ad.AreaIgnoreBodyBlock = false;
+
+		ad.GetTargetArea = [&](Actor* user, DungeonScene* dungeonScene, sf::Vector2i cursorTarget, int rank) {
+			return std::vector<sf::Vector2i>{ cursorTarget };
+		};
+
+		ad.GetExtraArea = [&](Actor* user, DungeonScene* dungeonScene, sf::Vector2i cursorTarget, int rank) {
+			return std::vector<sf::Vector2i>{};
+		};
+
+		ad.CustomUseCondition = []() {
+			return true;
+		};
+		ad.GetDescription = [Values = ad.Values](Actor* user, EventOptions& eventOptions, int rank) {
+			std::string desc;
+			std::string dmg;
+			std::string duration = std::to_string(Values[1][rank] / 100);
+			std::string bleedDmg;
+
+			if (user == nullptr) {
+				dmg = "#damage " + std::to_string(Values[0][rank] / 10) + "% Attack Power #default ";
+				bleedDmg = "#damage " + std::to_string(Values[2][rank] / 10) + "." + std::to_string(Values[2][rank] % 10) + "% Attack Power #default ";
+			}
+			else {
+				dmg = "#damage " + std::to_string(Combat::SkillDamageEstimate(user, eventOptions, Values[0][rank])) + " #default ";
+				bleedDmg = "#damage " + std::to_string(Combat::SkillDamageEstimate(user, eventOptions, Values[2][rank])) + " #default ";
+			}
+
+			desc = "Fire a poisoned arrow at the target, dealing " + dmg + "poison damage and an additional " + bleedDmg + "poison damage every 1s for " + duration + "s. Requires a bow.";
+			return desc;
+		};
+		ad.Execute = [Values = ad.Values](Actor* user, std::vector<Actor*>& targets, sf::Vector2i cursor, std::vector<sf::Vector2i>& targetArea, EventOptions& eventOptions, int rank) {
+			if (!targets.empty()) {
+				EventResult result = Combat::SkillDamage(user, targets[0], eventOptions, Values[0][rank]);
+				if (result.DidHit) {
+					Combat::AddAuraStack(user, targets[0], eventOptions, AuraID::PoisonArrow, rank);
+				}
+			}
+		};
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
+
+		};
+
+		return ad;
+	}();
 	list[AbilityID::PowerShot] = [] {
 		AbilityData ad;
 

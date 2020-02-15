@@ -18,6 +18,7 @@ enum class AbilityID {
 	Chopper,
 	Cleave,
 	CobraBite,
+	CriticalShot,
 	CrushArmor,
 	CrushingBlow,
 	Disarm,

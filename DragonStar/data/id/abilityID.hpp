@@ -35,6 +35,7 @@ enum class AbilityID {
 	Maul,
 	MysticBlast,
 	PhoenixRaid,
+	PowerShot,
 	PowerStrike,
 	RendingSlash,
 	ShadowEnergy,

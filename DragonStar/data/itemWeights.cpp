@@ -626,6 +626,7 @@ static std::vector<ItemWeight> initTomeWeights() {
 	// MinItemLevel, MaxItemLevel, Weight, ItemID
 	list = {
 		{1, 100, 1000, ItemID::TomeCombatBasics},
+		{1, 100, 1000, ItemID::TomeLearningArchery},
 		{1, 100, 1000, ItemID::TomeMagicForBeginners},
 		{1, 100, 1000, ItemID::TomeIntroductionToSpirituality},
 		{1, 100,  750, ItemID::TomeArtOfFlame},

@@ -98,7 +98,7 @@ Inventory::Inventory() {
 	book.Initialize(ItemID::TomeCombatBasics);
 	AddItem(book);
 
-	book.Initialize(ItemID::TomeTesting);
+	book.Initialize(ItemID::TomeLearningArchery);
 	AddItem(book);
 
 	ChangeGold(100);

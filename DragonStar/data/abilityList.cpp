@@ -4195,7 +4195,8 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 			if (eventType == EventType::Damage) {
 				if (eventResult.DidCrit && std::find(eventOptions.Categories.begin(), eventOptions.Categories.end(), Category::Direct) != eventOptions.Categories.end()) {
 					int rank = ability->GetCurrentRank();
-					Combat::AddAuraStack(user, user, AuraID::DeadlyForce, rank);
+					EventOptions eo;
+					Combat::AddAuraStack(user, user, eo, AuraID::DeadlyForce, rank);
 				}
 			}
 		};

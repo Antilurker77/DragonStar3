@@ -202,7 +202,8 @@ static std::unordered_map<ItemID, ItemData> initList() {
 		itd.WeaponDamageMultiplier = 0;
 
 		itd.TeachableAbilities = {
-			AbilityID::PhaseDoor
+			AbilityID::PhaseDoor,
+			AbilityID::Teleport
 		};
 
 		itd.ImplicitStatMods = {};

@@ -45,6 +45,7 @@ enum class AbilityID {
 	Shock,
 	SlimeSplash,
 	Stalagmite,
+	Teleport,
 	ThunderStrike,
 	TornadoStrike,
 	Venom,

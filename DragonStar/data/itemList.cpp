@@ -297,7 +297,8 @@ static std::unordered_map<ItemID, ItemData> initList() {
 			AbilityID::PowerShot,
 			AbilityID::CriticalShot,
 			AbilityID::PoisonArrow,
-			AbilityID::Focus
+			AbilityID::Focus,
+			AbilityID::DeadlyForce
 		};
 
 		itd.ImplicitStatMods = {};

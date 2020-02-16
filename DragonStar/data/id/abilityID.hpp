@@ -61,6 +61,7 @@ enum class AbilityID {
 
 	// Passive
 	Constitution,
+	DeadlyForce,
 	Focus,
 	ImprovedDexterity,
 	ImprovedMagic,

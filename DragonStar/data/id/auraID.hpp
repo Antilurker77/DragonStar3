@@ -20,6 +20,7 @@ enum class AuraID {
 	CobraBite,
 	CrushArmor,
 	CrushingBlow,
+	DeadlyForce,
 	Disarm,
 	ElementalEnergy,
 	FlameStrike,

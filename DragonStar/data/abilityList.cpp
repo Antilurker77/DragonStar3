@@ -2685,7 +2685,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 
 		ad.Range = { -1, -1, -1, -1, -1 };
 		ad.UseTime = { -1000, -1000, -1000, -1000, -1000 };
-		ad.Cooldown = { 1200, 1100, 1100, 1000, 1000 };
+		ad.Cooldown = { 1200, 1200, 1100, 1100, 1000 };
 		ad.MaxCharges = { 1, 1, 1, 1, 1 };
 		ad.HPCost = { 0, 0, 0, 0, 0 };
 		ad.MPCost = { 0, 0, 0, 0, 0 };
@@ -2737,13 +2737,13 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 			std::string dmg;
 
 			if (user == nullptr) {
-				dmg = "#damage " + std::to_string(Values[0][rank] / 10) + "% Attack Power#default ";
+				dmg = "#damage " + std::to_string(Values[0][rank] / 10) + "% Attack Power #default ";
 			}
 			else {
-				dmg = "#damage " + std::to_string(Combat::SkillDamageEstimate(user, eventOptions, Values[0][rank])) + "#default ";
+				dmg = "#damage " + std::to_string(Combat::SkillDamageEstimate(user, eventOptions, Values[0][rank])) + " #default ";
 			}
 
-			desc = "Deal a powerful strike to your target, dealing " + dmg + " weapon damage.";
+			desc = "Deal a powerful strike to your target, dealing " + dmg + "weapon damage.";
 			return desc;
 		};
 		ad.Execute = [Values = ad.Values](Actor* user, std::vector<Actor*>& targets, sf::Vector2i cursor, std::vector<sf::Vector2i>& targetArea, EventOptions& eventOptions, int rank) {

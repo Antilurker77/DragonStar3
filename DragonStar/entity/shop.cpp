@@ -39,13 +39,13 @@ std::array<Item, 24>& Shop::GetInventory() {
 
 void Shop::BuyItem(Inventory& inv, size_t index) {
 	int cost = inventory[index].GetValue();
-	//if (cost <= inv.GetGold()) {
+	if (cost <= inv.GetGold()) {
 		bool bought = inv.AddItem(inventory[index]); // returns false if inventory is full
 		if (bought) {
 			inventory[index] = Item();
 			inv.ChangeGold(cost * -1);
 		}
-	//}
+	}
 }
 
 void Shop::generateInventory() {

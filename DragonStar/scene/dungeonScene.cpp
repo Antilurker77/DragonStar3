@@ -491,6 +491,10 @@ void DungeonScene::OpenLearnAbilityWindow(Item* tome) {
 	learnAbilityWindow.Initialize(tome, p);
 }
 
+sf::Vector2<size_t> DungeonScene::GetDungeonSize() {
+	return { floor.size(), floor[0].size() };
+}
+
 std::vector<sf::Vector2i> DungeonScene::Pathfind(sf::Vector2i start, sf::Vector2i end) {
 	return Pathfind(start, end, false, false, false);
 }

@@ -13,8 +13,10 @@
 #include "id/eventType.hpp"
 #include "id/equipType.hpp"
 #include "../core/combat.hpp"
+#include "../core/random.hpp"
 #include "../core/tileMath.hpp"
 #include "../entity/actor.hpp"
+#include "../scene/dungeonScene.hpp"
 #include "../ui/messageLog.hpp"
 
 static std::unordered_map<AbilityID, AbilityData> initList() {
@@ -2445,6 +2447,112 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				if (result.DidHit) {
 					Combat::AddAuraStack(user, targets[0], eventOptions, AuraID::MysticBlast, rank);
 				}
+			}
+		};
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
+
+		};
+
+		return ad;
+	}();
+	list[AbilityID::PhaseDoor] = [] {
+		AbilityData ad;
+
+		ad.Name = "Phase Door";
+		ad.Icon = "placeholder.png";
+		ad.ID = AbilityID::PhaseDoor;
+
+		ad.Categories = {
+			Category::SingleTarget,
+			Category::Spell
+		};
+		ad.Elements = { Element::Arcane };
+		ad.RequiredWeaponTypes = {};
+
+		ad.IsPassive = false;
+		ad.MaxRank = 4;
+
+		ad.Range = { 0, 0, 0, 0, 0 };
+		ad.UseTime = { 100, 100, 100, 100, 100 };
+		ad.Cooldown = { 1000, 1000, 1000, 1000, 1000 };
+		ad.MaxCharges = { 1, 1, 1, 1, 1 };
+		ad.HPCost = { 0, 0, 0, 0, 0 };
+		ad.MPCost = { 18, 16, 14, 12, 10 };
+		ad.SPCost = { 0, 0, 0, 0, 0 };
+
+		ad.Values = {
+			{ 300, 300, 300, 300, 300 }, // Min Distance
+			{ 900, 900, 900, 900, 900 } // Max Distance
+		};
+		ad.PassiveBonuses = {};
+
+		ad.CanDodge = false;
+		ad.CanBlock = false;
+		ad.CanCounter = false;
+		ad.CanCrit = false;
+		ad.CanDoubleStrike = false;
+
+		ad.HitChance = { 1000, 1000, 1000, 1000, 1000 };
+		ad.BonusArmorPen = { 0, 0, 0, 0, 0 };
+		ad.BonusResistancePen = { 0, 0, 0, 0, 0 };
+		ad.BonusCritChance = { 0, 0, 0, 0, 0 };
+		ad.BonusCritPower = { 0, 0, 0, 0, 0 };
+		ad.BonusDoubleStrikeChance = { 0, 0, 0, 0, 0 };
+		ad.BonusHPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusMPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusSPLeech = { 0, 0, 0, 0, 0 };
+
+		ad.FixedRange = false;
+		ad.HideRange = false;
+
+		ad.IsProjectile = false;
+		ad.IgnoreLineOfSight = false;
+
+		ad.AreaIgnoreLineOfSight = false;
+		ad.AreaIgnoreBodyBlock = false;
+
+		ad.GetTargetArea = [&](Actor* user, DungeonScene* dungeonScene, sf::Vector2i cursorTarget, int rank) {
+			return std::vector<sf::Vector2i>{ cursorTarget };
+		};
+
+		ad.GetExtraArea = [&](Actor* user, DungeonScene* dungeonScene, sf::Vector2i cursorTarget, int rank) {
+			return std::vector<sf::Vector2i>{};
+		};
+
+		ad.CustomUseCondition = []() {
+			return true;
+		};
+		ad.GetDescription = [Values = ad.Values](Actor* user, EventOptions& eventOptions, int rank) {
+			std::string desc;
+			std::string minDistance = std::to_string(Values[0][rank] / 100);
+			std::string maxDistance = std::to_string(Values[1][rank] / 100);
+
+			desc = "Teleports the caster to a random tile between " + minDistance + " and " + maxDistance + " tiles away.";
+			return desc;
+		};
+		ad.Execute = [Values = ad.Values](Actor* user, std::vector<Actor*>& targets, sf::Vector2i cursor, std::vector<sf::Vector2i>& targetArea, EventOptions& eventOptions, int rank) {
+			std::vector<sf::Vector2i> possibleTiles;
+			DungeonScene* dungeon = user->GetDungeonScene();
+			auto size = dungeon->GetDungeonSize();
+			auto userLocation = user->GetLocation();
+			for (size_t x = 0; x < size.x; x++) {
+				for (size_t y = 0; y < size.y; y++) {
+					sf::Vector2i tile{ static_cast<int>(x), static_cast<int>(y) };
+					if (dungeon->IsWalkable(user, tile) && !dungeon->IsOccupiedByActor(tile)) {
+						int distance = static_cast<int>(TileMath::Distance(userLocation, tile) * 100.0);
+						if (distance >= Values[0][rank] && distance <= Values[1][rank]) {
+							possibleTiles.push_back(tile);
+						}
+					}
+				}
+			}
+			if (!possibleTiles.empty()) {
+				size_t index = Random::RandomSizeT(0, possibleTiles.size() - 1);
+				user->Warp(possibleTiles[index]);
+				dungeon->UpdateVision();
+			}
+			else {
+				messageLog.AddMessage("Phase Door failed!");
 			}
 		};
 		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {

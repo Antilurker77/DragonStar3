@@ -93,6 +93,9 @@ public:
 	// Opens the ability learning window.
 	void OpenLearnAbilityWindow(Item* tome);
 
+	// Returns the size of the dungeon.
+	sf::Vector2<size_t> GetDungeonSize();
+
 	// Returns the optimal path between two points. If no path is found, vector will be empty.
 	std::vector<sf::Vector2i> Pathfind(sf::Vector2i start, sf::Vector2i end);
 

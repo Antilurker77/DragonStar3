@@ -35,6 +35,7 @@ enum class AbilityID {
 	MagicMissile,
 	Maul,
 	MysticBlast,
+	PhaseDoor,
 	PhoenixRaid,
 	PoisonArrow,
 	PowerShot,

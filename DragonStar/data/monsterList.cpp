@@ -115,8 +115,8 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.BaseMagicArmor = 15;
 		md.BaseEvasion = 1;
 
-		md.BaseAttackPower = 4;
-		md.BaseSpellPower = 5;
+		md.BaseAttackPower = 6;
+		md.BaseSpellPower = 10;
 
 		md.BaseHitChance = 750;
 		md.BaseAttackRange = 350;
@@ -718,15 +718,15 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.IsStationary = false;
 		md.ChaseTurns = 3;
 
-		md.Level = 1;
+		md.Level = 2;
 
 		md.BaseHP = 24;
 		md.BaseMP = 20;
 		md.BaseSP = 100;
 
-		md.BaseSTR = 4;
+		md.BaseSTR = 8;
 		md.BaseDEX = 9;
-		md.BaseMAG = 5;
+		md.BaseMAG = 9;
 		md.BaseVIT = 4;
 		md.BaseSPI = 5;
 
@@ -734,8 +734,8 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.BaseMagicArmor = 5;
 		md.BaseEvasion = 7;
 
-		md.BaseAttackPower = 6;
-		md.BaseSpellPower = 5;
+		md.BaseAttackPower = 9;
+		md.BaseSpellPower = 8;
 
 		md.BaseHitChance = 700;
 		md.BaseAttackRange = 100;
@@ -869,7 +869,7 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.BaseMP = 20;
 		md.BaseSP = 100;
 
-		md.BaseSTR = 5;
+		md.BaseSTR = 7;
 		md.BaseDEX = 18;
 		md.BaseMAG = 1;
 		md.BaseVIT = 4;
@@ -879,7 +879,7 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.BaseMagicArmor = 0;
 		md.BaseEvasion = 15;
 
-		md.BaseAttackPower = 8;
+		md.BaseAttackPower = 10;
 		md.BaseSpellPower = 0;
 
 		md.BaseHitChance = 750;
@@ -941,8 +941,8 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.BaseMagicArmor = 3;
 		md.BaseEvasion = 3;
 
-		md.BaseAttackPower = 3;
-		md.BaseSpellPower = 5;
+		md.BaseAttackPower = 6;
+		md.BaseSpellPower = 8;
 
 		md.BaseHitChance = 700;
 		md.BaseAttackRange = 150;
@@ -1007,7 +1007,7 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.BaseMP = 10;
 		md.BaseSP = 100;
 
-		md.BaseSTR = 6;
+		md.BaseSTR = 11;
 		md.BaseDEX = 10;
 		md.BaseMAG = 2;
 		md.BaseVIT = 5;
@@ -1017,7 +1017,7 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.BaseMagicArmor = 0;
 		md.BaseEvasion = 5;
 
-		md.BaseAttackPower = 6;
+		md.BaseAttackPower = 10;
 		md.BaseSpellPower = 0;
 
 		md.BaseHitChance = 700;
@@ -1079,7 +1079,7 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.BaseMP = 20;
 		md.BaseSP = 100;
 
-		md.BaseSTR = 10;
+		md.BaseSTR = 14;
 		md.BaseDEX = 14;
 		md.BaseMAG = 1;
 		md.BaseVIT = 6;
@@ -1089,7 +1089,7 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.BaseMagicArmor = 0;
 		md.BaseEvasion = 8;
 
-		md.BaseAttackPower = 8;
+		md.BaseAttackPower = 10;
 		md.BaseSpellPower = 0;
 
 		md.BaseHitChance = 650;
@@ -1146,15 +1146,15 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.BaseSTR = 12;
 		md.BaseDEX = 16;
 		md.BaseMAG = 12;
-		md.BaseVIT = 8;
-		md.BaseSPI = 4;
+		md.BaseVIT = 12;
+		md.BaseSPI = 8;
 
 		md.BaseArmor = 0;
 		md.BaseMagicArmor = 0;
 		md.BaseEvasion = 1;
 
-		md.BaseAttackPower = 7;
-		md.BaseSpellPower = 7;
+		md.BaseAttackPower = 10;
+		md.BaseSpellPower = 10;
 
 		md.BaseHitChance = 750;
 		md.BaseAttackRange = 150;
@@ -1419,7 +1419,7 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.BaseMP = 10;
 		md.BaseSP = 100;
 
-		md.BaseSTR = 9;
+		md.BaseSTR = 12;
 		md.BaseDEX = 14;
 		md.BaseMAG = 8;
 		md.BaseVIT = 10;

@@ -31,6 +31,13 @@ enum class AIState {
 	Alert
 };
 
+struct AIAction {
+	sf::Vector2i Target;
+	AbilityID Ability{};
+	size_t FlagIndex = 100;
+	int FlagValue = 0;
+};
+
 class Monster : public Actor {
 public:
 	Monster(size_t index);

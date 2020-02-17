@@ -132,16 +132,16 @@ CommandPtr Monster::CalcAI() {
 			}
 		}
 		else {
-			std::pair<AbilityID, sf::Vector2i> ai = monsterData->AI(this, dungeonScene);
+			AIAction ai = monsterData->AI(this, dungeonScene);
 
 			// No AbilityID means the monster wants to move.
-			if (ai.first == static_cast<AbilityID>(0)) {
-				if (ai.second != location) {
+			if (ai.Ability == static_cast<AbilityID>(0)) {
+				if (ai.Target != location) {
 					// If the tile is occupied, look for the next closest tile.
 					bool searching = true;
 					int searchRange = 0;
 					while (searching && searchRange < 250) {
-						std::vector<sf::Vector2i> tiles = TileMath::AreaOfEffect(ai.second, searchRange);
+						std::vector<sf::Vector2i> tiles = TileMath::AreaOfEffect(ai.Target, searchRange);
 						std::vector<sf::Vector2i> walkable{};
 						walkable.reserve(tiles.size());
 						for (auto& t : tiles) {
@@ -149,7 +149,7 @@ CommandPtr Monster::CalcAI() {
 								walkable.emplace_back(t);
 							}
 						}
-						sf::Vector2i goal = ai.second;
+						sf::Vector2i goal = ai.Target;
 						for (auto& t : walkable) {
 							int cheapest = std::numeric_limits<int>::max();
 							std::vector<sf::Vector2i> path = dungeonScene->Pathfind(location, t, this);
@@ -172,7 +172,7 @@ CommandPtr Monster::CalcAI() {
 							}
 						}
 						else {
-							ai.second = goal;
+							ai.Target = goal;
 						}
 					}
 
@@ -181,33 +181,33 @@ CommandPtr Monster::CalcAI() {
 						result = std::make_unique<WaitCommand>(100);
 					}
 					else {
-						result = std::make_unique<MoveCommand>(*dungeonScene, ai.second);
+						result = std::make_unique<MoveCommand>(*dungeonScene, ai.Target);
 					}
 				}
 			}
 			// Monster wants to use an ability.
 			else {
-				Ability* ability = GetAbility(ai.first);
+				Ability* ability = GetAbility(ai.Ability);
 				std::vector<sf::Vector2i> range = ability->GetRange(this, dungeonScene);
 
 				// First check if monster is already in range.
 				bool inRange = false;
 				for (auto& t : range) {
 					std::vector<sf::Vector2i> aoe = ability->GetTargetArea(t, this, dungeonScene);
-					auto i = std::find_if(aoe.begin(), aoe.end(), [&](const sf::Vector2i& testLoc) { return testLoc == ai.second; });
+					auto i = std::find_if(aoe.begin(), aoe.end(), [&](const sf::Vector2i& testLoc) { return testLoc == ai.Target; });
 					if (i != aoe.end()) {
 						sf::Vector2i targetTile = *i;
 						// Projectile Test
 						if (ability->IsProjectile()) {
 							sf::Vector2i impactPoint = dungeonScene->GetProjectileImpactTile(location, targetTile, false);
 							if (targetTile == impactPoint) {
-								ai.second = targetTile;
+								ai.Target = targetTile;
 								inRange = true;
 								break;
 							}
 						}
 						else {
-							ai.second = targetTile;
+							ai.Target = targetTile;
 							inRange = true;
 							break;
 						}
@@ -216,16 +216,19 @@ CommandPtr Monster::CalcAI() {
 
 				// In range, make the command.
 				if (inRange) {
-					result = std::make_unique<AbilityCommand>(dungeonScene, ai.first, ai.second);
+					result = std::make_unique<AbilityCommand>(dungeonScene, ai.Ability, ai.Target);
+					if (ai.FlagIndex < flags.size()) {
+						flags[ai.FlagIndex] = ai.FlagValue;
+					}
 				}
 				// Not in range, path monster to get closer to the target.
 				else {
-					std::vector<sf::Vector2i> testRange = ability->GetRange(this, dungeonScene, ai.second);
+					std::vector<sf::Vector2i> testRange = ability->GetRange(this, dungeonScene, ai.Target);
 					int cheapest = std::numeric_limits<int>::max();
 					bool searching = true;
 					for (auto& t : testRange) {
 						if (!ability->IgnoreLineOfSight()) {
-							if (!dungeonScene->InLineOfSight(ai.second, t)) {
+							if (!dungeonScene->InLineOfSight(ai.Target, t)) {
 								continue; // If ability requires line of sight, don't check pathfinding to tiles the monster can't path to.
 							}
 						}
@@ -233,7 +236,7 @@ CommandPtr Monster::CalcAI() {
 						if (!path.empty()) {
 							int cost = dungeonScene->GetPathCost(path);
 							if (cost < cheapest) {
-								ai.second = path.front();
+								ai.Target = path.front();
 								cheapest = cost;
 								searching = false;
 							}
@@ -243,7 +246,7 @@ CommandPtr Monster::CalcAI() {
 					// Can't get in range, move closer to the target.
 					// Using Heuristic Distance instead of normal pathfinding for performance, may go back on this later.
 					if (searching) {
-						int distance = dungeonScene->GetHeuristicDistance(location, ai.second, false);
+						int distance = dungeonScene->GetHeuristicDistance(location, ai.Target, false);
 						//sf::Vector2i closest = ai.second;
 						sf::Vector2i closest = location;
 						std::vector<sf::Vector2i> neighboors = TileMath::Neighboors(location);
@@ -261,16 +264,16 @@ CommandPtr Monster::CalcAI() {
 								distance = checkDistance;
 							}
 						}
-						ai.second = closest;
+						ai.Target = closest;
 					}
 
 					// Move if better location was found, wait if otherwise.
 					// Stationary monsters always wait.
-					if (ai.second == location || monsterData->IsStationary) {
+					if (ai.Target == location || monsterData->IsStationary) {
 						result = std::make_unique<WaitCommand>(25);
 					}
 					else {
-						result = std::make_unique<MoveCommand>(*dungeonScene, ai.second);
+						result = std::make_unique<MoveCommand>(*dungeonScene, ai.Target);
 					}
 				}
 			}

@@ -71,10 +71,10 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.Abilities = {};
 
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
-			std::pair<AbilityID, sf::Vector2i> ai;
+			AIAction ai;
 
-			ai.first = AbilityID::Undefined;
-			ai.second = monster->GetLocation();
+			ai.Ability = AbilityID::Undefined;
+			ai.Target = monster->GetLocation();
 
 			return ai;
 		};
@@ -138,14 +138,14 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		};
 
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
-			std::pair<AbilityID, sf::Vector2i> ai;
-			ai.second = dungeonScene->GetPlayer()->GetLocation();
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
 
 			if (monster->IsAbilityUsable(AbilityID::MagicMissile)) {
-				ai.first = AbilityID::MagicMissile;
+				ai.Ability = AbilityID::MagicMissile;
 			}
 			else {
-				ai.first = AbilityID::Attack;
+				ai.Ability = AbilityID::Attack;
 			}
 
 			return ai;
@@ -211,14 +211,14 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		};
 
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
-			std::pair<AbilityID, sf::Vector2i> ai;
-			ai.second = dungeonScene->GetPlayer()->GetLocation();
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
 			
 			if (monster->IsAbilityUsable(AbilityID::SlimeSplash)) {
-				ai.first = AbilityID::SlimeSplash;
+				ai.Ability = AbilityID::SlimeSplash;
 			}
 			else {
-				ai.first = AbilityID::Attack;
+				ai.Ability = AbilityID::Attack;
 			}
 
 			return ai;
@@ -282,19 +282,19 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		};
 
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
-			std::pair<AbilityID, sf::Vector2i> ai;
-			ai.second = dungeonScene->GetPlayer()->GetLocation();
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
 
 			// Use Crushing Blow on cooldown.
 			if (monster->IsAbilityUsable(AbilityID::CrushingBlow)) {
-				ai.first = AbilityID::CrushingBlow;
+				ai.Ability = AbilityID::CrushingBlow;
 			}
 			// Has a 50% chance to use Maul.
 			else if (monster->IsAbilityUsable(AbilityID::Maul) && Random::RandomInt(1, 100) <= 50) {
-				ai.first = AbilityID::Maul;
+				ai.Ability = AbilityID::Maul;
 			}
 			else {
-				ai.first = AbilityID::Attack;
+				ai.Ability = AbilityID::Attack;
 			}
 
 			return ai;
@@ -355,9 +355,9 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.Abilities = {};
 
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
-			std::pair<AbilityID, sf::Vector2i> ai;
-			ai.second = dungeonScene->GetPlayer()->GetLocation();
-			ai.first = AbilityID::Attack;
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
+			ai.Ability = AbilityID::Attack;
 
 			return ai;
 		};
@@ -417,9 +417,9 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.Abilities = {};
 
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
-			std::pair<AbilityID, sf::Vector2i> ai;
-			ai.second = dungeonScene->GetPlayer()->GetLocation();
-			ai.first = AbilityID::Attack;
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
+			ai.Ability = AbilityID::Attack;
 
 			return ai;
 		};
@@ -481,14 +481,14 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		};
 
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
-			std::pair<AbilityID, sf::Vector2i> ai;
-			ai.second = dungeonScene->GetPlayer()->GetLocation();
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
 			
 			if (monster->IsAbilityUsable(AbilityID::CobraBite)) {
-				ai.first = AbilityID::CobraBite;
+				ai.Ability = AbilityID::CobraBite;
 			}
 			else {
-				ai.first = AbilityID::Attack;
+				ai.Ability = AbilityID::Attack;
 			}
 
 			return ai;
@@ -551,15 +551,15 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		};
 
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
-			std::pair<AbilityID, sf::Vector2i> ai;
-			ai.second = dungeonScene->GetPlayer()->GetLocation();
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
 
 			// Ignite: Use on Cooldown
 			if (monster->IsAbilityUsable(AbilityID::Ignite)) {
-				ai.first = AbilityID::Ignite;
+				ai.Ability = AbilityID::Ignite;
 			}
 			else {
-				ai.first = AbilityID::Attack;
+				ai.Ability = AbilityID::Attack;
 			}
 
 			return ai;
@@ -622,14 +622,14 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		};
 
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
-			std::pair<AbilityID, sf::Vector2i> ai;
-			ai.second = dungeonScene->GetPlayer()->GetLocation();
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
 
 			if (monster->IsAbilityUsable(AbilityID::Bite) && Random::RandomInt(1, 100) <= 50) {
-				ai.first = AbilityID::Bite;
+				ai.Ability = AbilityID::Bite;
 			}
 			else {
-				ai.first = AbilityID::Attack;
+				ai.Ability = AbilityID::Attack;
 			}
 
 			return ai;
@@ -693,9 +693,9 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.Abilities = {};
 
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
-			std::pair<AbilityID, sf::Vector2i> ai;
-			ai.second = dungeonScene->GetPlayer()->GetLocation();
-			ai.first = AbilityID::Attack;
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
+			ai.Ability = AbilityID::Attack;
 
 			return ai;
 		};
@@ -760,15 +760,15 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		};
 
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
-			std::pair<AbilityID, sf::Vector2i> ai;
-			ai.second = dungeonScene->GetPlayer()->GetLocation();
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
 
 			// Has a 50% chance to cast Bolt of Darkness.
 			if (monster->IsAbilityUsable(AbilityID::BoltOfDarkness) && Random::RandomInt(1, 100) <= 50) {
-				ai.first = AbilityID::BoltOfDarkness;
+				ai.Ability = AbilityID::BoltOfDarkness;
 			}
 			else {
-				ai.first = AbilityID::Attack;
+				ai.Ability = AbilityID::Attack;
 			}
 
 			return ai;
@@ -831,15 +831,15 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		};
 
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
-			std::pair<AbilityID, sf::Vector2i> ai;
-			ai.second = dungeonScene->GetPlayer()->GetLocation();
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
 
 			// Has a 50% chance to use Bite.
 			if (monster->IsAbilityUsable(AbilityID::Bite) && Random::RandomInt(1, 100) <= 50) {
-				ai.first = AbilityID::Bite;
+				ai.Ability = AbilityID::Bite;
 			}
 			else {
-				ai.first = AbilityID::Attack;
+				ai.Ability = AbilityID::Attack;
 			}
 
 			return ai;
@@ -900,9 +900,9 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.Abilities = {};
 
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
-			std::pair<AbilityID, sf::Vector2i> ai;
-			ai.second = dungeonScene->GetPlayer()->GetLocation();
-			ai.first = AbilityID::Attack;
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
+			ai.Ability = AbilityID::Attack;
 
 			return ai;
 		};
@@ -967,17 +967,17 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		};
 
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
-			std::pair<AbilityID, sf::Vector2i> ai;
-			ai.second = dungeonScene->GetPlayer()->GetLocation();
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
 
 			if (monster->IsAbilityUsable(AbilityID::Boulder)) {
-				ai.first = AbilityID::Boulder;
+				ai.Ability = AbilityID::Boulder;
 			}
 			else if (monster->IsAbilityUsable(AbilityID::Stalagmite) && Random::RandomInt(1, 100) <= 50) {
-				ai.first = AbilityID::Stalagmite;
+				ai.Ability = AbilityID::Stalagmite;
 			}
 			else {
-				ai.first = AbilityID::Attack;
+				ai.Ability = AbilityID::Attack;
 			}
 
 			return ai;
@@ -1042,14 +1042,14 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		};
 
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
-			std::pair<AbilityID, sf::Vector2i> ai;
-			ai.second = dungeonScene->GetPlayer()->GetLocation();
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
 
 			if (monster->IsAbilityUsable(AbilityID::Chopper) && Random::RandomInt(1, 100) <= 50) {
-				ai.first = AbilityID::Chopper;
+				ai.Ability = AbilityID::Chopper;
 			}
 			else {
-				ai.first = AbilityID::Attack;
+				ai.Ability = AbilityID::Attack;
 			}
 
 			return ai;
@@ -1112,9 +1112,9 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.Abilities = {};
 
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
-			std::pair<AbilityID, sf::Vector2i> ai;
-			ai.second = dungeonScene->GetPlayer()->GetLocation();
-			ai.first = AbilityID::Attack;
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
+			ai.Ability = AbilityID::Attack;
 
 			return ai;
 		};
@@ -1180,19 +1180,19 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		};
 
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
-			std::pair<AbilityID, sf::Vector2i> ai;
-			ai.second = dungeonScene->GetPlayer()->GetLocation();
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
 			
 			// Flame Strike as often as possible.
 			if (monster->IsAbilityUsable(AbilityID::FlameStrike)) {
-				ai.first = AbilityID::FlameStrike;
+				ai.Ability = AbilityID::FlameStrike;
 			}
 			// Fiery Touch if Flame Strike buff is active.
 			else if (monster->IsAbilityUsable(AbilityID::FieryTouch) && monster->HasAura(AuraID::FlameStrike)) {
-				ai.first = AbilityID::FieryTouch;
+				ai.Ability = AbilityID::FieryTouch;
 			}
 			else {
-				ai.first = AbilityID::Attack;
+				ai.Ability = AbilityID::Attack;
 			}
 
 			return ai;
@@ -1255,15 +1255,15 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		};
 
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
-			std::pair<AbilityID, sf::Vector2i> ai;
-			ai.second = dungeonScene->GetPlayer()->GetLocation();
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
 
 			// Has a 50% chance to use Bite.
 			if (monster->IsAbilityUsable(AbilityID::Bite) && Random::RandomInt(1, 100) <= 50) {
-				ai.first = AbilityID::Bite;
+				ai.Ability = AbilityID::Bite;
 			}
 			else {
-				ai.first = AbilityID::Attack;
+				ai.Ability = AbilityID::Attack;
 			}
 
 			return ai;
@@ -1324,9 +1324,9 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.Abilities = {};
 
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
-			std::pair<AbilityID, sf::Vector2i> ai;
-			ai.second = dungeonScene->GetPlayer()->GetLocation();
-			ai.first = AbilityID::Attack;
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
+			ai.Ability = AbilityID::Attack;
 
 			return ai;
 		};
@@ -1386,9 +1386,9 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.Abilities = {};
 
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
-			std::pair<AbilityID, sf::Vector2i> ai;
-			ai.second = dungeonScene->GetPlayer()->GetLocation();
-			ai.first = AbilityID::Attack;
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
+			ai.Ability = AbilityID::Attack;
 
 			return ai;
 		};
@@ -1452,23 +1452,24 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		};
 
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
-			std::pair<AbilityID, sf::Vector2i> ai;
+			AIAction ai;
 
 			// Shadow Energy: Use when half HP, cast only once per encounter.
 			if (monster->GetFlag(0) == 0 && monster->IsAbilityUsable(AbilityID::ShadowEnergy)) {
 				if (monster->GetCurrentHP() < monster->GetMaxHP() / 2) {
-					ai.second = monster->GetLocation();
-					ai.first = AbilityID::ShadowEnergy;
-					monster->SetFlag(0, 1);
+					ai.Target = monster->GetLocation();
+					ai.Ability = AbilityID::ShadowEnergy;
+					ai.FlagIndex = 0;
+					ai.FlagValue = 1;
 				}
 				else {
-					ai.second = dungeonScene->GetPlayer()->GetLocation();
-					ai.first = AbilityID::Attack;
+					ai.Target = dungeonScene->GetPlayer()->GetLocation();
+					ai.Ability = AbilityID::Attack;
 				}
 			}
 			else {
-				ai.second = dungeonScene->GetPlayer()->GetLocation();
-				ai.first = AbilityID::Attack;
+				ai.Target = dungeonScene->GetPlayer()->GetLocation();
+				ai.Ability = AbilityID::Attack;
 			}
 			return ai;
 		};
@@ -1533,19 +1534,19 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		};
 
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
-			std::pair<AbilityID, sf::Vector2i> ai;
-			ai.second = dungeonScene->GetPlayer()->GetLocation();
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
 
 			// Dragonfire Bolt: Use on cooldown.
 			if (monster->IsAbilityUsable(AbilityID::DragonfireBolt)) {
-				ai.first = AbilityID::DragonfireBolt;
+				ai.Ability = AbilityID::DragonfireBolt;
 			}
 			// Flame Bolt: Use as filler.
 			else if (monster->IsAbilityUsable(AbilityID::FlameBolt)) {
-				ai.first = AbilityID::FlameBolt;
+				ai.Ability = AbilityID::FlameBolt;
 			}
 			else {
-				ai.first = AbilityID::Attack;
+				ai.Ability = AbilityID::Attack;
 			}
 
 			return ai;

@@ -13,11 +13,14 @@ enum class Element;
 enum class EquipType;
 enum class MonsterID;
 
+struct AIAction;
+
 #include <functional>
 #include <string>
 #include <vector>
 #include "knownAbility.hpp"
 #include "statMod.hpp"
+#include "../entity/monster.hpp"
 
 struct MonsterData {
 	std::string Name = "Unknown Name";
@@ -69,5 +72,5 @@ struct MonsterData {
 	std::vector<StatMod> StatMods;
 	std::vector<KnownAbility> Abilities;
 
-	std::function<std::pair<AbilityID, sf::Vector2i>(Actor* monster, DungeonScene* dungeonScene)> AI;
+	std::function<AIAction(Actor* monster, DungeonScene* dungeonScene)> AI;
 };

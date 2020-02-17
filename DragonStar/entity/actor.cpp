@@ -31,6 +31,10 @@ void Actor::ClearFCT() {
 	fctManager.Clear();
 }
 
+void Actor::AddMissFCT() {
+	fctManager.AddMissUnit();
+}
+
 void Actor::AddAuraFCT(std::string name, bool isBuff, bool isExpired) {
 	fctManager.AddAuraUnit(name, isBuff, isExpired);
 }

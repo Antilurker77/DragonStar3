@@ -294,6 +294,8 @@ void outputMiss(Actor* user, Actor* target, EventOptions& eventOptions, EventRes
 	}
 	s << target->GetName() << "#default .";
 	messageLog.AddMessage(s.str());
+
+	target->AddMissFCT();
 }
 
 EventResult Combat::AttackDamage(Actor* user, Actor* target, EventOptions& eventOptions, int coefficient) {

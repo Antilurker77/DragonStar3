@@ -45,6 +45,9 @@ public:
 	// Clears all floating combat text from this actor.
 	void ClearFCT();
 
+	// Adds a miss unit to the FCT manager.
+	void AddMissFCT();
+
 	// Adds an aura unit to the FCT manager.
 	void AddAuraFCT(std::string name, bool isBuff, bool isExpired);
 

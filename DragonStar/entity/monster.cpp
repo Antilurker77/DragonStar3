@@ -356,6 +356,20 @@ bool Monster::IsUnique() {
 	return monsterData->IsUnique;
 }
 
+void Monster::OnEvent(EventType eventType, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+	for (auto& ab : abilities) {
+		ab.OnEvent(eventType, this, target, eventOptions, eventResult, amount);
+	}
+
+	for (auto& au : auras) {
+		au.OnEvent(eventType, this, target, eventOptions, eventResult, amount);
+	}
+
+	if (monsterData != nullptr) {
+		monsterData->OnEvent(eventType, this, target, eventOptions, eventResult, amount);
+	}
+}
+
 void Monster::Alert() {
 	if (aiState == AIState::Sleeping) {
 		messageLog.AddMessage("#monster " + GetName() + " #default woke up.");

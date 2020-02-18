@@ -73,6 +73,10 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.StatMods = {};
 		md.Abilities = {};
 
+		md.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t amount) {
+			return;
+		};
+
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
 			AIAction ai;
 
@@ -138,6 +142,10 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.StatMods = {};
 		md.Abilities = {
 			{AbilityID::MagicMissile, 0}
+		};
+
+		md.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t amount) {
+			return;
 		};
 
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
@@ -213,6 +221,10 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 			{AbilityID::SlimeSplash, 0}
 		};
 
+		md.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t amount) {
+			return;
+		};
+
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
 			AIAction ai;
 			ai.Target = dungeonScene->GetPlayer()->GetLocation();
@@ -282,6 +294,10 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.Abilities = {
 			{AbilityID::Maul, 0},
 			{AbilityID::CrushingBlow, 0}
+		};
+
+		md.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t amount) {
+			return;
 		};
 
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
@@ -357,6 +373,10 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.StatMods = {};
 		md.Abilities = {};
 
+		md.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t amount) {
+			return;
+		};
+
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
 			AIAction ai;
 			ai.Target = dungeonScene->GetPlayer()->GetLocation();
@@ -418,6 +438,10 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		md.StatMods = {};
 		md.Abilities = {};
+
+		md.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t amount) {
+			return;
+		};
 
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
 			AIAction ai;
@@ -481,6 +505,10 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.StatMods = {};
 		md.Abilities = {
 			{AbilityID::CobraBite, 0}
+		};
+
+		md.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t amount) {
+			return;
 		};
 
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
@@ -551,6 +579,10 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.StatMods = {};
 		md.Abilities = {
 			{AbilityID::FearfulGaze, 0}
+		};
+
+		md.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t amount) {
+			return;
 		};
 
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
@@ -624,6 +656,10 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 			{AbilityID::Ignite, 0}
 		};
 
+		md.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t amount) {
+			return;
+		};
+
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
 			AIAction ai;
 			ai.Target = dungeonScene->GetPlayer()->GetLocation();
@@ -693,6 +729,10 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.StatMods = {};
 		md.Abilities = {
 			{AbilityID::Bite, 0}
+		};
+
+		md.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t amount) {
+			return;
 		};
 
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
@@ -766,6 +806,10 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.Abilities = {
 			{AbilityID::PowerStrike, 0},
 			{AbilityID::RendingSlash, 2}
+		};
+
+		md.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t amount) {
+			return;
 		};
 
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
@@ -846,6 +890,10 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 			{AbilityID::WaterBolt, 1},
 			{AbilityID::Icicle, 1},
 			{AbilityID::Shock, 1}
+		};
+
+		md.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t amount) {
+			return;
 		};
 
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
@@ -937,6 +985,10 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		};
 		md.Abilities = {};
 
+		md.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t amount) {
+			return;
+		};
+
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
 			AIAction ai;
 			ai.Target = dungeonScene->GetPlayer()->GetLocation();
@@ -1002,6 +1054,10 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		};
 		md.Abilities = {
 			{AbilityID::BoltOfDarkness, 0}
+		};
+
+		md.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t amount) {
+			return;
 		};
 
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
@@ -1075,6 +1131,10 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 			{AbilityID::Bite, 0}
 		};
 
+		md.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t amount) {
+			return;
+		};
+
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
 			AIAction ai;
 			ai.Target = dungeonScene->GetPlayer()->GetLocation();
@@ -1144,6 +1204,10 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.StatMods = {};
 		md.Abilities = {};
 
+		md.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t amount) {
+			return;
+		};
+
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
 			AIAction ai;
 			ai.Target = dungeonScene->GetPlayer()->GetLocation();
@@ -1209,6 +1273,10 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.Abilities = {
 			{AbilityID::Boulder, 0},
 			{AbilityID::Stalagmite, 0}
+		};
+
+		md.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t amount) {
+			return;
 		};
 
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
@@ -1278,6 +1346,10 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.EXPDrop = 5;
 		md.GoldDrop = 7;
 		md.LootDrop = 1500;
+
+		md.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t amount) {
+			return;
+		};
 
 		md.StatMods = {
 			StatMod(StatModType::DoubleStrikeChance, 100)
@@ -1351,6 +1423,10 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.GoldDrop = 5;
 		md.LootDrop = 3000;
 
+		md.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t amount) {
+			return;
+		};
+
 		md.StatMods = {
 			StatMod(StatModType::CritChance, 300)
 		};
@@ -1422,6 +1498,10 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.Abilities = {
 			{AbilityID::FlameStrike, 0},
 			{AbilityID::FieryTouch, 0}
+		};
+
+		md.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t amount) {
+			return;
 		};
 
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
@@ -1578,6 +1658,10 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 			{AbilityID::Bite, 0}
 		};
 
+		md.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t amount) {
+			return;
+		};
+
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
 			AIAction ai;
 			ai.Target = dungeonScene->GetPlayer()->GetLocation();
@@ -1647,6 +1731,10 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.StatMods = {};
 		md.Abilities = {};
 
+		md.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t amount) {
+			return;
+		};
+
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
 			AIAction ai;
 			ai.Target = dungeonScene->GetPlayer()->GetLocation();
@@ -1708,6 +1796,10 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		md.StatMods = {};
 		md.Abilities = {};
+
+		md.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t amount) {
+			return;
+		};
 
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
 			AIAction ai;
@@ -1773,6 +1865,10 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.StatMods = {};
 		md.Abilities = {
 			{ AbilityID::ShadowEnergy, 0 }
+		};
+
+		md.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t amount) {
+			return;
 		};
 
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
@@ -1855,6 +1951,10 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.Abilities = {
 			{ AbilityID::FlameBolt, 1 },
 			{ AbilityID::DragonfireBolt, 0}
+		};
+
+		md.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t amount) {
+			return;
 		};
 
 		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {

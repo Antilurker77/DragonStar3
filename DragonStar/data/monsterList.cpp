@@ -708,6 +708,82 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		return md;
 	}();
+	list[MonsterID::GoblinWarrior] = [] {
+		MonsterData md;
+
+		md.Name = "Goblin Warrior";
+		md.Title = "";
+		md.Filename = "goblin_warrior.png";
+
+		md.IsUnique = false;
+		md.IsBoss = false;
+		md.CanFly = false;
+		md.CanSwim = false;
+		md.CanTunnel = false;
+
+		md.IsStationary = false;
+		md.ChaseTurns = 3;
+
+		md.Level = 5;
+
+		md.BaseHP = 56;
+		md.BaseMP = 20;
+		md.BaseSP = 100;
+
+		md.BaseSTR = 15;
+		md.BaseDEX = 15;
+		md.BaseMAG = 10;
+		md.BaseVIT = 14;
+		md.BaseSPI = 8;
+
+		md.BaseArmor = 30;
+		md.BaseMagicArmor = 10;
+		md.BaseEvasion = 10;
+
+		md.BaseAttackPower = 12;
+		md.BaseSpellPower = 0;
+
+		md.BaseHitChance = 750;
+		md.BaseAttackRange = 150;
+		md.BaseAttackSpeed = 200;
+		md.BaseWeaponDamageMultiplier = 1000;
+		md.AttackElement = Element::Physical;
+		md.AttackType = EquipType::Sword;
+
+		md.BaseLineOfSight = 350;
+		md.BaseMoveCost = 90;
+
+		md.EXPDrop = 6;
+		md.GoldDrop = 8;
+		md.LootDrop = 1500;
+
+		md.StatMods = {
+			StatMod(StatModType::BlockChance, 200)
+		};
+		md.Abilities = {
+			{AbilityID::PowerStrike, 0},
+			{AbilityID::RendingSlash, 2}
+		};
+
+		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
+
+			if (monster->IsAbilityUsable(AbilityID::RendingSlash)) {
+				ai.Ability = AbilityID::RendingSlash;
+			}
+			else if (monster->IsAbilityUsable(AbilityID::PowerStrike) && Random::RandomInt(1, 100) <= 50) {
+				ai.Ability = AbilityID::PowerStrike;
+			}
+			else {
+				ai.Ability = AbilityID::Attack;
+			}
+
+			return ai;
+		};
+
+		return md;
+	}();
 	list[MonsterID::GreenSlime] = [] {
 		MonsterData md;
 

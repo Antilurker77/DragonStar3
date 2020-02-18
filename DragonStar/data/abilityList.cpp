@@ -633,7 +633,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		ad.CanBlock = true;
 		ad.CanCounter = true;
 		ad.CanCrit = true;
-		ad.CanDoubleStrike = true;
+		ad.CanDoubleStrike = false;
 
 		ad.HitChance = { -1, -1, -1, -1, -1 };
 		ad.BonusArmorPen = { 0, 0, 0, 0, 0 };
@@ -2192,7 +2192,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		ad.CanBlock = true;
 		ad.CanCounter = true;
 		ad.CanCrit = true;
-		ad.CanDoubleStrike = true;
+		ad.CanDoubleStrike = false;
 
 		ad.HitChance = { -1, -1, -1, -1, -1 };
 		ad.BonusArmorPen = { 0, 0, 0, 0, 0 };
@@ -3708,7 +3708,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		ad.CanBlock = true;
 		ad.CanCounter = true;
 		ad.CanCrit = true;
-		ad.CanDoubleStrike = true;
+		ad.CanDoubleStrike = false;
 
 		ad.HitChance = { -1, -1, -1, -1, -1 };
 		ad.BonusArmorPen = { 0, 0, 0, 0, 0 };

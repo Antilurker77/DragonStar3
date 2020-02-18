@@ -622,6 +622,18 @@ static std::vector<ItemWeight> initPotionWeights() {
 	return list;
 }
 
+static std::vector<ItemWeight> initScrollWeights() {
+	std::vector<ItemWeight> list;
+
+	// MinItemLevel, MaxItemLevel, Weight, ItemID
+	list = {
+		{  1, 100, 1000, ItemID::ScrollPhaseDoor},
+		{  1, 100,  500, ItemID::ScrollTeleport}
+	};
+
+	return list;
+}
+
 static std::vector<ItemWeight> initTomeWeights() {
 	std::vector<ItemWeight> list;
 
@@ -644,4 +656,5 @@ std::unordered_map<EquipType, std::vector<ItemWeight>> Item::artifactWeights = i
 std::unordered_map<EquipType, std::vector<AffixWeight>> Item::affixWeights = initAffixWeights();
 
 std::vector<ItemWeight> Item::potionWeights = initPotionWeights();
+std::vector<ItemWeight> Item::scrollWeights = initScrollWeights();
 std::vector<ItemWeight> Item::tomeWeights = initTomeWeights();

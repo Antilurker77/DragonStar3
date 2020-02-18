@@ -32,6 +32,20 @@ std::vector<ItemID> Record::potionList = {
 	ItemID::PotionStamina
 };
 
+std::vector<std::string> Record::scrollNames = {
+	"Adalis",
+	"Bethion",
+	"Censa",
+	"Leanore",
+	"Luminar"
+
+};
+
+std::vector<ItemID> Record::scrollList = {
+	ItemID::ScrollPhaseDoor,
+	ItemID::ScrollTeleport
+};
+
 Record::Record() {
 
 }
@@ -59,6 +73,15 @@ void Record::LoadIdentities(std::vector<int> identifiedItems) {
 			id.Identified = false;
 		}
 	}
+	for (auto& id : scrollIdentities) {
+		int itemID = static_cast<int>(id.ItemID);
+		if (std::find(identifiedItems.begin(), identifiedItems.end(), itemID) != identifiedItems.end()) {
+			id.Identified = true;
+		}
+		else {
+			id.Identified = false;
+		}
+	}
 }
 
 void Record::RandomizeIdentities(uint64_t seed) {
@@ -74,10 +97,29 @@ void Record::RandomizeIdentities(uint64_t seed) {
 		std::swap(colors.back(), colors[choosenColorIndex]);
 		potionIdentities.push_back(Identity{ color, potionList[i], false });
 	}
+
+	// Scrolls
+	scrollIdentities.clear();
+	scrollIdentities.reserve(scrollList.size());
+	std::vector<std::string> names = scrollNames;
+	for (size_t i = 0; i < scrollList.size(); i++) {
+		size_t choosenNameIndex = Random::RandomSizeT(0, names.size() - 1 - i, mt);
+		std::string name = names[choosenNameIndex];
+		std::swap(names.back(), names[choosenNameIndex]);
+		scrollIdentities.push_back(Identity{ name, scrollList[i], false });
+	}
 }
 
 bool Record::IsIdentified(ItemID id) {
+	// Potions
 	for (auto& i : potionIdentities) {
+		if (i.ItemID == id) {
+			return i.Identified;
+		}
+	}
+
+	// Scrolls
+	for (auto& i : scrollIdentities) {
 		if (i.ItemID == id) {
 			return i.Identified;
 		}
@@ -107,11 +149,22 @@ std::vector<ItemID> Record::GetIdentifiedItems() {
 		}
 	}
 
+	for (auto& id : scrollIdentities) {
+		if (id.Identified) {
+			result.push_back(id.ItemID);
+		}
+	}
+
 	return result;
 }
 
 std::string Record::GetLabel(ItemID id) {
 	for (auto& i : potionIdentities) {
+		if (i.ItemID == id) {
+			return i.Label;
+		}
+	}
+	for (auto& i : scrollIdentities) {
 		if (i.ItemID == id) {
 			return i.Label;
 		}
@@ -122,6 +175,12 @@ std::string Record::GetLabel(ItemID id) {
 
 void Record::Identify(ItemID id) {
 	for (auto& i : potionIdentities) {
+		if (i.ItemID == id) {
+			i.Identified = true;
+			return;
+		}
+	}
+	for (auto& i : scrollIdentities) {
 		if (i.ItemID == id) {
 			i.Identified = true;
 			return;

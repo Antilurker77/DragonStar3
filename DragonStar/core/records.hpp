@@ -71,7 +71,11 @@ private:
 	static std::vector<std::string> potionColors;
 	static std::vector<ItemID> potionList;
 
+	static std::vector<std::string> scrollNames;
+	static std::vector<ItemID> scrollList;
+
 	std::vector<Identity> potionIdentities;
+	std::vector<Identity> scrollIdentities;
 
 	std::vector<ItemID> spawnedArtifacts;
 

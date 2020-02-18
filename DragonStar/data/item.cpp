@@ -66,8 +66,13 @@ void Item::InitRandomItem(int itemLevel) {
 	}
 
 	// Potion
-	else if (random >= 150) {
+	else if (random >= 300) {
 		InitPotion(itemLevel);
+	}
+
+	// Scroll
+	else if (random >= 150) {
+		InitScroll(itemLevel);
 	}
 
 	else if (random >= 50) {
@@ -97,6 +102,22 @@ void Item::InitPotion(int itemLevel) {
 	}
 
 	Initialize(potionToGenerate);
+}
+
+void Item::InitScroll(int itemLevel) {
+	bool choosenItem = false;
+	ItemID scrollToGenerate{};
+
+	while (!choosenItem) {
+		size_t size = scrollWeights.size();
+		ItemWeight& itemWeight = scrollWeights[Random::RandomSizeT(0, size - 1)];
+		if (itemLevel >= itemWeight.MinItemLevel && itemLevel <= itemWeight.MaxItemLevel && Random::RandomInt(1, 1000) <= itemWeight.Weight) {
+			choosenItem = true;
+			scrollToGenerate = itemWeight.ItemID;
+		}
+	}
+
+	Initialize(scrollToGenerate);
 }
 
 void Item::InitTome(int itemLevel) {
@@ -291,7 +312,17 @@ std::string Item::GetName() {
 		}
 		return name;
 	}
-	
+	if (type == ItemType::Scroll) {
+		std::string name = "'" + records.GetLabel(itemID) + "'";
+		if (records.IsIdentified(itemID)) {
+			name += " " + itemData->Name;
+		}
+		else {
+			name += " Scroll";
+		}
+		return name;
+	}
+
 	return itemData->Name;
 }
 

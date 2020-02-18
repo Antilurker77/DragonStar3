@@ -332,7 +332,15 @@ void Tooltip::SetTooltip(Item& item, bool displayCost) {
 			}			
 		}
 		else {
-			s = "Drink me.";
+			if (item.GetItemType() == ItemType::Potion) {
+				s = "Drink me.";
+			}
+			else if (item.GetItemType() == ItemType::Scroll) {
+				s = "Read me.";
+			}
+			else {
+				s = "Use me.";
+			}
 			sfe::RichText desc;
 			desc.setString(s);
 			tooltipText.push_back(desc);

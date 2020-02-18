@@ -23,6 +23,7 @@ enum class MonsterID {
 	FireAnt,
 	GiantRat,
 	GoblinWarrior,
+	GoblinWizard,
 	GreenSlime,
 	Imp,
 	Jackal,

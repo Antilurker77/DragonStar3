@@ -784,6 +784,101 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		return md;
 	}();
+	list[MonsterID::GoblinWarrior] = [] {
+		MonsterData md;
+
+		md.Name = "Goblin Wizard";
+		md.Title = "";
+		md.Filename = "goblin_wizard.png";
+
+		md.IsUnique = false;
+		md.IsBoss = false;
+		md.CanFly = false;
+		md.CanSwim = false;
+		md.CanTunnel = false;
+
+		md.IsStationary = false;
+		md.ChaseTurns = 3;
+
+		md.Level = 5;
+
+		md.BaseHP = 40;
+		md.BaseMP = 40;
+		md.BaseSP = 100;
+
+		md.BaseSTR = 12;
+		md.BaseDEX = 15;
+		md.BaseMAG = 15;
+		md.BaseVIT = 10;
+		md.BaseSPI = 15;
+
+		md.BaseArmor = 10;
+		md.BaseMagicArmor = 30;
+		md.BaseEvasion = 10;
+
+		md.BaseAttackPower = 6;
+		md.BaseSpellPower = 14;
+
+		md.BaseHitChance = 750;
+		md.BaseAttackRange = 150;
+		md.BaseAttackSpeed = 240;
+		md.BaseWeaponDamageMultiplier = 1000;
+		md.AttackElement = Element::Physical;
+		md.AttackType = EquipType::Staff;
+
+		md.BaseLineOfSight = 350;
+		md.BaseMoveCost = 100;
+
+		md.EXPDrop = 7;
+		md.GoldDrop = 10;
+		md.LootDrop = 2250;
+
+		md.StatMods = {
+			StatMod(StatModType::Haste, 50),
+			StatMod(StatModType::CritChance, 30)
+		};
+		md.Abilities = {
+			{AbilityID::MagicMissile, 1},
+			{AbilityID::FlameBolt, 1},
+			{AbilityID::WaterBolt, 1},
+			{AbilityID::Icicle, 1},
+			{AbilityID::Shock, 1}
+		};
+
+		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
+
+			std::vector<AbilityID> usable;
+			if (monster->IsAbilityUsable(AbilityID::MagicMissile)) {
+				usable.push_back(AbilityID::MagicMissile);
+			}
+			if (monster->IsAbilityUsable(AbilityID::FlameBolt)) {
+				usable.push_back(AbilityID::FlameBolt);
+			}
+			if (monster->IsAbilityUsable(AbilityID::WaterBolt)) {
+				usable.push_back(AbilityID::WaterBolt);
+			}
+			if (monster->IsAbilityUsable(AbilityID::Icicle)) {
+				usable.push_back(AbilityID::Icicle);
+			}
+			if (monster->IsAbilityUsable(AbilityID::Shock)) {
+				usable.push_back(AbilityID::Shock);
+			}
+			// Randomly cast Magic Missile, Flame Bolt, Water Bolt,
+			// Icicle, or Shock.
+			if (!usable.empty()) {
+				ai.Ability = usable[Random::RandomSizeT(0, usable.size() - 1)];
+			}
+			else {
+				ai.Ability = AbilityID::Attack;
+			}
+
+			return ai;
+		};
+
+		return md;
+	}();
 	list[MonsterID::GreenSlime] = [] {
 		MonsterData md;
 

@@ -16,13 +16,19 @@ std::vector<std::string> Record::potionColors = {
 	"Red",
 	"Blue",
 	"Yellow",
-	"Green"
+	"Green",
+	"Orange",
+	"Purple",
+	"Pink",
+	"White",
+	"Black"
 };
 
 std::vector<ItemID> Record::potionList = {
 	ItemID::PotionFruitJuice,
 	ItemID::PotionMinorHealing,
-	ItemID::PotionSpeed
+	ItemID::PotionSpeed,
+	ItemID::PotionStamina
 };
 
 Record::Record() {

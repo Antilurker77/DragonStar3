@@ -187,6 +187,9 @@ void Player::Equip(InventorySlot& inventorySlot) {
 		inventorySlot.StackCount = 0;
 	}
 	setEquipmentSprites();
+	currentHP = std::min(currentHP, GetMaxHP());
+	currentMP = std::min(currentMP, GetMaxMP());
+	currentSP = std::min(currentSP, GetMaxSP());
 }
 
 void Player::Equip(Item& item, size_t index) {
@@ -265,6 +268,9 @@ bool Player::Unequip(Inventory& inventory, size_t index) {
 	if (unequiped) {
 		equipment[index] = Item();
 		setEquipmentSprites();
+		currentHP = std::min(currentHP, GetMaxHP());
+		currentMP = std::min(currentMP, GetMaxMP());
+		currentSP = std::min(currentSP, GetMaxSP());
 		return true;
 	}
 	return false;

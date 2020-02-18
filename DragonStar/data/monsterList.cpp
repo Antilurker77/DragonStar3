@@ -6,11 +6,14 @@
 
 #include "../entity/monster.hpp"
 
+#include "../core/combat.hpp"
 #include "../core/random.hpp"
 #include "id/abilityID.hpp"
 #include "id/auraID.hpp"
+#include "id/category.hpp"
 #include "id/element.hpp"
 #include "id/equipType.hpp"
+#include "id/eventType.hpp"
 #include "id/monsterID.hpp"
 #include "../scene/dungeonScene.hpp"
 
@@ -784,7 +787,7 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		return md;
 	}();
-	list[MonsterID::GoblinWarrior] = [] {
+	list[MonsterID::GoblinWizard] = [] {
 		MonsterData md;
 
 		md.Name = "Goblin Wizard";
@@ -1432,6 +1435,85 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 			// Fiery Touch if Flame Strike buff is active.
 			else if (monster->IsAbilityUsable(AbilityID::FieryTouch) && monster->HasAura(AuraID::FlameStrike)) {
 				ai.Ability = AbilityID::FieryTouch;
+			}
+			else {
+				ai.Ability = AbilityID::Attack;
+			}
+
+			return ai;
+		};
+
+		return md;
+	}();
+	list[MonsterID::VenomousRat] = [] {
+		MonsterData md;
+
+		md.Name = "Venomous Rat";
+		md.Title = "";
+		md.Filename = "venomous_rat.png";
+
+		md.IsUnique = false;
+		md.IsBoss = false;
+		md.CanFly = false;
+		md.CanSwim = false;
+		md.CanTunnel = false;
+
+		md.IsStationary = false;
+		md.ChaseTurns = 3;
+
+		md.Level = 5;
+
+		md.BaseHP = 45;
+		md.BaseMP = 5;
+		md.BaseSP = 100;
+
+		md.BaseSTR = 16;
+		md.BaseDEX = 18;
+		md.BaseMAG = 5;
+		md.BaseVIT = 12;
+		md.BaseSPI = 5;
+
+		md.BaseArmor = 20;
+		md.BaseMagicArmor = 0;
+		md.BaseEvasion = 18;
+
+		md.BaseAttackPower = 10;
+		md.BaseSpellPower = 0;
+
+		md.BaseHitChance = 700;
+		md.BaseAttackRange = 100;
+		md.BaseAttackSpeed = 180;
+		md.BaseWeaponDamageMultiplier = 1000;
+		md.AttackElement = Element::Physical;
+		md.AttackType = EquipType::Undefined;
+
+		md.BaseLineOfSight = 250;
+		md.BaseMoveCost = 80;
+
+		md.EXPDrop = 8;
+		md.GoldDrop = 0;
+		md.LootDrop = 0;
+
+		md.StatMods = {};
+		md.Abilities = {
+			{AbilityID::Bite, 0}
+		};
+
+		md.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t amount) {
+			if (eventType == EventType::Damage) {
+				auto& cat = eventOptions.Categories;
+				if (std::find(cat.begin(), cat.end(), Category::Attack) != cat.end() && std::find(cat.begin(), cat.end(), Category::Direct) != cat.end()) {
+					Combat::AddAuraStack(user, target, eventOptions, AuraID::VenomousWound, 0);
+				}
+			}
+		};
+
+		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
+
+			if (monster->IsAbilityUsable(AbilityID::Bite) && Random::RandomInt(1, 100) <= 50) {
+				ai.Ability = AbilityID::Bite;
 			}
 			else {
 				ai.Ability = AbilityID::Attack;

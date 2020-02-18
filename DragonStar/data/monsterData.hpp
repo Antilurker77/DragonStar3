@@ -72,5 +72,6 @@ struct MonsterData {
 	std::vector<StatMod> StatMods;
 	std::vector<KnownAbility> Abilities;
 
+	std::function<void(EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t amount)> OnEvent;
 	std::function<AIAction(Actor* monster, DungeonScene* dungeonScene)> AI;
 };

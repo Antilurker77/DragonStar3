@@ -34,5 +34,6 @@ enum class AuraID {
 	SlimeSplash,
 	Speed,
 	ThunderStrike,
-	Venom
+	Venom,
+	VenomousWound
 };

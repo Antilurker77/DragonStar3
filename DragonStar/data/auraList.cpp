@@ -1775,6 +1775,87 @@ static std::unordered_map<AuraID, AuraData> initList() {
 
 		return ad;
 	}();
+	list[AuraID::VenomousWound] = [] {
+		AuraData ad;
+
+		ad.Name = "Venonmous Wound";
+		ad.Icon = "placeholder.png";
+		ad.AuraID = AuraID::VenomousWound;
+
+		ad.Categories = {
+			Category::Damaging,
+			Category::OverTime,
+			Category::Attack,
+			Category::SingleTarget
+		};
+		ad.Elements = {
+			Element::Poison
+		};
+
+		ad.MaxRank = 0;
+
+		ad.BaseDuration = { 500 };
+		ad.MaxDuration = { 500 };
+		ad.MaxStacks = { 10 };
+
+		ad.Values = {
+			{ 50 }
+		};
+		ad.StatMods = {};
+
+		ad.IsBuff = false;
+		ad.Unique = true;
+		ad.UniqueByActor = false;
+		ad.ConsumeOnUse = false;
+		ad.StacksExpireOneByOne = false;
+		ad.MultiplyStatModsByStacks = false;
+
+		ad.IsRest = false;
+		ad.IsStun = false;
+		ad.IsDisarm = false;
+		ad.IsSilence = false;
+		ad.IsSnare = false;
+
+		ad.CanCrit = true;
+		ad.BonusArmorPen = { 0 };
+		ad.BonusResistancePen = { 0 };
+		ad.BonusCritChance = { 0 };
+		ad.BonusCritPower = { 0 };
+		ad.BonusDoubleStrikeChance = { 0 };
+		ad.BonusHPLeech = { 0 };
+		ad.BonusMPLeech = { 0 };
+		ad.BonusSPLeech = { 0 };
+
+		ad.GetDescription = [Values = ad.Values](Actor* user, EventOptions& eventOptions, int rank, Aura* aura){
+			std::string desc;
+			std::string value;
+
+			if (user == nullptr) {
+				value = "#damage " + std::to_string(Values[0][rank] / 10 * aura->GetCurrentStackSize()) + "% Attack Power #default ";
+			}
+			else {
+				value = "#damage " + std::to_string(Combat::AttackDamageEstimate(user, eventOptions, Values[0][rank] * aura->GetCurrentStackSize())) + " #default ";
+			}
+			desc = "Deals " + value + "poison damage every 1s.";
+
+			return desc;
+		};
+
+		ad.OnApplication = [Values = ad.Values](Actor* user, Actor* target, EventOptions& eventOptions, int rank, Aura* aura) {
+			return;
+		};
+		ad.OnTick = [Values = ad.Values](Actor* user, Actor* target, EventOptions& eventOptions, int rank, Aura* aura) {
+			Combat::AttackDamage(user, target, eventOptions, Values[0][rank] * aura->GetCurrentStackSize());
+		};
+		ad.OnExpiry = [Values = ad.Values](Actor* user, Actor* target, EventOptions& eventOptions, int rank, Aura* aura) {
+			return;
+		};
+		ad.OnEvent = [Values = ad.Values](EventType eventType, EventOptions& auraOptions, int rank, Aura* aura, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return ad;
+	}();
 
 	return list;
 }

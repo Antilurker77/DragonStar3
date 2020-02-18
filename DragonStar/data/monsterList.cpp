@@ -730,7 +730,7 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.BaseMP = 20;
 		md.BaseSP = 100;
 
-		md.BaseSTR = 15;
+		md.BaseSTR = 14;
 		md.BaseDEX = 15;
 		md.BaseMAG = 10;
 		md.BaseVIT = 14;
@@ -740,7 +740,7 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.BaseMagicArmor = 10;
 		md.BaseEvasion = 10;
 
-		md.BaseAttackPower = 12;
+		md.BaseAttackPower = 10;
 		md.BaseSpellPower = 0;
 
 		md.BaseHitChance = 750;

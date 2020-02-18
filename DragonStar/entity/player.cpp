@@ -65,6 +65,7 @@ Player::Player(ActorSave& actorSave, PlayerSave& playerSave) {
 	exp = playerSave.PlayerEXP;
 	statPoints = playerSave.StatPoints;
 	abilityPoints = playerSave.AbilityPoints;
+	bonusPoints = playerSave.BonusPoints;
 	isFemale = true; // todo: save gender
 
 	Initialize(static_cast<RaceID>(playerSave.RaceID));
@@ -436,6 +437,10 @@ int Player::GetStatPoints() {
 
 int Player::GetAbilityPoints() {
 	return abilityPoints;
+}
+
+std::array<int, 5> Player::GetBonusPoints() {
+	return bonusPoints;
 }
 
 int Player::getBaseStat(StatModType statModType) {

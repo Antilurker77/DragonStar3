@@ -1104,6 +1104,7 @@ void DungeonScene::saveGame() {
 	saveFile.Player.RaceID = static_cast<int>(player->GetRaceID());
 	saveFile.Player.StatPoints = player->GetStatPoints();
 	saveFile.Player.AbilityPoints = player->GetAbilityPoints();
+	saveFile.Player.BonusPoints = player->GetBonusPoints();
 
 	saveFile.Player.Abilities.clear();
 	saveFile.Player.AbilityRanks.clear();

@@ -90,6 +90,10 @@ public:
 	// Returns the number of ability points the player has.
 	int GetAbilityPoints();
 
+	// Returns the number of bonus points for each attribute.
+	// Strength, Dexterity, Magic, Vitality, Spirit
+	std::array<int, 5> GetBonusPoints();
+
 private:
 	int getBaseStat(StatModType statModType);
 	std::vector<StatMod>& getBaseStatMods();

@@ -109,6 +109,7 @@ struct PlayerSave {
 	int PlayerEXP;
 	int StatPoints;
 	int AbilityPoints;
+	std::array<int, 5> BonusPoints;
 
 	std::vector<int> Abilities;
 	std::vector<int> AbilityRanks;
@@ -124,6 +125,7 @@ struct PlayerSave {
 			PlayerEXP,
 			StatPoints,
 			AbilityPoints,
+			BonusPoints,
 			Abilities,
 			AbilityRanks,
 			Equipment

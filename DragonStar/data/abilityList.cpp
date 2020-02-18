@@ -1483,6 +1483,106 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 
 		return ad;
 	}();
+	list[AbilityID::FearfulGaze] = [] {
+		AbilityData ad;
+
+		ad.Name = "Fearful Gaze";
+		ad.Icon = "placeholder.png";
+		ad.ID = AbilityID::FearfulGaze;
+
+		ad.Categories = {
+			Category::SingleTarget,
+			Category::Damaging,
+			Category::Attack,
+			Category::Direct
+		};
+		ad.Elements = { Element::Dark };
+		ad.RequiredWeaponTypes = {};
+
+		ad.IsPassive = false;
+		ad.MaxRank = 0;
+
+		ad.Range = { 350 };
+		ad.UseTime = { 100 };
+		ad.Cooldown = { 1000 };
+		ad.MaxCharges = { 1 };
+		ad.HPCost = { 0 };
+		ad.MPCost = { 0 };
+		ad.SPCost = { 30 };
+
+		ad.Values = {
+			{ 1250 }, // Damage
+			{ 150 }, // Damage Reduction
+			{ 1000 } // Duration
+		};
+		ad.PassiveBonuses = {};
+
+		ad.CanDodge = true;
+		ad.CanBlock = true;
+		ad.CanCounter = false;
+		ad.CanCrit = true;
+		ad.CanDoubleStrike = false;
+
+		ad.HitChance = { 1000 };
+		ad.BonusArmorPen = { 0 };
+		ad.BonusResistancePen = { 0 };
+		ad.BonusCritChance = { 0 };
+		ad.BonusCritPower = { 0 };
+		ad.BonusDoubleStrikeChance = { 0 };
+		ad.BonusHPLeech = { 0 };
+		ad.BonusMPLeech = { 0 };
+		ad.BonusSPLeech = { 0 };
+
+		ad.FixedRange = false;
+		ad.HideRange = false;
+
+		ad.IsProjectile = true;
+		ad.IgnoreLineOfSight = false;
+
+		ad.AreaIgnoreLineOfSight = false;
+		ad.AreaIgnoreBodyBlock = false;
+
+		ad.GetTargetArea = [&](Actor* user, DungeonScene* dungeonScene, sf::Vector2i cursorTarget, int rank) {
+			return std::vector<sf::Vector2i>{ cursorTarget };
+		};
+
+		ad.GetExtraArea = [&](Actor* user, DungeonScene* dungeonScene, sf::Vector2i cursorTarget, int rank) {
+			return std::vector<sf::Vector2i>{};
+		};
+
+		ad.CustomUseCondition = []() {
+			return true;
+		};
+		ad.GetDescription = [Values = ad.Values](Actor* user, EventOptions& eventOptions, int rank) {
+			std::string desc;
+			std::string value;
+			std::string damageReduction = std::to_string(Values[1][rank] / 10);
+			std::string duration = std::to_string(Values[2][rank] / 100);
+
+			if (user == nullptr) {
+				value = "#damage " + std::to_string(Values[0][rank] / 10) + "% Attack Power #default ";
+			}
+			else {
+				value = "#damage " + std::to_string(Combat::SpellDamageEstimate(user, eventOptions, Values[0][rank])) + " #default ";
+			}
+
+			desc = "Deals " + value + "dark damage and reduces the damage of the target's next ability by " + damageReduction + "%. Lasts " + duration + "s.";
+			return desc;
+		};
+		ad.Execute = [Values = ad.Values](Actor* user, std::vector<Actor*>& targets, sf::Vector2i cursor, std::vector<sf::Vector2i>& targetArea, EventOptions& eventOptions, int rank) {
+			if (!targets.empty()) {
+				auto result = Combat::SpellDamage(user, targets[0], eventOptions, Values[0][rank]);
+				if (result.DidHit) {
+					Combat::AddAuraStack(user, targets[0], eventOptions, AuraID::FearfulGaze, rank);
+				}
+			}
+		};
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
+
+		};
+
+		return ad;
+	}();
 	list[AbilityID::FieryTouch] = [] {
 		AbilityData ad;
 

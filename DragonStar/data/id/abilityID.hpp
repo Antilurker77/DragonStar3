@@ -25,6 +25,7 @@ enum class AbilityID {
 	DragonBreath,
 	DragonfireBolt,
 	ElementalEnergy,
+	FearfulGaze,
 	FieryTouch,
 	FlameBolt,
 	FlameStrike,

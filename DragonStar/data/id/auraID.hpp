@@ -23,6 +23,7 @@ enum class AuraID {
 	DeadlyForce,
 	Disarm,
 	ElementalEnergy,
+	FearfulGaze,
 	FlameStrike,
 	Ignite,
 	Maul,

@@ -496,6 +496,77 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		return md;
 	}();
+	list[MonsterID::DemonEye] = [] {
+		MonsterData md;
+
+		md.Name = "Demon Eye";
+		md.Title = "";
+		md.Filename = "demon_eye.png";
+
+		md.IsUnique = false;
+		md.IsBoss = false;
+		md.CanFly = false;
+		md.CanSwim = false;
+		md.CanTunnel = false;
+
+		md.IsStationary = false;
+		md.ChaseTurns = 3;
+
+		md.Level = 5;
+
+		md.BaseHP = 50;
+		md.BaseMP = 24;
+		md.BaseSP = 100;
+
+		md.BaseSTR = 17;
+		md.BaseDEX = 20;
+		md.BaseMAG = 14;
+		md.BaseVIT = 12;
+		md.BaseSPI = 8;
+
+		md.BaseArmor = 20;
+		md.BaseMagicArmor = 5;
+		md.BaseEvasion = 21;
+
+		md.BaseAttackPower = 11;
+		md.BaseSpellPower = 9;
+
+		md.BaseHitChance = 700;
+		md.BaseAttackRange = 100;
+		md.BaseAttackSpeed = 200;
+		md.BaseWeaponDamageMultiplier = 1000;
+		md.AttackElement = Element::Physical;
+		md.AttackType = EquipType::Undefined;
+
+		md.BaseLineOfSight = 450;
+		md.BaseMoveCost = 90;
+
+		md.EXPDrop = 7;
+		md.GoldDrop = 6;
+		md.LootDrop = 2000;
+
+		md.StatMods = {};
+		md.Abilities = {
+			{AbilityID::FearfulGaze, 0}
+		};
+
+		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
+
+			// Fearful Gaze: Use on Cooldown
+			if (monster->IsAbilityUsable(AbilityID::FearfulGaze)) {
+				ai.Ability = AbilityID::FearfulGaze;
+			}
+			else {
+				ai.Ability = AbilityID::Attack;
+			}
+
+			return ai;
+		};
+
+		return md;
+	}();
 	list[MonsterID::FireAnt] = [] {
 		MonsterData md;
 

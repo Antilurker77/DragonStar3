@@ -180,6 +180,7 @@ int Actor::TakeDamage(int damage, bool isCrit, std::vector<Element>& elements) {
 
 	currentHP -= result;
 	actorHUD.UpdateElements(*this);
+	Alert(); // wake up monster
 	fctManager.AddValueUnit(result, isCrit, elements, false, AttributeType::HP);
 
 	return result;
@@ -346,6 +347,10 @@ void Actor::SetFlag(size_t index, int value) {
 
 int Actor::GetFlag(size_t index) {
 	return flags[index];
+}
+
+void Actor::Alert() {
+	return;
 }
 
 bool Actor::IsAlive() {

@@ -356,6 +356,15 @@ bool Monster::IsUnique() {
 	return monsterData->IsUnique;
 }
 
+void Monster::Alert() {
+	if (aiState == AIState::Sleeping) {
+		messageLog.AddMessage("#monster " + GetName() + " #default woke up.");
+	}
+	
+	aiState = AIState::Chasing;
+	chaseTurnsRemaining = monsterData->ChaseTurns;
+}
+
 int Monster::GetWeaponHitChance() {
 	return monsterData->BaseHitChance;
 }

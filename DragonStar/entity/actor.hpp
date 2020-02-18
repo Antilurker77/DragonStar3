@@ -135,6 +135,9 @@ public:
 	// Gets a flag value.
 	int GetFlag(size_t index);
 
+	// Sets the monster AI to alert.
+	virtual void Alert();
+
 	// === Character Stats ===
 	
 	// Returns true if the actor is alive.

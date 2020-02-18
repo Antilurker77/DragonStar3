@@ -57,6 +57,8 @@ public:
 	// Returns true if the monster is unique.
 	bool IsUnique();
 
+	void Alert();
+
 	int GetWeaponHitChance();
 	int GetAttackRange();
 	int GetAttackSpeed();

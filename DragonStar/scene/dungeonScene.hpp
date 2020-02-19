@@ -31,6 +31,7 @@ enum class MonsterID;
 #include "../ui/learnAbilityWindow.hpp"
 #include "../ui/lootWindow.hpp"
 #include "../ui/messageLog.hpp"
+#include "../ui/minimap.hpp"
 #include "../ui/playerHUD.hpp"
 #include "../ui/shopWindow.hpp"
 #include "../ui/statWindow.hpp"
@@ -138,6 +139,12 @@ public:
 	// Returns the shop at the designated location.
 	Shop* GetShopAtLocation(sf::Vector2i tile);
 
+	// Returns the vision state of the specified tile.
+	VisionState GetTileVisionState(sf::Vector2i tile);
+
+	// Returns the vision state of the specified tile.
+	VisionState GetTileVisionState(sf::Vector2<size_t> tile);
+
 	// Returns true if there is an actor at the designated tile.
 	bool IsOccupiedByActor(sf::Vector2i tile);
 
@@ -152,6 +159,9 @@ public:
 
 	// Returns true if a tile is walkable.
 	bool IsWalkable(bool canFly, bool canSwim, bool canTunnel, sf::Vector2i tile);
+
+	// Returns true if the tile contains down stairs.
+	bool IsDownStairs(sf::Vector2i tile);
 
 	// Returns true if the tile is opeque.
 	bool IsOpeque(sf::Vector2i tile);
@@ -276,6 +286,8 @@ private:
 	CursorContainer cursorContainer;
 
 	PlayerHUD playerHUD;
+
+	Minimap minimap;
 
 	Tooltip tooltip;
 	bool displayTooltip = false;

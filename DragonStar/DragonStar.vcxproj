@@ -185,6 +185,7 @@
     <ClCompile Include="ui\learnAbilityWindow.cpp" />
     <ClCompile Include="ui\lootWindow.cpp" />
     <ClCompile Include="ui\messageLog.cpp" />
+    <ClCompile Include="ui\minimap.cpp" />
     <ClCompile Include="ui\playerHUD.cpp" />
     <ClCompile Include="ui\rarityColor.cpp" />
     <ClCompile Include="ui\richText.cpp" />
@@ -251,6 +252,7 @@
     <ClInclude Include="ui\learnAbilityWindow.hpp" />
     <ClInclude Include="ui\lootWindow.hpp" />
     <ClInclude Include="ui\messageLog.hpp" />
+    <ClInclude Include="ui\minimap.hpp" />
     <ClInclude Include="ui\playerHUD.hpp" />
     <ClInclude Include="ui\rarityColor.hpp" />
     <ClInclude Include="ui\richText.hpp" />

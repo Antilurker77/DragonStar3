@@ -450,6 +450,8 @@ void DungeonScene::DrawUI(sf::RenderWindow& window, float timeRatio) {
 		learnAbilityWindow.Draw(window, timeRatio);
 	}
 
+	minimap.Draw(window, timeRatio);
+
 	cursorContainer.Draw(window, timeRatio);
 }
 
@@ -747,6 +749,14 @@ Shop* DungeonScene::GetShopAtLocation(sf::Vector2i tile) {
 	return nullptr;
 }
 
+VisionState DungeonScene::GetTileVisionState(sf::Vector2i tile) {
+	return vision[static_cast<size_t>(tile.x)][static_cast<size_t>(tile.y)];
+}
+
+VisionState DungeonScene::GetTileVisionState(sf::Vector2<size_t> tile) {
+	return vision[tile.x][tile.y];
+}
+
 bool DungeonScene::IsOccupiedByActor(sf::Vector2i tile) {
 	return std::any_of(actors.begin(), actors.end(), [&](const ActorPtr& a) {
 		return a->IsAlive() && a->GetLocation() == tile;
@@ -785,6 +795,10 @@ bool DungeonScene::IsWalkable(bool canFly, bool canSwim, bool canTunnel, sf::Vec
 	}
 
 	return false;
+}
+
+bool DungeonScene::IsDownStairs(sf::Vector2i tile) {
+	return floor[static_cast<int>(tile.x)][static_cast<int>(tile.y)].TileType == TileID::DownStairs;
 }
 
 bool DungeonScene::IsOpeque(sf::Vector2i tile) {
@@ -1077,6 +1091,8 @@ GameState DungeonScene::updateUI(float secondsPerUpdate) {
 	else {
 		displayTooltip = false;
 	}
+
+	minimap.UpdateMinimap(this);
 
 	messageLog.Update(secondsPerUpdate);
 

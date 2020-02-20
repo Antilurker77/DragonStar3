@@ -233,7 +233,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		ad.Cooldown = { 0, 0, 0, 0, 0 };
 		ad.MaxCharges = { 1, 1, 1, 1, 1 };
 		ad.HPCost = { 0, 0, 0, 0, 0 };
-		ad.MPCost = { 15, 15, 15, 15, 15 };
+		ad.MPCost = { 8, 8, 8, 8, 8 };
 		ad.SPCost = { 0, 0, 0, 0, 0 };
 
 		ad.Values = {
@@ -326,7 +326,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		ad.Cooldown = { 0, 0, 0, 0, 0 };
 		ad.MaxCharges = { 1, 1, 1, 1, 1 };
 		ad.HPCost = { 0, 0, 0, 0, 0 };
-		ad.MPCost = { 15, 15, 15, 15, 15 };
+		ad.MPCost = { 8, 8, 8, 8, 8 };
 		ad.SPCost = { 0, 0, 0, 0, 0 };
 
 		ad.Values = {
@@ -419,7 +419,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		ad.Cooldown = { 2000 };
 		ad.MaxCharges = { 1 };
 		ad.HPCost = { 0 };
-		ad.MPCost = { 20 };
+		ad.MPCost = { 10 };
 		ad.SPCost = { 0 };
 
 		ad.Values = {
@@ -1317,7 +1317,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		ad.Cooldown = { 1200, 1200, 1200, 1200, 1200 };
 		ad.MaxCharges = { 1, 1, 1, 1, 1 };
 		ad.HPCost = { 0, 0, 0, 0, 0 };
-		ad.MPCost = { 15, 15, 15, 15, 15 };
+		ad.MPCost = { 8, 8, 8, 8, 8 };
 		ad.SPCost = { 0, 0, 0, 0, 0 };
 
 		ad.Values = {
@@ -1418,7 +1418,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		ad.Cooldown = { 6000, 6000, 6000, 6000, 6000 };
 		ad.MaxCharges = { 1, 1, 1, 1, 1 };
 		ad.HPCost = { 0, 0, 0, 0, 0 };
-		ad.MPCost = { 10, 10, 10, 10, 10 };
+		ad.MPCost = { 5, 5, 5, 5, 5 };
 		ad.SPCost = { 0, 0, 0, 0, 0 };
 
 		ad.Values = {
@@ -1607,7 +1607,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		ad.Cooldown = { 750, 750, 750, 750, 750 };
 		ad.MaxCharges = { 1, 1, 1, 1, 1 };
 		ad.HPCost = { 0, 0, 0, 0, 0 };
-		ad.MPCost = { 8, 8, 8, 8, 8 };
+		ad.MPCost = { 4, 4, 4, 4, 4 };
 		ad.SPCost = { 0, 0, 0, 0, 0 };
 
 		ad.Values = {
@@ -1700,7 +1700,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		ad.Cooldown = { 0, 0, 0, 0, 0 };
 		ad.MaxCharges = { 1, 1, 1, 1, 1 };
 		ad.HPCost = { 0, 0, 0, 0, 0 };
-		ad.MPCost = { 12, 12, 12, 12, 12 };
+		ad.MPCost = { 6, 6, 6, 6, 6 };
 		ad.SPCost = { 0, 0, 0, 0, 0 };
 
 		ad.Values = {
@@ -1895,7 +1895,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		ad.Cooldown = { 0, 0, 0, 0, 0 };
 		ad.MaxCharges = { 1, 1, 1, 1, 1 };
 		ad.HPCost = { 0, 0, 0, 0, 0 };
-		ad.MPCost = { 40, 38, 36, 34, 32 };
+		ad.MPCost = { 20, 19, 18, 17, 16 };
 		ad.SPCost = { 0, 0, 0, 0, 0 };
 
 		ad.Values = {
@@ -1989,7 +1989,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		ad.Cooldown = { 0, 0, 0, 0, 0 };
 		ad.MaxCharges = { 1, 1, 1, 1, 1 };
 		ad.HPCost = { 0, 0, 0, 0, 0 };
-		ad.MPCost = { 12, 12, 12, 12, 12 };
+		ad.MPCost = { 6, 6, 6, 6, 6 };
 		ad.SPCost = { 0, 0, 0, 0, 0 };
 
 		ad.Values = {
@@ -2083,7 +2083,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		ad.Cooldown = { 1000, 1000, 1000, 1000, 1000 };
 		ad.MaxCharges = { 1, 1, 1, 1, 1 };
 		ad.HPCost = { 0, 0, 0, 0, 0 };
-		ad.MPCost = { 8, 8, 8, 8, 8 };
+		ad.MPCost = { 4, 4, 4, 4, 4 };
 		ad.SPCost = { 0, 0, 0, 0, 0 };
 
 		ad.Values = {
@@ -2284,7 +2284,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		ad.Cooldown = { 0, 0, 0, 0, 0 };
 		ad.MaxCharges = { 1, 1, 1, 1, 1 };
 		ad.HPCost = { 0, 0, 0, 0, 0 };
-		ad.MPCost = { 10, 10, 10, 10, 10 };
+		ad.MPCost = { 5, 5, 5, 5, 5 };
 		ad.SPCost = { 0, 0, 0, 0, 0 };
 
 		ad.Values = {
@@ -2479,7 +2479,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		ad.Cooldown = { 3000, 3000, 3000, 3000, 3000 };
 		ad.MaxCharges = { 2, 2, 2, 2, 2 };
 		ad.HPCost = { 0, 0, 0, 0, 0 };
-		ad.MPCost = { 20, 20, 20, 20, 20 };
+		ad.MPCost = { 10, 10, 10, 10, 10 };
 		ad.SPCost = { 0, 0, 0, 0, 0 };
 
 		ad.Values = {
@@ -2577,7 +2577,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		ad.Cooldown = { 1000, 1000, 1000, 1000, 1000 };
 		ad.MaxCharges = { 1, 1, 1, 1, 1 };
 		ad.HPCost = { 0, 0, 0, 0, 0 };
-		ad.MPCost = { 18, 16, 14, 12, 10 };
+		ad.MPCost = { 9, 8, 7, 6, 5 };
 		ad.SPCost = { 0, 0, 0, 0, 0 };
 
 		ad.Values = {
@@ -3096,7 +3096,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		ad.Cooldown = { 0 };
 		ad.MaxCharges = { 1 };
 		ad.HPCost = { 0 };
-		ad.MPCost = { 25 };
+		ad.MPCost = { 12 };
 		ad.SPCost = { 0 };
 
 		ad.Values = {
@@ -3190,7 +3190,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		ad.Cooldown = { 0, 0, 0, 0, 0 };
 		ad.MaxCharges = { 1, 1, 1, 1, 1 };
 		ad.HPCost = { 0, 0, 0, 0, 0 };
-		ad.MPCost = { 10, 10, 10, 10, 10 };
+		ad.MPCost = { 4, 4, 4, 4, 4 };
 		ad.SPCost = { 0, 0, 0, 0, 0 };
 
 		ad.Values = {
@@ -3383,7 +3383,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		ad.Cooldown = { 900, 900, 900, 900, 900 };
 		ad.MaxCharges = { 1, 1, 1, 1, 1 };
 		ad.HPCost = { 0, 0, 0, 0, 0 };
-		ad.MPCost = { 8, 8, 8, 8, 8 };
+		ad.MPCost = { 4, 4, 4, 4, 4 };
 		ad.SPCost = { 0, 0, 0, 0, 0 };
 
 		ad.Values = {
@@ -3476,7 +3476,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		ad.Cooldown = { 0, 0, 0, 0, 0 };
 		ad.MaxCharges = { 1, 1, 1, 1, 1 };
 		ad.HPCost = { 0, 0, 0, 0, 0 };
-		ad.MPCost = { 10, 10, 10, 10, 10 };
+		ad.MPCost = { 5, 5, 5, 5, 5 };
 		ad.SPCost = { 0, 0, 0, 0, 0 };
 
 		ad.Values = {
@@ -3567,7 +3567,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		ad.Cooldown = { 2000, 2000, 2000, 2000, 2000 };
 		ad.MaxCharges = { 1, 1, 1, 1, 1 };
 		ad.HPCost = { 0, 0, 0, 0, 0 };
-		ad.MPCost = { 28, 26, 24, 22, 20 };
+		ad.MPCost = { 14, 13, 12, 11, 10 };
 		ad.SPCost = { 0, 0, 0, 0, 0 };
 
 		ad.Values = {
@@ -3888,7 +3888,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		ad.Cooldown = { 0, 0, 0, 0, 0 };
 		ad.MaxCharges = { 1, 1, 1, 1, 1 };
 		ad.HPCost = { 0, 0, 0, 0, 0 };
-		ad.MPCost = { 10, 10, 10, 10, 10 };
+		ad.MPCost = { 5, 5, 5, 5, 5 };
 		ad.SPCost = { 0, 0, 0, 0, 0 };
 
 		ad.Values = {
@@ -3991,7 +3991,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		ad.Cooldown = { 0, 0, 0, 0, 0 };
 		ad.MaxCharges = { 1, 1, 1, 1, 1 };
 		ad.HPCost = { 0, 0, 0, 0, 0 };
-		ad.MPCost = { 7, 6, 6, 5, 5 };
+		ad.MPCost = { 4, 3, 3, 2, 2 };
 		ad.SPCost = { 0, 0, 0, 0, 0 };
 
 		ad.Values = {

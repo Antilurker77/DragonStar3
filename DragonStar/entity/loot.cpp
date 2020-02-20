@@ -71,6 +71,7 @@ void Loot::AddGold(int amount) {
 
 void Loot::AddItems(std::vector<Item>& itemsToAdd) {
 	items.insert(items.end(), itemsToAdd.begin(), itemsToAdd.end());
+	setSpriteGraphic();
 }
 
 void Loot::LootGold(Inventory& inventory) {
@@ -83,23 +84,31 @@ void Loot::LootItem(Inventory& inventory, size_t index) {
 	if (lootedItem) {
 		items.erase(items.begin() + index);
 		items.shrink_to_fit();
+		setSpriteGraphic();
 	}
 }
 
 void Loot::setSpriteGraphic() {
 	// todo: lots of art and logic
 	if (items.size() == 1) {
-		if (items[0].GetItemType() == ItemType::Potion) {
+		ItemType itemType = items[0].GetItemType();
+		if (itemType == ItemType::Potion) {
 			sprites[0].setTexture(*assetManager.LoadTexture("gfx/" + settings.Tileset + "/dungeon/potion.png"));
 		}
-		else if (items[0].GetItemType() == ItemType::Scroll) {
+		else if (itemType == ItemType::Scroll) {
 			sprites[0].setTexture(*assetManager.LoadTexture("gfx/" + settings.Tileset + "/dungeon/scroll.png"));
 		}
 		else if (items[0].IsWeapon()) {
 			sprites[0].setTexture(*assetManager.LoadTexture("gfx/" + settings.Tileset + "/dungeon/weapon.png"));
 		}
-		else if (items[0].GetItemType() == ItemType::Equipment) {
+		else if (itemType == ItemType::Equipment) {
 			sprites[0].setTexture(*assetManager.LoadTexture("gfx/" + settings.Tileset + "/dungeon/armor.png"));
+		}
+		else if (itemType == ItemType::Tome) {
+			sprites[0].setTexture(*assetManager.LoadTexture("gfx/" + settings.Tileset + "/dungeon/tome.png"));
+		}
+		else if (itemType == ItemType::Consumable) {
+			sprites[0].setTexture(*assetManager.LoadTexture("gfx/" + settings.Tileset + "/dungeon/ration.png"));
 		}
 		else {
 			sprites[0].setTexture(*assetManager.LoadTexture("gfx/" + settings.Tileset + "/dungeon/loot1.png"));

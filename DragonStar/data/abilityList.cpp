@@ -3864,6 +3864,106 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 
 		return ad;
 	}();
+	list[AbilityID::Trample] = [] {
+		AbilityData ad;
+
+		ad.Name = "Trample";
+		ad.Icon = "placeholder.png";
+		ad.ID = AbilityID::Trample;
+
+		ad.Categories = {
+			Category::SingleTarget,
+			Category::Damaging,
+			Category::Attack,
+			Category::Direct
+		};
+		ad.Elements = {};
+		ad.RequiredWeaponTypes = {};
+
+		ad.IsPassive = false;
+		ad.MaxRank = 0;
+
+		ad.Range = { -1 };
+		ad.UseTime = { -1000 };
+		ad.Cooldown = { 500 };
+		ad.MaxCharges = { 1 };
+		ad.HPCost = { 0 };
+		ad.MPCost = { 0 };
+		ad.SPCost = { 30 };
+
+		ad.Values = {
+			{ 500 }, // Damage
+			{ 50 } // Stun Duration
+		};
+		ad.PassiveBonuses = {};
+
+		ad.CanDodge = true;
+		ad.CanBlock = true;
+		ad.CanCounter = true;
+		ad.CanCrit = true;
+		ad.CanDoubleStrike = true;
+
+		ad.HitChance = { 375 };
+		ad.BonusArmorPen = { 0 };
+		ad.BonusResistancePen = { 0 };
+		ad.BonusCritChance = { 0 };
+		ad.BonusCritPower = { 0 };
+		ad.BonusDoubleStrikeChance = { 0 };
+		ad.BonusHPLeech = { 0 };
+		ad.BonusMPLeech = { 0 };
+		ad.BonusSPLeech = { 0 };
+
+		ad.FixedRange = false;
+		ad.HideRange = false;
+
+		ad.IsProjectile = true;
+		ad.IgnoreLineOfSight = false;
+
+		ad.AreaIgnoreLineOfSight = false;
+		ad.AreaIgnoreBodyBlock = false;
+
+		ad.GetTargetArea = [&](Actor* user, DungeonScene* dungeonScene, sf::Vector2i cursorTarget, int rank) {
+			return std::vector<sf::Vector2i>{ cursorTarget };
+		};
+
+		ad.GetExtraArea = [&](Actor* user, DungeonScene* dungeonScene, sf::Vector2i cursorTarget, int rank) {
+			return std::vector<sf::Vector2i>{};
+		};
+
+		ad.CustomUseCondition = []() {
+			return true;
+		};
+		ad.GetDescription = [Values = ad.Values](Actor* user, EventOptions& eventOptions, int rank) {
+			std::string desc;
+			std::string dmg;
+			std::string stun = std::to_string(Values[1][rank] / 100);
+
+			if (user == nullptr) {
+				dmg = "#damage " + std::to_string(Values[0][rank] / 10) + "% Attack Power #default ";
+			}
+			else {
+				dmg = "#damage " + std::to_string(Combat::SkillDamageEstimate(user, eventOptions, Values[0][rank])) + " #default ";
+			}
+
+			desc = "Hit the target 3 times. Each hit deals " + dmg + "weapon damage and stuns for " + stun + "s.";
+			return desc;
+		};
+		ad.Execute = [Values = ad.Values](Actor* user, std::vector<Actor*>& targets, sf::Vector2i cursor, std::vector<sf::Vector2i>& targetArea, EventOptions& eventOptions, int rank) {
+			if (!targets.empty()) {
+				for (size_t i = 0; i < 3; i++) {
+					EventResult result = Combat::SkillDamage(user, targets[0], eventOptions, Values[0][rank]);
+					if (result.DidHit) {
+						Combat::AddAuraStack(user, targets[0], eventOptions, AuraID::Trample, rank);
+					}
+				}
+			}
+		};
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
+
+		};
+
+		return ad;
+	}();
 	list[AbilityID::Venom] = [] {
 		AbilityData ad;
 

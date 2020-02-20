@@ -1604,6 +1604,80 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		return md;
 	}();
+	list[MonsterID::WaterMare] = [] {
+		MonsterData md;
+
+		md.Name = "Water Mare";
+		md.Title = "";
+		md.Filename = "water_mare.png";
+
+		md.IsUnique = false;
+		md.IsBoss = false;
+		md.CanFly = false;
+		md.CanSwim = false;
+		md.CanTunnel = false;
+
+		md.IsStationary = false;
+		md.ChaseTurns = 3;
+
+		md.Level = 6;
+
+		md.BaseHP = 63;
+		md.BaseMP = 1;
+		md.BaseSP = 100;
+
+		md.BaseSTR = 15;
+		md.BaseDEX = 20;
+		md.BaseMAG = 15;
+		md.BaseVIT = 15;
+		md.BaseSPI = 10;
+
+		md.BaseArmor = 20;
+		md.BaseMagicArmor = 40;
+		md.BaseEvasion = 15;
+
+		md.BaseAttackPower = 12;
+		md.BaseSpellPower = 6;
+
+		md.BaseHitChance = 700;
+		md.BaseAttackRange = 100;
+		md.BaseAttackSpeed = 180;
+		md.BaseWeaponDamageMultiplier = 1000;
+		md.AttackElement = Element::Physical;
+		md.AttackType = EquipType::Undefined;
+
+		md.BaseLineOfSight = 450;
+		md.BaseMoveCost = 80;
+
+		md.EXPDrop = 9;
+		md.GoldDrop = 12;
+		md.LootDrop = 3000;
+
+		md.StatMods = {};
+		md.Abilities = {
+			{AbilityID::Trample, 0}
+		};
+
+		md.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t amount) {
+			return;
+		};
+
+		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
+
+			if (monster->IsAbilityUsable(AbilityID::Trample) && Random::RandomInt(1, 100) <= 75) {
+				ai.Ability = AbilityID::Trample;
+			}
+			else {
+				ai.Ability = AbilityID::Attack;
+			}
+
+			return ai;
+		};
+
+		return md;
+	}();
 	list[MonsterID::Wolf] = [] {
 		MonsterData md;
 

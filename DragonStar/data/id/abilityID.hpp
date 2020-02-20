@@ -50,6 +50,7 @@ enum class AbilityID {
 	Teleport,
 	ThunderStrike,
 	TornadoStrike,
+	Trample,
 	Venom,
 	WaterBolt,
 

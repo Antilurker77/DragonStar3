@@ -296,7 +296,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		itd.MaxStacks = 20;
 
-		itd.BaseValue = 100;
+		itd.BaseValue = 30;
 
 		itd.Artifact = false;
 		itd.TwoHanded = false;

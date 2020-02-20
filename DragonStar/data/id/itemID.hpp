@@ -80,6 +80,7 @@ enum class ItemID {
 	SpiritfireTorch,
 
 	// Staff
+	RunedStick,
 	WoodenStaff,
 
 	// Artifact Staff

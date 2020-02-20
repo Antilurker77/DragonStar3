@@ -79,6 +79,7 @@ static std::unordered_map<EquipType, std::vector<ItemWeight>> initBaseTypeWeight
 	};
 
 	list[EquipType::Staff] = {
+		{1, 5, 150, ItemID::RunedStick},
 		{1, 10, 1000, ItemID::WoodenStaff}
 	};
 

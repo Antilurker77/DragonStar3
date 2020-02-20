@@ -1284,6 +1284,45 @@ static std::unordered_map<ItemID, ItemData> initList() {
 	}();
 
 	// Staff
+	list[ItemID::RunedStick] = [] {
+		ItemData itd;
+
+		itd.Name = "Runed Stick";
+		itd.IconFilePath = "staff.png";
+		itd.EquipFilePath = "runed_stick.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::RunedStick;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 30;
+
+		itd.Artifact = false;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::Staff;
+		itd.AttackElement = Element::Physical;
+		itd.HitChance = 750;
+		itd.AttackRange = 150;
+		itd.AttackSpeed = 250;
+		itd.WeaponDamageMultiplier = 1250;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::AttackPower, 3),
+			StatMod(StatModType::SpellPower, 6)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
 	list[ItemID::WoodenStaff] = [] {
 		ItemData itd;
 

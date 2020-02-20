@@ -653,7 +653,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 		itd.TwoHanded = false;
 		itd.EquipType = EquipType::Sword;
 		itd.AttackElement = Element::Physical;
-		itd.HitChance = 700;
+		itd.HitChance = 750;
 		itd.AttackRange = 100;
 		itd.AttackSpeed = 200;
 		itd.WeaponDamageMultiplier = 1000;
@@ -1345,7 +1345,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 		itd.TwoHanded = false;
 		itd.EquipType = EquipType::Staff;
 		itd.AttackElement = Element::Physical;
-		itd.HitChance = 600;
+		itd.HitChance = 750;
 		itd.AttackRange = 150;
 		itd.AttackSpeed = 250;
 		itd.WeaponDamageMultiplier = 1250;

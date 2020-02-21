@@ -142,7 +142,7 @@ static int64_t applyArmor(Actor* user, Actor* target, EventOptions& eventOptions
 	}
 
 	armor = armor * (1000 - armorPen) / 1000;
-	armorMitigation = (armor * 1000) / (armor + 45 + (attackerLevel * 5) + (static_cast<int>(pow(attackerLevel, 2)) / 2));
+	armorMitigation = (armor * 1000) / (armor + 45 + (attackerLevel * 5) + (static_cast<int>(pow(attackerLevel, 2)) / 10));
 	result = result * (1000 - armorMitigation) / 1000;
 	return result;
 }

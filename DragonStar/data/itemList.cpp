@@ -377,7 +377,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		itd.MaxStacks = 1;
 
-		itd.BaseValue = 200;
+		itd.BaseValue = 75;
 
 		itd.Artifact = false;
 		itd.TwoHanded = false;
@@ -420,7 +420,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		itd.MaxStacks = 1;
 
-		itd.BaseValue = 200;
+		itd.BaseValue = 100;
 
 		itd.Artifact = false;
 		itd.TwoHanded = false;
@@ -462,7 +462,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		itd.MaxStacks = 1;
 
-		itd.BaseValue = 200;
+		itd.BaseValue = 100;
 
 		itd.Artifact = false;
 		itd.TwoHanded = false;
@@ -504,7 +504,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		itd.MaxStacks = 1;
 
-		itd.BaseValue = 200;
+		itd.BaseValue = 100;
 
 		itd.Artifact = false;
 		itd.TwoHanded = false;
@@ -545,7 +545,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		itd.MaxStacks = 1;
 
-		itd.BaseValue = 200;
+		itd.BaseValue = 100;
 
 		itd.Artifact = false;
 		itd.TwoHanded = false;
@@ -587,7 +587,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		itd.MaxStacks = 1;
 
-		itd.BaseValue = 200;
+		itd.BaseValue = 75;
 
 		itd.Artifact = false;
 		itd.TwoHanded = false;
@@ -631,7 +631,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		itd.MaxStacks = 1;
 
-		itd.BaseValue = 200;
+		itd.BaseValue = 75;
 
 		itd.Artifact = false;
 		itd.TwoHanded = false;
@@ -676,7 +676,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		itd.MaxStacks = 1;
 
-		itd.BaseValue = 200;
+		itd.BaseValue = 100;
 
 		itd.Artifact = false;
 		itd.TwoHanded = false;
@@ -721,7 +721,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		itd.MaxStacks = 1;
 
-		itd.BaseValue = 200;
+		itd.BaseValue = 75;
 
 		itd.Artifact = false;
 		itd.TwoHanded = false;
@@ -765,7 +765,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		itd.MaxStacks = 1;
 
-		itd.BaseValue = 200;
+		itd.BaseValue = 100;
 
 		itd.Artifact = false;
 		itd.TwoHanded = false;
@@ -807,7 +807,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		itd.MaxStacks = 1;
 
-		itd.BaseValue = 200;
+		itd.BaseValue = 100;
 
 		itd.Artifact = false;
 		itd.TwoHanded = false;
@@ -850,7 +850,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		itd.MaxStacks = 1;
 
-		itd.BaseValue = 200;
+		itd.BaseValue = 125;
 
 		itd.Artifact = false;
 		itd.TwoHanded = false;

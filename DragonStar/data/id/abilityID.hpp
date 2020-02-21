@@ -30,6 +30,7 @@ enum class AbilityID {
 	FlameBolt,
 	FlameStrike,
 	Heal,
+	HerosTriumph,
 	Icicle,
 	Ignite,
 	ImpactWave,

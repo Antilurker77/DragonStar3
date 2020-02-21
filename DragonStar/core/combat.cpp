@@ -449,7 +449,7 @@ EventResult Combat::SkillDamage(Actor* user, Actor* target, EventOptions& eventO
 		outputDamage(user, target, eventOptions, result);
 
 		user->OnEvent(EventType::Damage, target, eventOptions, result, damage);
-		target->OnEvent(EventType::Damaged, target, eventOptions, result, damage);
+		target->OnEvent(EventType::Damaged, user, eventOptions, result, damage);
 
 		if (result.DidKill) {
 			Combat::AwardPrizes(user, target, eventOptions);

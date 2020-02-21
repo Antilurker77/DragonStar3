@@ -101,6 +101,9 @@ Inventory::Inventory() {
 	book.Initialize(ItemID::TomeMagicForBeginners);
 	AddItem(book);
 
+	book.Initialize(ItemID::TomeTesting);
+	AddItem(book);
+
 	Item stick;
 	stick.Initialize(ItemID::RunedStick);
 	AddItem(stick);

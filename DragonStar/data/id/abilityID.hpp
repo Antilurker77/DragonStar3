@@ -24,6 +24,7 @@ enum class AbilityID {
 	Disarm,
 	DragonBreath,
 	DragonfireBolt,
+	ElectricSurge,
 	ElementalEnergy,
 	FearfulGaze,
 	FieryTouch,

@@ -22,6 +22,7 @@ enum class AuraID {
 	CrushingBlow,
 	DeadlyForce,
 	Disarm,
+	ElectricSurge,
 	ElementalEnergy,
 	FearfulGaze,
 	FlameStrike,

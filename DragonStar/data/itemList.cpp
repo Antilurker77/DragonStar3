@@ -391,13 +391,49 @@ static std::unordered_map<ItemID, ItemData> initList() {
 			AbilityID::PowerStrike,
 			AbilityID::ThunderStrike,
 			AbilityID::RendingSlash,
-			AbilityID::CrushArmor,
-			AbilityID::Disarm,
-			AbilityID::ImpactWave,
+			AbilityID::Constitution
+		};
+
+		itd.ImplicitStatMods = {};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
+	list[ItemID::TomeOneManArmy] = [] {
+		ItemData itd;
+
+		itd.Name = "Tome: One-Man Army";
+		itd.IconFilePath = "tome.png";
+		itd.EquipFilePath = "";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::TomeOneManArmy;
+		itd.ItemType = ItemType::Tome;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 200;
+
+		itd.Artifact = false;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::Undefined;
+		itd.AttackElement = Element::Undefined;
+		itd.HitChance = 0;
+		itd.AttackRange = 0;
+		itd.AttackSpeed = 0;
+		itd.WeaponDamageMultiplier = 0;
+
+		itd.TeachableAbilities = {
 			AbilityID::Cleave,
-			AbilityID::TornadoStrike,
-			AbilityID::Constitution,
-			AbilityID::Focus
+			AbilityID::ImpactWave,
+			AbilityID::TornadoStrike
 		};
 
 		itd.ImplicitStatMods = {};

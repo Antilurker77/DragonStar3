@@ -27,6 +27,7 @@ enum class ItemID {
 	// Tomes
 	TomeTesting,
 	TomeCombatBasics,
+	TomeOneManArmy,
 	TomeLearningArchery,
 	TomeMagicForBeginners,
 	TomeIntroductionToSpirituality,

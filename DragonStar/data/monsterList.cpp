@@ -1643,7 +1643,7 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.BaseAttackRange = 100;
 		md.BaseAttackSpeed = 180;
 		md.BaseWeaponDamageMultiplier = 1000;
-		md.AttackElement = Element::Physical;
+		md.AttackElement = Element::Water;
 		md.AttackType = EquipType::Undefined;
 
 		md.BaseLineOfSight = 450;
@@ -1653,7 +1653,10 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.GoldDrop = 12;
 		md.LootDrop = 3000;
 
-		md.StatMods = {};
+		md.StatMods = {
+			StatMod(StatModType::Resistance, 1000, Element::Water),
+			StatMod(StatModType::Resistance, -300, Element::Lightning)
+		};
 		md.Abilities = {
 			{AbilityID::Trample, 0}
 		};

@@ -33,6 +33,7 @@ enum class AbilityID {
 	Icicle,
 	Ignite,
 	ImpactWave,
+	Infect,
 	MagicMissile,
 	Maul,
 	MysticBlast,

@@ -26,6 +26,7 @@ enum class AuraID {
 	FearfulGaze,
 	FlameStrike,
 	Ignite,
+	Infect,
 	Maul,
 	MysticBlast,
 	PoisonArrow,

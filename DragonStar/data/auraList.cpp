@@ -1628,6 +1628,94 @@ static std::unordered_map<AuraID, AuraData> initList() {
 
 		return ad;
 	}();
+	list[AuraID::ShiningPrism] = [] {
+		AuraData ad;
+
+		ad.Name = "Shining Prism";
+		ad.Icon = "placeholder.png";
+		ad.AuraID = AuraID::ShiningPrism;
+
+		ad.Categories = {
+			Category::Healing,
+			Category::Spell,
+			Category::OverTime
+		};
+		ad.Elements = { Element::Light };
+
+		ad.MaxRank = 4;
+
+		ad.BaseDuration = { 1500, 1500, 1500, 1500, 1500 };
+		ad.MaxDuration = { 1500, 1500, 1500, 1500, 1500 };
+		ad.MaxStacks = { 1, 1, 1, 1, 1 };
+
+		ad.Values = {
+			{ 200, 210, 220, 230, 240 }
+		};
+		ad.StatMods = {};
+
+		ad.IsBuff = false;
+		ad.Unique = true;
+		ad.UniqueByActor = true;
+		ad.ConsumeOnUse = false;
+		ad.StacksExpireOneByOne = false;
+		ad.MultiplyStatModsByStacks = false;
+
+		ad.IsRest = false;
+		ad.IsStun = false;
+		ad.IsDisarm = false;
+		ad.IsSilence = false;
+		ad.IsSnare = false;
+
+		ad.CanCrit = true;
+		ad.BonusArmorPen = { 0, 0, 0, 0, 0 };
+		ad.BonusResistancePen = { 0, 0, 0, 0, 0 };
+		ad.BonusCritChance = { 0, 0, 0, 0, 0 };
+		ad.BonusCritPower = { 0, 0, 0, 0, 0 };
+		ad.BonusDoubleStrikeChance = { 0, 0, 0, 0, 0 };
+		ad.BonusHPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusMPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusSPLeech = { 0, 0, 0, 0, 0 };
+
+		ad.GetDescription = [Values = ad.Values](Actor* user, EventOptions& eventOptions, int rank, Aura* aura){
+			std::string desc;
+			std::string value;
+			Actor* source = aura->GetSource();
+
+			if (source != nullptr) {
+				value = std::to_string(Combat::SpellHealEstimate(source, eventOptions, Values[0][rank]));
+			}
+			else {
+				value = std::to_string(Values[0][rank] / 10) + "% Spell Power";
+			}
+
+			desc = "Heals attackers for #heal " + value + " #default HP.";
+
+			return desc;
+		};
+
+		ad.OnApplication = [Values = ad.Values](Actor* user, Actor* target, EventOptions& eventOptions, int rank, Aura* aura) {
+
+		};
+
+		ad.OnTick = [Values = ad.Values](Actor* user, Actor* target, EventOptions& eventOptions, int rank, Aura* aura) {
+
+		};
+
+		ad.OnExpiry = [Values = ad.Values](Actor* user, Actor* target, EventOptions& eventOptions, int rank, Aura* aura) {
+
+		};
+
+		ad.OnEvent = [Values = ad.Values](EventType eventType, EventOptions& auraOptions, int rank, Aura* aura, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+			if (eventType == EventType::Damaged) {
+				if (std::find(eventOptions.Categories.begin(), eventOptions.Categories.end(), Category::Direct) != eventOptions.Categories.end()) {
+					Actor* source = aura->GetSource();
+					Combat::SpellHeal(source, target, auraOptions, Values[0][rank], AttributeType::HP);
+				}
+			}
+		};
+
+		return ad;
+	}();
 	list[AuraID::SlimeSplash] = [] {
 		AuraData ad;
 

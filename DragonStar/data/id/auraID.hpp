@@ -33,6 +33,7 @@ enum class AuraID {
 	PoisonArrow,
 	RendingSlash,
 	ShadowEnergy,
+	ShiningPrism,
 	SlimeSplash,
 	Speed,
 	ThunderStrike,

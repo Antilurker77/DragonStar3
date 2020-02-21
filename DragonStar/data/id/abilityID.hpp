@@ -46,6 +46,7 @@ enum class AbilityID {
 	PowerStrike,
 	RendingSlash,
 	ShadowEnergy,
+	ShiningPrism,
 	Shock,
 	SlimeSplash,
 	Splash,

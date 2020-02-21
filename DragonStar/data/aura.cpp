@@ -48,6 +48,10 @@ void Aura::SetOwnerPointer(DungeonScene* dungeonScene) {
 	source = dungeonScene->GetActorByIndex(sourceIndex);
 }
 
+Actor* Aura::GetSource() {
+	return source;
+}
+
 void Aura::Tick(Actor* owner) {
 	if (nextTick > 0) {
 		nextTick--;

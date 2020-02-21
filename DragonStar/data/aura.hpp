@@ -32,6 +32,9 @@ public:
 	// Sets the owner pointer.
 	void SetOwnerPointer(DungeonScene* dungeonScene);
 
+	// Returns the source actor of this aura.
+	Actor* GetSource();
+
 	// Ticks down the duration of the aura.
 	void Tick(Actor* owner);
 

@@ -2584,7 +2584,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 		ItemData itd;
 
 		itd.Name = "Floating Latern";
-		itd.IconFilePath = "ring.png";
+		itd.IconFilePath = "light_source.png";
 		itd.EquipFilePath = "";
 
 		itd.HideHair = false;
@@ -2619,7 +2619,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 		ItemData itd;
 
 		itd.Name = "Spectral Latern";
-		itd.IconFilePath = "ring.png";
+		itd.IconFilePath = "light_source.png";
 		itd.EquipFilePath = "";
 
 		itd.HideHair = false;

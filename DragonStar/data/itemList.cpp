@@ -446,6 +446,131 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		return itd;
 	}();
+	list[ItemID::TomeAxeTechniques] = [] {
+		ItemData itd;
+
+		itd.Name = "Tome: Axe Techniques";
+		itd.IconFilePath = "tome.png";
+		itd.EquipFilePath = "";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::TomeAxeTechniques;
+		itd.ItemType = ItemType::Tome;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 200;
+
+		itd.Artifact = false;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::Undefined;
+		itd.AttackElement = Element::Undefined;
+		itd.HitChance = 0;
+		itd.AttackRange = 0;
+		itd.AttackSpeed = 0;
+		itd.WeaponDamageMultiplier = 0;
+
+		itd.TeachableAbilities = {
+			AbilityID::Chopper,
+			AbilityID::RendingSlash,
+			AbilityID::Cleave
+		};
+
+		itd.ImplicitStatMods = {};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
+	list[ItemID::TomeMaceTechniques] = [] {
+		ItemData itd;
+
+		itd.Name = "Tome: Mace Techniques";
+		itd.IconFilePath = "tome.png";
+		itd.EquipFilePath = "";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::TomeMaceTechniques;
+		itd.ItemType = ItemType::Tome;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 200;
+
+		itd.Artifact = false;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::Undefined;
+		itd.AttackElement = Element::Undefined;
+		itd.HitChance = 0;
+		itd.AttackRange = 0;
+		itd.AttackSpeed = 0;
+		itd.WeaponDamageMultiplier = 0;
+
+		itd.TeachableAbilities = {
+			AbilityID::CrushingBlow,
+			AbilityID::CrushArmor
+		};
+
+		itd.ImplicitStatMods = {};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
+	list[ItemID::TomeAdvancedCombat] = [] {
+		ItemData itd;
+
+		itd.Name = "Tome: Advanced Combat";
+		itd.IconFilePath = "tome.png";
+		itd.EquipFilePath = "";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::TomeAdvancedCombat;
+		itd.ItemType = ItemType::Tome;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 200;
+
+		itd.Artifact = false;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::Undefined;
+		itd.AttackElement = Element::Undefined;
+		itd.HitChance = 0;
+		itd.AttackRange = 0;
+		itd.AttackSpeed = 0;
+		itd.WeaponDamageMultiplier = 0;
+
+		itd.TeachableAbilities = {
+			AbilityID::HerosTriumph,
+			AbilityID::Disarm,
+			AbilityID::Focus
+		};
+
+		itd.ImplicitStatMods = {};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
 	list[ItemID::TomeLearningArchery] = [] {
 		ItemData itd;
 
@@ -519,12 +644,55 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		itd.TeachableAbilities = {
 			AbilityID::MagicMissile,
-			AbilityID::MysticBlast,
 			AbilityID::FlameBolt,
 			AbilityID::WaterBolt,
 			AbilityID::Shock,
 			AbilityID::Icicle,
-			AbilityID::Venom,
+			AbilityID::Venom
+		};
+
+		itd.ImplicitStatMods = {};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
+	list[ItemID::TomeIntermediateMagic] = [] {
+		ItemData itd;
+
+		itd.Name = "Tome: Intermediate Magic";
+		itd.IconFilePath = "tome.png";
+		itd.EquipFilePath = "";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::TomeIntermediateMagic;
+		itd.ItemType = ItemType::Tome;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 200;
+
+		itd.Artifact = false;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::Undefined;
+		itd.AttackElement = Element::Undefined;
+		itd.HitChance = 0;
+		itd.AttackRange = 0;
+		itd.AttackSpeed = 0;
+		itd.WeaponDamageMultiplier = 0;
+
+		itd.TeachableAbilities = {
+			AbilityID::MysticBlast,
+			AbilityID::DragonfireBolt,
+			AbilityID::Splash,
+			AbilityID::ElectricSurge,
+			AbilityID::Infect,
 			AbilityID::ElementalEnergy
 		};
 
@@ -566,8 +734,52 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		itd.TeachableAbilities = {
 			AbilityID::BoltOfLight,
+			AbilityID::ShiningPrism,
 			AbilityID::BoltOfDarkness,
+			AbilityID::ShadowFlay,
 			AbilityID::Heal
+		};
+
+		itd.ImplicitStatMods = {};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
+	list[ItemID::TomeSpaceManipulation] = [] {
+		ItemData itd;
+
+		itd.Name = "Tome: Space Manipulation";
+		itd.IconFilePath = "tome.png";
+		itd.EquipFilePath = "";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::TomeSpaceManipulation;
+		itd.ItemType = ItemType::Tome;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 200;
+
+		itd.Artifact = false;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::Undefined;
+		itd.AttackElement = Element::Undefined;
+		itd.HitChance = 0;
+		itd.AttackRange = 0;
+		itd.AttackSpeed = 0;
+		itd.WeaponDamageMultiplier = 0;
+
+		itd.TeachableAbilities = {
+			AbilityID::MysticBlast,
+			AbilityID::PhaseDoor,
+			AbilityID::Teleport
 		};
 
 		itd.ImplicitStatMods = {};
@@ -607,7 +819,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 		itd.WeaponDamageMultiplier = 0;
 
 		itd.TeachableAbilities = {
-			AbilityID::FlameBolt,
+			AbilityID::Ignite,
 			AbilityID::DragonfireBolt,
 			AbilityID::FieryTouch,
 			AbilityID::FlameStrike

@@ -195,6 +195,11 @@ static std::vector<StatModType> percentMods = {
 	StatModType::DoubleStrikeChance,
 	StatModType::DoubleStrikeDamage,
 	StatModType::MovementSpeed,
+	StatModType::DeathResistance,
+	StatModType::StunResistance,
+	StatModType::SnareResistance,
+	StatModType::DisarmResistance,
+	StatModType::SilenceResistance,
 	StatModType::GoldFind,
 	StatModType::EXPBoost
 };

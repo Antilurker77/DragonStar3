@@ -57,8 +57,6 @@ public:
 	// Returns true if the monster is unique.
 	bool IsUnique();
 
-	void OnEvent(EventType eventType, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount);
-
 	void Alert();
 
 	int GetWeaponHitChance();

@@ -8,6 +8,7 @@
 
 #include "rarityColor.hpp"
 #include "../core/assetManager.hpp"
+#include "../core/records.hpp"
 #include "../core/settings.hpp"
 #include "../data/id/element.hpp"
 #include "../data/id/equipType.hpp"
@@ -77,6 +78,9 @@ Inventory::Inventory() {
 	statTextsCol2.setFont(*assetManager.LoadFont(settings.Font));
 	statTextsCol2.setCharacterSize(12u);
 
+	// identify sprite
+	identifySprite.setTexture(*assetManager.LoadTexture("gfx/" + settings.Tileset + "/ui/identify.png"));
+
 	// test
 	//Item book;
 	//book.Initialize(static_cast<ItemID>(3));
@@ -107,6 +111,17 @@ Inventory::Inventory() {
 	Item stick;
 	stick.Initialize(ItemID::RunedStick);
 	AddItem(stick);
+
+	//Item scroll;
+	//scroll.Initialize(ItemID::ScrollIdentify);
+	//AddItem(scroll);
+	//AddItem(scroll);
+	//AddItem(scroll);
+	//AddItem(scroll);
+	//AddItem(scroll);
+
+	//scroll.Initialize(ItemID::ScrollTeleport);
+	//AddItem(scroll);
 
 	ChangeGold(100);
 
@@ -150,8 +165,51 @@ bool Inventory::Update(float secondsPerUpdate, DungeonScene& dungeonScene) {
 	sf::Vector2f mouseF(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y));
 	displayTooltip = false;
 
+	if (identifying) {
+		identifySprite.setPosition(mouseF);
+	}
+
+	if (identifying && rightClick) {
+		identifying = false;
+		if (usingScroll) {
+			// Refund scroll.
+			Item idScroll;
+			idScroll.Initialize(ItemID::ScrollIdentify);
+			AddItem(idScroll);
+		}
+	}
+
 	for (size_t i = 0; i < slotIcons.size(); i++) {
 		if (!inventorySlots[i].Item.IsNull() && slotIcons[i].getGlobalBounds().contains(mouseF)) {			
+			if (leftClick && identifying) {
+				identifying = false;
+				ItemType itemType = inventorySlots[i].Item.GetItemType();
+				if (itemType == ItemType::Potion || itemType == ItemType::Scroll) {
+					if (records.IsIdentified(inventorySlots[i].Item.GetItemID())) {
+						messageLog.AddMessage("That item has already been identified.");
+						if (usingScroll) {
+							// Refund scroll.
+							Item idScroll;
+							idScroll.Initialize(ItemID::ScrollIdentify);
+							AddItem(idScroll);
+						}
+					}
+					else {
+						records.Identify(inventorySlots[i].Item.GetItemID());
+						messageLog.AddMessage("Identified #item " + inventorySlots[i].Item.GetName() + "#default .");
+					}
+				}
+				else {
+					messageLog.AddMessage("That item cannot be identified.");
+					if (usingScroll) {
+						// Refund scroll.
+						Item idScroll;
+						idScroll.Initialize(ItemID::ScrollIdentify);
+						AddItem(idScroll);
+					}
+				}
+			}
+			
 			if (rightClick) {
 				// equip item
 				if (inventorySlots[i].Item.GetItemType() == ItemType::Equipment) {
@@ -286,6 +344,10 @@ void Inventory::Draw(sf::RenderTarget& window, float timeRatio) {
 
 	if (displayTooltip) {
 		tooltip.Draw(window, timeRatio);
+	}
+
+	if (identifying) {
+		window.draw(identifySprite);
 	}
 }
 
@@ -526,6 +588,11 @@ void Inventory::ReleaseDraggableItem(DungeonScene& dungeonScene, sf::Vector2i po
 			stackCount--;
 		}
 	}
+}
+
+void Inventory::IdentifyMode(bool usingScroll) {
+	identifying = true;
+	this->usingScroll = usingScroll;
 }
 
 void Inventory::updateItemSlot(size_t index) {

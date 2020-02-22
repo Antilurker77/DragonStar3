@@ -67,6 +67,7 @@ enum class AbilityID {
 	PotionStamina,
 
 	// Scrolls
+	ScrollIdentify,
 	ScrollPhaseDoor,
 	ScrollTeleport,
 

@@ -658,6 +658,7 @@ static std::vector<ItemWeight> initScrollWeights() {
 
 	// MinItemLevel, MaxItemLevel, Weight, ItemID
 	list = {
+		{  1, 100, 1000, ItemID::ScrollIdentify},
 		{  1, 100, 1000, ItemID::ScrollPhaseDoor},
 		{  1, 100,  500, ItemID::ScrollTeleport}
 	};

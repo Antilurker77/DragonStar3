@@ -194,6 +194,9 @@ public:
 	// Releases the ability on the cursor.
 	void ReleaseDraggableAbility(sf::Vector2i location, AbilityID& id);
 
+	// Puts the inventory in identification mode.
+	void SetIdentifyMode(bool usingScroll);
+
 private:
 	void updateWorld(float secondsPerUpdate);
 	GameState updateUI(float secondsPerUpdate);

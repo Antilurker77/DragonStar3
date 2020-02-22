@@ -12,8 +12,10 @@
 #include "id/element.hpp"
 #include "id/eventType.hpp"
 #include "id/equipType.hpp"
+#include "id/itemID.hpp"
 #include "../core/combat.hpp"
 #include "../core/random.hpp"
+#include "../core/records.hpp"
 #include "../core/tileMath.hpp"
 #include "../entity/actor.hpp"
 #include "../scene/dungeonScene.hpp"
@@ -5110,6 +5112,90 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 	}();
 
 	// Scrolls
+	list[AbilityID::ScrollIdentify] = [] {
+		AbilityData ad;
+
+		ad.Name = "Identify Scroll";
+		ad.Icon = "placeholder.png";
+		ad.ID = AbilityID::ScrollIdentify;
+
+		ad.Categories = {
+			Category::SingleTarget,
+			Category::Spell
+		};
+		ad.Elements = { Element::Arcane };
+		ad.RequiredWeaponTypes = {};
+
+		ad.IsPassive = false;
+		ad.MaxRank = 0;
+
+		ad.Range = { 0 };
+		ad.UseTime = { 100 };
+		ad.Cooldown = { 0 };
+		ad.MaxCharges = { 1 };
+		ad.HPCost = { 0 };
+		ad.MPCost = { 0 };
+		ad.SPCost = { 0 };
+
+		ad.Values = {};
+		ad.PassiveBonuses = {};
+
+		ad.CanDodge = false;
+		ad.CanBlock = false;
+		ad.CanCounter = false;
+		ad.CanCrit = false;
+		ad.CanDoubleStrike = false;
+
+		ad.HitChance = { 1000 };
+		ad.BonusArmorPen = { 0 };
+		ad.BonusResistancePen = { 0 };
+		ad.BonusCritChance = { 0 };
+		ad.BonusCritPower = { 0 };
+		ad.BonusDoubleStrikeChance = { 0 };
+		ad.BonusHPLeech = { 0 };
+		ad.BonusMPLeech = { 0 };
+		ad.BonusSPLeech = { 0 };
+
+		ad.FixedRange = false;
+		ad.HideRange = false;
+
+		ad.IsProjectile = false;
+		ad.IgnoreLineOfSight = false;
+
+		ad.AreaIgnoreLineOfSight = false;
+		ad.AreaIgnoreBodyBlock = false;
+
+		ad.GetTargetArea = [&](Actor* user, DungeonScene* dungeonScene, sf::Vector2i cursorTarget, int rank) {
+			return std::vector<sf::Vector2i>{ cursorTarget };
+		};
+
+		ad.GetExtraArea = [&](Actor* user, DungeonScene* dungeonScene, sf::Vector2i cursorTarget, int rank) {
+			return std::vector<sf::Vector2i>{};
+		};
+
+		ad.CustomUseCondition = []() {
+			return true;
+		};
+		ad.GetDescription = [Values = ad.Values](Actor* user, EventOptions& eventOptions, int rank) {
+			std::string desc;
+
+			desc = "Identifies an item.";
+			return desc;
+		};
+		ad.Execute = [Values = ad.Values](Actor* user, std::vector<Actor*>& targets, sf::Vector2i cursor, std::vector<sf::Vector2i>& targetArea, EventOptions& eventOptions, int rank) {
+			if (records.IsIdentified(ItemID::ScrollIdentify)) {
+				user->GetDungeonScene()->SetIdentifyMode(true);
+			}
+			else {
+				messageLog.AddMessage("The #item Scroll of Identify #default identified itself.");
+			}
+		};
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
+
+		};
+
+		return ad;
+	}();
 	list[AbilityID::ScrollPhaseDoor] = [] {
 		AbilityData ad;
 

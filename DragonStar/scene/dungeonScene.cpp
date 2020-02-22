@@ -453,6 +453,7 @@ void DungeonScene::DrawUI(sf::RenderWindow& window, float timeRatio) {
 	}
 
 	cursorContainer.Draw(window, timeRatio);
+
 }
 
 int DungeonScene::GetCurrentFloor() {
@@ -927,6 +928,11 @@ void DungeonScene::ReleaseDraggableAbility(sf::Vector2i location, AbilityID& id)
 
 	// No UI element.
 	id = static_cast<AbilityID>(0);
+}
+
+void DungeonScene::SetIdentifyMode(bool usingScroll) {
+	displayInventory = true;
+	inventory.IdentifyMode(usingScroll);
 }
 
 void DungeonScene::updateWorld(float secondsPerUpdate) {	

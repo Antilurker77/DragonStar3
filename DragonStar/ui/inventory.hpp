@@ -69,6 +69,9 @@ public:
 	// Equips and item if it is dropped in the right spot.
 	void ReleaseDraggableItem(DungeonScene& dungeonScene, sf::Vector2i position, Item& item, int& stackCount);
 
+	// Sets the cursor to identification mode.
+	void IdentifyMode(bool usingScroll);
+
 private:
 	// Updates the specified item slot.
 	void updateItemSlot(size_t index);
@@ -101,6 +104,10 @@ private:
 
 	Tooltip tooltip;
 	bool displayTooltip = false;
+
+	bool identifying = false;
+	bool usingScroll = false;
+	sf::Sprite identifySprite;
 
 	static const float slotSize;
 	static const float margin;

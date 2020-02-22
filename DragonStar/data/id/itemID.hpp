@@ -19,6 +19,7 @@ enum class ItemID {
 	PotionStamina,
 
 	// Scrolls
+	ScrollIdentify,
 	ScrollPhaseDoor,
 	ScrollTeleport,
 

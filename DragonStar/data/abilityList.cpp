@@ -5464,7 +5464,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		ad.GetDescription = [Values = ad.Values](Actor* user, EventOptions& eventOptions, int rank) {
 			std::string desc;
 
-			desc = "Increases spell defence by " + std::to_string(Values[0][rank] / 10) + "% for" + std::to_string(Values[1][rank] / 100) + "s.";
+			desc = "Increases spell defence by " + std::to_string(Values[0][rank] / 10) + "% for " + std::to_string(Values[1][rank] / 100) + "s.";
 
 			return desc;
 		};

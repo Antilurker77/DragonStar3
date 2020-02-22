@@ -15,14 +15,14 @@ static std::vector<std::pair<EquipType, int>> initEquipTypeWeights() {
 	std::vector<std::pair<EquipType, int>> list;
 
 	list = {
-		{EquipType::Sword, 125},
-		{EquipType::Axe, 125},
-		{EquipType::Mace, 125},
-		{EquipType::Dagger, 125},
-		{EquipType::Spear, 125},
-		{EquipType::Bow, 125},
-		{EquipType::Wand, 125},
-		{EquipType::Staff, 125},
+		{EquipType::Sword, 250},
+		{EquipType::Axe, 250},
+		{EquipType::Mace, 250},
+		{EquipType::Dagger, 250},
+		{EquipType::Spear, 250},
+		{EquipType::Bow, 250},
+		{EquipType::Wand, 250},
+		{EquipType::Staff, 250},
 		{EquipType::Shield, 500},
 		{EquipType::LightHead, 333},
 		{EquipType::LightBody, 333},

@@ -422,6 +422,8 @@ void DungeonScene::DrawUI(sf::RenderWindow& window, float timeRatio) {
 	
 	playerHUD.Draw(window, timeRatio);
 
+	minimap.Draw(window, timeRatio);
+
 	if (displayInventory) {
 		inventory.Draw(window, timeRatio);
 	}
@@ -449,8 +451,6 @@ void DungeonScene::DrawUI(sf::RenderWindow& window, float timeRatio) {
 	if (displayLearnAbilityWindow) {
 		learnAbilityWindow.Draw(window, timeRatio);
 	}
-
-	minimap.Draw(window, timeRatio);
 
 	cursorContainer.Draw(window, timeRatio);
 }

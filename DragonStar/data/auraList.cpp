@@ -315,7 +315,7 @@ static std::unordered_map<AuraID, AuraData> initList() {
 			std::string desc;
 			std::string value;
 
-			value = std::to_string(Values[0][rank] / 10);
+			value = std::to_string(Values[0][rank] / -10);
 			desc = "Movement speed reduced by " + value + "%.";
 
 			return desc;

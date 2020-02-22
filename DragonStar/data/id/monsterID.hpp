@@ -33,6 +33,7 @@ enum class MonsterID {
 	KoboldScout,
 	LesserFlameblade,
 	Tiger,
+	Trickster,
 	VenomousRat,
 	WaterMare,
 	Wolf,

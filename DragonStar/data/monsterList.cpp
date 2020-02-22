@@ -1523,6 +1523,88 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		return md;
 	}();
+	list[MonsterID::Trickster] = [] {
+		MonsterData md;
+
+		md.Name = "Trickster";
+		md.Title = "";
+		md.Filename = "trickster.png";
+
+		md.IsUnique = false;
+		md.IsBoss = false;
+		md.CanFly = false;
+		md.CanSwim = false;
+		md.CanTunnel = false;
+
+		md.IsStationary = false;
+		md.ChaseTurns = 3;
+
+		md.Level = 6;
+
+		md.BaseHP = 70;
+		md.BaseMP = 28;
+		md.BaseSP = 100;
+
+		md.BaseSTR = 20;
+		md.BaseDEX = 19;
+		md.BaseMAG = 21;
+		md.BaseVIT = 15;
+		md.BaseSPI = 16;
+
+		md.BaseArmor = 20;
+		md.BaseMagicArmor = 10;
+		md.BaseEvasion = 14;
+
+		md.BaseAttackPower = 12;
+		md.BaseSpellPower = 14;
+
+		md.BaseHitChance = 700;
+		md.BaseAttackRange = 100;
+		md.BaseAttackSpeed = 180;
+		md.BaseWeaponDamageMultiplier = 1000;
+		md.AttackElement = Element::Physical;
+		md.AttackType = EquipType::Undefined;
+
+		md.BaseLineOfSight = 350;
+		md.BaseMoveCost = 80;
+
+		md.EXPDrop = 11;
+		md.GoldDrop = 7;
+		md.LootDrop = 3000;
+
+		md.StatMods = {
+			StatMod(StatModType::Resistance, 300, Element::Dark),
+			StatMod(StatModType::Resistance, -300, Element::Light)
+		};
+		md.Abilities = {
+			{AbilityID::ShadowFlay, 0},
+			{AbilityID::Teleport, 0}
+		};
+
+		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
+
+			// Teleport: Under 50% HP, Use Only Once, 25% Chance to Use
+			if (monster->GetFlag(0) < 1 && monster->IsAbilityUsable(AbilityID::Teleport) && monster->GetCurrentHP() <= monster->GetMaxHP() / 2 && Random::RandomInt(1, 100) <= 25) {
+				ai.Target = monster->GetLocation();
+				ai.Ability = AbilityID::Teleport;
+				ai.FlagIndex = 0;
+				ai.FlagValue = 1;
+			}
+			// Shadow Flay: 50% Chance to Use
+			else if (monster->IsAbilityUsable(AbilityID::ShadowFlay) && Random::RandomInt(1, 100) <= 50) {
+				ai.Ability = AbilityID::ShadowFlay;
+			}
+			else {
+				ai.Ability = AbilityID::Attack;
+			}
+
+			return ai;
+		};
+
+		return md;
+	}();
 	list[MonsterID::VenomousRat] = [] {
 		MonsterData md;
 

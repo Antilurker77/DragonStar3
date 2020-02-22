@@ -36,6 +36,7 @@ enum class AuraID {
 	ShiningPrism,
 	SlimeSplash,
 	Speed,
+	SpellProtection,
 	ThunderStrike,
 	Trample,
 	Venom,

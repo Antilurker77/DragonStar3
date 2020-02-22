@@ -44,6 +44,7 @@ std::vector<std::string> Record::scrollNames = {
 std::vector<ItemID> Record::scrollList = {
 	ItemID::ScrollIdentify,
 	ItemID::ScrollPhaseDoor,
+	ItemID::ScrollSpellProtection,
 	ItemID::ScrollTeleport
 };
 

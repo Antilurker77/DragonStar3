@@ -1411,7 +1411,7 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.BaseLineOfSight = 350;
 		md.BaseMoveCost = 125;
 
-		md.EXPDrop = 20;
+		md.EXPDrop = 8;
 		md.GoldDrop = 9;
 		md.LootDrop = 3000;
 
@@ -1463,11 +1463,11 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		md.Level = 6;
 
-		md.BaseHP = 48;
+		md.BaseHP = 68;
 		md.BaseMP = 5;
 		md.BaseSP = 100;
 
-		md.BaseSTR = 17;
+		md.BaseSTR = 20;
 		md.BaseDEX = 24;
 		md.BaseMAG = 5;
 		md.BaseVIT = 16;
@@ -1477,7 +1477,7 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.BaseMagicArmor = 0;
 		md.BaseEvasion = 18;
 
-		md.BaseAttackPower = 10;
+		md.BaseAttackPower = 12;
 		md.BaseSpellPower = 0;
 
 		md.BaseHitChance = 700;

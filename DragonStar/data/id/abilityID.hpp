@@ -30,6 +30,7 @@ enum class AbilityID {
 	FieryTouch,
 	FlameBolt,
 	FlameStrike,
+	HasteAllies,
 	Heal,
 	HerosTriumph,
 	Icicle,

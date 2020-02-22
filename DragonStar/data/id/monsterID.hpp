@@ -43,4 +43,5 @@ enum class MonsterID {
 	// Unique
 	Fenrok,
 	Incindia,
+	RatKing,
 };

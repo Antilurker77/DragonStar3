@@ -2103,6 +2103,80 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		return md;
 	}();
+	list[MonsterID::RatKing] = [] {
+		MonsterData md;
+
+		md.Name = "The Rat King";
+		md.Title = "";
+		md.Filename = "rat_king.png";
+
+		md.IsUnique = true;
+		md.IsBoss = false;
+		md.CanFly = false;
+		md.CanSwim = false;
+		md.CanTunnel = false;
+
+		md.IsStationary = false;
+		md.ChaseTurns = 5;
+
+		md.Level = 7;
+
+		md.BaseHP = 325;
+		md.BaseMP = 40;
+		md.BaseSP = 100;
+
+		md.BaseSTR = 20;
+		md.BaseDEX = 20;
+		md.BaseMAG = 15;
+		md.BaseVIT = 15;
+		md.BaseSPI = 15;
+
+		md.BaseArmor = 40;
+		md.BaseMagicArmor = 20;
+		md.BaseEvasion = 14;
+
+		md.BaseAttackPower = 12;
+		md.BaseSpellPower = 0;
+
+		md.BaseHitChance = 700;
+		md.BaseAttackRange = 100;
+		md.BaseAttackSpeed = 200;
+		md.BaseWeaponDamageMultiplier = 1000;
+		md.AttackElement = Element::Physical;
+		md.AttackType = EquipType::Undefined;
+
+		md.BaseLineOfSight = 350;
+		md.BaseMoveCost = 80;
+
+		md.EXPDrop = 60;
+		md.GoldDrop = 45;
+		md.LootDrop = 6000;
+
+		md.StatMods = {
+			StatMod(StatModType::Resistance, 300, Element::Poison)
+		};
+		md.Abilities = {
+			{ AbilityID::HasteAllies, 0 }
+		};
+
+		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
+
+			// Dragonfire Bolt: Use on cooldown.
+			if (monster->IsAbilityUsable(AbilityID::HasteAllies)) {
+				ai.Ability = AbilityID::HasteAllies;
+				ai.Target = monster->GetLocation();
+			}
+			else {
+				ai.Ability = AbilityID::Attack;
+			}
+
+			return ai;
+		};
+
+		return md;
+	}();
 
 	return list;
 }

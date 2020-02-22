@@ -57,6 +57,7 @@ void CursorContainer::Update(float secondsPerUpdate, DungeonScene& dungeonScene)
 					dragging = true;
 					Ability ab(draggedAbilityID, 0);
 					sprite.setTexture(*assetManager.LoadTexture(ab.GetIcon()));
+					sprite.setColor(sf::Color(255, 255, 255, 255));
 					sprite.setScale(2.f, 2.f);
 				}
 			}

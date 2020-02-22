@@ -1525,6 +1525,88 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		return md;
 	}();
+	list[MonsterID::Tiger] = [] {
+		MonsterData md;
+
+		md.Name = "Tiger";
+		md.Title = "";
+		md.Filename = "tiger.png";
+
+		md.IsUnique = false;
+		md.IsBoss = false;
+		md.CanFly = false;
+		md.CanSwim = false;
+		md.CanTunnel = false;
+
+		md.IsStationary = false;
+		md.ChaseTurns = 3;
+
+		md.Level = 6;
+
+		md.BaseHP = 48;
+		md.BaseMP = 5;
+		md.BaseSP = 100;
+
+		md.BaseSTR = 17;
+		md.BaseDEX = 24;
+		md.BaseMAG = 5;
+		md.BaseVIT = 16;
+		md.BaseSPI = 5;
+
+		md.BaseArmor = 21;
+		md.BaseMagicArmor = 0;
+		md.BaseEvasion = 18;
+
+		md.BaseAttackPower = 10;
+		md.BaseSpellPower = 0;
+
+		md.BaseHitChance = 700;
+		md.BaseAttackRange = 100;
+		md.BaseAttackSpeed = 180;
+		md.BaseWeaponDamageMultiplier = 1000;
+		md.AttackElement = Element::Physical;
+		md.AttackType = EquipType::Undefined;
+
+		md.BaseLineOfSight = 350;
+		md.BaseMoveCost = 70;
+
+		md.EXPDrop = 10;
+		md.GoldDrop = 0;
+		md.LootDrop = 0;
+
+		md.StatMods = {
+			StatMod(StatModType::Haste, 150)
+		};
+		md.Abilities = {
+			{AbilityID::Bite, 0},
+			{AbilityID::Maul, 0}
+		};
+
+		md.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t amount) {
+			return;
+		};
+
+		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
+
+			// Maul: 50% Chance to Use
+			if (monster->IsAbilityUsable(AbilityID::Maul) && Random::RandomInt(1, 100) <= 50) {
+				ai.Ability = AbilityID::Maul;
+			}
+			// Bite: 50% Chance to Use
+			else if (monster->IsAbilityUsable(AbilityID::Bite) && Random::RandomInt(1, 100) <= 50) {
+				ai.Ability = AbilityID::Bite;
+			}
+			else {
+				ai.Ability = AbilityID::Attack;
+			}
+
+			return ai;
+		};
+
+		return md;
+	}();
 	list[MonsterID::VenomousRat] = [] {
 		MonsterData md;
 

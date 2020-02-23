@@ -1445,6 +1445,79 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		return md;
 	}();
+	list[MonsterID::LivingSpark] = [] {
+		MonsterData md;
+
+		md.Name = "Living Spark";
+		md.Title = "";
+		md.Filename = "living_spark.png";
+
+		md.IsUnique = false;
+		md.IsBoss = false;
+		md.CanFly = false;
+		md.CanSwim = false;
+		md.CanTunnel = false;
+
+		md.IsStationary = false;
+		md.ChaseTurns = 3;
+
+		md.Level = 7;
+
+		md.BaseHP = 70;
+		md.BaseMP = 30;
+		md.BaseSP = 100;
+
+		md.BaseSTR = 18;
+		md.BaseDEX = 21;
+		md.BaseMAG = 19;
+		md.BaseVIT = 18;
+		md.BaseSPI = 15;
+
+		md.BaseArmor = 10;
+		md.BaseMagicArmor = 40;
+		md.BaseEvasion = 25;
+
+		md.BaseAttackPower = 12;
+		md.BaseSpellPower = 6;
+
+		md.BaseHitChance = 700;
+		md.BaseAttackRange = 100;
+		md.BaseAttackSpeed = 180;
+		md.BaseWeaponDamageMultiplier = 1000;
+		md.AttackElement = Element::Lightning;
+		md.AttackType = EquipType::Undefined;
+
+		md.BaseLineOfSight = 450;
+		md.BaseMoveCost = 80;
+
+		md.EXPDrop = 10;
+		md.GoldDrop = 14;
+		md.LootDrop = 3000;
+
+		md.StatMods = {
+			StatMod(StatModType::Resistance, 1000, Element::Lightning),
+			StatMod(StatModType::Resistance, -300, Element::Ice)
+		};
+		md.Abilities = {
+			{AbilityID::ElectricSurge, 0}
+		};
+
+		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
+
+			if (monster->IsAbilityUsable(AbilityID::ElectricSurge)) {
+				ai.Ability = AbilityID::ElectricSurge;
+			}
+			else {
+				ai.Ability = AbilityID::Attack;
+			}
+
+			return ai;
+		};
+
+		return md;
+	}();
 	list[MonsterID::Tiger] = [] {
 		MonsterData md;
 

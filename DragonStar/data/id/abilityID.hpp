@@ -88,5 +88,5 @@ enum class AbilityID {
 	ImprovedStrength,
 	ImprovedVitality,
 	ManaSpring,
-	VenomousWound,
+	VenomousWound
 };

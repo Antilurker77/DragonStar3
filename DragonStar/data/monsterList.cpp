@@ -2017,6 +2017,70 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		return md;
 	}();
+	list[MonsterID::WormBeast] = [] {
+		MonsterData md;
+
+		md.Name = "Worm Beast";
+		md.Title = "";
+		md.Filename = "worm_beast.png";
+
+		md.IsUnique = false;
+		md.IsBoss = false;
+		md.CanFly = false;
+		md.CanSwim = false;
+		md.CanTunnel = false;
+
+		md.IsStationary = false;
+		md.ChaseTurns = 3;
+
+		md.Level = 7;
+
+		md.BaseHP = 75;
+		md.BaseMP = 10;
+		md.BaseSP = 100;
+
+		md.BaseSTR = 14;
+		md.BaseDEX = 16;
+		md.BaseMAG = 12;
+		md.BaseVIT = 20;
+		md.BaseSPI = 10;
+
+		md.BaseArmor = 0;
+		md.BaseMagicArmor = 0;
+		md.BaseEvasion = 1;
+
+		md.BaseAttackPower = 10;
+		md.BaseSpellPower = 0;
+
+		md.BaseHitChance = 700;
+		md.BaseAttackRange = 100;
+		md.BaseAttackSpeed = 200;
+		md.BaseWeaponDamageMultiplier = 1000;
+		md.AttackElement = Element::Physical;
+		md.AttackType = EquipType::Undefined;
+
+		md.BaseLineOfSight = 350;
+		md.BaseMoveCost = 100;
+
+		md.EXPDrop = 12;
+		md.GoldDrop = 0;
+		md.LootDrop = 1000;
+
+		md.StatMods = {};
+		md.Abilities = {
+			{ AbilityID::Vigor, 0 }
+		};
+
+		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
+			ai.Ability = AbilityID::Attack;
+
+			return ai;
+		};
+
+		return md;
+	}();
 
 	// Unique
 	list[MonsterID::Fenrok] = [] {

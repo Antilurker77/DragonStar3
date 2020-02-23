@@ -40,6 +40,7 @@ enum class MonsterID {
 	Wolf,
 	WorkerAnt,
 	Worm,
+	WormBeast,
 
 	// Unique
 	Fenrok,

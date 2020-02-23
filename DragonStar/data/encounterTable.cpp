@@ -19,7 +19,7 @@ std::vector<Encounter> DungeonScene::encounterTable = {
 		{MonsterID::GiantRat, 1000}
 	}},
 
-	{1,	10, 300, {
+	{1,	5, 300, {
 		{MonsterID::GiantRat, 1000},
 		{MonsterID::GiantRat, 1000}
 	}},

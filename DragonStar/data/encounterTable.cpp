@@ -150,6 +150,12 @@ std::vector<Encounter> DungeonScene::uniqueEncounterTable = {
 		{MonsterID::Fenrok, 1000}
 	}},
 
+	{3, 100, 1000, {
+		{MonsterID::Norgash, 1000},
+		{MonsterID::KoboldCrossbowman, 1000},
+		{MonsterID::KoboldGeomancer, 1000}
+	}},
+
 	{5, 100, 1000, {
 		{MonsterID::Incindia, 1000},
 		{MonsterID::LesserFlameblade, 1000},

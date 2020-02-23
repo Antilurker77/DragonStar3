@@ -44,5 +44,6 @@ enum class MonsterID {
 	Fenrok,
 	Incindia,
 	Marbix,
+	Norgash,
 	RatKing,
 };

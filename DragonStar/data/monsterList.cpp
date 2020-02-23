@@ -2189,6 +2189,83 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		return md;
 	}();
+	list[MonsterID::Norgash] = [] {
+		MonsterData md;
+
+		md.Name = "Norgash";
+		md.Title = "Kobold Chief";
+		md.Filename = "norgash.png";
+
+		md.IsUnique = true;
+		md.IsBoss = false;
+		md.CanFly = false;
+		md.CanSwim = false;
+		md.CanTunnel = false;
+
+		md.IsStationary = false;
+		md.ChaseTurns = 5;
+
+		md.Level = 3;
+
+		md.BaseHP = 200;
+		md.BaseMP = 20;
+		md.BaseSP = 100;
+
+		md.BaseSTR = 18;
+		md.BaseDEX = 15;
+		md.BaseMAG = 15;
+		md.BaseVIT = 10;
+		md.BaseSPI = 10;
+
+		md.BaseArmor = 25;
+		md.BaseMagicArmor = 10;
+		md.BaseEvasion = 10;
+
+		md.BaseAttackPower = 10;
+		md.BaseSpellPower = 10;
+
+		md.BaseHitChance = 750;
+		md.BaseAttackRange = 150;
+		md.BaseAttackSpeed = 180;
+		md.BaseWeaponDamageMultiplier = 1000;
+		md.AttackElement = Element::Physical;
+		md.AttackType = EquipType::Axe;
+
+		md.BaseLineOfSight = 350;
+		md.BaseMoveCost = 80;
+
+		md.EXPDrop = 45;
+		md.GoldDrop = 32;
+		md.LootDrop = 4000;
+
+		md.StatMods = {};
+		md.Abilities = {
+			{ AbilityID::HasteAllies, 0 },
+			{ AbilityID::Chopper, 2}
+		};
+
+		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
+
+			// Haste Allies: Use on cooldown.
+			if (monster->IsAbilityUsable(AbilityID::HasteAllies)) {
+				ai.Ability = AbilityID::HasteAllies;
+				ai.Target = monster->GetLocation();
+			}
+			// Chopper: Use on cooldown.
+			else if (monster->IsAbilityUsable(AbilityID::Chopper)) {
+				ai.Ability = AbilityID::Chopper;
+			}
+			else {
+				ai.Ability = AbilityID::Attack;
+			}
+
+			return ai;
+		};
+
+		return md;
+	}();
 	list[MonsterID::RatKing] = [] {
 		MonsterData md;
 

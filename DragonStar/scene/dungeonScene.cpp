@@ -232,44 +232,44 @@ void DungeonScene::ReadInput(sf::RenderWindow& window) {
 			// Movement / Bump Attack
 			sf::Vector2i destination = actors[0]->GetLocation();
 			int distance = 0;
-			if (ev.key.code == sf::Keyboard::W || ev.key.code == sf::Keyboard::Numpad8) {
+			if (ev.key.code == settings.MoveKeybinds.MoveN || ev.key.code == settings.MoveKeybinds.MoveNAlt) {
 				destination.y -= 1;
 				distance = 100;
 			}
-			if (ev.key.code == sf::Keyboard::A || ev.key.code == sf::Keyboard::Numpad4) {
+			if (ev.key.code == settings.MoveKeybinds.MoveW || ev.key.code == settings.MoveKeybinds.MoveWAlt) {
 				destination.x -= 1;
 				distance = 100;
 			}
-			if (ev.key.code == sf::Keyboard::S || ev.key.code == sf::Keyboard::Numpad2) {
+			if (ev.key.code == settings.MoveKeybinds.MoveS || ev.key.code == settings.MoveKeybinds.MoveSAlt) {
 				destination.y += 1;
 				distance = 100;
 			}
-			if (ev.key.code == sf::Keyboard::D || ev.key.code == sf::Keyboard::Numpad6) {
+			if (ev.key.code == settings.MoveKeybinds.MoveE || ev.key.code == settings.MoveKeybinds.MoveEAlt) {
 				destination.x += 1;
 				distance = 100;
 			}
-			if (ev.key.code == sf::Keyboard::Q || ev.key.code == sf::Keyboard::Numpad7) {
+			if (ev.key.code == settings.MoveKeybinds.MoveNW || ev.key.code == settings.MoveKeybinds.MoveNWAlt) {
 				destination.x -= 1;
 				destination.y -= 1;
 				distance = 141;
 			}
-			if (ev.key.code == sf::Keyboard::E || ev.key.code == sf::Keyboard::Numpad9) {
+			if (ev.key.code == settings.MoveKeybinds.MoveNE || ev.key.code == settings.MoveKeybinds.MoveNEAlt) {
 				destination.x += 1;
 				destination.y -= 1;
 				distance = 141;
 			}
-			if (ev.key.code == sf::Keyboard::C || ev.key.code == sf::Keyboard::Numpad3) {
+			if (ev.key.code == settings.MoveKeybinds.MoveSE || ev.key.code == settings.MoveKeybinds.MoveSEAlt) {
 				destination.x += 1;
 				destination.y += 1;
 				distance = 141;
 			}
-			if (ev.key.code == sf::Keyboard::Z || ev.key.code == sf::Keyboard::Numpad1) {
+			if (ev.key.code == settings.MoveKeybinds.MoveSW || ev.key.code == settings.MoveKeybinds.MoveSWAlt) {
 				destination.x -= 1;
 				destination.y += 1;
 				distance = 141;
 			}
 			// Wait.
-			if (ev.key.code == sf::Keyboard::X || ev.key.code == sf::Keyboard::Numpad5) {
+			if (ev.key.code == settings.MoveKeybinds.Wait || ev.key.code == settings.MoveKeybinds.WaitAlt) {
 				command = std::make_unique<WaitCommand>(100);
 			}
 
@@ -287,7 +287,7 @@ void DungeonScene::ReadInput(sf::RenderWindow& window) {
 			}
 
 			// Loot items on ground.
-			if (ev.key.code == sf::Keyboard::G) {
+			if (ev.key.code == settings.UIKeybinds.Loot) {
 				Loot* lp = GetLootAtLocation(actors[0]->GetLocation());
 				if (lp != nullptr && !lp->IsEmpty()) {
 					lootWindow.Initialize(*lp);
@@ -296,12 +296,12 @@ void DungeonScene::ReadInput(sf::RenderWindow& window) {
 			}
 
 			// Display / Hide Inventory
-			if (ev.key.code == sf::Keyboard::B) {
+			if (ev.key.code == settings.UIKeybinds.Inventory) {
 				displayInventory = !displayInventory;
 			}
 
 			// Display / Hide Spellbook
-			if (ev.key.code == sf::Keyboard::P) {
+			if (ev.key.code == settings.UIKeybinds.Spellbook) {
 				displaySpellbook = !displaySpellbook;
 			}
 

@@ -47,32 +47,32 @@ void ShopWindow::GetInput(sf::RenderWindow& window, sf::Event& ev) {
 		break;
 	case sf::Event::KeyReleased:
 		// Player Loots
-		if (ev.key.code == sf::Keyboard::G) {
+		if (ev.key.code == settings.UIKeybinds.Loot) {
 			wantToClose = true;
 		}
 		// Player Moves
-		if (ev.key.code == sf::Keyboard::W || ev.key.code == sf::Keyboard::Numpad8) {
+		if (ev.key.code == settings.MoveKeybinds.MoveN || ev.key.code == settings.MoveKeybinds.MoveNAlt) {
 			wantToClose = true;
 		}
-		if (ev.key.code == sf::Keyboard::A || ev.key.code == sf::Keyboard::Numpad4) {
+		if (ev.key.code == settings.MoveKeybinds.MoveW || ev.key.code == settings.MoveKeybinds.MoveWAlt) {
 			wantToClose = true;
 		}
-		if (ev.key.code == sf::Keyboard::S || ev.key.code == sf::Keyboard::Numpad2) {
+		if (ev.key.code == settings.MoveKeybinds.MoveS || ev.key.code == settings.MoveKeybinds.MoveSAlt) {
 			wantToClose = true;
 		}
-		if (ev.key.code == sf::Keyboard::D || ev.key.code == sf::Keyboard::Numpad6) {
+		if (ev.key.code == settings.MoveKeybinds.MoveE || ev.key.code == settings.MoveKeybinds.MoveEAlt) {
 			wantToClose = true;
 		}
-		if (ev.key.code == sf::Keyboard::Q || ev.key.code == sf::Keyboard::Numpad7) {
+		if (ev.key.code == settings.MoveKeybinds.MoveNW || ev.key.code == settings.MoveKeybinds.MoveNWAlt) {
 			wantToClose = true;
 		}
-		if (ev.key.code == sf::Keyboard::E || ev.key.code == sf::Keyboard::Numpad9) {
+		if (ev.key.code == settings.MoveKeybinds.MoveNE || ev.key.code == settings.MoveKeybinds.MoveNEAlt) {
 			wantToClose = true;
 		}
-		if (ev.key.code == sf::Keyboard::C || ev.key.code == sf::Keyboard::Numpad3) {
+		if (ev.key.code == settings.MoveKeybinds.MoveSE || ev.key.code == settings.MoveKeybinds.MoveSEAlt) {
 			wantToClose = true;
 		}
-		if (ev.key.code == sf::Keyboard::Z || ev.key.code == sf::Keyboard::Numpad1) {
+		if (ev.key.code == settings.MoveKeybinds.MoveSW || ev.key.code == settings.MoveKeybinds.MoveSWAlt) {
 			wantToClose = true;
 		}
 		break;

@@ -132,7 +132,9 @@ void Game::draw(float timeRatio) {
 			break;
 	}
 
-	fpsWindow.Draw(window);
+	if (settings.DrawFPS) {
+		fpsWindow.Draw(window);
+	}
 
 	window.display();
 }

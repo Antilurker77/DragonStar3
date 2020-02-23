@@ -2103,6 +2103,86 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		return md;
 	}();
+	list[MonsterID::Luther] = [] {
+		MonsterData md;
+
+		md.Name = "Luther";
+		md.Title = "Mercenary Archer";
+		md.Filename = "luther.png";
+
+		md.IsUnique = true;
+		md.IsBoss = false;
+		md.CanFly = false;
+		md.CanSwim = false;
+		md.CanTunnel = false;
+
+		md.IsStationary = false;
+		md.ChaseTurns = 5;
+
+		md.Level = 4;
+
+		md.BaseHP = 325;
+		md.BaseMP = 40;
+		md.BaseSP = 100;
+
+		md.BaseSTR = 16;
+		md.BaseDEX = 21;
+		md.BaseMAG = 16;
+		md.BaseVIT = 15;
+		md.BaseSPI = 14;
+
+		md.BaseArmor = 25;
+		md.BaseMagicArmor = 5;
+		md.BaseEvasion = 16;
+
+		md.BaseAttackPower = 12;
+		md.BaseSpellPower = 0;
+
+		md.BaseHitChance = 750;
+		md.BaseAttackRange = 350;
+		md.BaseAttackSpeed = 250;
+		md.BaseWeaponDamageMultiplier = 1000;
+		md.AttackElement = Element::Physical;
+		md.AttackType = EquipType::Bow;
+
+		md.BaseLineOfSight = 350;
+		md.BaseMoveCost = 80;
+
+		md.EXPDrop = 55;
+		md.GoldDrop = 50;
+		md.LootDrop = 6000;
+
+		md.StatMods = {
+			StatMod(StatModType::Haste, 30)
+		};
+		md.Abilities = {
+			{ AbilityID::PowerShot, 0 },
+			{ AbilityID::CriticalShot, 0 },
+			{ AbilityID::DeadlyForce, 4 },
+			{ AbilityID::Focus, 4 }
+		};
+
+		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
+
+			// Critical Shot: Use on cooldown.
+			if (monster->IsAbilityUsable(AbilityID::CriticalShot)) {
+				ai.Ability = AbilityID::CriticalShot;
+			}
+			// Power Shot: Use on cooldown while Deadly Force buff is active.
+			else if (monster->IsAbilityUsable(AbilityID::PowerShot) && monster->HasAura(AuraID::DeadlyForce)) {
+				ai.Ability = AbilityID::PowerShot;
+			}
+			else {
+				ai.Ability = AbilityID::Attack;
+			}
+
+			return ai;
+		};
+
+		return md;
+	}();
 	list[MonsterID::Marbix] = [] {
 		MonsterData md;
 

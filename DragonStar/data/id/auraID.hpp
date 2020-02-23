@@ -21,6 +21,7 @@ enum class AuraID {
 	CrushArmor,
 	CrushingBlow,
 	DeadlyForce,
+	DemonBlade,
 	Disarm,
 	ElectricSurge,
 	ElementalEnergy,

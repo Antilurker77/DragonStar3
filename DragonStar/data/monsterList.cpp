@@ -811,7 +811,7 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		md.BaseSTR = 12;
 		md.BaseDEX = 15;
-		md.BaseMAG = 15;
+		md.BaseMAG = 20;
 		md.BaseVIT = 10;
 		md.BaseSPI = 15;
 
@@ -2103,6 +2103,92 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		return md;
 	}();
+	list[MonsterID::Marbix] = [] {
+		MonsterData md;
+
+		md.Name = "Marbix";
+		md.Title = "Goblin Lieutenant";
+		md.Filename = "marbix.png";
+
+		md.IsUnique = true;
+		md.IsBoss = false;
+		md.CanFly = false;
+		md.CanSwim = false;
+		md.CanTunnel = false;
+
+		md.IsStationary = false;
+		md.ChaseTurns = 5;
+
+		md.Level = 7;
+
+		md.BaseHP = 400;
+		md.BaseMP = 40;
+		md.BaseSP = 100;
+
+		md.BaseSTR = 25;
+		md.BaseDEX = 21;
+		md.BaseMAG = 15;
+		md.BaseVIT = 20;
+		md.BaseSPI = 15;
+
+		md.BaseArmor = 48;
+		md.BaseMagicArmor = 15;
+		md.BaseEvasion = 12;
+
+		md.BaseAttackPower = 14;
+		md.BaseSpellPower = 0;
+
+		md.BaseHitChance = 750;
+		md.BaseAttackRange = 150;
+		md.BaseAttackSpeed = 200;
+		md.BaseWeaponDamageMultiplier = 1000;
+		md.AttackElement = Element::Physical;
+		md.AttackType = EquipType::Sword;
+
+		md.BaseLineOfSight = 350;
+		md.BaseMoveCost = 80;
+
+		md.EXPDrop = 62;
+		md.GoldDrop = 40;
+		md.LootDrop = 5000;
+
+		md.StatMods = {
+			StatMod(StatModType::Resistance, 300, Element::Dark),
+			StatMod(StatModType::Resistance, -300, Element::Light),
+			StatMod(StatModType::BlockChance, 200),
+			StatMod(StatModType::Haste, 50)
+		};
+		md.Abilities = {
+			{ AbilityID::DemonBlade, 0 },
+			{ AbilityID::PowerStrike, 0},
+			{ AbilityID::RendingSlash, 3}
+		};
+
+		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
+
+			// Demon Blade: Use on cooldown.
+			if (monster->IsAbilityUsable(AbilityID::DemonBlade)) {
+				ai.Ability = AbilityID::DemonBlade;
+			}
+			// Rending Slash: Use on cooldown.
+			else if (monster->IsAbilityUsable(AbilityID::RendingSlash)) {
+				ai.Ability = AbilityID::RendingSlash;
+			}
+			// Power Strike: Use on cooldown.
+			else if (monster->IsAbilityUsable(AbilityID::PowerStrike)) {
+				ai.Ability = AbilityID::PowerStrike;
+			}
+			else {
+				ai.Ability = AbilityID::Attack;
+			}
+
+			return ai;
+		};
+
+		return md;
+	}();
 	list[MonsterID::RatKing] = [] {
 		MonsterData md;
 
@@ -2163,7 +2249,7 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 			AIAction ai;
 			ai.Target = dungeonScene->GetPlayer()->GetLocation();
 
-			// Dragonfire Bolt: Use on cooldown.
+			// Haste Allies: Use on cooldown.
 			if (monster->IsAbilityUsable(AbilityID::HasteAllies)) {
 				ai.Ability = AbilityID::HasteAllies;
 				ai.Target = monster->GetLocation();

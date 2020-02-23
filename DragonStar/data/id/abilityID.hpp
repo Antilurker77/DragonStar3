@@ -21,6 +21,7 @@ enum class AbilityID {
 	CriticalShot,
 	CrushArmor,
 	CrushingBlow,
+	DemonBlade,
 	Disarm,
 	DragonBreath,
 	DragonfireBolt,

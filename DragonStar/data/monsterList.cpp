@@ -947,6 +947,77 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		return md;
 	}();
+	list[MonsterID::Iguana] = [] {
+		MonsterData md;
+
+		md.Name = "Iguana";
+		md.Title = "";
+		md.Filename = "iguana.png";
+
+		md.IsUnique = false;
+		md.IsBoss = false;
+		md.CanFly = false;
+		md.CanSwim = false;
+		md.CanTunnel = false;
+
+		md.IsStationary = false;
+		md.ChaseTurns = 3;
+
+		md.Level = 7;
+
+		md.BaseHP = 50;
+		md.BaseMP = 6;
+		md.BaseSP = 100;
+
+		md.BaseSTR = 21;
+		md.BaseDEX = 20;
+		md.BaseMAG = 10;
+		md.BaseVIT = 20;
+		md.BaseSPI = 2;
+
+		md.BaseArmor = 30;
+		md.BaseMagicArmor = 0;
+		md.BaseEvasion = 14;
+
+		md.BaseAttackPower = 12;
+		md.BaseSpellPower = 0;
+
+		md.BaseHitChance = 700;
+		md.BaseAttackRange = 100;
+		md.BaseAttackSpeed = 180;
+		md.BaseWeaponDamageMultiplier = 1000;
+		md.AttackElement = Element::Physical;
+		md.AttackType = EquipType::Undefined;
+
+		md.BaseLineOfSight = 350;
+		md.BaseMoveCost = 80;
+
+		md.EXPDrop = 10;
+		md.GoldDrop = 0;
+		md.LootDrop = 0;
+
+		md.StatMods = {};
+		md.Abilities = {
+			{AbilityID::Bite, 0}
+		};
+
+		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
+
+			// Has a 50% chance to use Bite.
+			if (monster->IsAbilityUsable(AbilityID::Bite) && Random::RandomInt(1, 100) <= 50) {
+				ai.Ability = AbilityID::Bite;
+			}
+			else {
+				ai.Ability = AbilityID::Attack;
+			}
+
+			return ai;
+		};
+
+		return md;
+	}();
 	list[MonsterID::Imp] = [] {
 		MonsterData md;
 
@@ -1508,6 +1579,77 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 			if (monster->IsAbilityUsable(AbilityID::ElectricSurge)) {
 				ai.Ability = AbilityID::ElectricSurge;
+			}
+			else {
+				ai.Ability = AbilityID::Attack;
+			}
+
+			return ai;
+		};
+
+		return md;
+	}();
+	list[MonsterID::SnappingTurtle] = [] {
+		MonsterData md;
+
+		md.Name = "Snapping Turtle";
+		md.Title = "";
+		md.Filename = "snapping_turtle.png";
+
+		md.IsUnique = false;
+		md.IsBoss = false;
+		md.CanFly = false;
+		md.CanSwim = false;
+		md.CanTunnel = false;
+
+		md.IsStationary = false;
+		md.ChaseTurns = 3;
+
+		md.Level = 7;
+
+		md.BaseHP = 80;
+		md.BaseMP = 6;
+		md.BaseSP = 100;
+
+		md.BaseSTR = 19;
+		md.BaseDEX = 16;
+		md.BaseMAG = 10;
+		md.BaseVIT = 30;
+		md.BaseSPI = 2;
+
+		md.BaseArmor = 120;
+		md.BaseMagicArmor = 0;
+		md.BaseEvasion = 1;
+
+		md.BaseAttackPower = 10;
+		md.BaseSpellPower = 0;
+
+		md.BaseHitChance = 700;
+		md.BaseAttackRange = 100;
+		md.BaseAttackSpeed = 180;
+		md.BaseWeaponDamageMultiplier = 1000;
+		md.AttackElement = Element::Physical;
+		md.AttackType = EquipType::Undefined;
+
+		md.BaseLineOfSight = 250;
+		md.BaseMoveCost = 120;
+
+		md.EXPDrop = 16;
+		md.GoldDrop = 0;
+		md.LootDrop = 0;
+
+		md.StatMods = {};
+		md.Abilities = {
+			{AbilityID::Bite, 0}
+		};
+
+		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
+
+			// Bite: Use on cooldown.
+			if (monster->IsAbilityUsable(AbilityID::Bite)) {
+				ai.Ability = AbilityID::Bite;
 			}
 			else {
 				ai.Ability = AbilityID::Attack;

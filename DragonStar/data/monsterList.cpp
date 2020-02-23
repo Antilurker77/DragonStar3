@@ -2291,7 +2291,7 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.BaseMP = 20;
 		md.BaseSP = 100;
 
-		md.BaseSTR = 18;
+		md.BaseSTR = 16;
 		md.BaseDEX = 15;
 		md.BaseMAG = 15;
 		md.BaseVIT = 10;
@@ -2320,7 +2320,6 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		md.StatMods = {};
 		md.Abilities = {
-			{ AbilityID::HasteAllies, 0 },
 			{ AbilityID::Chopper, 2}
 		};
 
@@ -2328,13 +2327,8 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 			AIAction ai;
 			ai.Target = dungeonScene->GetPlayer()->GetLocation();
 
-			// Haste Allies: Use on cooldown.
-			if (monster->IsAbilityUsable(AbilityID::HasteAllies)) {
-				ai.Ability = AbilityID::HasteAllies;
-				ai.Target = monster->GetLocation();
-			}
 			// Chopper: Use on cooldown.
-			else if (monster->IsAbilityUsable(AbilityID::Chopper)) {
+			if (monster->IsAbilityUsable(AbilityID::Chopper)) {
 				ai.Ability = AbilityID::Chopper;
 			}
 			else {

@@ -2017,7 +2017,7 @@ static std::unordered_map<AuraID, AuraData> initList() {
 		AuraData ad;
 
 		ad.Name = "Thunder Strike";
-		ad.Icon = "placeholder.png";
+		ad.Icon = "thunder_strike.png";
 		ad.AuraID = AuraID::ThunderStrike;
 
 		ad.Categories = {

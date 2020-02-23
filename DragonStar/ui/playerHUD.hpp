@@ -65,6 +65,7 @@ private:
 	// Input
 	sf::Vector2i mousePos;
 	bool leftClick = false;
+	bool rightClick = false;
 	size_t usingShortcut = 24; // index of shortcut being used, if equal to size no shortcut was pressed
 
 	// UI Elements

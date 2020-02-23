@@ -115,12 +115,16 @@ void PlayerHUD::GetInput(sf::RenderWindow& window, sf::Event& ev) {
 	sf::Mouse mouse;
 	mousePos = mouse.getPosition(window);
 	leftClick = false;
+	rightClick = false;
 	usingShortcut = shortcuts.size();
 
 	switch (ev.type) {
 		case sf::Event::MouseButtonReleased:
 			if (ev.mouseButton.button == sf::Mouse::Left) {
 				leftClick = true;
+			}
+			if (ev.mouseButton.button == sf::Mouse::Right) {
+				rightClick = true;
 			}
 			break;
 		case sf::Event::KeyReleased:
@@ -392,6 +396,16 @@ void PlayerHUD::Update(Actor* player, DungeonScene& dungeonScene, float secondsP
 				displayTooltip = true;
 				auto size = tooltip.GetSize();
 				tooltip.SetPosition(mouseF.x - size.x, mouseF.y - size.y);
+				break;
+			}
+		}
+	}
+
+	if (rightClick) {
+		rightClick = false;
+		for (size_t i = 0; i < displayShortcutIcons.size(); i++) {
+			if (displayShortcutIcons[i] && shortcutSlots[i].getGlobalBounds().contains(mouseF)) {
+				usingShortcut = i;
 				break;
 			}
 		}

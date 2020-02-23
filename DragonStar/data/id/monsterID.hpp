@@ -46,4 +46,5 @@ enum class MonsterID {
 	Marbix,
 	Norgash,
 	RatKing,
+	Tergar,
 };

@@ -2340,6 +2340,76 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		return md;
 	}();
+	list[MonsterID::Tergar] = [] {
+		MonsterData md;
+
+		md.Name = "Tergar";
+		md.Title = "Exiled Kobold";
+		md.Filename = "tergar.png";
+
+		md.IsUnique = true;
+		md.IsBoss = false;
+		md.CanFly = false;
+		md.CanSwim = false;
+		md.CanTunnel = false;
+
+		md.IsStationary = false;
+		md.ChaseTurns = 5;
+
+		md.Level = 3;
+
+		md.BaseHP = 225;
+		md.BaseMP = 20;
+		md.BaseSP = 100;
+
+		md.BaseSTR = 16;
+		md.BaseDEX = 20;
+		md.BaseMAG = 12;
+		md.BaseVIT = 18;
+		md.BaseSPI = 12;
+
+		md.BaseArmor = 20;
+		md.BaseMagicArmor = 10;
+		md.BaseEvasion = 15;
+
+		md.BaseAttackPower = 10;
+		md.BaseSpellPower = 0;
+
+		md.BaseHitChance = 750;
+		md.BaseAttackRange = 100;
+		md.BaseAttackSpeed = 150;
+		md.BaseWeaponDamageMultiplier = 1000;
+		md.AttackElement = Element::Physical;
+		md.AttackType = EquipType::Dagger;
+
+		md.BaseLineOfSight = 350;
+		md.BaseMoveCost = 75;
+
+		md.EXPDrop = 50;
+		md.GoldDrop = 41;
+		md.LootDrop = 5000;
+
+		md.StatMods = {};
+		md.Abilities = {
+			{ AbilityID::FlashStrike, 0 }
+		};
+
+		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
+
+			if (monster->IsAbilityUsable(AbilityID::FlashStrike)) {
+				ai.Ability = AbilityID::FlashStrike;
+			}
+			else {
+				ai.Ability = AbilityID::Attack;
+			}
+
+			return ai;
+		};
+
+		return md;
+	}();
 
 	return list;
 }

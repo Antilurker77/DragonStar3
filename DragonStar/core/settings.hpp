@@ -20,15 +20,25 @@ struct CameraKeys {
 };
 
 struct MoveKeys {
-	sf::Keyboard::Key MoveN = sf::Keyboard::K;
-	sf::Keyboard::Key MoveS = sf::Keyboard::J;
-	sf::Keyboard::Key MoveE = sf::Keyboard::L;
-	sf::Keyboard::Key MoveW = sf::Keyboard::H;
-	sf::Keyboard::Key MoveNW = sf::Keyboard::Y;
-	sf::Keyboard::Key MoveNE = sf::Keyboard::U;
-	sf::Keyboard::Key MoveSW = sf::Keyboard::B;
-	sf::Keyboard::Key MoveSE = sf::Keyboard::N;
-	sf::Keyboard::Key Wait = sf::Keyboard::Period;
+	//sf::Keyboard::Key MoveN = sf::Keyboard::K;
+	//sf::Keyboard::Key MoveS = sf::Keyboard::J;
+	//sf::Keyboard::Key MoveE = sf::Keyboard::L;
+	//sf::Keyboard::Key MoveW = sf::Keyboard::H;
+	//sf::Keyboard::Key MoveNW = sf::Keyboard::Y;
+	//sf::Keyboard::Key MoveNE = sf::Keyboard::U;
+	//sf::Keyboard::Key MoveSW = sf::Keyboard::B;
+	//sf::Keyboard::Key MoveSE = sf::Keyboard::N;
+	//sf::Keyboard::Key Wait = sf::Keyboard::Period;
+
+	sf::Keyboard::Key MoveN = sf::Keyboard::W;
+	sf::Keyboard::Key MoveS = sf::Keyboard::S;
+	sf::Keyboard::Key MoveE = sf::Keyboard::D;
+	sf::Keyboard::Key MoveW = sf::Keyboard::A;
+	sf::Keyboard::Key MoveNW = sf::Keyboard::Q;
+	sf::Keyboard::Key MoveNE = sf::Keyboard::E;
+	sf::Keyboard::Key MoveSW = sf::Keyboard::Z;
+	sf::Keyboard::Key MoveSE = sf::Keyboard::C;
+	sf::Keyboard::Key Wait = sf::Keyboard::X;
 
 	sf::Keyboard::Key MoveNAlt = sf::Keyboard::Numpad8;
 	sf::Keyboard::Key MoveSAlt = sf::Keyboard::Numpad2;

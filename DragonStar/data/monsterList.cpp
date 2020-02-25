@@ -2785,19 +2785,19 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		md.Level = 3;
 
-		md.BaseHP = 225;
+		md.BaseHP = 175;
 		md.BaseMP = 20;
 		md.BaseSP = 100;
 
-		md.BaseSTR = 16;
+		md.BaseSTR = 14;
 		md.BaseDEX = 20;
 		md.BaseMAG = 12;
 		md.BaseVIT = 18;
 		md.BaseSPI = 12;
 
-		md.BaseArmor = 20;
+		md.BaseArmor = 15;
 		md.BaseMagicArmor = 10;
-		md.BaseEvasion = 15;
+		md.BaseEvasion = 12;
 
 		md.BaseAttackPower = 10;
 		md.BaseSpellPower = 0;

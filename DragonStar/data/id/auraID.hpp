@@ -18,6 +18,7 @@ enum class AuraID {
 	Boulder,
 	Chilled,
 	CobraBite,
+	ConcentratedVenom,
 	CrushArmor,
 	CrushingBlow,
 	DeadlyForce,

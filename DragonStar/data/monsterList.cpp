@@ -2304,6 +2304,80 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		return md;
 	}();
+	list[MonsterID::Glykon] = [] {
+		MonsterData md;
+
+		md.Name = "Glykon";
+		md.Title = "Legendary Cobra";
+		md.Filename = "glykon.png";
+
+		md.IsUnique = true;
+		md.IsBoss = false;
+		md.CanFly = false;
+		md.CanSwim = false;
+		md.CanTunnel = false;
+
+		md.IsStationary = false;
+		md.ChaseTurns = 5;
+
+		md.Level = 6;
+
+		md.BaseHP = 210;
+		md.BaseMP = 20;
+		md.BaseSP = 120;
+
+		md.BaseSTR = 20;
+		md.BaseDEX = 30;
+		md.BaseMAG = 12;
+		md.BaseVIT = 20;
+		md.BaseSPI = 12;
+
+		md.BaseArmor = 10;
+		md.BaseMagicArmor = 0;
+		md.BaseEvasion = 30;
+
+		md.BaseAttackPower = 12;
+		md.BaseSpellPower = 0;
+
+		md.BaseHitChance = 700;
+		md.BaseAttackRange = 100;
+		md.BaseAttackSpeed = 150;
+		md.BaseWeaponDamageMultiplier = 1000;
+		md.AttackElement = Element::Physical;
+		md.AttackType = EquipType::Undefined;
+
+		md.BaseLineOfSight = 250;
+		md.BaseMoveCost = 75;
+
+		md.EXPDrop = 60;
+		md.GoldDrop = 40;
+		md.LootDrop = 0;
+
+		md.StatMods = {};
+		md.Abilities = {
+			{AbilityID::CobraBite, 0},
+			{AbilityID::ConcentratedVenom, 0}
+		};
+
+		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
+
+			if (monster->IsAbilityUsable(AbilityID::ConcentratedVenom)) {
+				ai.Ability = AbilityID::ConcentratedVenom;
+			}
+			else if (monster->IsAbilityUsable(AbilityID::CobraBite)) {
+				ai.Ability = AbilityID::CobraBite;
+			}
+			else {
+				ai.Ability = AbilityID::Attack;
+			}
+
+			return ai;
+		};
+
+		return md;
+	}();
 	list[MonsterID::Incindia] = [] {
 		MonsterData md;
 

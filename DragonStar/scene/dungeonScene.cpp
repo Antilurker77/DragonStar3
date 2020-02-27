@@ -592,8 +592,13 @@ std::vector<sf::Vector2i> DungeonScene::Pathfind(sf::Vector2i start, sf::Vector2
 int DungeonScene::GetPathCost(std::vector<sf::Vector2i>& path) {
 	int result = 0;
 
-	for (auto& t : path) {
-		result += floor[t.x][t.y].MoveMod;
+	for (size_t i = 1; i < path.size(); i++) {
+		if (path[i].x != path[i - 1].x && path[i].y != path[i - 1].y) {
+			result += floor[path[i].x][path[i].y].MoveMod * 1414 / 1000;
+		}
+		else {
+			result += floor[path[i].x][path[i].y].MoveMod;
+		}
 	}
 
 	return result;

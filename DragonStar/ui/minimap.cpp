@@ -8,7 +8,6 @@
 
 #include "../core/assetManager.hpp"
 #include "../core/settings.hpp"
-#include "../entity/actor.hpp"
 #include "../scene/dungeonScene.hpp"
 
 Minimap::Minimap() {

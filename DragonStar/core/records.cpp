@@ -96,7 +96,7 @@ void Record::RandomizeIdentities(uint64_t seed) {
 	for (size_t i = 0; i < potionList.size(); i++) {
 		size_t choosenColorIndex = Random::RandomSizeT(0, colors.size() - 1 - i, mt);
 		std::string color = colors[choosenColorIndex];
-		std::swap(colors.back(), colors[choosenColorIndex]);
+		std::swap(colors[colors.size() - 1 - i], colors[choosenColorIndex]);
 		potionIdentities.push_back(Identity{ color, potionList[i], false });
 	}
 
@@ -107,7 +107,7 @@ void Record::RandomizeIdentities(uint64_t seed) {
 	for (size_t i = 0; i < scrollList.size(); i++) {
 		size_t choosenNameIndex = Random::RandomSizeT(0, names.size() - 1 - i, mt);
 		std::string name = names[choosenNameIndex];
-		std::swap(names.back(), names[choosenNameIndex]);
+		std::swap(names[names.size() - 1 - i], names[choosenNameIndex]);
 		scrollIdentities.push_back(Identity{ name, scrollList[i], false });
 	}
 }

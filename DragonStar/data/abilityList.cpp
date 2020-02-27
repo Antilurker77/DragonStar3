@@ -5177,7 +5177,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		ad.SPCost = { 0 };
 
 		ad.Values = {
-			{ 50 }
+			{ 80 }
 		};
 		ad.PassiveBonuses = {};
 
@@ -5219,14 +5219,9 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		};
 		ad.GetDescription = [Values = ad.Values](Actor* user, EventOptions& eventOptions, int rank) {
 			std::string desc;
+			std::string heal = std::to_string(Values[0][rank]);
 
-			if (user == nullptr) {
-				desc = "Restores #heal 50 #default HP.";
-			}
-			else {
-				//std::string heal = std::to_string(user->GetAttackPower(eventOptions, false));
-				desc = "Restores #heal 50 #default HP.";
-			}
+			desc = "Restores #heal " + heal + " #default HP.";
 
 			return desc;
 		};

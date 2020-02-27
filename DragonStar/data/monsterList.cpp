@@ -2478,7 +2478,7 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.BaseMP = 40;
 		md.BaseSP = 100;
 
-		md.BaseSTR = 16;
+		md.BaseSTR = 15;
 		md.BaseDEX = 21;
 		md.BaseMAG = 16;
 		md.BaseVIT = 15;
@@ -2789,8 +2789,8 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.BaseMP = 20;
 		md.BaseSP = 100;
 
-		md.BaseSTR = 14;
-		md.BaseDEX = 20;
+		md.BaseSTR = 12;
+		md.BaseDEX = 17;
 		md.BaseMAG = 12;
 		md.BaseVIT = 18;
 		md.BaseSPI = 12;

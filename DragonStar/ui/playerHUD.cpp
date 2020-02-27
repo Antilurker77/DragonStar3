@@ -261,13 +261,13 @@ void PlayerHUD::Update(Actor* player, DungeonScene& dungeonScene, float secondsP
 	spText.setPosition(std::round(spBarBackground.getPosition().x + (spBarBackground.getSize().x / 2.f) - (spText.getLocalBounds().width / 2.f)), std::round(spBarBackground.getPosition().y + (spBarBackground.getSize().y / 2.f) - (spText.getLocalBounds().height / 2.f)));
 
 	// buffs and debuffs
-	// todo: stacks
 	buffBackgrounds.clear();
 	buffIcons.clear();
 	buffDurationText.clear();
 	displayBuffDurationText.clear();
 	buffStackText.clear();
 	displayBuffStackText.clear();
+	buffIndex.clear();
 
 	debuffBackgrounds.clear();
 	debuffIcons.clear();
@@ -275,6 +275,7 @@ void PlayerHUD::Update(Actor* player, DungeonScene& dungeonScene, float secondsP
 	displayDebuffDurationText.clear();
 	debuffStackText.clear();
 	displayDebuffStackText.clear();
+	debuffIndex.clear();
 
 	std::vector<Aura>& auras = player->GetAuras();
 	size_t index = 0;

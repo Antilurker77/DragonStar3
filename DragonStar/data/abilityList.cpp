@@ -4143,7 +4143,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 				heal = "#heal " + std::to_string(Combat::SpellHealEstimate(user, eventOptions, Values[1][rank])) + " #default ";
 			}
 
-			desc = "Encase the target in a prism of light, dealing " + value + "light damage can causing all direct hits against the target to heal the attacker for " + heal + "HP. Lasts " + duration + "s.";
+			desc = "Encase the target in a prism of light, dealing " + value + "light damage and causing all direct hits against the target to heal the attacker for " + heal + "HP. Lasts " + duration + "s.";
 			return desc;
 		};
 		ad.Execute = [Values = ad.Values](Actor* user, std::vector<Actor*>& targets, sf::Vector2i cursor, std::vector<sf::Vector2i>& targetArea, EventOptions& eventOptions, int rank) {

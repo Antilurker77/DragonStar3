@@ -29,6 +29,7 @@ enum class AuraID {
 	ElementalEnergy,
 	FearfulGaze,
 	FlameStrike,
+	FuriousStrike,
 	Ignite,
 	Infect,
 	Maul,

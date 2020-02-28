@@ -1146,7 +1146,7 @@ int Actor::getStat(int base, StatModType statModType, EventOptions& eventOptions
 	};
 
 	// stat mod check lambda
-	auto statModCheck = [&](StatMod& s) {
+	auto statModCheck = [&](StatMod& s, Aura* aura = nullptr) {
 		if (s.statModType == statModType) {
 			bool match = false;
 			if (eventOptions.AbilityID != static_cast<AbilityID>(0) && eventOptions.AbilityID == s.abilityID) {
@@ -1164,17 +1164,24 @@ int Actor::getStat(int base, StatModType statModType, EventOptions& eventOptions
 				}
 			}
 			if (match) {
+				int value = s.value;
+
+				if (aura != nullptr) {
+					if (aura->MultiplyStatModsByStackSize()) {
+						value *= aura->GetCurrentStackSize();
+					}
+				}
+
 				if (isMultiplicative) {
-					result = result * (1000 + s.value);
-					result = result / 1000;
+					result = result * (1000 + value) / 1000;
 				}
 				else {
 					// resistances only partially apply to multi-element attacks
 					if (s.statModType == StatModType::Resistance) {
-						result += s.value / static_cast<int>(eventOptions.Elements.size());
+						result += value / static_cast<int>(eventOptions.Elements.size());
 					}
 					else {
-						result += s.value;
+						result += value;
 					}
 				}
 			}
@@ -1186,37 +1193,6 @@ int Actor::getStat(int base, StatModType statModType, EventOptions& eventOptions
 	// Base Stat Mods
 	for (auto& s : getBaseStatMods()) {
 		statModCheck(s);
-		//if (s.statModType == statModType) {
-		//	bool match = false;
-		//	if (eventOptions.AbilityID != static_cast<AbilityID>(0) && eventOptions.AbilityID == s.abilityID) {
-		//		match = true;
-		//	}
-		//	else if (eventOptions.AuraID != static_cast<AuraID>(0) && eventOptions.AuraID == s.auraID) {
-		//		match = true;
-		//	}
-		//	else if (s.elements.empty() || elementCheck(eventOptions.Elements, s.elements)) {
-		//		// must be sorted for std::includes to work	
-		//		std::sort(s.categories.begin(), s.categories.end());
-		//		if (s.categories.empty() || std::includes(s.categories.begin(), s.categories.end(), eventOptions.Categories.begin(), eventOptions.Categories.end())) {
-		//			match = true;
-		//		}
-		//	}
-		//	if (match) {
-		//		if (isMultiplicative) {
-		//			result = result * (1000 + s.value);
-		//			result = result / 1000;
-		//		}
-		//		else {
-		//			// resistances only partially apply to multi-element attacks
-		//			if (s.statModType == StatModType::Resistance) {
-		//				result += s.value / static_cast<int>(eventOptions.Elements.size());
-		//			}
-		//			else {
-		//				result += s.value;
-		//			}
-		//		}
-		//	}
-		//}
 	}
 
 	// Passive Abilities
@@ -1231,7 +1207,7 @@ int Actor::getStat(int base, StatModType statModType, EventOptions& eventOptions
 	for (auto& aura : auras) {
 		int testValue = result;
 		for (auto& sm : aura.GetStatMods()) {
-			statModCheck(sm);
+			statModCheck(sm, &aura);
 		}
 
 		if (consumeBuffs && testValue != result) {

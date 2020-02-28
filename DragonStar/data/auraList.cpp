@@ -7,6 +7,7 @@
 #include "aura.hpp"
 
 #include <iostream>
+#include "id/abilityID.hpp"
 #include "id/auraID.hpp"
 #include "id/category.hpp"
 #include "id/element.hpp"
@@ -190,7 +191,7 @@ static std::unordered_map<AuraID, AuraData> initList() {
 
 		ad.Name = "Bonechill";
 		ad.Icon = "placeholder.png";
-		ad.AuraID = AuraID::Chilled;
+		ad.AuraID = AuraID::Bonechill;
 
 		ad.Categories = {};
 		ad.Elements = { Element::Ice };
@@ -1259,6 +1260,84 @@ static std::unordered_map<AuraID, AuraData> initList() {
 
 			value = std::to_string(Values[0][rank] / 10);
 			desc = "Increases the damage of your next fire ability by " + value + "%.";
+
+			return desc;
+		};
+
+		ad.OnApplication = [Values = ad.Values](Actor* user, Actor* target, EventOptions& eventOptions, int rank, Aura* aura) {
+
+		};
+
+		ad.OnTick = [Values = ad.Values](Actor* user, Actor* target, EventOptions& eventOptions, int rank, Aura* aura) {
+
+		};
+
+		ad.OnExpiry = [Values = ad.Values](Actor* user, Actor* target, EventOptions& eventOptions, int rank, Aura* aura) {
+
+		};
+
+		ad.OnEvent = [Values = ad.Values](EventType eventType, EventOptions& auraOptions, int rank, Aura* aura, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return ad;
+	}();
+	list[AuraID::FuriousStrike] = [] {
+		AuraData ad;
+
+		ad.Name = "Furious Strike";
+		ad.Icon = "placeholder.png";
+		ad.AuraID = AuraID::FuriousStrike;
+
+		ad.Categories = {};
+		ad.Elements = { Element::Ice };
+
+		ad.MaxRank = 4;
+
+		ad.BaseDuration = { 2000, 2000, 2000, 2000, 2000 };
+		ad.MaxDuration = { 2000, 2000, 2000, 2000, 2000 };
+		ad.MaxStacks = { 4, 4, 4, 4, 4 };
+
+		ad.Values = {
+			{ 250, 250, 250, 250, 250 }
+		};
+		ad.StatMods = {
+			{ StatMod(StatModType::Damage, ad.Values[0][0], AbilityID::FuriousStrike) },
+			{ StatMod(StatModType::Damage, ad.Values[0][1], AbilityID::FuriousStrike) },
+			{ StatMod(StatModType::Damage, ad.Values[0][2], AbilityID::FuriousStrike) },
+			{ StatMod(StatModType::Damage, ad.Values[0][3], AbilityID::FuriousStrike) },
+			{ StatMod(StatModType::Damage, ad.Values[0][4], AbilityID::FuriousStrike) }
+		};
+
+		ad.IsBuff = true;
+		ad.Unique = true;
+		ad.UniqueByActor = true;
+		ad.ConsumeOnUse = false;
+		ad.StacksExpireOneByOne = false;
+		ad.MultiplyStatModsByStacks = true;
+
+		ad.IsRest = false;
+		ad.IsStun = false;
+		ad.IsDisarm = false;
+		ad.IsSilence = false;
+		ad.IsSnare = true;
+
+		ad.CanCrit = false;
+		ad.BonusArmorPen = { 0, 0, 0, 0, 0 };
+		ad.BonusResistancePen = { 0, 0, 0, 0, 0 };
+		ad.BonusCritChance = { 0, 0, 0, 0, 0 };
+		ad.BonusCritPower = { 0, 0, 0, 0, 0 };
+		ad.BonusDoubleStrikeChance = { 0, 0, 0, 0, 0 };
+		ad.BonusHPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusMPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusSPLeech = { 0, 0, 0, 0, 0 };
+
+		ad.GetDescription = [Values = ad.Values](Actor* user, EventOptions& eventOptions, int rank, Aura* aura){
+			std::string desc;
+			std::string value;
+
+			value = std::to_string(Values[0][rank] / 10 * aura->GetCurrentStackSize());
+			desc = "Furious Strike damage increased by " + value + "%.";
 
 			return desc;
 		};

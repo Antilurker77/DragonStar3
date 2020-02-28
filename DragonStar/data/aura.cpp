@@ -242,6 +242,13 @@ bool Aura::IsUniqueByActor() {
 	return auraData->UniqueByActor;
 }
 
+bool Aura::MultiplyStatModsByStackSize() {
+	if (auraData != nullptr) {
+		return auraData->MultiplyStatModsByStacks;
+	}
+	return false;
+}
+
 bool Aura::IsRest() {
 	if (auraData != nullptr) {
 		return auraData->IsRest;

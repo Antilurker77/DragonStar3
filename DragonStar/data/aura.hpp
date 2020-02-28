@@ -101,6 +101,9 @@ public:
 	// Returns true if the aura is unique by actor.
 	bool IsUniqueByActor();
 
+	// Returns true if stat mods are multiplied by stack size.
+	bool MultiplyStatModsByStackSize();
+
 	// Returns true if the aura is a resting aura.
 	bool IsRest();
 

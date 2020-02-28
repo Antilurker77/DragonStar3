@@ -14,6 +14,7 @@ enum class AbilityID {
 	Bite,
 	BoltOfDarkness,
 	BoltOfLight,
+	Bonechill,
 	Boulder,
 	Chopper,
 	Cleave,

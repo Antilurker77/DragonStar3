@@ -15,6 +15,7 @@ enum class AuraID {
 	Resting,
 
 	ArcanistGloves,
+	Bonechill,
 	Boulder,
 	Chilled,
 	CobraBite,

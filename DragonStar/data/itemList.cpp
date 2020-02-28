@@ -761,6 +761,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 			AbilityID::DragonfireBolt,
 			AbilityID::Splash,
 			AbilityID::ElectricSurge,
+			AbilityID::Bonechill,
 			AbilityID::Infect,
 			AbilityID::ElementalEnergy
 		};

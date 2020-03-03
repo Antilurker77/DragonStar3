@@ -20,6 +20,7 @@ enum class ItemID {
 
 	// Scrolls
 	ScrollIdentify,
+	ScrollLightningStorm,
 	ScrollPhaseDoor,
 	ScrollSpellProtection,
 	ScrollTeleport,

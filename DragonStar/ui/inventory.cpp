@@ -113,7 +113,7 @@ Inventory::Inventory() {
 	AddItem(stick);
 
 	//Item scroll;
-	//scroll.Initialize(ItemID::ScrollIdentify);
+	//scroll.Initialize(ItemID::ScrollLightningStorm);
 	//AddItem(scroll);
 	//AddItem(scroll);
 	//AddItem(scroll);

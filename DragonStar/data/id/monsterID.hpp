@@ -25,6 +25,7 @@ enum class MonsterID {
 	GoblinWarrior,
 	GoblinWizard,
 	GreenSlime,
+	IcyStorm,
 	Iguana,
 	Imp,
 	Jackal,

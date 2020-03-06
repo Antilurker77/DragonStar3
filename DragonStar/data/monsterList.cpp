@@ -947,6 +947,85 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		return md;
 	}();
+	list[MonsterID::IcyStorm] = [] {
+		MonsterData md;
+
+		md.Name = "Icy Storm";
+		md.Title = "";
+		md.Filename = "icy_storm.png";
+
+		md.IsUnique = false;
+		md.IsBoss = false;
+		md.CanFly = false;
+		md.CanSwim = false;
+		md.CanTunnel = false;
+
+		md.IsStationary = false;
+		md.ChaseTurns = 3;
+
+		md.Level = 8;
+
+		md.BaseHP = 82;
+		md.BaseMP = 30;
+		md.BaseSP = 100;
+
+		md.BaseSTR = 17;
+		md.BaseDEX = 22;
+		md.BaseMAG = 24;
+		md.BaseVIT = 18;
+		md.BaseSPI = 16;
+
+		md.BaseArmor = 10;
+		md.BaseMagicArmor = 40;
+		md.BaseEvasion = 20;
+
+		md.BaseAttackPower = 6;
+		md.BaseSpellPower = 12;
+
+		md.BaseHitChance = 700;
+		md.BaseAttackRange = 100;
+		md.BaseAttackSpeed = 200;
+		md.BaseWeaponDamageMultiplier = 1000;
+		md.AttackElement = Element::Ice;
+		md.AttackType = EquipType::Undefined;
+
+		md.BaseLineOfSight = 350;
+		md.BaseMoveCost = 80;
+
+		md.EXPDrop = 10;
+		md.GoldDrop = 15;
+		md.LootDrop = 3000;
+
+		md.StatMods = {
+			StatMod(StatModType::Resistance, 1000, Element::Ice),
+			StatMod(StatModType::Resistance, -300, Element::Fire)
+		};
+		md.Abilities = {
+			{AbilityID::Bonechill, 0},
+			{AbilityID::Icicle, 2}
+		};
+
+		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
+
+			// Bonechill: Use on cooldown.
+			if (monster->IsAbilityUsable(AbilityID::Bonechill)) {
+				ai.Ability = AbilityID::Bonechill;
+			}
+			// Icicle: Use as filler.
+			else if (monster->IsAbilityUsable(AbilityID::Icicle)) {
+				ai.Ability = AbilityID::Icicle;
+			}
+			else {
+				ai.Ability = AbilityID::Attack;
+			}
+
+			return ai;
+		};
+
+		return md;
+	}();
 	list[MonsterID::Iguana] = [] {
 		MonsterData md;
 

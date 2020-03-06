@@ -99,7 +99,14 @@ static std::unordered_map<EquipType, std::vector<ItemWeight>> initBaseTypeWeight
 	};
 
 	list[EquipType::LightBody] = {
-		{1, 10, 1000, ItemID::SilkRobes}
+		{ 1,  10, 1000, ItemID::SilkRobes},
+		{ 8,  20, 1000, ItemID::ApprenticeRobes},
+		{16,  30, 1000, ItemID::RunedRobes},
+		{24,  40, 1000, ItemID::SpellthreadRobes},
+		{32,  50, 1000, ItemID::SageRobes},
+		{40,  60, 1000, ItemID::MysticRobes},
+		{48,  70, 1000, ItemID::MasterRobes},
+		{56, 100, 1000, ItemID::DraconicRobes}
 	};
 
 	list[EquipType::LightHands] = {
@@ -115,7 +122,14 @@ static std::unordered_map<EquipType, std::vector<ItemWeight>> initBaseTypeWeight
 	};
 
 	list[EquipType::MediumBody] = {
-		{1, 10, 1000, ItemID::LeatherArmor}
+		{ 1,  10, 1000, ItemID::LeatherArmor},
+		{ 8,  20, 1000, ItemID::HunterArmor},
+		{16,  30, 1000, ItemID::WildArmor},
+		{24,  40, 1000, ItemID::DrakescaleArmor},
+		{32,  50, 1000, ItemID::MoonLeatherArmor},
+		{40,  60, 1000, ItemID::MythicalLeatherArmor},
+		{48,  70, 1000, ItemID::ZodiacArmor},
+		{56, 100, 1000, ItemID::DragonscaleArmor}
 	};
 
 	list[EquipType::MediumHands] = {
@@ -127,11 +141,18 @@ static std::unordered_map<EquipType, std::vector<ItemWeight>> initBaseTypeWeight
 	};
 
 	list[EquipType::HeavyHead] = {
-	{1, 10, 1000, ItemID::IronHelm}
+		{1, 10, 1000, ItemID::IronHelm}
 	};
 
 	list[EquipType::HeavyBody] = {
-		{1, 10, 1000, ItemID::IronArmor}
+		{ 1,  10, 1000, ItemID::IronArmor},
+		{ 8,  20, 1000, ItemID::SteelArmor},
+		{16,  30, 1000, ItemID::PlatinumArmor},
+		{24,  40, 1000, ItemID::TitaniumArmor},
+		{32,  50, 1000, ItemID::MythrilArmor},
+		{40,  60, 1000, ItemID::CrystalArmor},
+		{48,  70, 1000, ItemID::AdamantiteArmor},
+		{56, 100, 1000, ItemID::DragoniteArmor}
 	};
 
 	list[EquipType::HeavyHands] = {

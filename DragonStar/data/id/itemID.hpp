@@ -117,6 +117,13 @@ enum class ItemID {
 
 	// Light Body
 	SilkRobes,
+	ApprenticeRobes,
+	RunedRobes,
+	SpellthreadRobes,
+	SageRobes,
+	MysticRobes,
+	MasterRobes,
+	DraconicRobes,
 
 	// Artifact Light Body
 	BerserkerVest,
@@ -141,6 +148,13 @@ enum class ItemID {
 
 	// Medium Body
 	LeatherArmor,
+	HunterArmor,
+	WildArmor,
+	DrakescaleArmor,
+	MoonLeatherArmor,
+	MythicalLeatherArmor,
+	ZodiacArmor,
+	DragonscaleArmor,
 
 	// Artifact Medium Body
 	SurvivalArmor,
@@ -165,6 +179,13 @@ enum class ItemID {
 
 	// Heavy Body
 	IronArmor,
+	SteelArmor,
+	PlatinumArmor,
+	TitaniumArmor,
+	MythrilArmor,
+	CrystalArmor,
+	AdamantiteArmor,
+	DragoniteArmor,
 
 	// Artifact Heavy Body
 	GoldenArmor,

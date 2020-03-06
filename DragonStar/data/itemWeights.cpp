@@ -84,7 +84,14 @@ static std::unordered_map<EquipType, std::vector<ItemWeight>> initBaseTypeWeight
 	};
 
 	list[EquipType::Shield] = {
-		{1, 10, 1000, ItemID::IronShield}
+		{ 1,  10, 1000, ItemID::IronShield},
+		{ 8,  20, 1000, ItemID::SteelShield},
+		{16,  30, 1000, ItemID::PlatinumShield},
+		{24,  40, 1000, ItemID::TitaniumShield},
+		{32,  50, 1000, ItemID::MythrilShield},
+		{40,  60, 1000, ItemID::CrystalShield},
+		{48,  70, 1000, ItemID::AdamantiteShield},
+		{56, 100, 1000, ItemID::DragoniteShield}
 	};
 
 	list[EquipType::LightHead] = {
@@ -104,7 +111,7 @@ static std::unordered_map<EquipType, std::vector<ItemWeight>> initBaseTypeWeight
 	};
 
 	list[EquipType::MediumHead] = {
-	{1, 10, 1000, ItemID::LeatherHelmet}
+		{1, 10, 1000, ItemID::LeatherHelmet}
 	};
 
 	list[EquipType::MediumBody] = {

@@ -98,6 +98,13 @@ enum class ItemID {
 
 	// Shield
 	IronShield,
+	SteelShield,
+	PlatinumShield,
+	TitaniumShield,
+	MythrilShield,
+	CrystalShield,
+	AdamantiteShield,
+	DragoniteShield,
 
 	// Artifact Shield
 	LastDefender,

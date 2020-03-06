@@ -11,6 +11,7 @@
 enum class AbilityID {
 	Undefined = 0,
 	Attack = 1,
+	ArcaneSpear,
 	Bite,
 	BoltOfDarkness,
 	BoltOfLight,

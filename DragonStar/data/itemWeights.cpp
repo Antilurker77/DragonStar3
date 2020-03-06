@@ -680,6 +680,7 @@ static std::vector<ItemWeight> initTomeWeights() {
 		{  6, 100, 1000, ItemID::TomeAdvancedCombat},
 		{  1, 100, 1000, ItemID::TomeLearningArchery},
 		{  1, 100, 1000, ItemID::TomeMagicForBeginners},
+		{  1, 100, 1000, ItemID::TomeArcaneEnergy},
 		{  3, 100, 1000, ItemID::TomeIntermediateMagic},
 		{  1, 100, 1000, ItemID::TomeIntroductionToSpirituality},
 		{  5, 100,  750, ItemID::TomeSpaceManipulation},

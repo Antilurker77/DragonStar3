@@ -36,6 +36,7 @@ enum class ItemID {
 	TomeAdvancedCombat,
 	TomeLearningArchery,
 	TomeMagicForBeginners,
+	TomeArcaneEnergy,
 	TomeIntermediateMagic,
 	TomeIntroductionToSpirituality,
 	TomeSpaceManipulation,

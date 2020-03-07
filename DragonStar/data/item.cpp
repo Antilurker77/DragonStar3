@@ -8,6 +8,7 @@
 
 #include <algorithm>
 #include "ability.hpp"
+#include "id/category.hpp"
 #include "id/element.hpp"
 #include "id/equipType.hpp"
 #include "id/itemID.hpp"
@@ -247,6 +248,9 @@ void Item::InitEquipment(int itemLevel) {
 			// don't pick same element twice
 			resistanceCount++;
 			std::swap(resistanceElements[elementIndex], resistanceElements.back());
+		}
+		else if (a.StatMod == StatModType::OnHitDamage) {
+			randomStatMods.push_back(StatMod(a.StatMod, value, Category::Direct));
 		}
 		else {
 			randomStatMods.push_back(StatMod(a.StatMod, value));

@@ -105,7 +105,8 @@ static std::unordered_map<EquipType, std::vector<ItemWeight>> initBaseTypeWeight
 	};
 
 	list[EquipType::LightHead] = {
-		{1, 10, 1000, ItemID::SilkHat}
+		{ 1,  10, 1000, ItemID::SilkHat},
+		{ 8,  20, 1000, ItemID::ApprenticeHat}
 	};
 
 	list[EquipType::LightBody] = {
@@ -120,15 +121,18 @@ static std::unordered_map<EquipType, std::vector<ItemWeight>> initBaseTypeWeight
 	};
 
 	list[EquipType::LightHands] = {
-		{1, 10, 1000, ItemID::SilkGloves}
+		{ 1,  10, 1000, ItemID::SilkGloves},
+		{ 8,  20, 1000, ItemID::ApprenticeGloves}
 	};
 
 	list[EquipType::LightFeet] = {
-		{1, 10, 1000, ItemID::SilkBoots}
+		{ 1,  10, 1000, ItemID::SilkBoots},
+		{ 8,  20, 1000, ItemID::ApprenticeBoots}
 	};
 
 	list[EquipType::MediumHead] = {
-		{1, 10, 1000, ItemID::LeatherHelmet}
+		{ 1,  10, 1000, ItemID::LeatherHelmet},
+		{ 8,  20, 1000, ItemID::HunterHelmet}
 	};
 
 	list[EquipType::MediumBody] = {
@@ -143,15 +147,18 @@ static std::unordered_map<EquipType, std::vector<ItemWeight>> initBaseTypeWeight
 	};
 
 	list[EquipType::MediumHands] = {
-		{1, 10, 1000, ItemID::LeatherGloves}
+		{ 1,  10, 1000, ItemID::LeatherGloves},
+		{ 8,  20, 1000, ItemID::HunterGloves}
 	};
 
 	list[EquipType::MediumFeet] = {
-		{1, 10, 1000, ItemID::LeatherBoots}
+		{ 1,  10, 1000, ItemID::LeatherBoots},
+		{ 8,  20, 1000, ItemID::HunterBoots}
 	};
 
 	list[EquipType::HeavyHead] = {
-		{1, 10, 1000, ItemID::IronHelm}
+		{ 1,  10, 1000, ItemID::IronHelm},
+		{ 8,  20, 1000, ItemID::SteelHelm}
 	};
 
 	list[EquipType::HeavyBody] = {
@@ -166,23 +173,25 @@ static std::unordered_map<EquipType, std::vector<ItemWeight>> initBaseTypeWeight
 	};
 
 	list[EquipType::HeavyHands] = {
-		{1, 10, 1000, ItemID::IronGauntlets}
+		{ 1,  10, 1000, ItemID::IronGauntlets},
+		{ 8,  20, 1000, ItemID::SteelGauntlets}
 	};
 
 	list[EquipType::HeavyFeet] = {
-		{1, 10, 1000, ItemID::IronGreaves}
+		{ 1,  10, 1000, ItemID::IronGreaves},
+		{ 8,  20, 1000, ItemID::SteelGreaves}
 	};
 
 	list[EquipType::Neck] = {
-		{1, 100, 1000, ItemID::SilverNecklace}
+		{ 1, 100, 1000, ItemID::SilverNecklace}
 	};
 
 	list[EquipType::Ring] = {
-		{1, 100, 1000, ItemID::IronRing}
+		{ 1, 100, 1000, ItemID::IronRing}
 	};
 
 	list[EquipType::LightSource] = {
-		{1, 100, 1000, ItemID::FloatingLantern}
+		{ 1, 100, 1000, ItemID::FloatingLantern}
 	};
 
 	return list;

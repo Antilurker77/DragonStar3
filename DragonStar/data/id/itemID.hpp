@@ -121,6 +121,7 @@ enum class ItemID {
 
 	// Light Head
 	SilkHat,
+	ApprenticeHat,
 
 	// Artifact Light Head
 	OraclesMonacle,
@@ -140,18 +141,21 @@ enum class ItemID {
 
 	// Light Hands
 	SilkGloves,
+	ApprenticeGloves,
 
 	// Artifact Light Hands
 	ArcanistGloves,
 
 	// Light Feet
 	SilkBoots,
+	ApprenticeBoots,
 
 	// Artifact Light Feet
 	Goldweave,
 
 	// Medium Head
 	LeatherHelmet,
+	HunterHelmet,
 
 	// Artifact Medium Head
 	SniperHelmet,
@@ -171,18 +175,21 @@ enum class ItemID {
 		
 	// Medium Hands
 	LeatherGloves,
+	HunterGloves,
 
 	// Artifact Medium Hands
 	FrostfireGloves,
 		
 	// Medium Feet
 	LeatherBoots,
+	HunterBoots,
 
 	// Artifact Medium Feet
 	Windriders,
 
 	// Heavy Head
 	IronHelm,
+	SteelHelm,
 
 	// Artifact Heavy Head
 	HeraldOfVictory,
@@ -202,12 +209,14 @@ enum class ItemID {
 
 	// Heavy Hands
 	IronGauntlets,
+	SteelGauntlets,
 
 	// Artifact Heavy Hands
 	ArenaGauntlets,
 		
 	// Heavy Feet
 	IronGreaves,
+	SteelGreaves,
 
 	// Artifact Heavy Feet
 	LostMountainGreaves,

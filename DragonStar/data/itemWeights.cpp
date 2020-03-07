@@ -50,37 +50,47 @@ static std::unordered_map<EquipType, std::vector<ItemWeight>> initBaseTypeWeight
 	// MinItemLevel, MaxItemLevel, Weight, ItemID
 
 	list[EquipType::Sword] = {
-		{1, 5, 150, ItemID::TravelerBlade},
-		{1, 10, 1000, ItemID::IronSword}
+		{ 1,   5,  150, ItemID::TravelerBlade},
+		{ 1,  10, 1000, ItemID::IronSword},
+		{ 4,  15,  500, ItemID::RunedSword},
+		{ 8,  20, 1000, ItemID::SteelSword}
 	};
 
 	list[EquipType::Axe] = {
-		{1, 10, 1000, ItemID::IronAxe}
+		{ 1,  10, 1000, ItemID::IronAxe},
+		{ 4,  15,  500, ItemID::JaggedAxe},
+		{ 8,  20, 1000, ItemID::SteelAxe}
 	};
 
 	list[EquipType::Mace] = {
-		{1, 10, 1000, ItemID::IronMace}
+		{ 1,  10, 1000, ItemID::IronMace},
+		{ 8,  20, 1000, ItemID::SteelMace}
 	};
 
 	list[EquipType::Dagger] = {
-		{1, 10, 1000, ItemID::IronDagger}
+		{ 1,  10, 1000, ItemID::IronDagger},
+		{ 8,  20, 1000, ItemID::SteelDagger}
 	};
 
 	list[EquipType::Spear] = {
-		{1, 10, 1000, ItemID::IronSpear}
+		{ 1,  10, 1000, ItemID::IronSpear},
+		{ 8,  20, 1000, ItemID::SteelSpear}
 	};
 
 	list[EquipType::Bow] = {
-		{1, 10, 1000, ItemID::Shortbow}
+		{ 1,  10, 1000, ItemID::Shortbow},
+		{ 8,  20, 1000, ItemID::Longbow}
 	};
 
 	list[EquipType::Wand] = {
-		{1, 10, 1000, ItemID::WoodenWand}
+		{ 1,  10, 1000, ItemID::WoodenWand},
+		{ 8,  20, 1000, ItemID::ApprenticeWand}
 	};
 
 	list[EquipType::Staff] = {
-		{1, 5, 150, ItemID::RunedStick},
-		{1, 10, 1000, ItemID::WoodenStaff}
+		{ 1,  5,  150, ItemID::RunedStick},
+		{ 1, 10, 1000, ItemID::WoodenStaff},
+		{ 8, 20, 1000, ItemID::ApprenticeStaff}
 	};
 
 	list[EquipType::Shield] = {

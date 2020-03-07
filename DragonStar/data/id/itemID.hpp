@@ -49,42 +49,51 @@ enum class ItemID {
 	// Swords
 	TravelerBlade,
 	IronSword,
+	RunedSword,
+	SteelSword,
 
 	// Artifact Sword
 	Flametongue,
 
 	// Axe
 	IronAxe,
+	JaggedAxe,
+	SteelAxe,
 
 	// Artifact Axe
 	BloodDrinker,
 
 	// Mace
 	IronMace,
+	SteelMace,
 
 	// Artifact Mace
 	Serenity,
 
 	// Dagger
 	IronDagger,
+	SteelDagger,
 
 	// Artifact Dagger
 	TaintedBlade,
 
 	// Spear
 	IronSpear,
+	SteelSpear,
 
 	// Artifact Spear
 	WindScar,
 
 	// Bow
 	Shortbow,
+	Longbow,
 
 	// Artifact Bow
 	LongShot,
 
 	// Wand
 	WoodenWand,
+	ApprenticeWand,
 
 	// Artifact Wand
 	SpiritfireTorch,
@@ -92,6 +101,7 @@ enum class ItemID {
 	// Staff
 	RunedStick,
 	WoodenStaff,
+	ApprenticeStaff,
 
 	// Artifact Staff
 	StaffOfTheNovice,

@@ -1106,6 +1106,83 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		return itd;
 	}();
+	list[ItemID::RunedSword] = [] {
+		ItemData itd;
+
+		itd.Name = "Runed Sword";
+		itd.IconFilePath = "sword.png";
+		itd.EquipFilePath = "iron_sword.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::RunedSword;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 60;
+
+		itd.Artifact = false;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::Sword;
+		itd.AttackElement = Element::Physical;
+		itd.HitChance = 750;
+		itd.AttackRange = 150;
+		itd.AttackSpeed = 200;
+		itd.WeaponDamageMultiplier = 1000;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::AttackPower, 16),
+			StatMod(StatModType::SpellPower, 12)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
+	list[ItemID::SteelSword] = [] {
+		ItemData itd;
+
+		itd.Name = "Steel Sword";
+		itd.IconFilePath = "sword.png";
+		itd.EquipFilePath = "iron_sword.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::SteelSword;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 80;
+
+		itd.Artifact = false;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::Sword;
+		itd.AttackElement = Element::Physical;
+		itd.HitChance = 750;
+		itd.AttackRange = 150;
+		itd.AttackSpeed = 200;
+		itd.WeaponDamageMultiplier = 1000;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::AttackPower, 25)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
 
 	// Artifact Sword
 	list[ItemID::Flametongue] = [] {
@@ -1208,6 +1285,83 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		return itd;
 	}();
+	list[ItemID::JaggedAxe] = [] {
+		ItemData itd;
+
+		itd.Name = "Jagged Axe";
+		itd.IconFilePath = "axe.png";
+		itd.EquipFilePath = "iron_sword.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::JaggedAxe;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 60;
+
+		itd.Artifact = false;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::Axe;
+		itd.AttackElement = Element::Physical;
+		itd.HitChance = 750;
+		itd.AttackRange = 150;
+		itd.AttackSpeed = 180;
+		itd.WeaponDamageMultiplier = 900;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::AttackPower, 16),
+			StatMod(StatModType::OnHitDamage, 5, Category::Direct)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
+	list[ItemID::SteelAxe] = [] {
+		ItemData itd;
+
+		itd.Name = "Steel Axe";
+		itd.IconFilePath = "axe.png";
+		itd.EquipFilePath = "iron_sword.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::SteelAxe;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 80;
+
+		itd.Artifact = false;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::Axe;
+		itd.AttackElement = Element::Physical;
+		itd.HitChance = 750;
+		itd.AttackRange = 150;
+		itd.AttackSpeed = 180;
+		itd.WeaponDamageMultiplier = 900;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::AttackPower, 25)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
 
 	// Artifact Axe
 	list[ItemID::BloodDrinker] = [] {
@@ -1294,6 +1448,44 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		return itd;
 	}();
+	list[ItemID::SteelMace] = [] {
+		ItemData itd;
+
+		itd.Name = "Steel Mace";
+		itd.IconFilePath = "mace.png";
+		itd.EquipFilePath = "iron_sword.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::SteelMace;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 80;
+
+		itd.Artifact = false;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::Mace;
+		itd.AttackElement = Element::Physical;
+		itd.HitChance = 750;
+		itd.AttackRange = 150;
+		itd.AttackSpeed = 220;
+		itd.WeaponDamageMultiplier = 1100;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::AttackPower, 25)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
 
 	// Artifact Mace
 	list[ItemID::Serenity] = [] {
@@ -1370,6 +1562,44 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		itd.ImplicitStatMods = {
 			StatMod(StatModType::AttackPower, 10)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
+	list[ItemID::SteelDagger] = [] {
+		ItemData itd;
+
+		itd.Name = "Steel Dagger";
+		itd.IconFilePath = "dagger.png";
+		itd.EquipFilePath = "iron_sword.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::SteelDagger;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 80;
+
+		itd.Artifact = false;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::Dagger;
+		itd.AttackElement = Element::Physical;
+		itd.HitChance = 750;
+		itd.AttackRange = 100;
+		itd.AttackSpeed = 150;
+		itd.WeaponDamageMultiplier = 750;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::AttackPower, 25)
 		};
 		itd.ExplicitStatMods = {};
 
@@ -1465,6 +1695,44 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		return itd;
 	}();
+	list[ItemID::SteelSpear] = [] {
+		ItemData itd;
+
+		itd.Name = "Steel Spear";
+		itd.IconFilePath = "spear.png";
+		itd.EquipFilePath = "iron_sword.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::SteelSpear;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 80;
+
+		itd.Artifact = false;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::Spear;
+		itd.AttackElement = Element::Physical;
+		itd.HitChance = 750;
+		itd.AttackRange = 200;
+		itd.AttackSpeed = 200;
+		itd.WeaponDamageMultiplier = 1000;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::AttackPower, 25)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
 
 	// Artifact Spear
 	list[ItemID::WindScar] = [] {
@@ -1550,6 +1818,44 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		return itd;
 	}();
+	list[ItemID::Longbow] = [] {
+		ItemData itd;
+
+		itd.Name = "Longbow";
+		itd.IconFilePath = "longbow.png";
+		itd.EquipFilePath = "iron_sword.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::Longbow;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 100;
+
+		itd.Artifact = false;
+		itd.TwoHanded = true;
+		itd.EquipType = EquipType::Bow;
+		itd.AttackElement = Element::Physical;
+		itd.HitChance = 750;
+		itd.AttackRange = 350;
+		itd.AttackSpeed = 250;
+		itd.WeaponDamageMultiplier = 1250;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::AttackPower, 25)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
 
 	// Artifact Bow
 	list[ItemID::LongShot] = [] {
@@ -1626,6 +1932,45 @@ static std::unordered_map<ItemID, ItemData> initList() {
 		itd.ImplicitStatMods = {
 			StatMod(StatModType::AttackPower, 8),
 			StatMod(StatModType::SpellPower, 10)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
+	list[ItemID::ApprenticeWand] = [] {
+		ItemData itd;
+
+		itd.Name = "Apprentice's Wand";
+		itd.IconFilePath = "wand.png";
+		itd.EquipFilePath = "iron_sword.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::ApprenticeWand;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 80;
+
+		itd.Artifact = false;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::Wand;
+		itd.AttackElement = Element::Physical;
+		itd.HitChance = 750;
+		itd.AttackRange = 350;
+		itd.AttackSpeed = 200;
+		itd.WeaponDamageMultiplier = 1000;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::AttackPower, 20),
+			StatMod(StatModType::SpellPower, 25)
 		};
 		itd.ExplicitStatMods = {};
 
@@ -1752,6 +2097,45 @@ static std::unordered_map<ItemID, ItemData> initList() {
 		itd.ImplicitStatMods = {
 			StatMod(StatModType::AttackPower, 6),
 			StatMod(StatModType::SpellPower, 14)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
+	list[ItemID::ApprenticeStaff] = [] {
+		ItemData itd;
+
+		itd.Name = "Apprentice's Staff";
+		itd.IconFilePath = "staff.png";
+		itd.EquipFilePath = "wooden_staff.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::ApprenticeStaff;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 80;
+
+		itd.Artifact = false;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::Staff;
+		itd.AttackElement = Element::Physical;
+		itd.HitChance = 750;
+		itd.AttackRange = 150;
+		itd.AttackSpeed = 250;
+		itd.WeaponDamageMultiplier = 1250;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::AttackPower, 15),
+			StatMod(StatModType::SpellPower, 35)
 		};
 		itd.ExplicitStatMods = {};
 

@@ -63,6 +63,9 @@ public:
 	// Returns the actor's name.
 	std::string GetName();
 
+	// Returns the actor's title.
+	virtual std::string GetTitle();
+
 	// Returns the actor's location.
 	sf::Vector2i GetLocation();
 

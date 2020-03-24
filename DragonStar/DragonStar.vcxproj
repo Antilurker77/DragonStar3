@@ -181,6 +181,7 @@
     <ClCompile Include="ui\cursorContainer.cpp" />
     <ClCompile Include="ui\fctManager.cpp" />
     <ClCompile Include="ui\fpsWindow.cpp" />
+    <ClCompile Include="ui\inspectWindow.cpp" />
     <ClCompile Include="ui\inventory.cpp" />
     <ClCompile Include="ui\learnAbilityWindow.cpp" />
     <ClCompile Include="ui\lootWindow.cpp" />
@@ -248,6 +249,7 @@
     <ClInclude Include="ui\cursorContainer.hpp" />
     <ClInclude Include="ui\fctManager.hpp" />
     <ClInclude Include="ui\fpsWindow.hpp" />
+    <ClInclude Include="ui\inspectWindow.hpp" />
     <ClInclude Include="ui\inventory.hpp" />
     <ClInclude Include="ui\learnAbilityWindow.hpp" />
     <ClInclude Include="ui\lootWindow.hpp" />

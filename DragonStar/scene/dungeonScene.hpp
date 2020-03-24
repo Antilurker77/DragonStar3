@@ -27,6 +27,7 @@ enum class MonsterID;
 #include "../entity/loot.hpp"
 #include "../entity/shop.hpp"
 #include "../ui/cursorContainer.hpp"
+#include "../ui/inspectWindow.hpp"
 #include "../ui/inventory.hpp"
 #include "../ui/learnAbilityWindow.hpp"
 #include "../ui/lootWindow.hpp"
@@ -294,6 +295,9 @@ private:
 
 	Tooltip tooltip;
 	bool displayTooltip = false;
+
+	InspectWindow inspectWindow;
+	bool displayInspectWindow = false;
 
 	LearnAbilityWindow learnAbilityWindow;
 	bool displayLearnAbilityWindow = false;

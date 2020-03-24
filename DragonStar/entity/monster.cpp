@@ -55,6 +55,13 @@ Monster::Monster(ActorSave& actorSave, size_t index) {
 	}
 }
 
+std::string Monster::GetTitle() {
+	if (monsterData != nullptr) {
+		return monsterData->Title;
+	}
+	return "";
+}
+
 void Monster::Initialize(MonsterID id) {
 	monsterID = id;
 	monsterData = &monsterList[monsterID];

@@ -55,6 +55,10 @@ std::string Actor::GetName() {
 	return name;
 }
 
+std::string Actor::GetTitle() {
+	return "";
+}
+
 sf::Vector2i Actor::GetLocation() {
 	return location;
 }

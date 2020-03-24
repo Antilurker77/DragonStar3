@@ -45,6 +45,8 @@ public:
 	Monster(MonsterID id, sf::Vector2i spawnLocation, size_t index);
 	Monster(ActorSave& actorSave, size_t index);
 
+	std::string GetTitle();
+
 	// Sets the monster's properties based on the given ID.
 	void Initialize(MonsterID id);
 

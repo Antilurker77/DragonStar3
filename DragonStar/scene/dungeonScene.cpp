@@ -132,6 +132,9 @@ void DungeonScene::ReadInput(sf::RenderWindow& window) {
 	sf::Mouse mouse;
 	recalcTargetArray = false;
 
+	leftClick = false;
+	rightClick = false;
+
 	sf::Vector2i windowMousePos = mouse.getPosition(window);
 	sf::Vector2f worldMousePos = window.mapPixelToCoords(windowMousePos, camera->GetCamera());
 	sf::Vector2i worldMousePosInt(static_cast<int>(std::round(worldMousePos.x)), static_cast<int>(std::round(worldMousePos.y)));
@@ -163,6 +166,7 @@ void DungeonScene::ReadInput(sf::RenderWindow& window) {
 			spellbook.GetInput(window, ev);
 		}
 
+		// Shop window.
 		if (displayShopWindow) {
 			shopWindow.GetInput(window, ev);
 		}
@@ -177,6 +181,11 @@ void DungeonScene::ReadInput(sf::RenderWindow& window) {
 			learnAbilityWindow.GetInput(window, ev);
 		}
 
+		// Inspect window.
+		if (displayInspectWindow) {
+			inspectWindow.GetInput(window, ev);
+		}
+
 		// Ability Bar
 		playerHUD.GetInput(window, ev);
 
@@ -187,6 +196,7 @@ void DungeonScene::ReadInput(sf::RenderWindow& window) {
 			break;
 		case sf::Event::MouseButtonReleased:
 			if (ev.mouseButton.button == sf::Mouse::Left) {
+				leftClick = true;
 				if (targeting) {
 					std::vector<sf::Vector2i> range = targetingAbility->GetRange(actors[0].get(), this);
 					sf::Vector2i target = TileMath::Closest(cursorTileLocation, range);
@@ -210,6 +220,7 @@ void DungeonScene::ReadInput(sf::RenderWindow& window) {
 			}
 
 			if (ev.mouseButton.button == sf::Mouse::Right) {
+				rightClick = true;
 				targeting = false;
 				targetingAbility = nullptr;
 				usingItem = false;
@@ -450,6 +461,10 @@ void DungeonScene::DrawUI(sf::RenderWindow& window, float timeRatio) {
 
 	if (displayLearnAbilityWindow) {
 		learnAbilityWindow.Draw(window, timeRatio);
+	}
+
+	if (displayInspectWindow) {
+		inspectWindow.Draw(window, timeRatio);
 	}
 
 	cursorContainer.Draw(window, timeRatio);
@@ -1081,6 +1096,19 @@ GameState DungeonScene::updateUI(float secondsPerUpdate) {
 
 	if (displayLearnAbilityWindow) {
 		displayLearnAbilityWindow = learnAbilityWindow.Update(secondsPerUpdate);
+	}
+
+	if (displayInspectWindow) {
+		displayInspectWindow = inspectWindow.Update(secondsPerUpdate);
+	}
+
+	// monster inspect window
+	if (!displayInspectWindow && leftClick && IsOccupiedByActor(cursorTileLocation)) {
+		Actor* actor = GetActorAtTile(cursorTileLocation);
+		if (!actor->IsPlayer() && vision[cursorTileLocation.x][cursorTileLocation.y] == VisionState::InSight) {
+			displayInspectWindow = true;
+			inspectWindow.SetActor(actor);
+		}
 	}
 
 	// tooltip

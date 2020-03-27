@@ -11,6 +11,20 @@
 #include "id/equipType.hpp"
 #include "id/itemID.hpp"
 
+static std::vector<std::pair<ItemType, int>> initItemTypeWeights() {
+	std::vector<std::pair<ItemType, int>> list;
+
+	list = {
+		{ItemType::Equipment, 550},
+		{ItemType::Potion, 150},
+		{ItemType::Scroll, 150},
+		{ItemType::Consumable, 100},
+		{ItemType::Tome, 50}
+	};
+
+	return list;
+}
+
 static std::vector<std::pair<EquipType, int>> initEquipTypeWeights() {
 	std::vector<std::pair<EquipType, int>> list;
 
@@ -738,6 +752,7 @@ static std::vector<ItemWeight> initTomeWeights() {
 	return list;
 }
 
+std::vector<std::pair<ItemType, int>> Item::itemTypeWeights = initItemTypeWeights();
 std::vector<std::pair<EquipType, int>> Item::equipTypeWeights = initEquipTypeWeights();
 std::unordered_map<EquipType, std::vector<ItemWeight>> Item::baseTypeWeights = initBaseTypeWeights();
 std::unordered_map<EquipType, std::vector<ItemWeight>> Item::artifactWeights = initArtifactWeights();

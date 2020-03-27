@@ -149,6 +149,7 @@ private:
 	static std::unordered_map<ItemID, ItemData> itemList;
 
 	// Item generation weights.
+	static std::vector<std::pair<ItemType, int>> itemTypeWeights;
 	static std::vector<std::pair<EquipType, int>> equipTypeWeights;
 	static std::unordered_map<EquipType, std::vector<ItemWeight>> baseTypeWeights;
 	static std::unordered_map<EquipType, std::vector<ItemWeight>> artifactWeights;

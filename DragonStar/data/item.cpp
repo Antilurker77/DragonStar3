@@ -59,34 +59,42 @@ void Item::Initialize(ItemID id) {
 }
 
 void Item::InitRandomItem(int itemLevel) {
-	int random = Random::RandomInt(1, 1000);
+	ItemType choosenType;
+	int randSum = 0;
+	for (auto& weight : itemTypeWeights) {
+		randSum += weight.second;
+	}
+	
+	int random = Random::RandomInt(1, randSum);
 
-	// Equipment
-	if (random >= 450) {
+	for (auto& weight : itemTypeWeights) {
+		random -= weight.second;
+		if (random <= 0) {
+			choosenType = weight.first;
+			break;
+		}
+	}
+	
+	switch (choosenType) {
+	case ItemType::Equipment:
 		InitEquipment(itemLevel);
-	}
-
-	// Potion
-	else if (random >= 300) {
+		break;
+	case ItemType::Potion:
 		InitPotion(itemLevel);
-	}
-
-	// Scroll
-	else if (random >= 150) {
+		break;
+	case ItemType::Scroll:
 		InitScroll(itemLevel);
-	}
-
-	else if (random >= 50) {
-		Initialize(ItemID::Rations);
-	}
-
-	// Tome
-	else if (random >= 1) {
+		break;
+	case ItemType::Tome:
 		InitTome(itemLevel);
+		break;
+	case ItemType::Consumable:
+		Initialize(ItemID::Rations);
+		break;
+	default:
+		break;
 	}
-	else {
 
-	}
 }
 
 void Item::InitPotion(int itemLevel) {

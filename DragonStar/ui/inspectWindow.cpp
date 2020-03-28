@@ -315,12 +315,12 @@ void InspectWindow::SetActor(Actor* actor) {
 		background.setFillColor(sf::Color(0, 0, 0, 255));
 		background.setOutlineThickness(1.f);
 		background.setOutlineColor(sf::Color(255, 255, 255, 255));
-		background.setPosition(iconPos.x + iFloat * 42.f, iconPos.y);
+		background.setPosition(iconPos.x + iFloat * 44.f, iconPos.y);
 		abilityBackgrounds.push_back(background);
 
 		sf::Sprite icon;
 		icon.setTexture(*assetManager.LoadTexture(ability->GetIcon()));
-		icon.setPosition(iconPos.x + iFloat * 42.f, iconPos.y);
+		icon.setPosition(iconPos.x + iFloat * 44.f, iconPos.y);
 		icon.setScale(2.f, 2.f);
 		abilityIcons.push_back(icon);
 	}
@@ -349,12 +349,12 @@ void InspectWindow::SetActor(Actor* actor) {
 		else {
 			background.setOutlineColor(sf::Color(255, 100, 100, 255));
 		}
-		background.setPosition(iconPos.x + iFloat * 42.f, iconPos.y);
+		background.setPosition(iconPos.x + iFloat * 44.f, iconPos.y);
 		auraBackgrounds.push_back(background);
 
 		sf::Sprite icon;
 		icon.setTexture(*assetManager.LoadTexture(aura.GetIcon()));
-		icon.setPosition(iconPos.x + iFloat * 42.f, iconPos.y);
+		icon.setPosition(iconPos.x + iFloat * 44.f, iconPos.y);
 		icon.setScale(2.f, 2.f);
 		auraIcons.push_back(icon);
 	}

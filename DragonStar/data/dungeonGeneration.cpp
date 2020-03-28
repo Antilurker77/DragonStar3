@@ -273,7 +273,7 @@ void DungeonScene::spawnLoot() {
 }
 
 void DungeonScene::dgStandard(std::mt19937_64& mt) {
-	sf::Vector2i bounds(64, 64); // 64 x 36
+	sf::Vector2i bounds(48, 48); // 64 x 36
 	std::vector<std::vector<TileID>> tiles;
 
 	// Set up map size and fill with wall tiles.

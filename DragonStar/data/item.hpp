@@ -151,6 +151,7 @@ private:
 	// Item generation weights.
 	static std::vector<std::pair<ItemType, int>> itemTypeWeights;
 	static std::vector<std::pair<EquipType, int>> equipTypeWeights;
+	static std::vector<std::pair<Rarity, int>> rarityWeights;
 	static std::unordered_map<EquipType, std::vector<ItemWeight>> baseTypeWeights;
 	static std::unordered_map<EquipType, std::vector<ItemWeight>> artifactWeights;
 	static std::unordered_map<EquipType, std::vector<AffixWeight>> affixWeights;

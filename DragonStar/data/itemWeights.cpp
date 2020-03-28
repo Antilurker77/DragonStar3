@@ -10,6 +10,7 @@
 
 #include "id/equipType.hpp"
 #include "id/itemID.hpp"
+#include "id/rarity.hpp"
 
 static std::vector<std::pair<ItemType, int>> initItemTypeWeights() {
 	std::vector<std::pair<ItemType, int>> list;
@@ -53,6 +54,20 @@ static std::vector<std::pair<EquipType, int>> initEquipTypeWeights() {
 		{EquipType::Neck, 500},
 		{EquipType::Ring, 1000},
 		{EquipType::LightSource, 300}
+	};
+
+	return list;
+}
+
+static std::vector<std::pair<Rarity, int>> initRarityWeights() {
+	std::vector<std::pair<Rarity, int>> list;
+
+	list = {
+		{Rarity::Common, 550},
+		{Rarity::Magical, 300},
+		{Rarity::Rare, 100},
+		{Rarity::FixedArtifact, 25},
+		{Rarity::RandomArtifact, 25}
 	};
 
 	return list;
@@ -754,6 +769,7 @@ static std::vector<ItemWeight> initTomeWeights() {
 
 std::vector<std::pair<ItemType, int>> Item::itemTypeWeights = initItemTypeWeights();
 std::vector<std::pair<EquipType, int>> Item::equipTypeWeights = initEquipTypeWeights();
+std::vector<std::pair<Rarity, int>> Item::rarityWeights = initRarityWeights();
 std::unordered_map<EquipType, std::vector<ItemWeight>> Item::baseTypeWeights = initBaseTypeWeights();
 std::unordered_map<EquipType, std::vector<ItemWeight>> Item::artifactWeights = initArtifactWeights();
 std::unordered_map<EquipType, std::vector<AffixWeight>> Item::affixWeights = initAffixWeights();

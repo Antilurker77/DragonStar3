@@ -176,39 +176,55 @@ void Item::InitTome(int itemLevel) {
 }
 
 void Item::InitEquipment(int itemLevel) {
-	bool choosenType = false;
 	EquipType equipType{};
-	bool choosenBase = false;
 	ItemID itemToGenerate{};
 	size_t affixes = 0;
 
 	// Rarity
-	int rarityRoll = Random::RandomInt(1, 1000);
-	if (rarityRoll > 975) {
-		rarity = Rarity::FixedArtifact;
+	int raritySum = 0;
+	for (auto& weight : rarityWeights) {
+		raritySum += weight.second;
 	}
-	else if (rarityRoll >= 950) {
-		rarity = Rarity::RandomArtifact;
-		affixes = 6;
+
+	int rarityRoll = Random::RandomInt(1, raritySum);
+
+	for (auto& weight : rarityWeights) {
+		rarityRoll -= weight.second;
+		if (rarityRoll <= 0) {
+			rarity = weight.first;
+			break;
+		}
 	}
-	else if (rarityRoll >= 850) {
-		rarity = Rarity::Rare;
-		affixes = 5;
-	}
-	else if (rarityRoll >= 550) {
-		rarity = Rarity::Magical;
-		affixes = 2;
-	}
-	else {
-		rarity = Rarity::Common;
+
+	switch (rarity) {
+		case Rarity::Common:
+			break;
+		case Rarity::Magical:
+			affixes = 2;
+			break;
+		case Rarity::Rare:
+			affixes = 5;
+			break;
+		case Rarity::RandomArtifact:
+			affixes = 6;
+			break;
+		default:
+			break;
 	}
 
 	// Pick equipment type.
-	while (!choosenType) {
-		auto pair = equipTypeWeights[Random::RandomSizeT(0ull, equipTypeWeights.size() - 1ull)];
-		if (Random::RandomInt(1, 1000) <= pair.second) {
-			equipType = pair.first;
-			choosenType = true;
+	int typeSum = 0;
+	for (auto& weight : equipTypeWeights) {
+		typeSum += weight.second;
+	}
+
+	int typeRoll = Random::RandomInt(1, typeSum);
+
+	for (auto& weight : equipTypeWeights) {
+		typeRoll -= weight.second;
+		if (typeRoll <= 0) {
+			equipType = weight.first;
+			break;
 		}
 	}
 
@@ -236,23 +252,32 @@ void Item::InitEquipment(int itemLevel) {
 	}
 
 	// Pick item type.
-	while (!choosenBase) {
-		if (rarity == Rarity::FixedArtifact) {
-			size_t size = possibleArtifacts.size();
-			ItemWeight weight = possibleArtifacts[Random::RandomSizeT(0, size - 1)];
-			if (Random::RandomInt(1, 1000) <= weight.Weight) {
-				itemToGenerate = weight.ItemID;
-				choosenBase = true;
-				records.MarkSpawnedArtifact(weight.ItemID); // prevent the artifact from spawning again
+	int baseSum = 0;
+	int baseRoll = 0;
+	std::vector<ItemWeight> possibleBases;
+
+	if (rarity == Rarity::FixedArtifact) {
+		possibleBases = possibleArtifacts;
+	}
+	else {
+		for (auto& weight : baseTypeWeights[equipType]) {
+			if (itemLevel >= weight.MinItemLevel && itemLevel <= weight.MaxItemLevel) {
+				possibleBases.push_back(weight);
 			}
 		}
-		else {
-			size_t size = baseTypeWeights[equipType].size();
-			ItemWeight weight = baseTypeWeights[equipType][Random::RandomSizeT(0ull, size - 1ull)];
-			if (itemLevel >= weight.MinItemLevel && itemLevel <= weight.MaxItemLevel && Random::RandomInt(1, 1000) <= weight.Weight) {
-				itemToGenerate = weight.ItemID;
-				choosenBase = true;
-			}
+	}
+
+	for (auto& weight : possibleBases) {
+		baseSum += weight.Weight;
+	}
+
+	baseRoll = Random::RandomInt(1, baseSum);
+
+	for (auto& weight : possibleBases) {
+		baseRoll -= weight.Weight;
+		if (baseRoll <= 0) {
+			itemToGenerate = weight.ItemID;
+			break;
 		}
 	}
 
@@ -261,12 +286,27 @@ void Item::InitEquipment(int itemLevel) {
 
 	// Add affixes.
 	std::vector<AffixWeight> choosenAffixes;
-	while (choosenAffixes.size() < affixes) {
-		size_t size = affixWeights[equipType].size();
-		AffixWeight aw = affixWeights[equipType][Random::RandomSizeT(0, size - 1)];
-		if (itemLevel >= aw.MinItemLevel && Random::RandomInt(1, 1000) <= aw.Weight) {
-			if (aw.StatMod == StatModType::Resistance || std::find_if(choosenAffixes.begin(), choosenAffixes.end(), [&aw](AffixWeight& check) {return check.StatMod == aw.StatMod; }) == choosenAffixes.end()) {
-				choosenAffixes.push_back(aw);
+	std::vector<AffixWeight> possibleAffixes;
+	choosenAffixes.reserve(affixes);
+	possibleAffixes.reserve(affixWeights[equipType].size());
+
+	for (size_t i = 0; i < affixes; i++) {
+		int affixSum = 0;
+		possibleAffixes.clear();
+		for (auto& weight : affixWeights[equipType]) {
+			if (weight.StatMod == StatModType::Resistance || std::find_if(choosenAffixes.begin(), choosenAffixes.end(), [&weight](AffixWeight& check) {return check.StatMod == weight.StatMod; }) == choosenAffixes.end()) {
+				affixSum += weight.Weight;
+				possibleAffixes.push_back(weight);
+			}
+		}
+
+		int affixRoll = Random::RandomInt(1, affixSum);
+
+		for (auto& weight : possibleAffixes) {
+			affixRoll -= weight.Weight;
+			if (affixRoll <= 0) {
+				choosenAffixes.push_back(weight);
+				break;
 			}
 		}
 	}

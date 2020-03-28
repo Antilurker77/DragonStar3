@@ -47,6 +47,7 @@ enum class MonsterID {
 
 	// Unique
 	Fenrok,
+	Galahan,
 	Glykon,
 	Incindia,
 	Luther,

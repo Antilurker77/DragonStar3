@@ -2383,6 +2383,89 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		return md;
 	}();
+	list[MonsterID::Galahan] = [] {
+		MonsterData md;
+
+		md.Name = "Galahan";
+		md.Title = "The Golden Knight";
+		md.Filename = "galahan.png";
+
+		md.IsUnique = true;
+		md.IsBoss = false;
+		md.CanFly = false;
+		md.CanSwim = false;
+		md.CanTunnel = false;
+
+		md.IsStationary = false;
+		md.ChaseTurns = 5;
+
+		md.Level = 9;
+
+		md.BaseHP = 550;
+		md.BaseMP = 40;
+		md.BaseSP = 100;
+
+		md.BaseSTR = 30;
+		md.BaseDEX = 21;
+		md.BaseMAG = 22;
+		md.BaseVIT = 40;
+		md.BaseSPI = 19;
+
+		md.BaseArmor = 75;
+		md.BaseMagicArmor = 16;
+		md.BaseEvasion = 8;
+
+		md.BaseAttackPower = 25;
+		md.BaseSpellPower = 0;
+
+		md.BaseHitChance = 750;
+		md.BaseAttackRange = 150;
+		md.BaseAttackSpeed = 200;
+		md.BaseWeaponDamageMultiplier = 1000;
+		md.AttackElement = Element::Physical;
+		md.AttackType = EquipType::Sword;
+
+		md.BaseLineOfSight = 350;
+		md.BaseMoveCost = 100;
+
+		md.EXPDrop = 80;
+		md.GoldDrop = 92;
+		md.LootDrop = 6000;
+
+		md.StatMods = {
+			StatMod(StatModType::BlockChance, 150)
+		};
+		md.Abilities = {
+			{ AbilityID::HerosTriumph, 0 },
+			{ AbilityID::PowerStrike, 2 },
+			{ AbilityID::RendingSlash, 4 }
+		};
+
+		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
+
+			// Hero's Triumph: Use on cooldown.
+			if (monster->IsAbilityUsable(AbilityID::HerosTriumph)) {
+				ai.Ability = AbilityID::HerosTriumph;
+			}
+			// Rending Slash: Use on cooldown.
+			else if (monster->IsAbilityUsable(AbilityID::RendingSlash)) {
+				ai.Ability = AbilityID::RendingSlash;
+			}
+			// Power Strike: Use on cooldown.
+			else if (monster->IsAbilityUsable(AbilityID::PowerStrike)) {
+				ai.Ability = AbilityID::PowerStrike;
+			}
+			else {
+				ai.Ability = AbilityID::Attack;
+			}
+
+			return ai;
+		};
+
+		return md;
+	}();
 	list[MonsterID::Glykon] = [] {
 		MonsterData md;
 

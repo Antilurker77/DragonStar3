@@ -98,15 +98,25 @@ void Item::InitRandomItem(int itemLevel) {
 }
 
 void Item::InitPotion(int itemLevel) {
-	bool choosenItem = false;
 	ItemID potionToGenerate{};
+	std::vector<ItemWeight> possiblePotions;
+	possiblePotions.reserve(potionWeights.size());
+	int weightSum = 0;
 
-	while (!choosenItem) {
-		size_t size = potionWeights.size();
-		ItemWeight& itemWeight = potionWeights[Random::RandomSizeT(0, size - 1)];
-		if (itemLevel >= itemWeight.MinItemLevel && itemLevel <= itemWeight.MaxItemLevel && Random::RandomInt(1, 1000) <= itemWeight.Weight) {
-			choosenItem = true;
-			potionToGenerate = itemWeight.ItemID;
+	for (auto& weight : potionWeights) {
+		if (itemLevel >= weight.MinItemLevel && itemLevel <= weight.MaxItemLevel) {
+			possiblePotions.push_back(weight);
+			weightSum += weight.Weight;
+		}
+	}
+
+	int random = Random::RandomInt(1, weightSum);
+
+	for (auto& weight : possiblePotions) {
+		random -= weight.Weight;
+		if (random <= 0) {
+			potionToGenerate = weight.ItemID;
+			break;
 		}
 	}
 
@@ -114,15 +124,25 @@ void Item::InitPotion(int itemLevel) {
 }
 
 void Item::InitScroll(int itemLevel) {
-	bool choosenItem = false;
 	ItemID scrollToGenerate{};
+	std::vector<ItemWeight> possibleScrolls;
+	possibleScrolls.reserve(scrollWeights.size());
+	int weightSum = 0;
 
-	while (!choosenItem) {
-		size_t size = scrollWeights.size();
-		ItemWeight& itemWeight = scrollWeights[Random::RandomSizeT(0, size - 1)];
-		if (itemLevel >= itemWeight.MinItemLevel && itemLevel <= itemWeight.MaxItemLevel && Random::RandomInt(1, 1000) <= itemWeight.Weight) {
-			choosenItem = true;
-			scrollToGenerate = itemWeight.ItemID;
+	for (auto& weight : scrollWeights) {
+		if (itemLevel >= weight.MinItemLevel && itemLevel <= weight.MaxItemLevel) {
+			possibleScrolls.push_back(weight);
+			weightSum += weight.Weight;
+		}
+	}
+
+	int random = Random::RandomInt(1, weightSum);
+
+	for (auto& weight : possibleScrolls) {
+		random -= weight.Weight;
+		if (random <= 0) {
+			scrollToGenerate = weight.ItemID;
+			break;
 		}
 	}
 
@@ -130,15 +150,25 @@ void Item::InitScroll(int itemLevel) {
 }
 
 void Item::InitTome(int itemLevel) {
-	bool choosenItem = false;
 	ItemID tomeToGenerate{};
+	std::vector<ItemWeight> possibleTomes;
+	possibleTomes.reserve(tomeWeights.size());
+	int weightSum = 0;
 
-	while (!choosenItem) {
-		size_t size = tomeWeights.size();
-		ItemWeight& itemWeight = tomeWeights[Random::RandomSizeT(0, size - 1)];
-		if (itemLevel >= itemWeight.MinItemLevel && itemLevel <= itemWeight.MaxItemLevel && Random::RandomInt(1, 1000) <= itemWeight.Weight) {
-			choosenItem = true;
-			tomeToGenerate = itemWeight.ItemID;
+	for (auto& weight : tomeWeights) {
+		if (itemLevel >= weight.MinItemLevel && itemLevel <= weight.MaxItemLevel) {
+			possibleTomes.push_back(weight);
+			weightSum += weight.Weight;
+		}
+	}
+
+	int random = Random::RandomInt(1, weightSum);
+
+	for (auto& weight : possibleTomes) {
+		random -= weight.Weight;
+		if (random <= 0) {
+			tomeToGenerate = weight.ItemID;
+			break;
 		}
 	}
 

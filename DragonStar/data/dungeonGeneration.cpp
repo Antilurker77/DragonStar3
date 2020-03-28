@@ -112,11 +112,26 @@ void DungeonScene::spawnMonsters() {
 	std::vector<Encounter> choosenEncounters;
 
 	// choosing encounters
-	while (choosenEncounters.size() < numOfEncounters) {
-		int encounterFloor = currentFloor; //todo: out of dept encounters
-		Encounter picked = encounterTable[Random::RandomSizeT(0, encounterTable.size() - 1, mt)];
-		if (encounterFloor >= picked.MinDepth && encounterFloor <= picked.MaxDepth && Random::RandomInt(1, 1000, mt) <= picked.Weight) {
-			choosenEncounters.push_back(picked);
+	int encounterSum = 0;
+	std::vector<Encounter> possibleEncounters;
+	possibleEncounters.reserve(encounterTable.size());
+
+	for (auto& encounter : encounterTable) {
+		if (currentFloor >= encounter.MinDepth && currentFloor <= encounter.MaxDepth) {
+			encounterSum += encounter.Weight;
+			possibleEncounters.push_back(encounter);
+		}
+	}
+
+	for (size_t i = 0; i < numOfEncounters; i++) {
+		int encounterRoll = Random::RandomInt(1, encounterSum);
+
+		for (auto& encounter : possibleEncounters) {
+			encounterRoll -= encounter.Weight;
+			if (encounterRoll <= 0) {
+				choosenEncounters.push_back(encounter);
+				break;
+			}
 		}
 	}
 
@@ -124,19 +139,27 @@ void DungeonScene::spawnMonsters() {
 	size_t pickedUniques = 0;
 	size_t numOfUniqueEncounters = 1; // todo: number of uniques per floor
 	std::vector<Encounter> possibleUniques;
+	int uniqueSum = 0;
+
 	for (auto e : uniqueEncounterTable) {
 		if (!records.HasKilled(e.MonsterOdds[0].first) && currentFloor >= e.MinDepth && currentFloor <= e.MaxDepth) {
 			possibleUniques.push_back(e);
+			uniqueSum += e.Weight;
 		}
 	}
 	numOfUniqueEncounters = std::min(possibleUniques.size(), numOfUniqueEncounters);
 	messageLog.AddMessage("#aaaaaa Generating " + std::to_string(numOfUniqueEncounters) + " unique encounters.");
-	while (pickedUniques < numOfUniqueEncounters) {
-		Encounter picked = possibleUniques[Random::RandomSizeT(0, possibleUniques.size() - 1, mt)];
-		choosenEncounters.push_back(picked);
-		pickedUniques++;
-	}
 
+	for (size_t i = 0; i < numOfUniqueEncounters; i++) {
+		int uniqueRoll = Random::RandomInt(1, uniqueSum);
+		for (auto& unique : possibleUniques) {
+			uniqueRoll -= unique.Weight;
+			if (uniqueRoll <= 0) {
+				choosenEncounters.push_back(unique);
+				break;
+			}
+		}
+	}
 
 
 	int mapWidth = static_cast<int>(floor.size());
@@ -250,7 +273,7 @@ void DungeonScene::spawnLoot() {
 }
 
 void DungeonScene::dgStandard(std::mt19937_64& mt) {
-	sf::Vector2i bounds(64, 36);
+	sf::Vector2i bounds(64, 64); // 64 x 36
 	std::vector<std::vector<TileID>> tiles;
 
 	// Set up map size and fill with wall tiles.

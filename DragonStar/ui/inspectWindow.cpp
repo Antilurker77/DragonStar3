@@ -305,6 +305,8 @@ void InspectWindow::SetActor(Actor* actor) {
 	sf::Vector2f iconPos;
 	iconPos.x = std::roundf(pos.x + margin + 22.f);
 	iconPos.y = std::roundf(pos.y + margin + 12.f + (fontSizeFloat + margin) * 16.f);
+	abilityBackgrounds.clear();
+	abilityIcons.clear();
 	abilityBackgrounds.reserve(abilities->size());
 	abilityIcons.reserve(abilities->size());
 	for (size_t i = 0; i < abilities->size(); i++) {
@@ -334,6 +336,8 @@ void InspectWindow::SetActor(Actor* actor) {
 	auto auras = actor->GetAuras();
 	iconPos.x = std::roundf(pos.x + margin + 22.f);
 	iconPos.y = std::roundf(pos.y + margin + 12.f + (fontSizeFloat + margin) * 23.f);
+	auraBackgrounds.clear();
+	auraIcons.clear();
 	auraBackgrounds.reserve(auras.size());
 	auraIcons.reserve(auras.size());
 	for (size_t i = 0; i < auras.size(); i++) {

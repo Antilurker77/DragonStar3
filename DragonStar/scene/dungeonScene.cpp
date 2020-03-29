@@ -212,6 +212,7 @@ void DungeonScene::ReadInput(sf::RenderWindow& window) {
 					targeting = false;
 					usingItem = false;
 					targetingAbility = nullptr;
+					leftClick = false; // stops inspect window from opening
 				}
 				if (displayStatButton && statButton.getGlobalBounds().contains(static_cast<sf::Vector2f>(windowMousePos))) {
 					statWindow.Initialize();
@@ -1103,7 +1104,7 @@ GameState DungeonScene::updateUI(float secondsPerUpdate) {
 	}
 
 	// monster inspect window
-	if (!displayInspectWindow && leftClick && IsOccupiedByActor(cursorTileLocation)) {
+	if (!displayInspectWindow && !targeting && leftClick && IsOccupiedByActor(cursorTileLocation)) {
 		Actor* actor = GetActorAtTile(cursorTileLocation);
 		if (!actor->IsPlayer() && vision[cursorTileLocation.x][cursorTileLocation.y] == VisionState::InSight) {
 			displayInspectWindow = true;

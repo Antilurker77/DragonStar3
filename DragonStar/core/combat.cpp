@@ -95,7 +95,7 @@ static int64_t applyCrit(Actor* user, Actor* target, EventOptions& eventOptions,
 // On hit damage.
 static int64_t applyOnHitDamage(Actor* user, Actor* target, EventOptions& eventOptions, int64_t damage, bool consumeBuffs) {
 	int64_t result = damage;
-	result = result + user->GetOnHitDamage(eventOptions, consumeBuffs);
+	result = result + user->GetOnHitDamage(eventOptions, consumeBuffs) * 1000;
 	return result;
 }
 
@@ -162,17 +162,18 @@ static int64_t applyResistance(Actor* user, Actor* target, EventOptions& eventOp
 // Applies damage variance and reduces damage value to actual number.
 static int applyVariance(int64_t damage, bool randomVariance = false) {
 	int64_t result = damage;
+
+	if (randomVariance) {
+		result = result * Random::RandomInt(850, 1150) / 1000;
+	}
+
 	// +/- 1 damage based on how close the damage is to the next whole number
-	int roundUpChance = damage % 1000;
+	int roundUpChance = result % 1000;
 	if (Random::RandomInt(1, 1000) <= roundUpChance) {
 		result = result / 1000 + 1;
 	}
 	else {
 		result = result / 1000;
-	}
-
-	if (randomVariance) {
-		result = result * Random::RandomInt(850, 1150) / 1000;
 	}
 
 	return static_cast<int>(result);

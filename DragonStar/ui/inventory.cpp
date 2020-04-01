@@ -820,7 +820,7 @@ void Inventory::updateStats(Player* player) {
 	// Haste
 	statText = "Haste";
 	valueOfStat = player->GetHaste(eventOptions, false) - 1000;
-	statValue = std::to_string(valueOfStat / 10) + "." + std::to_string(valueOfStat % 10) + "%";
+	statValue = std::to_string(valueOfStat / 10) + "." + std::to_string(std::abs(valueOfStat % 10)) + "%";
 	stats.push_back(formatString(statText, statValue));
 
 	stats.push_back(""); // blank line

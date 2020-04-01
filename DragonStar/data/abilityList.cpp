@@ -5125,7 +5125,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		ad.GetDescription = [Values = ad.Values](Actor* user, EventOptions& eventOptions, int rank) {
 			std::string desc;
 			std::string dmg;
-			std::string stun = std::to_string(Values[1][rank] / 100);
+			std::string stun = std::to_string(Values[1][rank] / 100) + "." + std::to_string(Values[1][rank] / 10);
 
 			if (user == nullptr) {
 				dmg = "#damage " + std::to_string(Values[0][rank] / 10) + "% Attack Power #default ";

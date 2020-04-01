@@ -94,6 +94,8 @@ Player::Player(ActorSave& actorSave, PlayerSave& playerSave) {
 		Aura aura(static_cast<AuraID>(actorSave.AuraIDs[i]), actorSave.AuraRanks[i], actorSave.AuraDurations[i], actorSave.AuraNextTicks[i], actorSave.AuraStacks[i], actorSave.AuraSSDamage[i], actorSave.AuraSSCritChance[i], actorSave.AuraSSResPen[i], actorSave.AuraSource[i]);
 		auras.push_back(aura);
 	}
+
+	actorHUD.UpdateElements(*this);
 }
 
 void Player::Initialize(RaceID id) {

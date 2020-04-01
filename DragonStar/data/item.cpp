@@ -33,6 +33,9 @@ Item::Item(ItemSave& itemSave) {
 		if (itemSave.StatModElements[i] == 0) {
 			randomStatMods.push_back(StatMod(static_cast<StatModType>(itemSave.StatModTypes[i]), itemSave.StatModValues[i]));
 		}
+		else if (static_cast<StatModType>(itemSave.StatModTypes[i]) == StatModType::OnHitDamage) {
+			randomStatMods.push_back(StatMod(static_cast<StatModType>(itemSave.StatModTypes[i]), itemSave.StatModValues[i], Category::Direct));
+		}
 		else {
 			randomStatMods.push_back(StatMod(static_cast<StatModType>(itemSave.StatModTypes[i]), itemSave.StatModValues[i], static_cast<Element>(itemSave.StatModElements[i])));
 		}

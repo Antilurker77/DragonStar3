@@ -284,6 +284,11 @@ void Item::InitEquipment(int itemLevel) {
 	// Initialize item.
 	Initialize(itemToGenerate);
 
+	// Mark artifact as spawned.
+	if (rarity == Rarity::FixedArtifact) {
+		records.MarkSpawnedArtifact(itemToGenerate);
+	}
+
 	// Add affixes.
 	std::vector<AffixWeight> choosenAffixes;
 	std::vector<AffixWeight> possibleAffixes;

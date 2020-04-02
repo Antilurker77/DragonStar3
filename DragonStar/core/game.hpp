@@ -12,6 +12,7 @@
 #include <SFML/Window.hpp>
 #include "camera.hpp"
 #include "gameState.hpp"
+#include "../scene/defeatScene.hpp"
 #include "../scene/dungeonScene.hpp"
 #include "../scene/mainMenuScene.hpp"
 #include "../ui/fpsWindow.hpp"
@@ -39,4 +40,5 @@ private:
 	GameState gameState;
 	MainMenuScene mainMenuScene;
 	DungeonScene dungeonScene;
+	DefeatScene defeatScene;
 };

@@ -991,6 +991,7 @@ void DungeonScene::updateWorld(float secondsPerUpdate) {
 					a->DecrementExhaustion();
 				}
 			}
+			aiCalcTime += clock.restart();
 		}
 		// There is an actor ready to take their turn.
 		else {
@@ -1002,6 +1003,7 @@ void DungeonScene::updateWorld(float secondsPerUpdate) {
 
 				// Record how long it took.
 				aiCalcTime += clock.restart();
+				//messageLog.AddMessage("AI Calc Time: " + std::to_string(aiCalcTime.asSeconds() * 1000.f) + "ms");
 
 				if (aiCalcTime.asSeconds() > maxUpdateTime) {
 					messageLog.AddMessage("Max Update Time exceeded. AI calc time was " + std::to_string(aiCalcTime.asSeconds() * 1000.f) + "ms.");

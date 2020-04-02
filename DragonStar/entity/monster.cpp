@@ -102,6 +102,11 @@ CommandPtr Monster::CalcAI() {
 	CommandPtr result = std::make_unique<WaitCommand>(100);
 	bool seePlayer = false;
 
+	// Wait if player is dead.
+	if (!dungeonScene->GetPlayer()->IsAlive()) {
+		return result;
+	}
+
 	// Check if monster can see player.
 	std::vector<sf::Vector2i> losTest = TileMath::AreaOfEffect(location, GetSightRadius());
 	std::vector<sf::Vector2i> los;

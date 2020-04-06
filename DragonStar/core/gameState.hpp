@@ -13,5 +13,6 @@ enum class GameState {
 	MainMenu,
 	CharacterCreation,
 	Dungeon,
+	Victory,
 	Defeat
 };

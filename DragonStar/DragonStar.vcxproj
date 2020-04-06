@@ -177,6 +177,7 @@
     <ClCompile Include="scene\defeatScene.cpp" />
     <ClCompile Include="scene\dungeonScene.cpp" />
     <ClCompile Include="scene\mainMenuScene.cpp" />
+    <ClCompile Include="scene\victoryScene.cpp" />
     <ClCompile Include="ui\actorHUD.cpp" />
     <ClCompile Include="ui\button.cpp" />
     <ClCompile Include="ui\cursorContainer.cpp" />
@@ -246,6 +247,7 @@
     <ClInclude Include="scene\defeatScene.hpp" />
     <ClInclude Include="scene\dungeonScene.hpp" />
     <ClInclude Include="scene\mainMenuScene.hpp" />
+    <ClInclude Include="scene\victoryScene.hpp" />
     <ClInclude Include="ui\actorHUD.hpp" />
     <ClInclude Include="ui\button.hpp" />
     <ClInclude Include="ui\cursorContainer.hpp" />

@@ -356,8 +356,11 @@ GameState DungeonScene::Update(float secondsPerUpdate) {
 	updateWorld(secondsPerUpdate);
 	gs = updateUI(secondsPerUpdate);
 
-	if (currentFloor = 11) {
+	if (currentFloor == victoryFloor) {
+		gs = GameState::Victory;
 
+		// Delete save file.
+		std::remove("save.sav");
 	}
 	if (!actors[0]->IsAlive()) {
 		gs = GameState::Defeat;

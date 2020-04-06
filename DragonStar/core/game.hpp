@@ -15,6 +15,7 @@
 #include "../scene/defeatScene.hpp"
 #include "../scene/dungeonScene.hpp"
 #include "../scene/mainMenuScene.hpp"
+#include "../scene/victoryScene.hpp"
 #include "../ui/fpsWindow.hpp"
 
 class Game {
@@ -40,5 +41,6 @@ private:
 	GameState gameState;
 	MainMenuScene mainMenuScene;
 	DungeonScene dungeonScene;
+	VictoryScene victoryScene;
 	DefeatScene defeatScene;
 };

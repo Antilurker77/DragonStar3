@@ -67,6 +67,9 @@ void Game::processInput() {
 		case GameState::Dungeon:
 			dungeonScene.ReadInput(window);
 			break;
+		case GameState::Victory:
+			victoryScene.ReadInput(window);
+			break;
 		case GameState::Defeat:
 			defeatScene.ReadInput(window);
 			break;
@@ -99,6 +102,13 @@ void Game::update(float secondsPerUpdate) {
 			break;
 		case GameState::Dungeon:
 			gameState = dungeonScene.Update(secondsPerUpdate);
+
+			if (gameState == GameState::Victory) {
+				victoryScene.InitializePositions();
+			}
+			break;
+		case GameState::Victory:
+			gameState = victoryScene.Update(secondsPerUpdate);
 			break;
 		case GameState::Defeat:
 			gameState = defeatScene.Update(secondsPerUpdate);
@@ -133,6 +143,9 @@ void Game::draw(float timeRatio) {
 			break;
 		case GameState::Dungeon:
 			dungeonScene.DrawUI(window, timeRatio);
+			break;
+		case GameState::Victory:
+			victoryScene.Draw(window, timeRatio);
 			break;
 		case GameState::Defeat:
 			defeatScene.Draw(window, timeRatio);

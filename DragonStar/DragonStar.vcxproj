@@ -196,6 +196,7 @@
     <ClCompile Include="ui\shopWindow.cpp" />
     <ClCompile Include="ui\spellbook.cpp" />
     <ClCompile Include="ui\statWindow.cpp" />
+    <ClCompile Include="ui\textBox.cpp" />
     <ClCompile Include="ui\tooltip.cpp" />
     <ClCompile Include="ui\wordWrap.cpp" />
   </ItemGroup>
@@ -267,6 +268,7 @@
     <ClInclude Include="ui\shopWindow.hpp" />
     <ClInclude Include="ui\spellbook.hpp" />
     <ClInclude Include="ui\statWindow.hpp" />
+    <ClInclude Include="ui\textBox.hpp" />
     <ClInclude Include="ui\tooltip.hpp" />
     <ClInclude Include="ui\wordWrap.hpp" />
   </ItemGroup>

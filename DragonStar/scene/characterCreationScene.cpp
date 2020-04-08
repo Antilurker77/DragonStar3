@@ -21,6 +21,8 @@ CharacterCreationScene::CharacterCreationScene() {
 	nameText.setFillColor(sf::Color(255, 255, 255, 255));
 	nameText.setFont(*assetManager.LoadFont(settings.Font));
 
+	nameTextBox.SetString("Enter Name Here");
+
 	startGameButton.SetString("Start Game");
 }
 
@@ -33,6 +35,8 @@ void CharacterCreationScene::ReadInput(sf::RenderWindow& window) {
 	leftClick = false;
 
 	while (window.pollEvent(ev)) {
+		nameTextBox.GetInput(window, ev);
+		
 		switch (ev.type) {
 		case sf::Event::Closed:
 			window.close();
@@ -53,12 +57,15 @@ GameState CharacterCreationScene::Update(float secondsPerUpdate) {
 		gs = GameState::Dungeon;
 	}
 
+	nameTextBox.Update(secondsPerUpdate);
+
 	return gs;
 }
 
 void CharacterCreationScene::Draw(sf::RenderTarget& window, float timeRatio) {
 	window.draw(headerText);
 	window.draw(nameText);
+	nameTextBox.Draw(window, timeRatio);
 
 	startGameButton.Render(window);
 }
@@ -72,6 +79,8 @@ void CharacterCreationScene::InitializePositions() {
 	pos.x = std::roundf(static_cast<float>(settings.ScreenWidth) / 2.f - nameText.getLocalBounds().width / 2.f);
 	pos.y = std::roundf(static_cast<float>(settings.ScreenHeight) * 4.f / 9.f);
 	nameText.setPosition(pos);
+
+	nameTextBox.SetPosition(settings.ScreenWidth / 2, settings.ScreenHeight * 5 / 9);
 
 	startGameButton.SetPosition(settings.ScreenWidth / 2, settings.ScreenHeight * 7 / 8);
 }

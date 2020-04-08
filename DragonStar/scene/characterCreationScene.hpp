@@ -12,6 +12,7 @@ enum class GameState;
 
 #include <SFML/Graphics.hpp>
 #include "../ui/button.hpp"
+#include "../ui/textBox.hpp"
 
 class CharacterCreationScene {
 public:
@@ -35,5 +36,6 @@ private:
 
 	sf::Text headerText;
 	sf::Text nameText;
+	TextBox nameTextBox;
 	Button startGameButton;
 };

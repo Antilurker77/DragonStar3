@@ -63,6 +63,9 @@ public:
 	// Returns the actor's name.
 	std::string GetName();
 
+	// Sets the actor's name. Default is 'Unamed'.
+	void SetName(std::string n);
+
 	// Returns the actor's title.
 	virtual std::string GetTitle();
 

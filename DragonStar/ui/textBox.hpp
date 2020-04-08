@@ -27,6 +27,9 @@ public:
 	// Sets the string displayed in the text box.
 	void SetString(std::string string);
 
+	// Returns the string input.
+	std::string GetString();
+
 	// Sets the position of the text box. The text box will be centered at the given position.
 	void SetPosition(int x, int y);
 	

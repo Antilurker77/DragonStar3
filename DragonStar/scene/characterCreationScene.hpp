@@ -30,6 +30,9 @@ public:
 	// Sets the positions of the UI elements.
 	void InitializePositions();
 
+	// Returns the name of the player.
+	std::string GetPlayerName();
+
 private:
 	sf::Vector2i mousePos;
 	bool leftClick = false;

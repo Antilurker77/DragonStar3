@@ -55,6 +55,15 @@ std::string Actor::GetName() {
 	return name;
 }
 
+void Actor::SetName(std::string n) {
+	if (n.empty()) {
+		name = "Unamed";
+	}
+	else {
+		name = n;
+	}
+}
+
 std::string Actor::GetTitle() {
 	return "";
 }

@@ -58,6 +58,9 @@ class DungeonScene {
 public:
 	DungeonScene();
 
+	// Sets the name of the player character.
+	void SetPlayerName(std::string name);
+
 	// Creates the seeds for all dungeon floors and generates the current dungeon floor.
 	void GenerateSeeds(uint64_t seed);
 

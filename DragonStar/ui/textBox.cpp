@@ -71,6 +71,10 @@ void TextBox::SetString(std::string string) {
 	text.setString(input);
 }
 
+std::string TextBox::GetString() {
+	return input;
+}
+
 void TextBox::SetPosition(int x, int y) {
 	sf::Vector2f pos;
 	pos.x = std::roundf(static_cast<float>(x) - box.getSize().x / 2.f);

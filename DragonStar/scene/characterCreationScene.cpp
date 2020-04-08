@@ -84,3 +84,7 @@ void CharacterCreationScene::InitializePositions() {
 
 	startGameButton.SetPosition(settings.ScreenWidth / 2, settings.ScreenHeight * 7 / 8);
 }
+
+std::string CharacterCreationScene::GetPlayerName() {
+	return nameTextBox.GetString();
+}

@@ -51,6 +51,10 @@ DungeonScene::DungeonScene() {
 	statWindow.SetPlayer(static_cast<Player*>(actors[0].get()));
 }
 
+void DungeonScene::SetPlayerName(std::string name) {
+	actors[0]->SetName(name);
+}
+
 void DungeonScene::GenerateSeeds(uint64_t seed) {
 	masterSeed = seed;
 	std::mt19937_64 mt(seed);

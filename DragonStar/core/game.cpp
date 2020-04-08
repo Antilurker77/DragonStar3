@@ -64,6 +64,9 @@ void Game::processInput() {
 		case GameState::MainMenu:
 			mainMenuScene.ReadInput(window);
 			break;
+		case GameState::CharacterCreation:
+			characterCreationScene.ReadInput(window);
+			break;
 		case GameState::Dungeon:
 			dungeonScene.ReadInput(window);
 			break;
@@ -85,6 +88,11 @@ void Game::update(float secondsPerUpdate) {
 		case GameState::MainMenu:
 			gameState = mainMenuScene.Update(secondsPerUpdate, window);
 
+			// Transition from Main Menu to Character Creation, initilize UI positions.
+			if (gameState == GameState::CharacterCreation) {
+				characterCreationScene.InitializePositions();
+			}
+
 			// Transition from Main Menu to Dungeon, load game.
 			if (gameState == GameState::Dungeon) {
 				dungeonScene.LoadGame();
@@ -93,7 +101,8 @@ void Game::update(float secondsPerUpdate) {
 
 			break;
 		case GameState::CharacterCreation:
-			gameState = GameState::Dungeon; // todo: character creation
+			gameState = characterCreationScene.Update(secondsPerUpdate);
+
 			// Transition from Character Creation to Dungeon, generate dungeon.
 			if (gameState == GameState::Dungeon) {
 				dungeonScene.GenerateSeeds(Random::RandomSeed());
@@ -140,6 +149,9 @@ void Game::draw(float timeRatio) {
 	switch (gameState) {
 		case GameState::MainMenu:
 			mainMenuScene.Draw(window, timeRatio);
+			break;
+		case GameState::CharacterCreation:
+			characterCreationScene.Draw(window, timeRatio);
 			break;
 		case GameState::Dungeon:
 			dungeonScene.DrawUI(window, timeRatio);

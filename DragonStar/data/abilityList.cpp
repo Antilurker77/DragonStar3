@@ -308,7 +308,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		AbilityData ad;
 
 		ad.Name = "Bolt of Darkness";
-		ad.Icon = "placeholder.png";
+		ad.Icon = "bolt_of_darkness.png";
 		ad.ID = AbilityID::BoltOfDarkness;
 
 		ad.Categories = {

@@ -344,7 +344,7 @@ static std::unordered_map<AuraID, AuraData> initList() {
 		AuraData ad;
 
 		ad.Name = "Chilled";
-		ad.Icon = "placeholder.png";
+		ad.Icon = "icicle.png";
 		ad.AuraID = AuraID::Chilled;
 
 		ad.Categories = {};

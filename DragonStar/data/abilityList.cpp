@@ -2860,7 +2860,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		AbilityData ad;
 
 		ad.Name = "Icicle";
-		ad.Icon = "placeholder.png";
+		ad.Icon = "icicle.png";
 		ad.ID = AbilityID::Icicle;
 
 		ad.Categories = {

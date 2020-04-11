@@ -4257,7 +4257,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		AbilityData ad;
 
 		ad.Name = "Shining Prism";
-		ad.Icon = "placeholder.png";
+		ad.Icon = "shining_prism.png";
 		ad.ID = AbilityID::ShiningPrism;
 
 		ad.Categories = {

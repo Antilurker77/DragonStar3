@@ -64,8 +64,8 @@ public:
 	// Creates the seeds for all dungeon floors and generates the current dungeon floor.
 	void GenerateSeeds(uint64_t seed);
 
-	// Loads the current save file.
-	void LoadGame();
+	// Loads the current save file. Returns true if the file was loaded.
+	bool LoadGame();
 
 	// Sets the camera reference.
 	void SetCamera(Camera* c);

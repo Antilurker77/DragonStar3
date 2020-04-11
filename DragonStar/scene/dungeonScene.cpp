@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <algorithm>
+#include <filesystem>
 #include <fstream>
 #include <iomanip>
 #include <sstream>
@@ -65,7 +66,11 @@ void DungeonScene::GenerateSeeds(uint64_t seed) {
 	records.RandomizeIdentities(Random::RandomSeed(mt));
 }
 
-void DungeonScene::LoadGame() {
+bool DungeonScene::LoadGame() {
+	if (!std::filesystem::exists("save.sav")) {
+		return false;
+	}
+	
 	{
 		std::ifstream file("save.sav", std::ios::binary);
 		cereal::BinaryInputArchive archive(file);
@@ -121,6 +126,8 @@ void DungeonScene::LoadGame() {
 		}
 	}
 	buildVisionVertexArray();
+
+	return true;
 }
 
 void DungeonScene::SetCamera(Camera* c) {

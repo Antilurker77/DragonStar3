@@ -95,8 +95,13 @@ void Game::update(float secondsPerUpdate) {
 
 			// Transition from Main Menu to Dungeon, load game.
 			if (gameState == GameState::Dungeon) {
-				dungeonScene.LoadGame();
-				dungeonScene.SetCamera(&camera);
+				bool loaded = dungeonScene.LoadGame();
+				if (loaded) {
+					dungeonScene.SetCamera(&camera);
+				}
+				else {
+					gameState = GameState::MainMenu;
+				}
 			}
 
 			break;

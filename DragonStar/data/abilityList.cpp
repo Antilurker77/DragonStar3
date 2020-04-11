@@ -122,7 +122,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		AbilityData ad;
 
 		ad.Name = "Arcane Spear";
-		ad.Icon = "placeholder.png";
+		ad.Icon = "arcane_spear.png";
 		ad.ID = AbilityID::ArcaneSpear;
 
 		ad.Categories = {

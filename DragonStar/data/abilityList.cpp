@@ -5260,7 +5260,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		AbilityData ad;
 
 		ad.Name = "Water Bolt";
-		ad.Icon = "placeholder.png";
+		ad.Icon = "water_bolt.png";
 		ad.ID = AbilityID::WaterBolt;
 
 		ad.Categories = {

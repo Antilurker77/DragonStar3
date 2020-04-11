@@ -190,7 +190,7 @@ static std::unordered_map<AuraID, AuraData> initList() {
 		AuraData ad;
 
 		ad.Name = "Bonechill";
-		ad.Icon = "placeholder.png";
+		ad.Icon = "bonechill.png";
 		ad.AuraID = AuraID::Bonechill;
 
 		ad.Categories = {};

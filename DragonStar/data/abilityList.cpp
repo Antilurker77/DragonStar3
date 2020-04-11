@@ -494,7 +494,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		AbilityData ad;
 
 		ad.Name = "Bonechill";
-		ad.Icon = "placeholder.png";
+		ad.Icon = "bonechill.png";
 		ad.ID = AbilityID::Bonechill;
 
 		ad.Categories = {

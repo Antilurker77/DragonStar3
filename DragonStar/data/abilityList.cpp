@@ -692,7 +692,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		AbilityData ad;
 
 		ad.Name = "Chopper";
-		ad.Icon = "placeholder.png";
+		ad.Icon = "chopper.png";
 		ad.ID = AbilityID::Chopper;
 
 		ad.Categories = {

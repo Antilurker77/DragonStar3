@@ -131,7 +131,7 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.BaseLineOfSight = 350;
 		md.BaseMoveCost = 100;
 
-		md.EXPDrop = 15;
+		md.EXPDrop = 7;
 		md.GoldDrop = 0;
 		md.LootDrop = 1500;
 

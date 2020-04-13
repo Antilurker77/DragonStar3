@@ -587,7 +587,7 @@ static std::unordered_map<AuraID, AuraData> initList() {
 		AuraData ad;
 
 		ad.Name = "Crush Armor";
-		ad.Icon = "placeholder.png";
+		ad.Icon = "crush_armor.png";
 		ad.AuraID = AuraID::CrushArmor;
 
 		ad.Categories = {};
@@ -1773,7 +1773,7 @@ static std::unordered_map<AuraID, AuraData> initList() {
 		AuraData ad;
 
 		ad.Name = "Rending Slash";
-		ad.Icon = "placeholder.png";
+		ad.Icon = "rending_slash.png";
 		ad.AuraID = AuraID::RendingSlash;
 
 		ad.Categories = {

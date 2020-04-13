@@ -1200,7 +1200,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		AbilityData ad;
 
 		ad.Name = "Crush Armor";
-		ad.Icon = "placeholder.png";
+		ad.Icon = "crush_armor.png";
 		ad.ID = AbilityID::CrushArmor;
 
 		ad.Categories = {
@@ -3963,7 +3963,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		AbilityData ad;
 
 		ad.Name = "Rending Slash";
-		ad.Icon = "placeholder.png";
+		ad.Icon = "rending_slash.png";
 		ad.ID = AbilityID::RendingSlash;
 
 		ad.Categories = {

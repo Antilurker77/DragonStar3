@@ -58,6 +58,9 @@ class DungeonScene {
 public:
 	DungeonScene();
 
+	// Resets the player.
+	void ResetPlayer();
+
 	// Sets the name of the player character.
 	void SetPlayerName(std::string name);
 

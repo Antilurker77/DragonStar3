@@ -13,7 +13,7 @@
 const sf::Time timePerUpdate = sf::seconds(1.f / 60.f);
 
 // Game Title
-const std::string gameTitle = "Dragon Star v0.3.1";
+const std::string gameTitle = "Dragon Star v0.3.2";
 
 Game::Game() :
 	window(sf::VideoMode(settings.ScreenWidth, settings.ScreenHeight), gameTitle),
@@ -110,6 +110,7 @@ void Game::update(float secondsPerUpdate) {
 
 			// Transition from Character Creation to Dungeon, generate dungeon.
 			if (gameState == GameState::Dungeon) {
+				dungeonScene.ResetPlayer();
 				dungeonScene.GenerateSeeds(Random::RandomSeed());
 				dungeonScene.SetPlayerName(characterCreationScene.GetPlayerName());
 				dungeonScene.SetCamera(&camera);

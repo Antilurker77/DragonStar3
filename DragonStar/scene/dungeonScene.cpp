@@ -52,6 +52,13 @@ DungeonScene::DungeonScene() {
 	statWindow.SetPlayer(static_cast<Player*>(actors[0].get()));
 }
 
+void DungeonScene::ResetPlayer() {
+	actors.clear();
+	actors.push_back(std::make_unique<Player>());
+	actors[0]->SetDungeonScene(this);
+	statWindow.SetPlayer(static_cast<Player*>(actors[0].get()));
+}
+
 void DungeonScene::SetPlayerName(std::string name) {
 	actors[0]->SetName(name);
 }
@@ -240,18 +247,18 @@ void DungeonScene::ReadInput(sf::RenderWindow& window) {
 			break;
 
 		case sf::Event::KeyReleased:
-			if (ev.key.code == sf::Keyboard::R) {
-				// test seeds
-				floorSeeds[currentFloor - 1] = Random::RandomSeed();
-				generateDungeon();
-				camera->SetPosition({ actors[0]->GetSpritePosition().x + 16.f, actors[0]->GetSpritePosition().y + 16.f });
-			}
-			// Quit
-			if (ev.key.code == sf::Keyboard::Escape) {
-				saveGame();
-				window.close();
-				break;
-			}
+			//if (ev.key.code == sf::Keyboard::R) {
+			//	// test seeds
+			//	floorSeeds[currentFloor - 1] = Random::RandomSeed();
+			//	generateDungeon();
+			//	camera->SetPosition({ actors[0]->GetSpritePosition().x + 16.f, actors[0]->GetSpritePosition().y + 16.f });
+			//}
+			//// Quit
+			//if (ev.key.code == sf::Keyboard::Escape) {
+			//	saveGame();
+			//	window.close();
+			//	break;
+			//}
 			// Movement / Bump Attack
 			sf::Vector2i destination = actors[0]->GetLocation();
 			int distance = 0;

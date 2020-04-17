@@ -51,6 +51,12 @@ enum class ItemID {
 	IronSword,
 	RunedSword,
 	SteelSword,
+	PlatinumSword,
+	TitaniumSword,
+	MythrilSword,
+	CrystalSword,
+	AdamantiteSword,
+	DragoniteSword,
 
 	// Artifact Sword
 	Flametongue,

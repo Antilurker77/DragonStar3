@@ -13,7 +13,7 @@
 const sf::Time timePerUpdate = sf::seconds(1.f / 60.f);
 
 // Game Title
-const std::string gameTitle = "Dragon Star v0.3.2";
+const std::string gameTitle = "Dragon Star v0.3.3";
 
 Game::Game() :
 	window(sf::VideoMode(settings.ScreenWidth, settings.ScreenHeight), gameTitle),

@@ -63,11 +63,11 @@ static std::vector<std::pair<Rarity, int>> initRarityWeights() {
 	std::vector<std::pair<Rarity, int>> list;
 
 	list = {
-		{Rarity::Common, 550},
-		{Rarity::Magical, 300},
-		{Rarity::Rare, 100},
-		{Rarity::FixedArtifact, 25},
-		{Rarity::RandomArtifact, 25}
+		{Rarity::Common,         550},
+		{Rarity::Magical,        300},
+		{Rarity::Rare,           100},
+		{Rarity::FixedArtifact,   25},
+		{Rarity::RandomArtifact,  25}
 	};
 
 	return list;
@@ -82,7 +82,13 @@ static std::unordered_map<EquipType, std::vector<ItemWeight>> initBaseTypeWeight
 		{ 1,   5,  150, ItemID::TravelerBlade},
 		{ 1,  10, 1000, ItemID::IronSword},
 		{ 4,  15,  500, ItemID::RunedSword},
-		{ 8,  20, 1000, ItemID::SteelSword}
+		{ 8,  20, 1000, ItemID::SteelSword},
+		{16,  30, 1000, ItemID::PlatinumSword},
+		{24,  40, 1000, ItemID::TitaniumSword},
+		{32,  50, 1000, ItemID::MythrilSword},
+		{40,  60, 1000, ItemID::CrystalSword},
+		{48,  70, 1000, ItemID::AdamantiteSword},
+		{56, 100, 1000, ItemID::DragoniteSword}
 	};
 
 	list[EquipType::Axe] = {

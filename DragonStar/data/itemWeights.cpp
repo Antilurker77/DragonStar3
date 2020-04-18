@@ -138,7 +138,13 @@ static std::unordered_map<EquipType, std::vector<ItemWeight>> initBaseTypeWeight
 
 	list[EquipType::Bow] = {
 		{ 1,  10, 1000, ItemID::Shortbow},
-		{ 8,  20, 1000, ItemID::Longbow}
+		{ 8,  20, 1000, ItemID::Longbow},
+		{16,  30, 1000, ItemID::CompositeBow},
+		{24,  40, 1000, ItemID::ElvenBow},
+		{32,  50, 1000, ItemID::MoonBow},
+		{40,  60, 1000, ItemID::MythicalBow},
+		{48,  70, 1000, ItemID::ZodiacBow},
+		{56, 100, 1000, ItemID::DragonBow}
 	};
 
 	list[EquipType::Wand] = {

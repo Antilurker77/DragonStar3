@@ -117,6 +117,12 @@ enum class ItemID {
 	// Bow
 	Shortbow,
 	Longbow,
+	CompositeBow,
+	ElvenBow,
+	MoonBow,
+	MythicalBow,
+	ZodiacBow,
+	DragonBow,
 
 	// Artifact Bow
 	LongShot,

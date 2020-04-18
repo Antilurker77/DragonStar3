@@ -2996,6 +2996,234 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		return itd;
 	}();
+	list[ItemID::CompositeBow] = [] {
+		ItemData itd;
+
+		itd.Name = "Composite Bow";
+		itd.IconFilePath = "longbow.png";
+		itd.EquipFilePath = "iron_sword.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::CompositeBow;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 140;
+
+		itd.Artifact = false;
+		itd.TwoHanded = true;
+		itd.EquipType = EquipType::Bow;
+		itd.AttackElement = Element::Physical;
+		itd.HitChance = 750;
+		itd.AttackRange = 350;
+		itd.AttackSpeed = 250;
+		itd.WeaponDamageMultiplier = 1250;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::AttackPower, 45)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
+	list[ItemID::ElvenBow] = [] {
+		ItemData itd;
+
+		itd.Name = "Elven Bow";
+		itd.IconFilePath = "longbow.png";
+		itd.EquipFilePath = "iron_sword.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::ElvenBow;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 200;
+
+		itd.Artifact = false;
+		itd.TwoHanded = true;
+		itd.EquipType = EquipType::Bow;
+		itd.AttackElement = Element::Physical;
+		itd.HitChance = 750;
+		itd.AttackRange = 350;
+		itd.AttackSpeed = 250;
+		itd.WeaponDamageMultiplier = 1250;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::AttackPower, 70)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
+	list[ItemID::MoonBow] = [] {
+		ItemData itd;
+
+		itd.Name = "Moon Bow";
+		itd.IconFilePath = "longbow.png";
+		itd.EquipFilePath = "iron_sword.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::MoonBow;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 300;
+
+		itd.Artifact = false;
+		itd.TwoHanded = true;
+		itd.EquipType = EquipType::Bow;
+		itd.AttackElement = Element::Physical;
+		itd.HitChance = 750;
+		itd.AttackRange = 350;
+		itd.AttackSpeed = 250;
+		itd.WeaponDamageMultiplier = 1250;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::AttackPower, 100)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
+	list[ItemID::MythicalBow] = [] {
+		ItemData itd;
+
+		itd.Name = "Mythical Bow";
+		itd.IconFilePath = "longbow.png";
+		itd.EquipFilePath = "iron_sword.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::MythicalBow;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 400;
+
+		itd.Artifact = false;
+		itd.TwoHanded = true;
+		itd.EquipType = EquipType::Bow;
+		itd.AttackElement = Element::Physical;
+		itd.HitChance = 750;
+		itd.AttackRange = 350;
+		itd.AttackSpeed = 250;
+		itd.WeaponDamageMultiplier = 1250;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::AttackPower, 135)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
+	list[ItemID::ZodiacBow] = [] {
+		ItemData itd;
+
+		itd.Name = "Zodiac Bow";
+		itd.IconFilePath = "longbow.png";
+		itd.EquipFilePath = "iron_sword.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::ZodiacBow;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 500;
+
+		itd.Artifact = false;
+		itd.TwoHanded = true;
+		itd.EquipType = EquipType::Bow;
+		itd.AttackElement = Element::Physical;
+		itd.HitChance = 750;
+		itd.AttackRange = 350;
+		itd.AttackSpeed = 250;
+		itd.WeaponDamageMultiplier = 1250;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::AttackPower, 175)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
+	list[ItemID::DragonBow] = [] {
+		ItemData itd;
+
+		itd.Name = "Dragon Bow";
+		itd.IconFilePath = "longbow.png";
+		itd.EquipFilePath = "iron_sword.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::DragonBow;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 625;
+
+		itd.Artifact = false;
+		itd.TwoHanded = true;
+		itd.EquipType = EquipType::Bow;
+		itd.AttackElement = Element::Physical;
+		itd.HitChance = 750;
+		itd.AttackRange = 350;
+		itd.AttackSpeed = 250;
+		itd.WeaponDamageMultiplier = 1250;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::AttackPower, 225)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
 
 	// Artifact Bow
 	list[ItemID::LongShot] = [] {

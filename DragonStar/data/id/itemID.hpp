@@ -65,6 +65,12 @@ enum class ItemID {
 	IronAxe,
 	JaggedAxe,
 	SteelAxe,
+	PlatinumAxe,
+	TitaniumAxe,
+	MythrilAxe,
+	CrystalAxe,
+	AdamantiteAxe,
+	DragoniteAxe,
 
 	// Artifact Axe
 	BloodDrinker,

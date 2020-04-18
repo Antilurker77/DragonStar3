@@ -94,7 +94,13 @@ static std::unordered_map<EquipType, std::vector<ItemWeight>> initBaseTypeWeight
 	list[EquipType::Axe] = {
 		{ 1,  10, 1000, ItemID::IronAxe},
 		{ 4,  15,  500, ItemID::JaggedAxe},
-		{ 8,  20, 1000, ItemID::SteelAxe}
+		{ 8,  20, 1000, ItemID::SteelAxe},
+		{16,  30, 1000, ItemID::PlatinumAxe},
+		{24,  40, 1000, ItemID::TitaniumAxe},
+		{32,  50, 1000, ItemID::MythrilAxe},
+		{40,  60, 1000, ItemID::CrystalAxe},
+		{48,  70, 1000, ItemID::AdamantiteAxe},
+		{56, 100, 1000, ItemID::DragoniteAxe}
 	};
 
 	list[EquipType::Mace] = {

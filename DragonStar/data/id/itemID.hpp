@@ -170,6 +170,12 @@ enum class ItemID {
 	// Light Head
 	SilkHat,
 	ApprenticeHat,
+	RunedHat,
+	SpellthreadHat,
+	SageHat,
+	MysticHat,
+	MasterHat,
+	DraconicHat,
 
 	// Artifact Light Head
 	OraclesMonacle,

@@ -222,6 +222,12 @@ enum class ItemID {
 	// Medium Head
 	LeatherHelmet,
 	HunterHelmet,
+	WildHelmet,
+	DrakescaleHelmet,
+	MoonLeatherHelmet,
+	MythicalLeatherHelmet,
+	ZodiacHelmet,
+	DragonscaleHelmet,
 
 	// Artifact Medium Head
 	SniperHelmet,

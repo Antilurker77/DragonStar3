@@ -227,7 +227,13 @@ static std::unordered_map<EquipType, std::vector<ItemWeight>> initBaseTypeWeight
 
 	list[EquipType::MediumHead] = {
 		{ 1,  15, 1000, ItemID::LeatherHelmet},
-		{12,  28, 1000, ItemID::HunterHelmet}
+		{12,  28, 1000, ItemID::HunterHelmet},
+		{25,  40, 1000, ItemID::WildHelmet},
+		{37,  53, 1000, ItemID::DrakescaleHelmet},
+		{50,  65, 1000, ItemID::MoonLeatherHelmet},
+		{62,  78, 1000, ItemID::MythicalLeatherHelmet},
+		{75,  90, 1000, ItemID::ZodiacHelmet},
+		{87, 100, 1000, ItemID::DragonscaleHelmet}
 	};
 
 	list[EquipType::MediumBody] = {

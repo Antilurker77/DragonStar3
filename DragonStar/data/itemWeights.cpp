@@ -80,195 +80,195 @@ static std::unordered_map<EquipType, std::vector<ItemWeight>> initBaseTypeWeight
 
 	list[EquipType::Sword] = {
 		{ 1,   5,  150, ItemID::TravelerBlade},
-		{ 1,  10, 1000, ItemID::IronSword},
-		{ 4,  15,  500, ItemID::RunedSword},
-		{ 8,  20, 1000, ItemID::SteelSword},
-		{16,  30, 1000, ItemID::PlatinumSword},
-		{24,  40, 1000, ItemID::TitaniumSword},
-		{32,  50, 1000, ItemID::MythrilSword},
-		{40,  60, 1000, ItemID::CrystalSword},
-		{48,  70, 1000, ItemID::AdamantiteSword},
-		{56, 100, 1000, ItemID::DragoniteSword}
+		{ 1,  15, 1000, ItemID::IronSword},
+		{ 6,  21,  500, ItemID::RunedSword},
+		{12,  28, 1000, ItemID::SteelSword},
+		{25,  40, 1000, ItemID::PlatinumSword},
+		{37,  53, 1000, ItemID::TitaniumSword},
+		{50,  65, 1000, ItemID::MythrilSword},
+		{62,  78, 1000, ItemID::CrystalSword},
+		{75,  90, 1000, ItemID::AdamantiteSword},
+		{87, 100, 1000, ItemID::DragoniteSword}
 	};
 
 	list[EquipType::Axe] = {
-		{ 1,  10, 1000, ItemID::IronAxe},
-		{ 4,  15,  500, ItemID::JaggedAxe},
-		{ 8,  20, 1000, ItemID::SteelAxe},
-		{16,  30, 1000, ItemID::PlatinumAxe},
-		{24,  40, 1000, ItemID::TitaniumAxe},
-		{32,  50, 1000, ItemID::MythrilAxe},
-		{40,  60, 1000, ItemID::CrystalAxe},
-		{48,  70, 1000, ItemID::AdamantiteAxe},
-		{56, 100, 1000, ItemID::DragoniteAxe}
+		{ 1,  15, 1000, ItemID::IronAxe},
+		{ 6,  21,  500, ItemID::JaggedAxe},
+		{12,  28, 1000, ItemID::SteelAxe},
+		{25,  40, 1000, ItemID::PlatinumAxe},
+		{37,  53, 1000, ItemID::TitaniumAxe},
+		{50,  65, 1000, ItemID::MythrilAxe},
+		{62,  78, 1000, ItemID::CrystalAxe},
+		{75,  90, 1000, ItemID::AdamantiteAxe},
+		{87, 100, 1000, ItemID::DragoniteAxe}
 	};
 
 	list[EquipType::Mace] = {
-		{ 1,  10, 1000, ItemID::IronMace},
-		{ 8,  20, 1000, ItemID::SteelMace},
-		{16,  30, 1000, ItemID::PlatinumMace},
-		{24,  40, 1000, ItemID::TitaniumMace},
-		{32,  50, 1000, ItemID::MythrilMace},
-		{40,  60, 1000, ItemID::CrystalMace},
-		{48,  70, 1000, ItemID::AdamantiteMace},
-		{56, 100, 1000, ItemID::DragoniteMace}
+		{ 1,  15, 1000, ItemID::IronMace},
+		{12,  28, 1000, ItemID::SteelMace},
+		{25,  40, 1000, ItemID::PlatinumMace},
+		{37,  53, 1000, ItemID::TitaniumMace},
+		{50,  65, 1000, ItemID::MythrilMace},
+		{62,  78, 1000, ItemID::CrystalMace},
+		{75,  90, 1000, ItemID::AdamantiteMace},
+		{87, 100, 1000, ItemID::DragoniteMace}
 	};
 
 	list[EquipType::Dagger] = {
-		{ 1,  10, 1000, ItemID::IronDagger},
-		{ 8,  20, 1000, ItemID::SteelDagger},
-		{16,  30, 1000, ItemID::PlatinumDagger},
-		{24,  40, 1000, ItemID::TitaniumDagger},
-		{32,  50, 1000, ItemID::MythrilDagger},
-		{40,  60, 1000, ItemID::CrystalDagger},
-		{48,  70, 1000, ItemID::AdamantiteDagger},
-		{56, 100, 1000, ItemID::DragoniteDagger}
+		{ 1,  15, 1000, ItemID::IronDagger},
+		{12,  28, 1000, ItemID::SteelDagger},
+		{25,  40, 1000, ItemID::PlatinumDagger},
+		{37,  53, 1000, ItemID::TitaniumDagger},
+		{50,  65, 1000, ItemID::MythrilDagger},
+		{62,  78, 1000, ItemID::CrystalDagger},
+		{75,  90, 1000, ItemID::AdamantiteDagger},
+		{87, 100, 1000, ItemID::DragoniteDagger}
 	};
 
 	list[EquipType::Spear] = {
-		{ 1,  10, 1000, ItemID::IronSpear},
-		{ 8,  20, 1000, ItemID::SteelSpear},
-		{16,  30, 1000, ItemID::PlatinumSpear},
-		{24,  40, 1000, ItemID::TitaniumSpear},
-		{32,  50, 1000, ItemID::MythrilSpear},
-		{40,  60, 1000, ItemID::CrystalSpear},
-		{48,  70, 1000, ItemID::AdamantiteSpear},
-		{56, 100, 1000, ItemID::DragoniteSpear}
+		{ 1,  15, 1000, ItemID::IronSpear},
+		{12,  28, 1000, ItemID::SteelSpear},
+		{25,  40, 1000, ItemID::PlatinumSpear},
+		{37,  53, 1000, ItemID::TitaniumSpear},
+		{50,  65, 1000, ItemID::MythrilSpear},
+		{62,  78, 1000, ItemID::CrystalSpear},
+		{75,  90, 1000, ItemID::AdamantiteSpear},
+		{87, 100, 1000, ItemID::DragoniteSpear}
 	};
 
 	list[EquipType::Bow] = {
-		{ 1,  10, 1000, ItemID::Shortbow},
-		{ 8,  20, 1000, ItemID::Longbow},
-		{16,  30, 1000, ItemID::CompositeBow},
-		{24,  40, 1000, ItemID::ElvenBow},
-		{32,  50, 1000, ItemID::MoonBow},
-		{40,  60, 1000, ItemID::MythicalBow},
-		{48,  70, 1000, ItemID::ZodiacBow},
-		{56, 100, 1000, ItemID::DragonBow}
+		{ 1,  15, 1000, ItemID::Shortbow},
+		{12,  28, 1000, ItemID::Longbow},
+		{25,  40, 1000, ItemID::CompositeBow},
+		{37,  53, 1000, ItemID::ElvenBow},
+		{50,  65, 1000, ItemID::MoonBow},
+		{62,  78, 1000, ItemID::MythicalBow},
+		{75,  90, 1000, ItemID::ZodiacBow},
+		{87, 100, 1000, ItemID::DragonBow}
 	};
 
 	list[EquipType::Wand] = {
-		{ 1,  10, 1000, ItemID::WoodenWand},
-		{ 8,  20, 1000, ItemID::ApprenticeWand},
-		{16,  30, 1000, ItemID::RunedWand},
-		{24,  40, 1000, ItemID::SpelloakWand},
-		{32,  50, 1000, ItemID::SageWand},
-		{40,  60, 1000, ItemID::MysticWand},
-		{48,  70, 1000, ItemID::MasterWand},
-		{56, 100, 1000, ItemID::DraconicWand}
+		{ 1,  15, 1000, ItemID::WoodenWand},
+		{12,  28, 1000, ItemID::ApprenticeWand},
+		{25,  40, 1000, ItemID::RunedWand},
+		{37,  53, 1000, ItemID::SpelloakWand},
+		{50,  65, 1000, ItemID::SageWand},
+		{62,  78, 1000, ItemID::MysticWand},
+		{75,  90, 1000, ItemID::MasterWand},
+		{87, 100, 1000, ItemID::DraconicWand}
 	};
 
 	list[EquipType::Staff] = {
 		{ 1,   5,  150, ItemID::RunedStick},
-		{ 1,  10, 1000, ItemID::WoodenStaff},
-		{ 8,  20, 1000, ItemID::ApprenticeStaff},
-		{16,  30, 1000, ItemID::RunedStaff},
-		{24,  40, 1000, ItemID::SpelloakStaff},
-		{32,  50, 1000, ItemID::SageStaff},
-		{40,  60, 1000, ItemID::MysticStaff},
-		{48,  70, 1000, ItemID::MasterStaff},
-		{56, 100, 1000, ItemID::DraconicStaff}
+		{ 1,  15, 1000, ItemID::WoodenStaff},
+		{12,  28, 1000, ItemID::ApprenticeStaff},
+		{25,  40, 1000, ItemID::RunedStaff},
+		{37,  53, 1000, ItemID::SpelloakStaff},
+		{50,  65, 1000, ItemID::SageStaff},
+		{62,  78, 1000, ItemID::MysticStaff},
+		{75,  90, 1000, ItemID::MasterStaff},
+		{87, 100, 1000, ItemID::DraconicStaff}
 	};
 
 	list[EquipType::Shield] = {
-		{ 1,  10, 1000, ItemID::IronShield},
-		{ 8,  20, 1000, ItemID::SteelShield},
-		{16,  30, 1000, ItemID::PlatinumShield},
-		{24,  40, 1000, ItemID::TitaniumShield},
-		{32,  50, 1000, ItemID::MythrilShield},
-		{40,  60, 1000, ItemID::CrystalShield},
-		{48,  70, 1000, ItemID::AdamantiteShield},
-		{56, 100, 1000, ItemID::DragoniteShield}
+		{ 1,  15, 1000, ItemID::IronShield},
+		{12,  28, 1000, ItemID::SteelShield},
+		{25,  40, 1000, ItemID::PlatinumShield},
+		{37,  53, 1000, ItemID::TitaniumShield},
+		{50,  65, 1000, ItemID::MythrilShield},
+		{62,  78, 1000, ItemID::CrystalShield},
+		{75,  90, 1000, ItemID::AdamantiteShield},
+		{87, 100, 1000, ItemID::DragoniteShield}
 	};
 
 	list[EquipType::LightHead] = {
-		{ 1,  10, 1000, ItemID::SilkHat},
-		{ 8,  20, 1000, ItemID::ApprenticeHat},
-		{16,  30, 1000, ItemID::RunedHat},
-		{24,  40, 1000, ItemID::SpellthreadHat},
-		{32,  50, 1000, ItemID::SageHat},
-		{40,  60, 1000, ItemID::MysticHat},
-		{48,  70, 1000, ItemID::MasterHat},
-		{56, 100, 1000, ItemID::DraconicHat}
+		{ 1,  15, 1000, ItemID::SilkHat},
+		{12,  28, 1000, ItemID::ApprenticeHat},
+		{25,  40, 1000, ItemID::RunedHat},
+		{37,  53, 1000, ItemID::SpellthreadHat},
+		{50,  65, 1000, ItemID::SageHat},
+		{62,  78, 1000, ItemID::MysticHat},
+		{75,  90, 1000, ItemID::MasterHat},
+		{87, 100, 1000, ItemID::DraconicHat}
 	};
 
 	list[EquipType::LightBody] = {
-		{ 1,  10, 1000, ItemID::SilkRobes},
-		{ 8,  20, 1000, ItemID::ApprenticeRobes},
-		{16,  30, 1000, ItemID::RunedRobes},
-		{24,  40, 1000, ItemID::SpellthreadRobes},
-		{32,  50, 1000, ItemID::SageRobes},
-		{40,  60, 1000, ItemID::MysticRobes},
-		{48,  70, 1000, ItemID::MasterRobes},
-		{56, 100, 1000, ItemID::DraconicRobes}
+		{ 1,  15, 1000, ItemID::SilkRobes},
+		{12,  28, 1000, ItemID::ApprenticeRobes},
+		{25,  40, 1000, ItemID::RunedRobes},
+		{37,  53, 1000, ItemID::SpellthreadRobes},
+		{50,  65, 1000, ItemID::SageRobes},
+		{62,  78, 1000, ItemID::MysticRobes},
+		{75,  90, 1000, ItemID::MasterRobes},
+		{87, 100, 1000, ItemID::DraconicRobes}
 	};
 
 	list[EquipType::LightHands] = {
-		{ 1,  10, 1000, ItemID::SilkGloves},
-		{ 8,  20, 1000, ItemID::ApprenticeGloves},
-		{16,  30, 1000, ItemID::RunedGloves},
-		{24,  40, 1000, ItemID::SpellthreadGloves},
-		{32,  50, 1000, ItemID::SageGloves},
-		{40,  60, 1000, ItemID::MysticGloves},
-		{48,  70, 1000, ItemID::MasterGloves},
-		{56, 100, 1000, ItemID::DraconicGloves}
+		{ 1,  15, 1000, ItemID::SilkGloves},
+		{12,  28, 1000, ItemID::ApprenticeGloves},
+		{25,  40, 1000, ItemID::RunedGloves},
+		{37,  53, 1000, ItemID::SpellthreadGloves},
+		{50,  65, 1000, ItemID::SageGloves},
+		{63,  78, 1000, ItemID::MysticGloves},
+		{75,  90, 1000, ItemID::MasterGloves},
+		{87, 100, 1000, ItemID::DraconicGloves}
 	};
 
 	list[EquipType::LightFeet] = {
-		{ 1,  10, 1000, ItemID::SilkBoots},
-		{ 8,  20, 1000, ItemID::ApprenticeBoots}
+		{ 1,  15, 1000, ItemID::SilkBoots},
+		{12,  28, 1000, ItemID::ApprenticeBoots}
 	};
 
 	list[EquipType::MediumHead] = {
-		{ 1,  10, 1000, ItemID::LeatherHelmet},
-		{ 8,  20, 1000, ItemID::HunterHelmet}
+		{ 1,  15, 1000, ItemID::LeatherHelmet},
+		{12,  28, 1000, ItemID::HunterHelmet}
 	};
 
 	list[EquipType::MediumBody] = {
-		{ 1,  10, 1000, ItemID::LeatherArmor},
-		{ 8,  20, 1000, ItemID::HunterArmor},
-		{16,  30, 1000, ItemID::WildArmor},
-		{24,  40, 1000, ItemID::DrakescaleArmor},
-		{32,  50, 1000, ItemID::MoonLeatherArmor},
-		{40,  60, 1000, ItemID::MythicalLeatherArmor},
-		{48,  70, 1000, ItemID::ZodiacArmor},
-		{56, 100, 1000, ItemID::DragonscaleArmor}
+		{ 1,  15, 1000, ItemID::LeatherArmor},
+		{12,  28, 1000, ItemID::HunterArmor},
+		{25,  40, 1000, ItemID::WildArmor},
+		{37,  53, 1000, ItemID::DrakescaleArmor},
+		{50,  65, 1000, ItemID::MoonLeatherArmor},
+		{62,  78, 1000, ItemID::MythicalLeatherArmor},
+		{75,  90, 1000, ItemID::ZodiacArmor},
+		{87, 100, 1000, ItemID::DragonscaleArmor}
 	};
 
 	list[EquipType::MediumHands] = {
-		{ 1,  10, 1000, ItemID::LeatherGloves},
-		{ 8,  20, 1000, ItemID::HunterGloves}
+		{ 1,  15, 1000, ItemID::LeatherGloves},
+		{12,  28, 1000, ItemID::HunterGloves}
 	};
 
 	list[EquipType::MediumFeet] = {
-		{ 1,  10, 1000, ItemID::LeatherBoots},
-		{ 8,  20, 1000, ItemID::HunterBoots}
+		{ 1,  15, 1000, ItemID::LeatherBoots},
+		{12,  28, 1000, ItemID::HunterBoots}
 	};
 
 	list[EquipType::HeavyHead] = {
-		{ 1,  10, 1000, ItemID::IronHelm},
-		{ 8,  20, 1000, ItemID::SteelHelm}
+		{ 1,  15, 1000, ItemID::IronHelm},
+		{12,  28, 1000, ItemID::SteelHelm}
 	};
 
 	list[EquipType::HeavyBody] = {
-		{ 1,  10, 1000, ItemID::IronArmor},
-		{ 8,  20, 1000, ItemID::SteelArmor},
-		{16,  30, 1000, ItemID::PlatinumArmor},
-		{24,  40, 1000, ItemID::TitaniumArmor},
-		{32,  50, 1000, ItemID::MythrilArmor},
-		{40,  60, 1000, ItemID::CrystalArmor},
-		{48,  70, 1000, ItemID::AdamantiteArmor},
-		{56, 100, 1000, ItemID::DragoniteArmor}
+		{ 1,  15, 1000, ItemID::IronArmor},
+		{12,  28, 1000, ItemID::SteelArmor},
+		{25,  40, 1000, ItemID::PlatinumArmor},
+		{37,  53, 1000, ItemID::TitaniumArmor},
+		{50,  65, 1000, ItemID::MythrilArmor},
+		{62,  78, 1000, ItemID::CrystalArmor},
+		{75,  90, 1000, ItemID::AdamantiteArmor},
+		{87, 100, 1000, ItemID::DragoniteArmor}
 	};
 
 	list[EquipType::HeavyHands] = {
-		{ 1,  10, 1000, ItemID::IronGauntlets},
-		{ 8,  20, 1000, ItemID::SteelGauntlets}
+		{ 1,  15, 1000, ItemID::IronGauntlets},
+		{12,  28, 1000, ItemID::SteelGauntlets}
 	};
 
 	list[EquipType::HeavyFeet] = {
-		{ 1,  10, 1000, ItemID::IronGreaves},
-		{ 8,  20, 1000, ItemID::SteelGreaves}
+		{ 1,  15, 1000, ItemID::IronGreaves},
+		{12,  28, 1000, ItemID::SteelGreaves}
 	};
 
 	list[EquipType::Neck] = {

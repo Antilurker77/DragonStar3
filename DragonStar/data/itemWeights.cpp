@@ -155,13 +155,19 @@ static std::unordered_map<EquipType, std::vector<ItemWeight>> initBaseTypeWeight
 		{32,  50, 1000, ItemID::SageWand},
 		{40,  60, 1000, ItemID::MysticWand},
 		{48,  70, 1000, ItemID::MasterWand},
-		{56, 100, 1000, ItemID::DragonicWand}
+		{56, 100, 1000, ItemID::DraconicWand}
 	};
 
 	list[EquipType::Staff] = {
-		{ 1,  5,  150, ItemID::RunedStick},
-		{ 1, 10, 1000, ItemID::WoodenStaff},
-		{ 8, 20, 1000, ItemID::ApprenticeStaff}
+		{ 1,   5,  150, ItemID::RunedStick},
+		{ 1,  10, 1000, ItemID::WoodenStaff},
+		{ 8,  20, 1000, ItemID::ApprenticeStaff},
+		{16,  30, 1000, ItemID::RunedStaff},
+		{24,  40, 1000, ItemID::SpelloakStaff},
+		{32,  50, 1000, ItemID::SageStaff},
+		{40,  60, 1000, ItemID::MysticStaff},
+		{48,  70, 1000, ItemID::MasterStaff},
+		{56, 100, 1000, ItemID::DraconicStaff}
 	};
 
 	list[EquipType::Shield] = {

@@ -135,7 +135,7 @@ enum class ItemID {
 	SageWand,
 	MysticWand,
 	MasterWand,
-	DragonicWand,
+	DraconicWand,
 
 	// Artifact Wand
 	SpiritfireTorch,
@@ -144,6 +144,12 @@ enum class ItemID {
 	RunedStick,
 	WoodenStaff,
 	ApprenticeStaff,
+	RunedStaff,
+	SpelloakStaff,
+	SageStaff,
+	MysticStaff,
+	MasterStaff,
+	DraconicStaff,
 
 	// Artifact Staff
 	StaffOfTheNovice,

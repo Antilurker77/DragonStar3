@@ -209,6 +209,12 @@ enum class ItemID {
 	// Light Feet
 	SilkBoots,
 	ApprenticeBoots,
+	RunedBoots,
+	SpellthreadBoots,
+	SageBoots,
+	MysticBoots,
+	MasterBoots,
+	DraconicBoots,
 
 	// Artifact Light Feet
 	Goldweave,

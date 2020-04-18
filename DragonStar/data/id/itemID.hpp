@@ -130,6 +130,12 @@ enum class ItemID {
 	// Wand
 	WoodenWand,
 	ApprenticeWand,
+	RunedWand,
+	SpelloakWand,
+	SageWand,
+	MysticWand,
+	MasterWand,
+	DragonicWand,
 
 	// Artifact Wand
 	SpiritfireTorch,

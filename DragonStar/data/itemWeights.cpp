@@ -116,7 +116,13 @@ static std::unordered_map<EquipType, std::vector<ItemWeight>> initBaseTypeWeight
 
 	list[EquipType::Dagger] = {
 		{ 1,  10, 1000, ItemID::IronDagger},
-		{ 8,  20, 1000, ItemID::SteelDagger}
+		{ 8,  20, 1000, ItemID::SteelDagger},
+		{16,  30, 1000, ItemID::PlatinumDagger},
+		{24,  40, 1000, ItemID::TitaniumDagger},
+		{32,  50, 1000, ItemID::MythrilDagger},
+		{40,  60, 1000, ItemID::CrystalDagger},
+		{48,  70, 1000, ItemID::AdamantiteDagger},
+		{56, 100, 1000, ItemID::DragoniteDagger}
 	};
 
 	list[EquipType::Spear] = {

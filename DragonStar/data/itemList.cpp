@@ -2293,6 +2293,234 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		return itd;
 	}();
+	list[ItemID::PlatinumDagger] = [] {
+		ItemData itd;
+
+		itd.Name = "Platinum Dagger";
+		itd.IconFilePath = "dagger.png";
+		itd.EquipFilePath = "iron_sword.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::PlatinumDagger;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 140;
+
+		itd.Artifact = false;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::Dagger;
+		itd.AttackElement = Element::Physical;
+		itd.HitChance = 750;
+		itd.AttackRange = 100;
+		itd.AttackSpeed = 150;
+		itd.WeaponDamageMultiplier = 750;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::AttackPower, 45)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
+	list[ItemID::TitaniumDagger] = [] {
+		ItemData itd;
+
+		itd.Name = "Titanium Dagger";
+		itd.IconFilePath = "dagger.png";
+		itd.EquipFilePath = "iron_sword.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::TitaniumDagger;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 200;
+
+		itd.Artifact = false;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::Dagger;
+		itd.AttackElement = Element::Physical;
+		itd.HitChance = 750;
+		itd.AttackRange = 100;
+		itd.AttackSpeed = 150;
+		itd.WeaponDamageMultiplier = 750;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::AttackPower, 70)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
+	list[ItemID::MythrilDagger] = [] {
+		ItemData itd;
+
+		itd.Name = "Myhtril Dagger";
+		itd.IconFilePath = "dagger.png";
+		itd.EquipFilePath = "iron_sword.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::MythrilDagger;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 300;
+
+		itd.Artifact = false;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::Dagger;
+		itd.AttackElement = Element::Physical;
+		itd.HitChance = 750;
+		itd.AttackRange = 100;
+		itd.AttackSpeed = 150;
+		itd.WeaponDamageMultiplier = 750;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::AttackPower, 100)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
+	list[ItemID::CrystalDagger] = [] {
+		ItemData itd;
+
+		itd.Name = "Crystal Dagger";
+		itd.IconFilePath = "dagger.png";
+		itd.EquipFilePath = "iron_sword.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::CrystalDagger;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 400;
+
+		itd.Artifact = false;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::Dagger;
+		itd.AttackElement = Element::Physical;
+		itd.HitChance = 750;
+		itd.AttackRange = 100;
+		itd.AttackSpeed = 150;
+		itd.WeaponDamageMultiplier = 750;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::AttackPower, 135)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
+	list[ItemID::AdamantiteDagger] = [] {
+		ItemData itd;
+
+		itd.Name = "Adamantite Dagger";
+		itd.IconFilePath = "dagger.png";
+		itd.EquipFilePath = "iron_sword.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::AdamantiteDagger;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 500;
+
+		itd.Artifact = false;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::Dagger;
+		itd.AttackElement = Element::Physical;
+		itd.HitChance = 750;
+		itd.AttackRange = 100;
+		itd.AttackSpeed = 150;
+		itd.WeaponDamageMultiplier = 750;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::AttackPower, 175)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
+	list[ItemID::DragoniteDagger] = [] {
+		ItemData itd;
+
+		itd.Name = "Dragonite Dagger";
+		itd.IconFilePath = "dagger.png";
+		itd.EquipFilePath = "iron_sword.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::AdamantiteDagger;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 625;
+
+		itd.Artifact = false;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::Dagger;
+		itd.AttackElement = Element::Physical;
+		itd.HitChance = 750;
+		itd.AttackRange = 100;
+		itd.AttackSpeed = 150;
+		itd.WeaponDamageMultiplier = 750;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::AttackPower, 225)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
 
 	// Artifact Dagger
 	list[ItemID::TaintedBlade] = [] {

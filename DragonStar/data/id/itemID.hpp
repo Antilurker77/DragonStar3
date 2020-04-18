@@ -91,6 +91,12 @@ enum class ItemID {
 	// Dagger
 	IronDagger,
 	SteelDagger,
+	PlatinumDagger,
+	TitaniumDagger,
+	MythrilDagger,
+	CrystalDagger,
+	AdamantiteDagger,
+	DragoniteDagger,
 
 	// Artifact Dagger
 	TaintedBlade,

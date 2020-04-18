@@ -196,6 +196,12 @@ enum class ItemID {
 	// Light Hands
 	SilkGloves,
 	ApprenticeGloves,
+	RunedGloves,
+	SpellthreadGloves,
+	SageGloves,
+	MysticGloves,
+	MasterGloves,
+	DraconicGloves,
 
 	// Artifact Light Hands
 	ArcanistGloves,

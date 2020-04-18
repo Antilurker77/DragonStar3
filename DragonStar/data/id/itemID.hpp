@@ -104,6 +104,12 @@ enum class ItemID {
 	// Spear
 	IronSpear,
 	SteelSpear,
+	PlatinumSpear,
+	TitaniumSpear,
+	MythrilSpear,
+	CrystalSpear,
+	AdamantiteSpear,
+	DragoniteSpear,
 
 	// Artifact Spear
 	WindScar,

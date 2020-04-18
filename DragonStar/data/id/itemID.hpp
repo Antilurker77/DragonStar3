@@ -78,6 +78,12 @@ enum class ItemID {
 	// Mace
 	IronMace,
 	SteelMace,
+	PlatinumMace,
+	TitaniumMace,
+	MythrilMace,
+	CrystalMace,
+	AdamantiteMace,
+	DragoniteMace,
 
 	// Artifact Mace
 	Serenity,

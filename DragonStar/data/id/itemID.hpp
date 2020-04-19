@@ -313,6 +313,12 @@ enum class ItemID {
 	// Heavy Feet
 	IronGreaves,
 	SteelGreaves,
+	PlatinumGreaves,
+	TitaniumGreaves,
+	MythrilGreaves,
+	CrystalGreaves,
+	AdamantiteGreaves,
+	DragoniteGreaves,
 
 	// Artifact Heavy Feet
 	LostMountainGreaves,

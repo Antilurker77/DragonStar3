@@ -7550,6 +7550,204 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		return itd;
 	}();
+	list[ItemID::PlatinumGauntlets] = [] {
+		ItemData itd;
+
+		itd.Name = "Platinum Gauntlets";
+		itd.IconFilePath = "hands.png";
+		itd.EquipFilePath = "silk_gloves.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::PlatinumGauntlets;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 65;
+
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::HeavyHands;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::Armor, 14),
+			StatMod(StatModType::MagicArmor, 3)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
+	list[ItemID::TitaniumGauntlets] = [] {
+		ItemData itd;
+
+		itd.Name = "Titanium Gauntlets";
+		itd.IconFilePath = "hands.png";
+		itd.EquipFilePath = "silk_gloves.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::TitaniumGauntlets;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 100;
+
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::HeavyHands;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::Armor, 21),
+			StatMod(StatModType::MagicArmor, 4)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
+	list[ItemID::MythrilGauntlets] = [] {
+		ItemData itd;
+
+		itd.Name = "Mythril Gauntlets";
+		itd.IconFilePath = "hands.png";
+		itd.EquipFilePath = "silk_gloves.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::MythrilGauntlets;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 130;
+
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::HeavyHands;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::Armor, 29),
+			StatMod(StatModType::MagicArmor, 6)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
+	list[ItemID::CrystalGauntlets] = [] {
+		ItemData itd;
+
+		itd.Name = "Crystal Gauntlets";
+		itd.IconFilePath = "hands.png";
+		itd.EquipFilePath = "silk_gloves.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::CrystalGauntlets;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 180;
+
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::HeavyHands;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::Armor, 38),
+			StatMod(StatModType::MagicArmor, 8)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
+	list[ItemID::AdamantiteGauntlets] = [] {
+		ItemData itd;
+
+		itd.Name = "Adamantite Gauntlets";
+		itd.IconFilePath = "hands.png";
+		itd.EquipFilePath = "silk_gloves.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::AdamantiteGauntlets;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 230;
+
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::HeavyHands;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::Armor, 47),
+			StatMod(StatModType::MagicArmor, 9)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
+	list[ItemID::DragoniteGauntlets] = [] {
+		ItemData itd;
+
+		itd.Name = "Dragonite Gauntlets";
+		itd.IconFilePath = "hands.png";
+		itd.EquipFilePath = "silk_gloves.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::DragoniteGauntlets;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 300;
+
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::HeavyHands;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::Armor, 54),
+			StatMod(StatModType::MagicArmor, 11)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
 
 	// Artifact Heavy Hands
 	list[ItemID::ArenaGauntlets] = [] {

@@ -300,6 +300,12 @@ enum class ItemID {
 	// Heavy Hands
 	IronGauntlets,
 	SteelGauntlets,
+	PlatinumGauntlets,
+	TitaniumGauntlets,
+	MythrilGauntlets,
+	CrystalGauntlets,
+	AdamantiteGauntlets,
+	DragoniteGauntlets,
 
 	// Artifact Heavy Hands
 	ArenaGauntlets,

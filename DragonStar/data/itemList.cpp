@@ -6303,6 +6303,210 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		return itd;
 	}();
+	list[ItemID::WildGloves] = [] {
+		ItemData itd;
+
+		itd.Name = "Wild Gloves";
+		itd.IconFilePath = "hands.png";
+		itd.EquipFilePath = "silk_gloves.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::WildGloves;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 65;
+
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::MediumHands;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::Armor, 6),
+			StatMod(StatModType::MagicArmor, 6),
+			StatMod(StatModType::Evasion, 3)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
+	list[ItemID::DrakescaleGloves] = [] {
+		ItemData itd;
+
+		itd.Name = "Drakescale Gloves";
+		itd.IconFilePath = "hands.png";
+		itd.EquipFilePath = "silk_gloves.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::DrakescaleGloves;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 100;
+
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::MediumHands;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::Armor, 9),
+			StatMod(StatModType::MagicArmor, 9),
+			StatMod(StatModType::Evasion, 4)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
+	list[ItemID::MoonLeatherGloves] = [] {
+		ItemData itd;
+
+		itd.Name = "Moon Leather Gloves";
+		itd.IconFilePath = "hands.png";
+		itd.EquipFilePath = "silk_gloves.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::MoonLeatherGloves;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 130;
+
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::MediumHands;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::Armor, 12),
+			StatMod(StatModType::MagicArmor, 12),
+			StatMod(StatModType::Evasion, 5)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
+	list[ItemID::MythicalLeatherGloves] = [] {
+		ItemData itd;
+
+		itd.Name = "Mythical Leather Gloves";
+		itd.IconFilePath = "hands.png";
+		itd.EquipFilePath = "silk_gloves.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::MythicalLeatherGloves;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 180;
+
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::MediumHands;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::Armor, 16),
+			StatMod(StatModType::MagicArmor, 16),
+			StatMod(StatModType::Evasion, 6)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
+	list[ItemID::ZodiacGloves] = [] {
+		ItemData itd;
+
+		itd.Name = "Zodiac Gloves";
+		itd.IconFilePath = "hands.png";
+		itd.EquipFilePath = "silk_gloves.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::ZodiacGloves;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 230;
+
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::MediumHands;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::Armor, 19),
+			StatMod(StatModType::MagicArmor, 19),
+			StatMod(StatModType::Evasion, 7)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
+	list[ItemID::DragonscaleGloves] = [] {
+		ItemData itd;
+
+		itd.Name = "Dragonscale Gloves";
+		itd.IconFilePath = "hands.png";
+		itd.EquipFilePath = "silk_gloves.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::DragonscaleGloves;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 300;
+
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::MediumHands;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::Armor, 23),
+			StatMod(StatModType::MagicArmor, 23),
+			StatMod(StatModType::Evasion, 8)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
 
 	// Artifact Medium Hands
 	list[ItemID::FrostfireGloves] = [] {

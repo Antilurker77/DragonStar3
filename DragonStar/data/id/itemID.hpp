@@ -248,6 +248,12 @@ enum class ItemID {
 	// Medium Hands
 	LeatherGloves,
 	HunterGloves,
+	WildGloves,
+	DrakescaleGloves,
+	MoonLeatherGloves,
+	MythicalLeatherGloves,
+	ZodiacGloves,
+	DragonscaleGloves,
 
 	// Artifact Medium Hands
 	FrostfireGloves,

@@ -6610,7 +6610,211 @@ static std::unordered_map<ItemID, ItemData> initList() {
 		itd.ImplicitStatMods = {
 			StatMod(StatModType::Armor, 5),
 			StatMod(StatModType::MagicArmor, 4),
-			StatMod(StatModType::Evasion, 11)
+			StatMod(StatModType::Evasion, 10)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
+	list[ItemID::WildBoots] = [] {
+		ItemData itd;
+
+		itd.Name = "Wild Boots";
+		itd.IconFilePath = "feet.png";
+		itd.EquipFilePath = "silk_boots.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::WildBoots;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 65;
+
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::MediumFeet;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::Armor, 9),
+			StatMod(StatModType::MagicArmor, 6),
+			StatMod(StatModType::Evasion, 14)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
+	list[ItemID::DrakescaleBoots] = [] {
+		ItemData itd;
+
+		itd.Name = "Drakescale Boots";
+		itd.IconFilePath = "feet.png";
+		itd.EquipFilePath = "silk_boots.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::DrakescaleBoots;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 100;
+
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::MediumFeet;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::Armor, 13),
+			StatMod(StatModType::MagicArmor, 9),
+			StatMod(StatModType::Evasion, 18)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
+	list[ItemID::MoonLeatherBoots] = [] {
+		ItemData itd;
+
+		itd.Name = "Moon Leather Boots";
+		itd.IconFilePath = "feet.png";
+		itd.EquipFilePath = "silk_boots.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::MoonLeatherBoots;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 130;
+
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::MediumFeet;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::Armor, 18),
+			StatMod(StatModType::MagicArmor, 12),
+			StatMod(StatModType::Evasion, 22)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
+	list[ItemID::MythicalLeatherBoots] = [] {
+		ItemData itd;
+
+		itd.Name = "Mythical Boots";
+		itd.IconFilePath = "feet.png";
+		itd.EquipFilePath = "silk_boots.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::MythicalBoots;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 180;
+
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::MediumFeet;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::Armor, 24),
+			StatMod(StatModType::MagicArmor, 16),
+			StatMod(StatModType::Evasion, 26)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
+	list[ItemID::ZodiacBoots] = [] {
+		ItemData itd;
+
+		itd.Name = "Zodiac Boots";
+		itd.IconFilePath = "feet.png";
+		itd.EquipFilePath = "silk_boots.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::ZodiacBoots;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 230;
+
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::MediumFeet;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::Armor, 28),
+			StatMod(StatModType::MagicArmor, 19),
+			StatMod(StatModType::Evasion, 30)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
+	list[ItemID::DragonscaleBoots] = [] {
+		ItemData itd;
+
+		itd.Name = "Dragonscale Boots";
+		itd.IconFilePath = "feet.png";
+		itd.EquipFilePath = "silk_boots.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::DragonscaleBoots;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 300;
+
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::MediumFeet;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::Armor, 33),
+			StatMod(StatModType::MagicArmor, 23),
+			StatMod(StatModType::Evasion, 34)
 		};
 		itd.ExplicitStatMods = {};
 

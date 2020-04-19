@@ -261,6 +261,12 @@ enum class ItemID {
 	// Medium Feet
 	LeatherBoots,
 	HunterBoots,
+	WildBoots,
+	DrakescaleBoots,
+	MoonLeatherBoots,
+	MythicalLeatherBoots,
+	ZodiacBoots,
+	DragonscaleBoots,
 
 	// Artifact Medium Feet
 	Windriders,

@@ -274,6 +274,12 @@ enum class ItemID {
 	// Heavy Head
 	IronHelm,
 	SteelHelm,
+	PlatinumHelm,
+	TitaniumHelm,
+	MythrilHelm,
+	CrystalHelm,
+	AdamantiteHelm,
+	DragoniteHelm,
 
 	// Artifact Heavy Head
 	HeraldOfVictory,

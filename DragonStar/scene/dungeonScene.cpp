@@ -1236,9 +1236,13 @@ void DungeonScene::saveGame() {
 		if (!actor->IsPlayer()) {
 			Monster* monster = static_cast<Monster*>(actor.get());
 			actorSave.MonsterID = static_cast<int>(monster->GetMonsterID());
+			actorSave.AIState = static_cast<int>(monster->GetAIState());
+			actorSave.AIChaseTurns = monster->GetAIChaseTurns();
 		}
 		else {
 			actorSave.MonsterID = 0;
+			actorSave.AIState = 0;
+			actorSave.AIChaseTurns = 0;
 		}
 
 		saveFile.Actors.push_back(actorSave);

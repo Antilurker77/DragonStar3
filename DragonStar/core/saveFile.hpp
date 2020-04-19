@@ -54,6 +54,8 @@ struct LootSave {
 
 struct ActorSave {
 	int MonsterID; // undefined for player
+	int AIState; // undefined for player
+	int AIChaseTurns; // undefined for player
 	int CurrentHP;
 	int CurrentMP;
 	int CurrentSP;
@@ -80,6 +82,8 @@ struct ActorSave {
 	void serialize(Archive& archive) {
 		archive(
 			MonsterID,
+			AIState,
+			AIChaseTurns,
 			CurrentHP,
 			CurrentMP,
 			CurrentSP,

@@ -56,6 +56,12 @@ public:
 	// Returns the monster ID for this monster.
 	MonsterID GetMonsterID();
 
+	// Returns the AI state for this monster.
+	AIState GetAIState();
+
+	// Returns how many turns remaining this monster will chase the player.
+	int GetAIChaseTurns();
+
 	// Returns true if the monster is unique.
 	bool IsUnique();
 

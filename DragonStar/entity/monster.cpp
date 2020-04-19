@@ -43,6 +43,9 @@ Monster::Monster(ActorSave& actorSave, size_t index) {
 
 	flags = actorSave.Flags;
 
+	aiState = static_cast<AIState>(actorSave.AIState);
+	chaseTurnsRemaining = actorSave.AIChaseTurns;
+
 	for (size_t i = 0; i < abilities.size(); i++) {
 		abilities[i].SetCooldownAndCharges(actorSave.AbilityCooldowns[i], actorSave.AbilityCharges[i]);
 	}
@@ -364,6 +367,14 @@ CommandPtr Monster::CalcAI() {
 
 MonsterID Monster::GetMonsterID() {
 	return monsterID;
+}
+
+AIState Monster::GetAIState() {
+	return aiState;
+}
+
+int Monster::GetAIChaseTurns() {
+	return chaseTurnsRemaining;
 }
 
 bool Monster::IsUnique() {

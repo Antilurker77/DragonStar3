@@ -52,7 +52,7 @@ void TextBox::Update(float secondsPerUpdate) {
 	if (leftClick) {
 		if (box.getGlobalBounds().contains(mouseF)) {
 			isActive = true;
-			box.setFillColor(sf::Color(16, 16, 16, 255));
+			box.setFillColor(sf::Color(64, 64, 64, 255));
 		}
 		else {
 			isActive = false;

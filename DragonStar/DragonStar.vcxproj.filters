@@ -404,5 +404,8 @@
     <ClInclude Include="ui\textBox.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ui\dropdown.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

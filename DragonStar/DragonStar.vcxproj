@@ -254,6 +254,7 @@
     <ClInclude Include="ui\actorHUD.hpp" />
     <ClInclude Include="ui\button.hpp" />
     <ClInclude Include="ui\cursorContainer.hpp" />
+    <ClInclude Include="ui\dropdown.hpp" />
     <ClInclude Include="ui\fctManager.hpp" />
     <ClInclude Include="ui\fpsWindow.hpp" />
     <ClInclude Include="ui\inspectWindow.hpp" />

@@ -73,14 +73,14 @@ void CharacterCreationScene::Draw(sf::RenderTarget& window, float timeRatio) {
 void CharacterCreationScene::InitializePositions() {
 	sf::Vector2f pos;
 	pos.x = std::roundf(static_cast<float>(settings.ScreenWidth) / 2.f - headerText.getLocalBounds().width / 2.f);
-	pos.y = std::roundf(static_cast<float>(settings.ScreenHeight) / 8.f);
+	pos.y = std::roundf(static_cast<float>(settings.ScreenHeight) / 12.f);
 	headerText.setPosition(pos);
 
 	pos.x = std::roundf(static_cast<float>(settings.ScreenWidth) / 2.f - nameText.getLocalBounds().width / 2.f);
-	pos.y = std::roundf(static_cast<float>(settings.ScreenHeight) * 4.f / 9.f);
+	pos.y = std::roundf(static_cast<float>(settings.ScreenHeight) * 5.f / 18.f);
 	nameText.setPosition(pos);
 
-	nameTextBox.SetPosition(settings.ScreenWidth / 2, settings.ScreenHeight * 5 / 9);
+	nameTextBox.SetPosition(settings.ScreenWidth / 2, settings.ScreenHeight * 6 / 18);
 
 	startGameButton.SetPosition(settings.ScreenWidth / 2, settings.ScreenHeight * 7 / 8);
 }

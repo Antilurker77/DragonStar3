@@ -32,7 +32,6 @@ CharacterCreationScene::CharacterCreationScene() {
 	raceDropdown.AddOption("Vulpine", RaceID::Vulpine);
 	raceDropdown.AddOption("Anubian", RaceID::Anubian);
 	raceDropdown.AddOption("Runetouched", RaceID::Runetouched);
-	raceDropdown.AddOption("Runetouched", RaceID::Runetouched);
 
 	startGameButton.SetString("Start Game");
 }

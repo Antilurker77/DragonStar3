@@ -335,7 +335,7 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		md.BaseArmor = 5;
 		md.BaseMagicArmor = 0;
-		md.BaseEvasion = 15;
+		md.BaseEvasion = 12;
 
 		md.BaseAttackPower = 6;
 		md.BaseSpellPower = 0;
@@ -397,7 +397,7 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		md.BaseArmor = 1;
 		md.BaseMagicArmor = 0;
-		md.BaseEvasion = 15;
+		md.BaseEvasion = 12;
 
 		md.BaseAttackPower = 6;
 		md.BaseSpellPower = 0;

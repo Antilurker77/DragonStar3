@@ -138,3 +138,7 @@ void CharacterCreationScene::InitializePositions() {
 std::string CharacterCreationScene::GetPlayerName() {
 	return nameTextBox.GetString();
 }
+
+RaceID CharacterCreationScene::GetPlayerRace() {
+	return raceDropdown.GetSelectedValue();
+}

@@ -35,6 +35,9 @@ public:
 	// Returns the name of the player.
 	std::string GetPlayerName();
 
+	// Returns the race selected in the dropdown menu.
+	RaceID GetPlayerRace();
+
 private:
 	sf::Vector2i mousePos;
 	bool leftClick = false;

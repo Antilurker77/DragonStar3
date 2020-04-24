@@ -407,5 +407,8 @@
     <ClInclude Include="ui\dropdown.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="data\id\starterID.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

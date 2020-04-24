@@ -10,6 +10,7 @@
 
 enum class GameState;
 enum class RaceID;
+enum class StarterID;
 
 #include <SFML/Graphics.hpp>
 #include "../ui/button.hpp"
@@ -38,6 +39,9 @@ public:
 	// Returns the race selected in the dropdown menu.
 	RaceID GetPlayerRace();
 
+	// Returns the starting gear selected in the dropdown menu.
+	StarterID GetPlayerStarter();
+
 private:
 	sf::Vector2i mousePos;
 	bool leftClick = false;
@@ -51,9 +55,11 @@ private:
 	TextBox nameTextBox;
 
 	Dropdown<RaceID> raceDropdown;
+	Dropdown<StarterID> starterDropdown;
 
 	bool isDropdownOpen = false;
 	bool isRaceDropdownOpen = false;
+	bool isStarterDropdownOpen = false;
 
 	Button startGameButton;
 };

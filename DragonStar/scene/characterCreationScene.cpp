@@ -10,6 +10,7 @@
 #include "../core/gameState.hpp"
 #include "../core/settings.hpp"
 #include "../data/id/raceID.hpp"
+#include "../data/id/starterID.hpp"
 
 CharacterCreationScene::CharacterCreationScene() {
 	headerText.setString("Character Creation");
@@ -32,6 +33,12 @@ CharacterCreationScene::CharacterCreationScene() {
 	raceDropdown.AddOption("Vulpine", RaceID::Vulpine);
 	raceDropdown.AddOption("Anubian", RaceID::Anubian);
 	raceDropdown.AddOption("Runetouched", RaceID::Runetouched);
+
+	starterDropdown.AddOption("Warrior", StarterID::Warrior);
+	starterDropdown.AddOption("Archer", StarterID::Archer);
+	starterDropdown.AddOption("Sorcerer", StarterID::Sorcerer);
+	starterDropdown.AddOption("Priest", StarterID::Priest);
+	starterDropdown.AddOption("Merchant", StarterID::Merchant);
 
 	startGameButton.SetString("Start Game");
 }
@@ -105,6 +112,11 @@ GameState CharacterCreationScene::Update(float secondsPerUpdate) {
 		isDropdownOpen = isRaceDropdownOpen;
 	}
 
+	if (!isDropdownOpen || isStarterDropdownOpen) {
+		isStarterDropdownOpen = starterDropdown.Update(secondsPerUpdate, mousePos, leftClick, scrollUp, scrollDown, dragUpdate);
+		isDropdownOpen = isStarterDropdownOpen;
+	}
+
 	return gs;
 }
 
@@ -114,6 +126,7 @@ void CharacterCreationScene::Draw(sf::RenderTarget& window, float timeRatio) {
 	nameTextBox.Draw(window, timeRatio);
 
 	raceDropdown.Draw(window);
+	starterDropdown.Draw(window);
 
 	startGameButton.Render(window);
 }
@@ -132,6 +145,8 @@ void CharacterCreationScene::InitializePositions() {
 
 	raceDropdown.SetPosition(settings.ScreenWidth / 3, settings.ScreenHeight * 7 / 18);
 
+	starterDropdown.SetPosition(settings.ScreenWidth * 2 / 3, settings.ScreenHeight * 7 / 18);
+
 	startGameButton.SetPosition(settings.ScreenWidth / 2, settings.ScreenHeight * 7 / 8);
 }
 
@@ -141,4 +156,8 @@ std::string CharacterCreationScene::GetPlayerName() {
 
 RaceID CharacterCreationScene::GetPlayerRace() {
 	return raceDropdown.GetSelectedValue();
+}
+
+StarterID CharacterCreationScene::GetPlayerStarter() {
+	return starterDropdown.GetSelectedValue();
 }

@@ -224,6 +224,7 @@
     <ClInclude Include="data\id\monsterID.hpp" />
     <ClInclude Include="data\id\raceID.hpp" />
     <ClInclude Include="data\id\rarity.hpp" />
+    <ClInclude Include="data\id\starterID.hpp" />
     <ClInclude Include="data\id\statModType.hpp" />
     <ClInclude Include="data\item.hpp" />
     <ClInclude Include="data\itemData.hpp" />

@@ -57,6 +57,7 @@ public:
 	void AwardEXP(int amount);
 
 	// Spends 1 ability point to learn an ability, or upgrade to the next rank if already known.
+	// Also sorts ability list.
 	void LearnAbility(AbilityID id);
 
 	// Spends 1 stat point to increase a main attribute by 1.

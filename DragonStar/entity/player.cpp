@@ -305,7 +305,7 @@ void Player::AwardEXP(int amount) {
 }
 
 void Player::LearnAbility(AbilityID id) {
-	if (abilityPoints > 0) {
+	if (abilityPoints > 0) {		
 		for (auto& a : abilities) {
 			if (a.GetAbilityID() == id && a.GetCurrentRank() < a.GetMaxRank()) {
 				a.IncreaseRank();
@@ -317,6 +317,7 @@ void Player::LearnAbility(AbilityID id) {
 		Ability newAbility(id, 0);
 		abilities.push_back(newAbility);
 		abilityPoints--;
+		std::sort(abilities.begin(), abilities.end(), [](Ability& left, Ability& right) { return left.GetAbilityID() < right.GetAbilityID(); });
 	}
 }
 

@@ -115,6 +115,7 @@ enum class ItemID {
 	WindScar,
 
 	// Bow
+	TrainingBow,
 	Shortbow,
 	Longbow,
 	CompositeBow,

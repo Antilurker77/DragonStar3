@@ -2920,6 +2920,44 @@ static std::unordered_map<ItemID, ItemData> initList() {
 	}();
 
 	// Bow
+	list[ItemID::TrainingBow] = [] {
+		ItemData itd;
+
+		itd.Name = "Training Bow";
+		itd.IconFilePath = "longbow.png";
+		itd.EquipFilePath = "iron_sword.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::TrainingBow;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 30;
+
+		itd.Artifact = false;
+		itd.TwoHanded = true;
+		itd.EquipType = EquipType::Bow;
+		itd.AttackElement = Element::Physical;
+		itd.HitChance = 750;
+		itd.AttackRange = 350;
+		itd.AttackSpeed = 250;
+		itd.WeaponDamageMultiplier = 1250;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::AttackPower, 5)
+		};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
 	list[ItemID::Shortbow] = [] {
 		ItemData itd;
 

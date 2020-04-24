@@ -42,6 +42,7 @@ static std::unordered_map<StarterID, std::pair<int, std::vector<ItemID>>> initSt
 			ItemID::TomeMagicForBeginners,
 			ItemID::Rations,
 			ItemID::Rations,
+			ItemID::Rations,
 			ItemID::RunedStick,
 			ItemID::SilkRobes
 		}
@@ -51,6 +52,7 @@ static std::unordered_map<StarterID, std::pair<int, std::vector<ItemID>>> initSt
 		100,
 		{
 			ItemID::TomeIntroductionToSpirituality,
+			ItemID::Rations,
 			ItemID::Rations,
 			ItemID::Rations,
 			ItemID::RunedStick,

@@ -12,6 +12,8 @@ class Actor;
 class Camera;
 
 enum class MonsterID;
+enum class RaceID;
+enum class StarterID;
 
 #include <memory>
 #include <random>
@@ -58,8 +60,8 @@ class DungeonScene {
 public:
 	DungeonScene();
 
-	// Resets the player.
-	void ResetPlayer();
+	// Sets up the player and their starting inventory.
+	void SetUp(std::string name, RaceID race, StarterID startingGear);
 
 	// Sets the name of the player character.
 	void SetPlayerName(std::string name);

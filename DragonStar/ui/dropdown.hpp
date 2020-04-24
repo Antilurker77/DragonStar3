@@ -257,6 +257,9 @@ void Dropdown<T>::SetLength(unsigned int l) {
 
 template <typename T>
 void Dropdown<T>::SetPosition(int x, int y) {
+	x = x - static_cast<int>(selectedBG.getSize().x / 2.f + arrowBG.getSize().x / 2.f);
+	y = y - static_cast<int>(selectedBG.getSize().y / 2.f + arrowBG.getSize().y / 2.f);	
+	
 	selectedBG.setPosition(static_cast<float>(x), static_cast<float>(y));
 	arrowBG.setPosition(static_cast<float>(x + length + 1), static_cast<float>(y));
 	selectedText.setPosition(static_cast<float>(x + 3), static_cast<float>(y + 3));

@@ -110,7 +110,7 @@ void Game::update(float secondsPerUpdate) {
 
 			// Transition from Character Creation to Dungeon, generate dungeon.
 			if (gameState == GameState::Dungeon) {
-				dungeonScene.ResetPlayer();
+				dungeonScene.SetUp(characterCreationScene.GetPlayerName(), characterCreationScene.GetPlayerRace(), characterCreationScene.GetPlayerStarter());
 				dungeonScene.GenerateSeeds(Random::RandomSeed());
 				dungeonScene.SetPlayerName(characterCreationScene.GetPlayerName());
 				dungeonScene.SetCamera(&camera);

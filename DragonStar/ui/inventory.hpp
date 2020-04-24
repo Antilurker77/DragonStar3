@@ -10,9 +10,11 @@
 #pragma once
 
 class Player;
+enum class StarterID;
 
 #include <array>
 #include <string>
+#include <unordered_map>
 #include <vector>
 #include <SFML\Graphics.hpp>
 #include "tooltip.hpp"
@@ -27,6 +29,9 @@ struct InventorySlot {
 class Inventory {
 public:
 	Inventory();
+
+	// Sets the starting gear.
+	void InitStartingGear(StarterID startingGear, DungeonScene& dungeonScene);
 
 	// Loads saved data into inventory.
 	void Load(int playerGold, std::array<ItemSave, 40>& items);
@@ -112,6 +117,8 @@ private:
 	static const float slotSize;
 	static const float margin;
 	static const unsigned int fontSize;
+
+	static std::unordered_map<StarterID, std::pair<int, std::vector<ItemID>>> starterList;
 
 	// Input.
 	sf::Vector2i mousePos;

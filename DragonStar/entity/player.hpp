@@ -24,6 +24,7 @@ struct InventorySlot;
 class Player : public Actor {
 public:
 	Player();
+	Player(std::string name, RaceID race);
 	Player(ActorSave& actorSave, PlayerSave& playerSave);
 
 	// Initializes the race for the player.
@@ -48,6 +49,9 @@ public:
 	// If inventory is full, nothing will happen.
 	// Returns true if the item was unequipped, false if it wasn't.
 	bool Unequip(Inventory& inventory, size_t index);
+
+	// Deletes all equipment equipped to the player.
+	void DeleteEquipment();
 
 	// Awards exp to the player. Will level up if the player has accumulated enough EXP.
 	void AwardEXP(int amount);
@@ -112,6 +116,7 @@ private:
 	int exp = 0;
 	int statPoints = 0;
 	int abilityPoints = 0;
+	static const int startingAbilityPoints = 2;
 
 	// Strength, Dexterity, Magic, Vitality, Spirit
 	std::array<int, 5> bonusPoints = { 0, 0, 0, 0, 0 };

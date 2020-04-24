@@ -192,6 +192,9 @@
     <ClCompile Include="ui\textBox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="data\startingGear.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core\game.hpp">

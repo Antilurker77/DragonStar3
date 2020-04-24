@@ -1,6 +1,6 @@
 // ================================================================
 //
-// itemWeights.hpp
+// itemWeights.cpp
 // 
 // Contains weights for generating items.
 //

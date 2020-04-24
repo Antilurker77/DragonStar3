@@ -52,10 +52,11 @@ DungeonScene::DungeonScene() {
 	statWindow.SetPlayer(static_cast<Player*>(actors[0].get()));
 }
 
-void DungeonScene::ResetPlayer() {
+void DungeonScene::SetUp(std::string name, RaceID race, StarterID startingGear) {
 	actors.clear();
-	actors.push_back(std::make_unique<Player>());
+	actors.push_back(std::make_unique<Player>(name, race));
 	actors[0]->SetDungeonScene(this);
+	inventory.InitStartingGear(startingGear, *this);
 	statWindow.SetPlayer(static_cast<Player*>(actors[0].get()));
 }
 

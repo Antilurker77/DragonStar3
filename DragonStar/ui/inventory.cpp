@@ -81,51 +81,33 @@ Inventory::Inventory() {
 	// identify sprite
 	identifySprite.setTexture(*assetManager.LoadTexture("gfx/" + settings.Tileset + "/ui/identify.png"));
 
-	// test
-	//Item book;
-	//book.Initialize(static_cast<ItemID>(3));
-	//AddItem(book);
-
-	//Item bow;
-	//bow.Initialize(static_cast<ItemID>(12));
-	//AddItem(bow);
-	//Item shield;
-	//shield.Initialize(static_cast<ItemID>(16));
-	//AddItem(shield);
-
-	Item rations;
-	rations.Initialize(ItemID::Rations);
-	AddItem(rations);
-	AddItem(rations);
-
-	Item book;
-	book.Initialize(ItemID::TomeCombatBasics);
-	AddItem(book);
-
-	book.Initialize(ItemID::TomeMagicForBeginners);
-	AddItem(book);
-
-	//book.Initialize(ItemID::TomeTesting);
-	//AddItem(book);
-
-	Item stick;
-	stick.Initialize(ItemID::RunedStick);
-	AddItem(stick);
-
-	//Item scroll;
-	//scroll.Initialize(ItemID::ScrollLightningStorm);
-	//AddItem(scroll);
-	//AddItem(scroll);
-	//AddItem(scroll);
-	//AddItem(scroll);
-	//AddItem(scroll);
-
-	//scroll.Initialize(ItemID::ScrollTeleport);
-	//AddItem(scroll);
-
-	ChangeGold(100);
-
 	Initialize();
+}
+
+void Inventory::InitStartingGear(StarterID startingGear, DungeonScene& dungeonScene) {
+	Player* player = static_cast<Player*>(dungeonScene.GetPlayer());
+	gold = starterList[startingGear].first;
+
+	// clear inventory
+	std::fill(std::begin(inventorySlots), std::end(inventorySlots), InventorySlot());
+
+	// clear player equipment
+	player->DeleteEquipment();
+
+	for (auto& id : starterList[startingGear].second) {
+		Item item;
+		item.Initialize(id);
+
+		if (item.GetItemType() == ItemType::Equipment) {
+			InventorySlot is;
+			is.Item = item;
+			is.StackCount = 1;
+			player->Equip(is);
+		}
+		else {
+			AddItem(item);
+		}
+	}
 }
 
 void Inventory::Load(int playerGold, std::array<ItemSave, 40>& items) {

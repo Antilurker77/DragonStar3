@@ -28,32 +28,27 @@ Player::Player() {
 
 	equipment[0].Initialize(ItemID::TravelerBlade);
 	equipment[3].Initialize(ItemID::IronArmor);
-	//equipment[0].Initialize(ItemID::Flametongue);
-	//equipment[1].Initialize(ItemID::LastDefender);
-	//equipment[4].Initialize(ItemID::ArenaGauntlets);
-	//equipment[5].Initialize(ItemID::Windriders);
-	//equipment[8].Initialize(ItemID::DebugRing);
 	setEquipmentSprites();
-
-	// test
-	//abilities.push_back(Ability(AbilityID::MagicMissile, 0));
-	//abilities.push_back(Ability(AbilityID::BoltOfLight, 0));
-	//abilities.push_back(Ability(AbilityID::FlameBolt, 0));
-	//abilities.push_back(Ability(AbilityID::DragonfireBolt, 4));
-	//abilities.push_back(Ability(AbilityID::WaterBolt, 0));
-	//abilities.push_back(Ability(AbilityID::Shock, 0));
-	//abilities.push_back(Ability(AbilityID::PowerStrike, 4));
-	//abilities.push_back(Ability(AbilityID::Heal, 3));
-	//abilities.push_back(Ability(AbilityID::Venom, 0));
-	//abilities.push_back(Ability(AbilityID::DragonBreath, 0));
-
-	//abilities.push_back(Ability(AbilityID::Constitution, 4));
-	//abilities.push_back(Ability(AbilityID::Focus, 4));
 
 	currentHP = GetMaxHP();
 	currentMP = GetMaxMP();
 	currentSP = GetMaxSP();
-	abilityPoints = 2;
+	abilityPoints = startingAbilityPoints;
+}
+
+Player::Player(std::string name, RaceID race) {
+	this->name = name;
+	isPlayer = true;
+	level = 1;
+	isFemale = true;
+	index = 0;
+
+	Initialize(race);
+
+	currentHP = GetMaxHP();
+	currentMP = GetMaxMP();
+	currentSP = GetMaxSP();
+	abilityPoints = startingAbilityPoints;
 }
 
 Player::Player(ActorSave& actorSave, PlayerSave& playerSave) {
@@ -277,6 +272,16 @@ bool Player::Unequip(Inventory& inventory, size_t index) {
 		return true;
 	}
 	return false;
+}
+
+void Player::DeleteEquipment() {
+	for (size_t i = 0; i < equipment.size(); i++) {
+		equipment[i] = Item();
+	}
+	setEquipmentSprites();
+	currentHP = std::min(currentHP, GetMaxHP());
+	currentMP = std::min(currentMP, GetMaxMP());
+	currentSP = std::min(currentSP, GetMaxSP());
 }
 
 void Player::AwardEXP(int amount) {

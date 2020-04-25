@@ -590,6 +590,20 @@ std::array<Shortcut, 24> PlayerHUD::GetShortcuts() {
 	return shortcuts;
 }
 
+void PlayerHUD::ResetShortcuts() {
+	shortcuts[0].AbilityID = static_cast<AbilityID>(1); // set first shortcut to attack
+	Ability ab(static_cast<AbilityID>(1), 0);
+	displayShortcutIcons[0] = true;
+	shortcutIcons[0].setTexture(*assetManager.LoadTexture(ab.GetIcon()));
+
+	for (size_t i = 1; i < shortcuts.size(); i++) {
+		shortcuts[i].AbilityID = static_cast<AbilityID>(0);
+		displayShortcutIcons[i] = false;
+		displayCooldownText[i] = false;
+		displayChargeText[i] = false;
+	}
+}
+
 void PlayerHUD::GetDraggableAbility(sf::Vector2i location, AbilityID& id) {
 	sf::Vector2f pos(static_cast<sf::Vector2f>(location));
 	for (size_t i = 0; i < shortcutSlots.size(); i++) {

@@ -57,6 +57,8 @@ void DungeonScene::SetUp(std::string name, RaceID race, StarterID startingGear) 
 	actors.push_back(std::make_unique<Player>(name, race));
 	actors[0]->SetDungeonScene(this);
 	inventory.InitStartingGear(startingGear, *this);
+	currentFloor = 1;
+	playerHUD.ResetShortcuts();
 	statWindow.SetPlayer(static_cast<Player*>(actors[0].get()));
 }
 

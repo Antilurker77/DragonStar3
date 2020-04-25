@@ -52,6 +52,9 @@ public:
 	// Returns all shortcuts.
 	std::array<Shortcut, 24> GetShortcuts();
 
+	// Resets shortcuts to their default.
+	void ResetShortcuts();
+
 	// Checks to see if there is a ability at this locaiton.
 	void GetDraggableAbility(sf::Vector2i location, AbilityID& id);
 

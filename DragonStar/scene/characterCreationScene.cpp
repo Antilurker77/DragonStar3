@@ -11,6 +11,7 @@
 #include "../core/settings.hpp"
 #include "../data/id/raceID.hpp"
 #include "../data/id/starterID.hpp"
+#include "../entity/player.hpp"
 
 CharacterCreationScene::CharacterCreationScene() {
 	headerText.setString("Character Creation");
@@ -39,6 +40,9 @@ CharacterCreationScene::CharacterCreationScene() {
 	starterDropdown.AddOption("Sorcerer", StarterID::Sorcerer);
 	starterDropdown.AddOption("Priest", StarterID::Priest);
 	starterDropdown.AddOption("Merchant", StarterID::Merchant);
+
+	raceStatText.setCharacterSize(14u);
+	raceStatText.setFont(*assetManager.LoadFont(settings.Font));
 
 	startGameButton.SetString("Start Game");
 }
@@ -117,6 +121,8 @@ GameState CharacterCreationScene::Update(float secondsPerUpdate) {
 		isDropdownOpen = isStarterDropdownOpen;
 	}
 
+	setRaceStatText();
+
 	return gs;
 }
 
@@ -125,6 +131,8 @@ void CharacterCreationScene::Draw(sf::RenderTarget& window, float timeRatio) {
 	window.draw(nameText);
 	nameTextBox.Draw(window, timeRatio);
 
+	window.draw(raceStatText);
+
 	raceDropdown.Draw(window);
 	starterDropdown.Draw(window);
 
@@ -132,6 +140,8 @@ void CharacterCreationScene::Draw(sf::RenderTarget& window, float timeRatio) {
 }
 
 void CharacterCreationScene::InitializePositions() {
+	setRaceStatText();
+	
 	sf::Vector2f pos;
 	pos.x = std::roundf(static_cast<float>(settings.ScreenWidth) / 2.f - headerText.getLocalBounds().width / 2.f);
 	pos.y = std::roundf(static_cast<float>(settings.ScreenHeight) / 12.f);
@@ -144,6 +154,10 @@ void CharacterCreationScene::InitializePositions() {
 	nameTextBox.SetPosition(settings.ScreenWidth / 2, settings.ScreenHeight * 6 / 18);
 
 	raceDropdown.SetPosition(settings.ScreenWidth / 3, settings.ScreenHeight * 7 / 18);
+
+	pos.x = std::roundf(static_cast<float>(settings.ScreenWidth) / 3.f - raceStatText.getLocalBounds().width / 2.f);
+	pos.y = std::roundf(static_cast<float>(settings.ScreenHeight) * 7.5f / 18.f);
+	raceStatText.setPosition(pos);
 
 	starterDropdown.SetPosition(settings.ScreenWidth * 2 / 3, settings.ScreenHeight * 7 / 18);
 
@@ -160,4 +174,80 @@ RaceID CharacterCreationScene::GetPlayerRace() {
 
 StarterID CharacterCreationScene::GetPlayerStarter() {
 	return starterDropdown.GetSelectedValue();
+}
+
+void CharacterCreationScene::setRaceStatText() {
+	RaceID race = raceDropdown.GetSelectedValue();
+	Player player("Unnamed", race);
+
+	std::string s;
+	std::string t;
+
+	// HP
+	s = "#aaaaaa HP #default     ";
+	t = std::to_string(player.GetMaxHP());
+	if (t.size() < 3) {
+		s += " ";
+	}
+	s += t + "\n";
+
+	// MP
+	s += "#aaaaaa MP #default     ";
+	t = std::to_string(player.GetMaxMP());
+	if (t.size() < 3) {
+		s += " ";
+	}
+	s += t + "\n";
+
+	// SP
+	s += "#aaaaaa SP #default     ";
+	t = std::to_string(player.GetMaxSP());
+	if (t.size() < 3) {
+		s += " ";
+	}
+	s += t + "\n";
+
+	s += "\n";
+
+	// STR
+	s += "#aaaaaa STR #default     ";
+	t = std::to_string(player.GetSTR());
+	if (t.size() < 2) {
+		s += " ";
+	}
+	s += t + "\n";
+
+	// DEX
+	s += "#aaaaaa DEX #default     ";
+	t = std::to_string(player.GetDEX());
+	if (t.size() < 2) {
+		s += " ";
+	}
+	s += t + "\n";
+
+	// MAG
+	s += "#aaaaaa MAG #default     ";
+	t = std::to_string(player.GetMAG());
+	if (t.size() < 2) {
+		s += " ";
+	}
+	s += t + "\n";
+
+	// VIT
+	s += "#aaaaaa VIT #default     ";
+	t = std::to_string(player.GetVIT());
+	if (t.size() < 2) {
+		s += " ";
+	}
+	s += t + "\n";
+
+	// SPI
+	s += "#aaaaaa SPI #default     ";
+	t = std::to_string(player.GetSPI());
+	if (t.size() < 2) {
+		s += " ";
+	}
+	s += t + "\n";
+
+	raceStatText.setString(s);
 }

@@ -15,6 +15,7 @@ enum class StarterID;
 #include <SFML/Graphics.hpp>
 #include "../ui/button.hpp"
 #include "../ui/dropdown.hpp"
+#include "../ui/richText.hpp"
 #include "../ui/textBox.hpp"
 
 class CharacterCreationScene {
@@ -43,6 +44,9 @@ public:
 	StarterID GetPlayerStarter();
 
 private:
+	// Sets the race stat text.
+	void setRaceStatText();
+	
 	sf::Vector2i mousePos;
 	bool leftClick = false;
 	bool dragging = false;
@@ -53,6 +57,8 @@ private:
 	sf::Text headerText;
 	sf::Text nameText;
 	TextBox nameTextBox;
+
+	sfe::RichText raceStatText;
 
 	Dropdown<RaceID> raceDropdown;
 	Dropdown<StarterID> starterDropdown;

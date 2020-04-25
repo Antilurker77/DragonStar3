@@ -1947,7 +1947,7 @@ static std::unordered_map<AuraID, AuraData> initList() {
 		AuraData ad;
 
 		ad.Name = "Shining Prism";
-		ad.Icon = "shinning_prism.png";
+		ad.Icon = "shining_prism.png";
 		ad.AuraID = AuraID::ShiningPrism;
 
 		ad.Categories = {

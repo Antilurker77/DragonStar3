@@ -1002,7 +1002,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		AbilityData ad;
 
 		ad.Name = "Concentrated Venom";
-		ad.Icon = "placeholder.png";
+		ad.Icon = "poison.png";
 		ad.ID = AbilityID::ConcentratedVenom;
 
 		ad.Categories = {
@@ -7200,7 +7200,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		AbilityData ad;
 
 		ad.Name = "Venomous Wound";
-		ad.Icon = "placeholder.png";
+		ad.Icon = "poison.png";
 		ad.ID = AbilityID::VenomousWound;
 
 		ad.Categories = {

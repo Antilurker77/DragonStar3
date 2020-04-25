@@ -422,7 +422,7 @@ static std::unordered_map<AuraID, AuraData> initList() {
 		AuraData ad;
 
 		ad.Name = "Cobra Bite";
-		ad.Icon = "placeholder.png";
+		ad.Icon = "poison.png";
 		ad.AuraID = AuraID::CobraBite;
 
 		ad.Categories = {
@@ -503,7 +503,7 @@ static std::unordered_map<AuraID, AuraData> initList() {
 		AuraData ad;
 
 		ad.Name = "Concentrated Venom";
-		ad.Icon = "placeholder.png";
+		ad.Icon = "poison.png";
 		ad.AuraID = AuraID::ConcentratedVenom;
 
 		ad.Categories = {
@@ -2491,7 +2491,7 @@ static std::unordered_map<AuraID, AuraData> initList() {
 		AuraData ad;
 
 		ad.Name = "Venonmous Wound";
-		ad.Icon = "placeholder.png";
+		ad.Icon = "poison.png";
 		ad.AuraID = AuraID::VenomousWound;
 
 		ad.Categories = {

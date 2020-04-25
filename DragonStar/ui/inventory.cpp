@@ -86,7 +86,8 @@ Inventory::Inventory() {
 
 void Inventory::InitStartingGear(StarterID startingGear, DungeonScene& dungeonScene) {
 	Player* player = static_cast<Player*>(dungeonScene.GetPlayer());
-	gold = starterList[startingGear].first;
+	gold = 0;
+	ChangeGold(starterList[startingGear].first);
 
 	// clear inventory
 	std::fill(std::begin(inventorySlots), std::end(inventorySlots), InventorySlot());

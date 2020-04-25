@@ -3659,7 +3659,7 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		AbilityData ad;
 
 		ad.Name = "Poison Arrow";
-		ad.Icon = "placeholder.png";
+		ad.Icon = "poison_arrow.png";
 		ad.ID = AbilityID::PoisonArrow;
 
 		ad.Categories = {

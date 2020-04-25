@@ -1688,7 +1688,7 @@ static std::unordered_map<AuraID, AuraData> initList() {
 		AuraData ad;
 
 		ad.Name = "Poison Arrow";
-		ad.Icon = "placeholder.png";
+		ad.Icon = "poison_arrow.png";
 		ad.AuraID = AuraID::RendingSlash;
 
 		ad.Categories = {

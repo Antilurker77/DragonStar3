@@ -429,6 +429,82 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		return md;
 	}();
+	list[MonsterID::ClayGolem] = [] {
+		MonsterData md;
+
+		md.Name = "Clay Golem";
+		md.Title = "";
+		md.Filename = "clay_golem.png";
+
+		md.IsUnique = false;
+		md.IsBoss = false;
+		md.CanFly = false;
+		md.CanSwim = false;
+		md.CanTunnel = false;
+
+		md.IsStationary = false;
+		md.ChaseTurns = 3;
+
+		md.Level = 8;
+
+		md.BaseHP = 175;
+		md.BaseMP = 10;
+		md.BaseSP = 100;
+
+		md.BaseSTR = 23;
+		md.BaseDEX = 14;
+		md.BaseMAG = 10;
+		md.BaseVIT = 25;
+		md.BaseSPI = 5;
+
+		md.BaseArmor = 55;
+		md.BaseMagicArmor = 10;
+		md.BaseEvasion = 5;
+
+		md.BaseAttackPower = 18;
+		md.BaseSpellPower = 0;
+
+		md.BaseHitChance = 750;
+		md.BaseAttackRange = 100;
+		md.BaseAttackSpeed = 220;
+		md.BaseWeaponDamageMultiplier = 1000;
+		md.AttackElement = Element::Physical;
+		md.AttackType = EquipType::Undefined;
+
+		md.BaseLineOfSight = 350;
+		md.BaseMoveCost = 120;
+
+		md.EXPDrop = 12;
+		md.GoldDrop = 15;
+		md.LootDrop = 4000;
+
+		md.StatMods = {
+			StatMod(StatModType::Resistance, 1000, Element::Poison)
+		};
+		md.Abilities = {
+			{AbilityID::CrushArmor, 0},
+			{AbilityID::CrushingBlow, 0}
+		};
+
+		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
+
+			if (monster->IsAbilityUsable(AbilityID::CrushArmor)) {
+				ai.Ability = AbilityID::CrushArmor;
+			}
+			else if (monster->IsAbilityUsable(AbilityID::CrushingBlow)) {
+				ai.Ability = AbilityID::CrushingBlow;
+			}
+			else {
+				ai.Ability = AbilityID::Attack;
+			}
+
+			return ai;
+		};
+
+		return md;
+	}();
 	list[MonsterID::Cobra] = [] {
 		MonsterData md;
 

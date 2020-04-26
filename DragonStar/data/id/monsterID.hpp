@@ -18,6 +18,7 @@ enum class MonsterID {
 	BrownBear,
 	BrownSnake,
 	CaveBat,
+	ClayGolem,
 	Cobra,
 	DemonEye,
 	FireAnt,

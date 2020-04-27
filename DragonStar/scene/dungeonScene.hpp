@@ -253,7 +253,7 @@ private:
 
 	// ==================
 	const int totalFloors = 100;
-	const int victoryFloor = 11;
+	const int victoryFloor = 101;
 	uint64_t masterSeed = 0ull;
 	std::vector<uint64_t> floorSeeds;
 

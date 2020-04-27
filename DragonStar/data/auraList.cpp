@@ -1744,7 +1744,7 @@ static std::unordered_map<AuraID, AuraData> initList() {
 				value = "#damage " + std::to_string(Values[0][rank] / 10) + "% Attack Power #default ";
 			}
 			else {
-				value = "#damage " + std::to_string(Combat::SpellDamageEstimate(user, eventOptions, Values[0][rank])) + " #default ";
+				value = "#damage " + std::to_string(Combat::SkillDamageEstimate(user, eventOptions, Values[0][rank])) + " #default ";
 			}
 			desc = "Deals " + value + "poison damage every 1s.";
 
@@ -1829,7 +1829,7 @@ static std::unordered_map<AuraID, AuraData> initList() {
 				value = "#damage " + std::to_string(Values[0][rank] / 10) + "% Attack Power #default ";
 			}
 			else {
-				value = "#damage " + std::to_string(Combat::SpellDamageEstimate(user, eventOptions, Values[0][rank])) + " #default ";
+				value = "#damage " + std::to_string(Combat::SkillDamageEstimate(user, eventOptions, Values[0][rank])) + " #default ";
 			}
 			desc = "Deals " + value + "physical damage every 1s.";
 

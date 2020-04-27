@@ -13,6 +13,7 @@ enum class AbilityID {
 	Attack = 1,
 	ArcaneSpear,
 	Bite,
+	Bloodsuck,
 	BoltOfDarkness,
 	BoltOfLight,
 	Bonechill,

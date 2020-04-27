@@ -39,6 +39,7 @@ enum class MonsterID {
 	SnappingTurtle,
 	Tiger,
 	Trickster,
+	VampireBat,
 	VenomousRat,
 	WaterMare,
 	Wolf,

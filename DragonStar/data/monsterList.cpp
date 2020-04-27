@@ -464,7 +464,7 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.BaseAttackPower = 18;
 		md.BaseSpellPower = 0;
 
-		md.BaseHitChance = 750;
+		md.BaseHitChance = 700;
 		md.BaseAttackRange = 100;
 		md.BaseAttackSpeed = 220;
 		md.BaseWeaponDamageMultiplier = 1000;
@@ -1965,6 +1965,76 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 			// Shadow Flay: 50% Chance to Use
 			else if (monster->IsAbilityUsable(AbilityID::ShadowFlay) && Random::RandomInt(1, 100) <= 50) {
 				ai.Ability = AbilityID::ShadowFlay;
+			}
+			else {
+				ai.Ability = AbilityID::Attack;
+			}
+
+			return ai;
+		};
+
+		return md;
+	}();
+	list[MonsterID::VampireBat] = [] {
+		MonsterData md;
+
+		md.Name = "Vampire Bat";
+		md.Title = "";
+		md.Filename = "vampire_bat.png";
+
+		md.IsUnique = false;
+		md.IsBoss = false;
+		md.CanFly = true;
+		md.CanSwim = false;
+		md.CanTunnel = false;
+
+		md.IsStationary = false;
+		md.ChaseTurns = 3;
+
+		md.Level = 8;
+
+		md.BaseHP = 103;
+		md.BaseMP = 12;
+		md.BaseSP = 100;
+
+		md.BaseSTR = 25;
+		md.BaseDEX = 25;
+		md.BaseMAG = 10;
+		md.BaseVIT = 20;
+		md.BaseSPI = 10;
+
+		md.BaseArmor = 5;
+		md.BaseMagicArmor = 0;
+		md.BaseEvasion = 28;
+
+		md.BaseAttackPower = 18;
+		md.BaseSpellPower = 0;
+
+		md.BaseHitChance = 700;
+		md.BaseAttackRange = 100;
+		md.BaseAttackSpeed = 200;
+		md.BaseWeaponDamageMultiplier = 1000;
+		md.AttackElement = Element::Physical;
+		md.AttackType = EquipType::Undefined;
+
+		md.BaseLineOfSight = 450;
+		md.BaseMoveCost = 70;
+
+		md.EXPDrop = 9;
+		md.GoldDrop = 0;
+		md.LootDrop = 0;
+
+		md.StatMods = {};
+		md.Abilities = {
+			{AbilityID::Bloodsuck, 0}
+		};
+
+		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
+			
+			if (monster->IsAbilityUsable(AbilityID::Bloodsuck) && monster->GetCurrentHP() < monster->GetMaxHP() * 9 / 10) {
+				ai.Ability = AbilityID::Bloodsuck;
 			}
 			else {
 				ai.Ability = AbilityID::Attack;

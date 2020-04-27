@@ -191,13 +191,13 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 			std::string value;
 
 			if (user == nullptr) {
-				value = "#damage " + std::to_string(Values[0][rank] / 10) + "% Spell Power#default ";
+				value = "#damage " + std::to_string(Values[0][rank] / 10) + "% Spell Power #default ";
 			}
 			else {
-				value = "#damage " + std::to_string(Combat::SpellDamageEstimate(user, eventOptions, Values[0][rank])) + "#default ";
+				value = "#damage " + std::to_string(Combat::SpellDamageEstimate(user, eventOptions, Values[0][rank])) + " #default ";
 			}
 
-			desc = "Toss a spear of arcane energy, dealing " + value + " arcane damage.";
+			desc = "Toss a spear of arcane energy, dealing " + value + "arcane damage.";
 			return desc;
 		};
 		ad.Execute = [Values = ad.Values](Actor* user, std::vector<Actor*>& targets, sf::Vector2i cursor, std::vector<sf::Vector2i>& targetArea, EventOptions& eventOptions, int rank) {

@@ -1318,6 +1318,87 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		return md;
 	}();
+	list[MonsterID::KoboldChampion] = [] {
+		MonsterData md;
+
+		md.Name = "Kobold Chapion";
+		md.Title = "";
+		md.Filename = "kobold_champion.png";
+
+		md.IsUnique = false;
+		md.IsBoss = false;
+		md.CanFly = false;
+		md.CanSwim = false;
+		md.CanTunnel = false;
+
+		md.IsStationary = false;
+		md.ChaseTurns = 3;
+
+		md.Level = 9;
+
+		md.BaseHP = 110;
+		md.BaseMP = 30;
+		md.BaseSP = 100;
+
+		md.BaseSTR = 26;
+		md.BaseDEX = 20;
+		md.BaseMAG = 14;
+		md.BaseVIT = 25;
+		md.BaseSPI = 20;
+
+		md.BaseArmor = 45;
+		md.BaseMagicArmor = 10;
+		md.BaseEvasion = 8;
+
+		md.BaseAttackPower = 18;
+		md.BaseSpellPower = 0;
+
+		md.BaseHitChance = 750;
+		md.BaseAttackRange = 150;
+		md.BaseAttackSpeed = 200;
+		md.BaseWeaponDamageMultiplier = 1000;
+		md.AttackElement = Element::Physical;
+		md.AttackType = EquipType::Sword;
+
+		md.BaseLineOfSight = 350;
+		md.BaseMoveCost = 80;
+
+		md.EXPDrop = 10;
+		md.GoldDrop = 12;
+		md.LootDrop = 3500;
+
+		md.StatMods = {
+			StatMod(StatModType::BlockChance, 200)
+		};
+		md.Abilities = {
+			{AbilityID::PowerStrike, 2},
+			{AbilityID::FuriousStrike, 0},
+			{AbilityID::HasteAllies, 0}
+		};
+
+		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
+
+			if (monster->IsAbilityUsable(AbilityID::HasteAllies)) {
+				ai.Ability = AbilityID::HasteAllies;
+				ai.Target = monster->GetLocation();
+			}
+			else if (monster->IsAbilityUsable(AbilityID::FuriousStrike)) {
+				ai.Ability = AbilityID::FuriousStrike;
+			}
+			else if (monster->IsAbilityUsable(AbilityID::PowerStrike)) {
+				ai.Ability = AbilityID::PowerStrike;
+			}
+			else {
+				ai.Ability = AbilityID::Attack;
+			}
+
+			return ai;
+		};
+
+		return md;
+	}();
 	list[MonsterID::KoboldCrossbowman] = [] {
 		MonsterData md;
 

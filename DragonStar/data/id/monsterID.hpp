@@ -30,6 +30,7 @@ enum class MonsterID {
 	Iguana,
 	Imp,
 	Jackal,
+	KoboldChampion,
 	KoboldCrossbowman,
 	KoboldGeomancer,
 	KoboldMiner,

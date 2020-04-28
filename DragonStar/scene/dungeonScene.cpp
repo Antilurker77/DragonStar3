@@ -507,6 +507,17 @@ void DungeonScene::DrawUI(sf::RenderWindow& window, float timeRatio) {
 
 }
 
+void DungeonScene::AlertGroup(size_t encounterIndex) {
+	for (size_t i = 1; i < actors.size(); i++) {
+		if (actors[i]->IsAlive()) {
+			Monster* monster = static_cast<Monster*>(actors[i].get());
+			if (monster->GetEncounterIndex() == encounterIndex) {
+				monster->Alert();
+			}
+		}
+	}
+}
+
 int DungeonScene::GetCurrentFloor() {
 	return currentFloor;
 }
@@ -1241,11 +1252,13 @@ void DungeonScene::saveGame() {
 			actorSave.MonsterID = static_cast<int>(monster->GetMonsterID());
 			actorSave.AIState = static_cast<int>(monster->GetAIState());
 			actorSave.AIChaseTurns = monster->GetAIChaseTurns();
+			actorSave.EncounterIndex = monster->GetEncounterIndex();
 		}
 		else {
 			actorSave.MonsterID = 0;
 			actorSave.AIState = 0;
 			actorSave.AIChaseTurns = 0;
+			actorSave.EncounterIndex = 0;
 		}
 
 		saveFile.Actors.push_back(actorSave);

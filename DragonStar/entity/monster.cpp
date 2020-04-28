@@ -25,14 +25,16 @@ Monster::Monster(MonsterID id, size_t index) {
 	Initialize(id);
 }
 
-Monster::Monster(MonsterID id, sf::Vector2i spawnLocation, size_t index) {
+Monster::Monster(MonsterID id, sf::Vector2i spawnLocation, size_t index, size_t encounterIndex) {
 	this->index = index;
+	this->encounterIndex = encounterIndex;
 	Initialize(id);
 	Warp(spawnLocation);
 }
 
 Monster::Monster(ActorSave& actorSave, size_t index) {
 	this->index = index;
+	encounterIndex = actorSave.EncounterIndex;
 	Initialize(static_cast<MonsterID>(actorSave.MonsterID));
 	Warp(sf::Vector2i(actorSave.XLocation, actorSave.YLocation));
 
@@ -133,6 +135,7 @@ CommandPtr Monster::CalcAI() {
 			if (aiState == AIState::Sleeping) {
 				messageLog.AddMessage("#monster " + name + " #default woke up.");
 			}
+			dungeonScene->AlertGroup(encounterIndex);
 			aiState = AIState::Alert;
 		}
 	}
@@ -367,6 +370,10 @@ CommandPtr Monster::CalcAI() {
 
 MonsterID Monster::GetMonsterID() {
 	return monsterID;
+}
+
+size_t Monster::GetEncounterIndex() {
+	return encounterIndex;
 }
 
 AIState Monster::GetAIState() {

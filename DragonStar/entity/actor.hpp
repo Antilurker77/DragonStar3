@@ -469,6 +469,7 @@ protected:
 	std::vector<Aura> auras;
 
 	std::array<int, 16> flags{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+	size_t encounterIndex = 0;
 
 	// UI
 	ActorHUD actorHUD;

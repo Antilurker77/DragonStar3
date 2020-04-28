@@ -56,6 +56,7 @@ struct ActorSave {
 	int MonsterID; // undefined for player
 	int AIState; // undefined for player
 	int AIChaseTurns; // undefined for player
+	size_t EncounterIndex;
 	int CurrentHP;
 	int CurrentMP;
 	int CurrentSP;
@@ -84,6 +85,7 @@ struct ActorSave {
 			MonsterID,
 			AIState,
 			AIChaseTurns,
+			EncounterIndex,
 			CurrentHP,
 			CurrentMP,
 			CurrentSP,

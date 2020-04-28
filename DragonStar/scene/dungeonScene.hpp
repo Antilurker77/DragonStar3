@@ -91,6 +91,9 @@ public:
 	// Draws the UI.
 	void DrawUI(sf::RenderWindow& window, float timeRatio);
 
+	// Alerts all monsters in an encounter group.
+	void AlertGroup(size_t encounterIndex);
+
 	// Returns the current floor the player is on.
 	int GetCurrentFloor();
 

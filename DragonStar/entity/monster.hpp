@@ -42,7 +42,7 @@ class Monster : public Actor {
 public:
 	Monster(size_t index);
 	Monster(MonsterID id, size_t index);
-	Monster(MonsterID id, sf::Vector2i spawnLocation, size_t index);
+	Monster(MonsterID id, sf::Vector2i spawnLocation, size_t index, size_t encounterIndex);
 	Monster(ActorSave& actorSave, size_t index);
 
 	std::string GetTitle();
@@ -55,6 +55,9 @@ public:
 
 	// Returns the monster ID for this monster.
 	MonsterID GetMonsterID();
+
+	// Returns the encounter group for this monster.
+	size_t GetEncounterIndex();
 
 	// Returns the AI state for this monster.
 	AIState GetAIState();

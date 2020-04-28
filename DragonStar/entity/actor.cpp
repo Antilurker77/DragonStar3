@@ -193,7 +193,11 @@ int Actor::TakeDamage(int damage, bool isCrit, std::vector<Element>& elements) {
 
 	currentHP -= result;
 	actorHUD.UpdateElements(*this);
-	Alert(); // wake up monster
+	//Alert(); // wake up monster
+	if (!isPlayer) {
+		dungeonScene->AlertGroup(encounterIndex);
+	}
+
 	fctManager.AddValueUnit(result, isCrit, elements, false, AttributeType::HP);
 
 	return result;

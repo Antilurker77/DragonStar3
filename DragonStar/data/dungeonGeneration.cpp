@@ -167,6 +167,7 @@ void DungeonScene::spawnMonsters() {
 
 	// placement of monsters
 	size_t index = 1; // ID tag for monsters, required when loading a game so that auras can find their source actors
+	size_t encounterIndex = 1; // ID tag for monster groups
 	for (auto& e : choosenEncounters) {
 		// determine how many monsters of group spawn
 		std::vector<MonsterID> monstersToSpawn;
@@ -221,9 +222,10 @@ void DungeonScene::spawnMonsters() {
 		// create the monsters
 		std::shuffle(spawnArea.begin(), spawnArea.end(), mt);
 		for (size_t i = 0; i < monstersToSpawn.size(); i++) {
-			actors.emplace_back(std::make_unique<Monster>(monstersToSpawn[i], spawnArea[i], index));
+			actors.emplace_back(std::make_unique<Monster>(monstersToSpawn[i], spawnArea[i], index, encounterIndex));
 			index++;
 		}
+		encounterIndex++;
 	}
 }
 

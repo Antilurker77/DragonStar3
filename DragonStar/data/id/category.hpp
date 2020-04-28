@@ -18,6 +18,7 @@ enum class Category {
 	OverTime,
 	Attack,
 	Skill,
+	Tech,
 	Spell,
 	Unarmed,
 	Sword,

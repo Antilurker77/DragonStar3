@@ -25,6 +25,7 @@ static std::unordered_map<Category, std::string> categoryMap = {
 	{Category::OverTime, "Over Time"},
 	{Category::Attack, "Attack"},
 	{Category::Skill, "Skill"},
+	{Category::Tech, "Technique"},
 	{Category::Spell, "Spell"},
 	{Category::Unarmed, "Unarmed"},
 	{Category::Sword, "Sword"},

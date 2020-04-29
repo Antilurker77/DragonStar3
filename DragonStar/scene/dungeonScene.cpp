@@ -825,6 +825,26 @@ VisionState DungeonScene::GetTileVisionState(sf::Vector2<size_t> tile) {
 	return vision[tile.x][tile.y];
 }
 
+void DungeonScene::MagicMap() {
+	for (size_t x = 0; x < floor.size(); x++) {
+		for (size_t y = 0; y < floor[x].size(); y++) {
+			if (floor[x][y].TileType == TileID::StoneBrickWall) {
+				for (auto& neighboor : TileMath::Neighboors(sf::Vector2i(static_cast<int>(x), static_cast<int>(y)))) {
+					// make sure we don't go out of bounds
+					if (neighboor.x >= 0 && neighboor.x < floor.size() && neighboor.y >= 0 && neighboor.y < floor[x].size()) {
+						if (floor[neighboor.x][neighboor.y].TileType == TileID::StoneFloor) {
+							vision[x][y] = VisionState::OutOfSight;
+							break;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	UpdateVision();
+}
+
 bool DungeonScene::IsOccupiedByActor(sf::Vector2i tile) {
 	return std::any_of(actors.begin(), actors.end(), [&](const ActorPtr& a) {
 		return a->IsAlive() && a->GetLocation() == tile;

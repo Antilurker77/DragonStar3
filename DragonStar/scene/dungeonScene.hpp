@@ -157,6 +157,9 @@ public:
 	// Returns the vision state of the specified tile.
 	VisionState GetTileVisionState(sf::Vector2<size_t> tile);
 
+	// For the Magic Mapping scroll. Reveals all wall tiles adjacent to floor tiles.
+	void MagicMap();
+
 	// Returns true if there is an actor at the designated tile.
 	bool IsOccupiedByActor(sf::Vector2i tile);
 

@@ -38,13 +38,14 @@ std::vector<std::string> Record::scrollNames = {
 	"Bethion",
 	"Censa",
 	"Leanore",
-	"Luminar"
-
+	"Luminar",
+	"Quelson"
 };
 
 std::vector<ItemID> Record::scrollList = {
 	ItemID::ScrollIdentify,
 	ItemID::ScrollLightningStorm,
+	ItemID::ScrollMagicMapping,
 	ItemID::ScrollPhaseDoor,
 	ItemID::ScrollSpellProtection,
 	ItemID::ScrollTeleport

@@ -80,6 +80,7 @@ enum class AbilityID {
 	// Scrolls
 	ScrollIdentify,
 	ScrollLightningStorm,
+	ScrollMagicMapping,
 	ScrollPhaseDoor,
 	ScrollSpellProtection,
 	ScrollTeleport,

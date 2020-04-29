@@ -14,6 +14,7 @@ enum class MonsterID {
 	// Common
 	TargetDummy,
 	ArcaneSentry,
+	BlinkingSentry,
 	BlueSlime,
 	BrownBear,
 	BrownSnake,

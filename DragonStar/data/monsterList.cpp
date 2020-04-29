@@ -8,6 +8,7 @@
 
 #include "../core/combat.hpp"
 #include "../core/random.hpp"
+#include "../core/tileMath.hpp"
 #include "id/abilityID.hpp"
 #include "id/auraID.hpp"
 #include "id/category.hpp"
@@ -145,6 +146,90 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 			ai.Target = dungeonScene->GetPlayer()->GetLocation();
 
 			if (monster->IsAbilityUsable(AbilityID::MagicMissile)) {
+				ai.Ability = AbilityID::MagicMissile;
+			}
+			else {
+				ai.Ability = AbilityID::Attack;
+			}
+
+			return ai;
+		};
+
+		return md;
+	}();
+	list[MonsterID::BlinkingSentry] = [] {
+		MonsterData md;
+
+		md.Name = "Blinking Sentry";
+		md.Title = "";
+		md.Filename = "blinking_sentry.png";
+
+		md.IsUnique = false;
+		md.IsBoss = false;
+		md.CanFly = false;
+		md.CanSwim = false;
+		md.CanTunnel = false;
+
+		md.IsStationary = true;
+		md.ChaseTurns = 3;
+
+		md.Level = 9;
+
+		md.BaseHP = 125;
+		md.BaseMP = 40;
+		md.BaseSP = 100;
+
+		md.BaseSTR = 9;
+		md.BaseDEX = 25;
+		md.BaseMAG = 25;
+		md.BaseVIT = 18;
+		md.BaseSPI = 30;
+
+		md.BaseArmor = 30;
+		md.BaseMagicArmor = 45;
+		md.BaseEvasion = 5;
+
+		md.BaseAttackPower = 11;
+		md.BaseSpellPower = 18;
+
+		md.BaseHitChance = 750;
+		md.BaseAttackRange = 350;
+		md.BaseAttackSpeed = 200;
+		md.BaseWeaponDamageMultiplier = 1000;
+		md.AttackElement = Element::Arcane;
+		md.AttackType = EquipType::Wand;
+
+		md.BaseLineOfSight = 350;
+		md.BaseMoveCost = 100;
+
+		md.EXPDrop = 11;
+		md.GoldDrop = 0;
+		md.LootDrop = 2500;
+
+		md.StatMods = {};
+		md.Abilities = {
+			{AbilityID::MagicMissile, 2},
+			{AbilityID::PhaseDoor, 0}
+		};
+
+		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
+			bool playerInMelee = false;
+
+			std::vector<sf::Vector2i> neighboors = TileMath::Neighboors(monster->GetLocation());
+			for (auto& tile : neighboors) {
+				if (ai.Target == tile) {
+					playerInMelee = true;
+					break;
+				}
+			}
+
+			if (monster->IsAbilityUsable(AbilityID::PhaseDoor) && playerInMelee) {
+				ai.Ability = AbilityID::PhaseDoor;
+				ai.Target = monster->GetLocation();
+			}
+			else if (monster->IsAbilityUsable(AbilityID::MagicMissile)) {
 				ai.Ability = AbilityID::MagicMissile;
 			}
 			else {

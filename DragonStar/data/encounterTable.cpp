@@ -179,6 +179,12 @@ std::vector<Encounter> DungeonScene::encounterTable = {
 		{MonsterID::BlinkingSentry, 1000}
 	}},
 
+	{14, 25, 500, {
+		{MonsterID::CelestialRecruit, 1000},
+		{MonsterID::CelestialRecruit, 1000},
+		{MonsterID::CelestialRecruit, 500}
+	}},
+
 	// Should never be seen by player.
 	{101, std::numeric_limits<int>::max(), 1000, {
 		{MonsterID::TargetDummy, 1000},

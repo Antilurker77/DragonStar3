@@ -514,6 +514,76 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		return md;
 	}();
+	list[MonsterID::CelestialRecruit] = [] {
+		MonsterData md;
+
+		md.Name = "Celestial Recruit";
+		md.Title = "";
+		md.Filename = "celestial_recruit.png";
+
+		md.IsUnique = false;
+		md.IsBoss = false;
+		md.CanFly = false;
+		md.CanSwim = false;
+		md.CanTunnel = false;
+
+		md.IsStationary = false;
+		md.ChaseTurns = 3;
+
+		md.Level = 10;
+
+		md.BaseHP = 125;
+		md.BaseMP = 12;
+		md.BaseSP = 100;
+
+		md.BaseSTR = 28;
+		md.BaseDEX = 25;
+		md.BaseMAG = 20;
+		md.BaseVIT = 25;
+		md.BaseSPI = 20;
+
+		md.BaseArmor = 40;
+		md.BaseMagicArmor = 5;
+		md.BaseEvasion = 8;
+
+		md.BaseAttackPower = 25;
+		md.BaseSpellPower = 0;
+
+		md.BaseHitChance = 750;
+		md.BaseAttackRange = 150;
+		md.BaseAttackSpeed = 200;
+		md.BaseWeaponDamageMultiplier = 1000;
+		md.AttackElement = Element::Physical;
+		md.AttackType = EquipType::Sword;
+
+		md.BaseLineOfSight = 350;
+		md.BaseMoveCost = 80;
+
+		md.EXPDrop = 12;
+		md.GoldDrop = 10;
+		md.LootDrop = 2000;
+
+		md.StatMods = {};
+		md.Abilities = {
+			{AbilityID::DivineStrike, 0}
+		};
+
+		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
+
+			if (monster->IsAbilityUsable(AbilityID::DivineStrike) && monster->GetCurrentHP() < monster->GetMaxHP() * 9 / 10) {
+				ai.Ability = AbilityID::DivineStrike;
+			}
+			else {
+				ai.Ability = AbilityID::Attack;
+			}
+
+			return ai;
+		};
+
+		return md;
+	}();
 	list[MonsterID::ClayGolem] = [] {
 		MonsterData md;
 

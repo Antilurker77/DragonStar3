@@ -27,6 +27,7 @@ enum class AbilityID {
 	CrushingBlow,
 	DemonBlade,
 	Disarm,
+	DivineStrike,
 	DragonBreath,
 	DragonfireBolt,
 	ElectricSurge,

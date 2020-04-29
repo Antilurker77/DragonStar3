@@ -53,6 +53,7 @@ enum class AbilityID {
 	PoisonArrow,
 	PowerShot,
 	PowerStrike,
+	Regenerate,
 	RendingSlash,
 	ShadowEnergy,
 	ShadowFlay,

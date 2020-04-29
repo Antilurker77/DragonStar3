@@ -35,6 +35,7 @@ enum class AuraID {
 	Maul,
 	MysticBlast,
 	PoisonArrow,
+	Regenerate,
 	RendingSlash,
 	ShadowEnergy,
 	ShiningPrism,

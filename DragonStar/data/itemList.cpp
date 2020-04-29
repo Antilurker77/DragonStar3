@@ -959,7 +959,8 @@ static std::unordered_map<ItemID, ItemData> initList() {
 			AbilityID::ShiningPrism,
 			AbilityID::BoltOfDarkness,
 			AbilityID::ShadowFlay,
-			AbilityID::Heal
+			AbilityID::Heal,
+			AbilityID::Regenerate
 		};
 
 		itd.ImplicitStatMods = {};

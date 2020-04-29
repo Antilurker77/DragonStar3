@@ -563,7 +563,10 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.GoldDrop = 10;
 		md.LootDrop = 2000;
 
-		md.StatMods = {};
+		md.StatMods = {
+			StatMod(StatModType::Resistance, 300, Element::Light),
+			StatMod(StatModType::Resistance, -300, Element::Dark)
+		};
 		md.Abilities = {
 			{AbilityID::DivineStrike, 0}
 		};

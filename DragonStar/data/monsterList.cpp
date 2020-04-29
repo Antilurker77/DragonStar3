@@ -1831,6 +1831,82 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		return md;
 	}();
+	list[MonsterID::KoboldShaman] = [] {
+		MonsterData md;
+
+		md.Name = "Kobold Shaman";
+		md.Title = "";
+		md.Filename = "kobold_shaman.png";
+
+		md.IsUnique = false;
+		md.IsBoss = false;
+		md.CanFly = false;
+		md.CanSwim = false;
+		md.CanTunnel = false;
+
+		md.IsStationary = false;
+		md.ChaseTurns = 3;
+
+		md.Level = 9;
+
+		md.BaseHP = 135;
+		md.BaseMP = 40;
+		md.BaseSP = 100;
+
+		md.BaseSTR = 15;
+		md.BaseDEX = 21;
+		md.BaseMAG = 28;
+		md.BaseVIT = 22;
+		md.BaseSPI = 25;
+
+		md.BaseArmor = 25;
+		md.BaseMagicArmor = 20;
+		md.BaseEvasion = 10;
+
+		md.BaseAttackPower = 14;
+		md.BaseSpellPower = 25;
+
+		md.BaseHitChance = 700;
+		md.BaseAttackRange = 150;
+		md.BaseAttackSpeed = 240;
+		md.BaseWeaponDamageMultiplier = 1000;
+		md.AttackElement = Element::Physical;
+		md.AttackType = EquipType::Staff;
+
+		md.BaseLineOfSight = 350;
+		md.BaseMoveCost = 80;
+
+		md.EXPDrop = 12;
+		md.GoldDrop = 14;
+		md.LootDrop = 2300;
+
+		md.StatMods = {
+
+		};
+		md.Abilities = {
+			{AbilityID::Venom, 2},
+			{AbilityID::Stalagmite, 4}
+		};
+
+		md.AI = [](Actor* monster, DungeonScene* dungeonScene) {
+			AIAction ai;
+			ai.Target = dungeonScene->GetPlayer()->GetLocation();
+
+			if (monster->IsAbilityUsable(AbilityID::Venom) && !dungeonScene->GetPlayer()->HasAura(AuraID::Venom)) {
+				ai.Ability = AbilityID::Venom;
+			}
+			else if (monster->IsAbilityUsable(AbilityID::Stalagmite)) {
+				ai.Ability = AbilityID::Stalagmite;
+			}
+			else {
+				ai.Ability = AbilityID::Attack;
+			}
+
+			return ai;
+		};
+
+		return md;
+	}();
 	list[MonsterID::LesserFlameblade] = [] {
 		MonsterData md;
 

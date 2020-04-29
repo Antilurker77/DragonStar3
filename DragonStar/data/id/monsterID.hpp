@@ -37,6 +37,7 @@ enum class MonsterID {
 	KoboldGeomancer,
 	KoboldMiner,
 	KoboldScout,
+	KoboldShaman,
 	LesserFlameblade,
 	LivingSpark,
 	SnappingTurtle,

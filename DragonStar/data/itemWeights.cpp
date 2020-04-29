@@ -823,6 +823,7 @@ static std::vector<ItemWeight> initPotionWeights() {
 	// MinItemLevel, MaxItemLevel, Weight, ItemID
 	list = {
 		{  1,  25, 1000, ItemID::PotionMinorHealing},
+		{ 10,  50, 1000, ItemID::PotionLesserHealing},
 		{  1,  25,  250, ItemID::PotionMinorMana},
 		{  5, 100,  100, ItemID::PotionStamina},
 		{  1, 100,  100, ItemID::PotionFruitJuice},

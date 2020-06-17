@@ -160,6 +160,8 @@
     <ClCompile Include="data\doubleStrike.cpp" />
     <ClCompile Include="data\dungeonGeneration.cpp" />
     <ClCompile Include="data\encounterTable.cpp" />
+    <ClCompile Include="data\groundEffect.cpp" />
+    <ClCompile Include="data\groundEffectList.cpp" />
     <ClCompile Include="data\item.cpp" />
     <ClCompile Include="data\itemList.cpp" />
     <ClCompile Include="data\itemWeights.cpp" />
@@ -215,12 +217,15 @@
     <ClInclude Include="data\aura.hpp" />
     <ClInclude Include="data\auraData.hpp" />
     <ClInclude Include="data\dataString.hpp" />
+    <ClInclude Include="data\groundEffect.hpp" />
+    <ClInclude Include="data\groundEffectData.hpp" />
     <ClInclude Include="data\id\abilityID.hpp" />
     <ClInclude Include="data\id\auraID.hpp" />
     <ClInclude Include="data\id\category.hpp" />
     <ClInclude Include="data\id\element.hpp" />
     <ClInclude Include="data\id\equipType.hpp" />
     <ClInclude Include="data\id\eventType.hpp" />
+    <ClInclude Include="data\id\groundEffectID.hpp" />
     <ClInclude Include="data\id\itemID.hpp" />
     <ClInclude Include="data\id\monsterID.hpp" />
     <ClInclude Include="data\id\raceID.hpp" />

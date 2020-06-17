@@ -109,6 +109,10 @@ void Inventory::InitStartingGear(StarterID startingGear, DungeonScene& dungeonSc
 			AddItem(item);
 		}
 	}
+
+	Item book;
+	book.Initialize(ItemID::TomeTesting);
+	AddItem(book);
 }
 
 void Inventory::Load(int playerGold, std::array<ItemSave, 40>& items) {

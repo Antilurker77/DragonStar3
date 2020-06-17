@@ -35,7 +35,8 @@ DungeonScene::DungeonScene() {
 	tileset = assetManager.LoadTexture("gfx/" + settings.Tileset + "/dungeon/dungeon_tiles.png");
 	visionTexture = assetManager.LoadTexture("gfx/" + settings.Tileset + "/ui/vision.png");
 	targetTexutre = assetManager.LoadTexture("gfx/" + settings.Tileset + "/ui/target_tiles.png");
-	
+	groundEffectTexture = assetManager.LoadTexture("gfx/" + settings.Tileset + "/ui/ground_effect.png");
+
 	statButton.setTexture(*assetManager.LoadTexture("gfx/" + settings.Tileset + "/ui/plus.png"));
 	statButton.setTextureRect(sf::IntRect(0, 0, 32, 32));
 
@@ -416,7 +417,7 @@ void DungeonScene::DrawWorld(sf::RenderWindow& window, float timeRatio) {
 
 	//window.draw(visionArray, visionTexture);
 
-	// Draw targeting under everything.
+	// Draw targeting under everything when not in ASCII mode.
 	if (targeting && settings.Tileset != "ascii") {
 		window.draw(targetingArray, targetTexutre);
 	}
@@ -439,12 +440,19 @@ void DungeonScene::DrawWorld(sf::RenderWindow& window, float timeRatio) {
 		}
 	}
 
+	// Actors.
 	for (auto& a : actors) {
 		sf::Vector2i loc = a->GetLocation();
 		if (a->IsAlive() && vision[loc.x][loc.y] == VisionState::InSight) {
 			a->Draw(window, timeRatio);
 			a->DrawHUD(window, timeRatio);
 		}
+	}
+
+	// Ground effects.
+	if (groundEffectArray.getVertexCount() > 0) {
+		buildGroundEffectVertexArray();
+		window.draw(groundEffectArray, groundEffectTexture);
 	}
 
 	// Draw targeting over everything in ascii mode.
@@ -933,6 +941,12 @@ bool DungeonScene::InLineOfSight(sf::Vector2i start, sf::Vector2i end) {
 	return los;
 }
 
+void DungeonScene::CreateGroundEffect(GroundEffectID id, int rank, Actor* user, int ssDamage, int ssCritChance, int ssResPen, sf::Vector2i location) {
+	GroundEffect ge(id, rank, location, ssDamage, ssCritChance, ssResPen, user, user->GetIndex());
+	groundEffects.push_back(ge);
+	buildGroundEffectVertexArray();
+}
+
 void DungeonScene::DropLoot(sf::Vector2i location, int gold) {
 	for (size_t i = 0; i < lootPiles.size(); i++) {
 		if (lootPiles[i].GetLocation() == location) {
@@ -1057,6 +1071,19 @@ void DungeonScene::updateWorld(float secondsPerUpdate) {
 					a->DecrementExhaustion();
 				}
 			}
+			for (auto& ge : groundEffects) {
+				Actor* a = GetActorAtTile(ge.GetLocation());
+				ge.Tick(a);
+			}
+
+			// Remove expired ground effects.
+			auto removed = std::remove_if(groundEffects.begin(), groundEffects.end(), [](GroundEffect& ge){
+				return ge.IsExpired();
+			});
+			groundEffects.erase(removed, groundEffects.end());
+			buildGroundEffectVertexArray();
+
+
 			aiCalcTime += clock.restart();
 		}
 		// There is an actor ready to take their turn.
@@ -1565,7 +1592,7 @@ void DungeonScene::buildTargetingVertexArray() {
 
 	std::vector<sf::Vector2i> area = targetingAbility->GetTargetArea(targetTile, actors[0].get(), this);
 	std::vector<sf::Vector2i> extraArea; // todo
-	std::vector<sf::Vector2i> projectilePath; // todo
+	std::vector<sf::Vector2i> projectilePath;
 
 	if (targetingAbility->IsProjectile()) {
 		projectilePath = GetProjectilePath(actors[0]->GetLocation(), targetTile);
@@ -1659,6 +1686,56 @@ void DungeonScene::buildTargetingVertexArray() {
 			quad[2].color = sf::Color(255, 255, 255, 127);
 			quad[3].color = sf::Color(255, 255, 255, 127);
 		}
+		i++;
+	}
+}
+
+void DungeonScene::buildGroundEffectVertexArray() {
+	groundEffectArray.setPrimitiveType(sf::Quads);
+
+	// Building the array.
+	size_t i = 0;
+	groundEffectArray.resize(groundEffects.size() * 4);
+
+	float tileSize = settings.TileSizeFloat;
+
+	for (auto& ge : groundEffects) {
+		float texX = 0.f;
+		float texY = 0.f;
+
+		sf::Vertex* quad = &groundEffectArray[i * 4];
+
+		sf::Vector2i location = ge.GetLocation();
+		bool isBuff = ge.IsBuff();
+
+		float posX = static_cast<float>(location.x) * tileSize;
+		float posY = static_cast<float>(location.y) * tileSize;
+
+		if (isBuff) {
+			texX = 0.f;
+			texY = 0.f;
+		}
+		else {
+			texX = 32.f;
+			texY = 0.f;
+		}
+
+		// quad cords
+		// 0  1
+		// 3  2
+		quad[0].position = sf::Vector2f(posX, posY);
+		quad[1].position = sf::Vector2f(posX + tileSize, posY);
+		quad[2].position = sf::Vector2f(posX + tileSize, posY + tileSize);
+		quad[3].position = sf::Vector2f(posX, posY + tileSize);
+
+		// quad texture cords
+		// 0  1
+		// 3  2
+		quad[0].texCoords = sf::Vector2f(texX, texY);
+		quad[1].texCoords = sf::Vector2f(texX + tileSize, texY);
+		quad[2].texCoords = sf::Vector2f(texX + tileSize, texY + tileSize);
+		quad[3].texCoords = sf::Vector2f(texX, texY + tileSize);
+
 		i++;
 	}
 }

@@ -12,6 +12,7 @@
 #include "id/element.hpp"
 #include "id/eventType.hpp"
 #include "id/equipType.hpp"
+#include "id/groundEffectID.hpp"
 #include "id/itemID.hpp"
 #include "../core/combat.hpp"
 #include "../core/random.hpp"
@@ -297,6 +298,106 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 			if (!targets.empty()) {
 				Combat::SkillDamage(user, targets[0], eventOptions, Values[0][rank]);
 			}
+		};
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
+
+		};
+
+		return ad;
+	}();
+	list[AbilityID::Blaze] = [] {
+		AbilityData ad;
+
+		ad.Name = "Blaze";
+		ad.Icon = "placeholder.png";
+		ad.ID = AbilityID::Blaze;
+
+		ad.Categories = {
+			Category::SingleTarget,
+			Category::Damaging,
+			Category::Spell,
+			Category::Direct
+		};
+		ad.Elements = { Element::Fire };
+		ad.RequiredWeaponTypes = {};
+
+		ad.IsPassive = false;
+		ad.MaxRank = 4;
+
+		ad.Range = { 350, 350, 350, 350, 350 };
+		ad.UseTime = { 200, 200, 200, 200, 200 };
+		ad.Cooldown = { 0, 0, 0, 0, 0 };
+		ad.MaxCharges = { 1, 1, 1, 1, 1 };
+		ad.HPCost = { 0, 0, 0, 0, 0 };
+		ad.MPCost = { 8, 8, 8, 8, 8 };
+		ad.SPCost = { 0, 0, 0, 0, 0 };
+
+		ad.Values = {
+			{ 600, 630, 660, 690, 720 }, // Direct Damage
+			{ 200, 210, 220, 230, 240 }, // Ground Effect Damage
+			{ 500, 500, 500, 500, 500 } // Ground Effect Duration
+		};
+		ad.PassiveBonuses = {};
+
+		ad.CanDodge = true;
+		ad.CanBlock = true;
+		ad.CanCounter = false;
+		ad.CanCrit = true;
+		ad.CanDoubleStrike = false;
+
+		ad.HitChance = { 800, 800, 800, 800, 800 };
+		ad.BonusArmorPen = { 0, 0, 0, 0, 0 };
+		ad.BonusResistancePen = { 0, 0, 0, 0, 0 };
+		ad.BonusCritChance = { 0, 0, 0, 0, 0 };
+		ad.BonusCritPower = { 0, 0, 0, 0, 0 };
+		ad.BonusDoubleStrikeChance = { 0, 0, 0, 0, 0 };
+		ad.BonusHPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusMPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusSPLeech = { 0, 0, 0, 0, 0 };
+
+		ad.FixedRange = false;
+		ad.HideRange = false;
+
+		ad.IsProjectile = true;
+		ad.IgnoreLineOfSight = false;
+
+		ad.AreaIgnoreLineOfSight = false;
+		ad.AreaIgnoreBodyBlock = false;
+
+		ad.GetTargetArea = [&](Actor* user, DungeonScene* dungeonScene, sf::Vector2i cursorTarget, int rank) {
+			return std::vector<sf::Vector2i>{ cursorTarget };
+		};
+
+		ad.GetExtraArea = [&](Actor* user, DungeonScene* dungeonScene, sf::Vector2i cursorTarget, int rank) {
+			return std::vector<sf::Vector2i>{};
+		};
+
+		ad.CustomUseCondition = []() {
+			return true;
+		};
+		ad.GetDescription = [Values = ad.Values](Actor* user, EventOptions& eventOptions, int rank) {
+			std::string desc;
+			std::string value;
+			std::string geValue;
+			std::string duration = std::to_string(Values[2][rank] / 100);
+
+			if (user == nullptr) {
+				value = "#damage " + std::to_string(Values[0][rank] / 10) + "% Spell Power #default ";
+				geValue = "#damage " + std::to_string(Values[1][rank] / 10) + "% Spell Power #default ";
+			}
+			else {
+				value = "#damage " + std::to_string(Combat::SpellDamageEstimate(user, eventOptions, Values[0][rank])) + " #default ";
+				geValue = "#damage " + std::to_string(Combat::SpellDamageEstimate(user, eventOptions, Values[1][rank])) + " #default ";
+			}
+
+			desc = "Set the ground beneth the target ablaze, dealing " + value + "fire damage and an additional " + geValue + "fire damage to the area every 1s for " + duration + "s.";
+			return desc;
+		};
+		ad.Execute = [Values = ad.Values](Actor* user, std::vector<Actor*>& targets, sf::Vector2i cursor, std::vector<sf::Vector2i>& targetArea, EventOptions& eventOptions, int rank) {
+			if (!targets.empty()) {
+				Combat::SpellDamage(user, targets[0], eventOptions, Values[0][rank]);
+			}
+			Combat::CreateGroundEffect(user, eventOptions, GroundEffectID::Blaze, rank, targetArea[0]);
 		};
 		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
 

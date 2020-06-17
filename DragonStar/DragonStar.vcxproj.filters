@@ -195,6 +195,12 @@
     <ClCompile Include="data\startingGear.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="data\groundEffect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="data\groundEffectList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core\game.hpp">
@@ -411,6 +417,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="data\id\starterID.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="data\groundEffect.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="data\groundEffectData.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="data\id\groundEffectID.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

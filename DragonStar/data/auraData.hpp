@@ -2,7 +2,7 @@
 //
 // auraData.hpp
 // 
-// Struct that holds data for an ability.
+// Struct that holds data for an aura.
 //
 // ================================================================
 

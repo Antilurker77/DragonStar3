@@ -15,10 +15,12 @@ enum class AbilityID;
 enum class AuraID;
 enum class Category;
 enum class Element;
+enum class GroundEffectID;
 
 #include <string>
 #include <unordered_map>
 #include <vector>
+#include <SFML/System.hpp>
 
 // Enum for what healing is restoring.
 enum class AttributeType {
@@ -34,6 +36,7 @@ struct EventOptions {
 	
 	AbilityID AbilityID{};
 	AuraID AuraID{};
+	GroundEffectID GroundEffectID{};
 
 	std::vector<Category> Categories{};
 	std::vector<Element> Elements{};
@@ -101,6 +104,9 @@ namespace Combat {
 
 	// Removes a stack of the specified aura, if possible.
 	void RemoveAuraStack(Actor* target, AuraID id);
+
+	// Creates a ground effect at the given location.
+	void CreateGroundEffect(Actor* user, EventOptions& eventOptions, GroundEffectID id, int rank, sf::Vector2i location);
 
 	// Gives an estimate of how much damage an attack would do.
 	int AttackDamageEstimate(Actor* user, EventOptions& eventOptions, int coefficient);

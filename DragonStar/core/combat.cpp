@@ -713,6 +713,11 @@ void Combat::RemoveAuraStack(Actor* target, AuraID id) {
 	target->RemoveAuraStack(id);
 }
 
+void Combat::CreateGroundEffect(Actor* user, EventOptions& eventOptions, GroundEffectID id, int rank, sf::Vector2i location) {
+	DungeonScene* ds = user->GetDungeonScene();
+	ds->CreateGroundEffect(id, rank, user, user->GetSnapshotDamage(eventOptions, true), user->GetSnapshotCritChance(eventOptions, true), user->GetSnapshotResistancePen(eventOptions, true), location);
+}
+
 int Combat::AttackDamageEstimate(Actor* user, EventOptions& eventOptions, int coefficient) {
 	int64_t damage = 0;
 

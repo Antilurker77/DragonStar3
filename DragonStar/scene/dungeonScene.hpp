@@ -11,6 +11,7 @@
 class Actor;
 class Camera;
 
+enum class GroundEffectID;
 enum class MonsterID;
 enum class RaceID;
 enum class StarterID;
@@ -24,6 +25,7 @@ enum class StarterID;
 #include "../core/gameState.hpp"
 #include "../core/saveFile.hpp"
 #include "../core/tileMath.hpp"
+#include "../data/groundEffect.hpp"
 #include "../data/tile.hpp"
 #include "../entity/actor.hpp"
 #include "../entity/loot.hpp"
@@ -184,6 +186,9 @@ public:
 	// Returns true if one tile is within line of sight of the other.
 	bool InLineOfSight(sf::Vector2i start, sf::Vector2i end);
 
+	// Creates a ground effect at the given location.
+	void CreateGroundEffect(GroundEffectID id, int rank, Actor* user, int ssDamage, int ssCritChance, int ssResPen, sf::Vector2i location);
+
 	// Creates a loot pile with the specified amount of gold. If a loot pile is already in 
 	// that location, it is added to the existing pile instead.
 	void DropLoot(sf::Vector2i location, int gold);
@@ -235,6 +240,9 @@ private:
 	// Builds the targeting vertex array.
 	void buildTargetingVertexArray();
 
+	// Builds the ground effect vertex array.
+	void buildGroundEffectVertexArray();
+
 	// =============================
 	// === dungeonGeneration.cpp ===
 	// =============================
@@ -270,11 +278,14 @@ private:
 	sf::VertexArray floorArray;
 	sf::VertexArray visionArray;
 	sf::VertexArray targetingArray;
+	sf::VertexArray groundEffectArray;
 	sf::Texture* tileset;
 	sf::Texture* visionTexture;
 	sf::Texture* targetTexutre;
+	sf::Texture* groundEffectTexture;
 
 	std::vector<ActorPtr> actors; // index 0 is always assumed to be the player
+	std::vector<GroundEffect> groundEffects;
 	std::vector<Loot> lootPiles;
 	std::vector<Shop> shops;
 

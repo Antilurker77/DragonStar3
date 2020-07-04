@@ -10,5 +10,6 @@
 
 enum class GroundEffectID {
 	Undefined = 0,
-	Blaze
+	Blaze,
+	CastingCircle
 };

@@ -98,6 +98,77 @@ static std::unordered_map<GroundEffectID, GroundEffectData> initList() {
 
 		return ged;
 	}();
+	list[GroundEffectID::CastingCircle] = [] {
+		GroundEffectData ged;
+
+		ged.Name = "Casting Circle";
+		ged.GroundEffectID = GroundEffectID::CastingCircle;
+
+		ged.Categories = {
+			Category::Spell
+		};
+		ged.Elements = {
+			Element::Arcane
+		};
+
+		ged.MaxRank = 4;
+
+		ged.Duration = { 2000, 2000, 2000, 2000, 2000 };
+		ged.TickRate = 0;
+
+		ged.Values = {
+			{ 100, 110, 110, 120, 120 }, // Spell Damage
+			{ 100, 100, 110, 110, 120 } // Spell Haste
+		};
+		ged.StatMods = {
+			{ StatMod(StatModType::Damage, ged.Values[0][0], Category::Spell), StatMod(StatModType::Haste, ged.Values[1][0], Category::Spell) },
+			{ StatMod(StatModType::Damage, ged.Values[0][1], Category::Spell), StatMod(StatModType::Haste, ged.Values[1][1], Category::Spell) },
+			{ StatMod(StatModType::Damage, ged.Values[0][2], Category::Spell), StatMod(StatModType::Haste, ged.Values[1][2], Category::Spell) },
+			{ StatMod(StatModType::Damage, ged.Values[0][3], Category::Spell), StatMod(StatModType::Haste, ged.Values[1][3], Category::Spell) },
+			{ StatMod(StatModType::Damage, ged.Values[0][4], Category::Spell), StatMod(StatModType::Haste, ged.Values[1][4], Category::Spell) }
+		};
+
+		ged.IsBuff = true;
+
+		ged.IsStun = false;
+		ged.IsDisarm = false;
+		ged.IsSilence = false;
+
+		ged.CanCrit = false;
+		ged.BonusArmorPen = { 0, 0, 0, 0, 0 };
+		ged.BonusResistancePen = { 0, 0, 0, 0, 0 };
+		ged.BonusCritChance = { 0, 0, 0, 0, 0 };
+		ged.BonusCritPower = { 0, 0, 0, 0, 0 };
+		ged.BonusDoubleStrikeChance = { 0, 0, 0, 0, 0 };
+		ged.BonusHPLeech = { 0, 0, 0, 0, 0 };
+		ged.BonusMPLeech = { 0, 0, 0, 0, 0 };
+		ged.BonusSPLeech = { 0, 0, 0, 0, 0 };
+
+		ged.GetDescription = [Values = ged.Values](Actor* user, EventOptions& eventOptions, int rank, GroundEffect* aura) {
+			std::string desc;
+			std::string spellDamage = std::to_string(Values[0][rank] / 10);
+			std::string spellHaste = std::to_string(Values[1][rank] / 10);
+
+			desc = "Increases spell damage by " + spellDamage + "% and spell haste by " + spellHaste + "%.";
+
+			return desc;
+		};
+
+		ged.OnTick = [Values = ged.Values](Actor* user, Actor* target, EventOptions& eventOptions, int rank, GroundEffect* aura) {
+			return;
+		};
+
+		ged.OnExpiry = [Values = ged.Values](Actor* user, Actor* target, EventOptions& eventOptions, int rank, GroundEffect* aura) {
+			return;
+		};
+
+		ged.OnEvent = [Values = ged.Values](EventType eventType, EventOptions& geOptions, int rank, GroundEffect* aura, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+			return;
+		};
+
+
+		return ged;
+	}();
 
 	return list;
 }

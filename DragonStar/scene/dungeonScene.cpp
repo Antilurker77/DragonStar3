@@ -835,6 +835,16 @@ Shop* DungeonScene::GetShopAtLocation(sf::Vector2i tile) {
 	return nullptr;
 }
 
+std::vector<GroundEffect*> DungeonScene::GetGroundEffectsAtLocation(sf::Vector2i tile) {
+	std::vector<GroundEffect*> result;
+	for (size_t i = 0; i < groundEffects.size(); i++) {
+		if (groundEffects[i].GetLocation() == tile) {
+			result.push_back(&groundEffects[i]);
+		}
+	}
+	return result;
+}
+
 VisionState DungeonScene::GetTileVisionState(sf::Vector2i tile) {
 	return vision[static_cast<size_t>(tile.x)][static_cast<size_t>(tile.y)];
 }

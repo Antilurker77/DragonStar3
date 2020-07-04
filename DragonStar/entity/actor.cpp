@@ -7,6 +7,7 @@
 #include "actor.hpp"
 
 #include <algorithm>
+#include "../data/groundEffect.hpp"
 #include "../scene/dungeonScene.hpp"
 
 void Actor::UpdateHUD(float secondsPerUpdate) {
@@ -1233,6 +1234,15 @@ int Actor::getStat(int base, StatModType statModType, EventOptions& eventOptions
 	}
 
 	// Ground Effects
+	if (dungeonScene != nullptr) {
+		std::vector<GroundEffect*> groundEffects = dungeonScene->GetGroundEffectsAtLocation(location);
+		for (auto& ge : groundEffects) {
+			for (auto& sm : ge->GetStatMods()) {
+				statModCheck(sm);
+			}
+		}
+	}
+
 
 	return result;
 }

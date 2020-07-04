@@ -153,6 +153,9 @@ public:
 	// Returns the shop at the designated location.
 	Shop* GetShopAtLocation(sf::Vector2i tile);
 
+	// Returns all ground effects at the designated location.
+	std::vector<GroundEffect*> GetGroundEffectsAtLocation(sf::Vector2i tile);
+
 	// Returns the vision state of the specified tile.
 	VisionState GetTileVisionState(sf::Vector2i tile);
 
@@ -285,7 +288,7 @@ private:
 	sf::Texture* groundEffectTexture;
 
 	std::vector<ActorPtr> actors; // index 0 is always assumed to be the player
-	std::vector<GroundEffect> groundEffects;
+	std::vector<GroundEffect> groundEffects{};
 	std::vector<Loot> lootPiles;
 	std::vector<Shop> shops;
 

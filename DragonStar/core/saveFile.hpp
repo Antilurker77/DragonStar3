@@ -52,10 +52,39 @@ struct LootSave {
 	}
 };
 
+struct GroundEffectSave {
+	int XLocation;
+	int YLocation;
+	int GroundEffectID;
+	size_t SourceIndex;
+	int CurrentDuration;
+	int NextTick;
+	int Rank;
+	int SSDamage;
+	int SSCritChance;
+	int SSResPen;
+
+	template<class Archive>
+	void serialize(Archive& archive) {
+		archive(
+			XLocation,
+			YLocation,
+			GroundEffectID,
+			SourceIndex,
+			CurrentDuration,
+			NextTick,
+			Rank,
+			SSDamage,
+			SSCritChance,
+			SSResPen
+		);
+	}
+};
+
 struct ActorSave {
-	int MonsterID; // undefined for player
-	int AIState; // undefined for player
-	int AIChaseTurns; // undefined for player
+	int MonsterID = 0; // undefined for player
+	int AIState = 0; // undefined for player
+	int AIChaseTurns = 0; // undefined for player
 	size_t EncounterIndex;
 	int CurrentHP;
 	int CurrentMP;
@@ -147,6 +176,8 @@ struct SaveFile {
 
 	std::vector<LootSave> Loot;
 
+	std::vector<GroundEffectSave> GroundEffects;
+
 	std::vector<std::array<ItemSave, 24>> ShopItems;
 
 	std::vector<int> SpawnedArtifacts;
@@ -170,6 +201,7 @@ struct SaveFile {
 			Seed,
 			Vision,
 			Loot,
+			GroundEffects,
 			ShopItems,
 			SpawnedArtifacts,
 			IdentifiedItems,

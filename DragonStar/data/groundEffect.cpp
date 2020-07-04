@@ -24,6 +24,19 @@ GroundEffect::GroundEffect(GroundEffectID id, int rank, sf::Vector2i location, i
 	Initialize(id);
 }
 
+GroundEffect::GroundEffect(GroundEffectSave& geSave) {
+	Initialize(static_cast<GroundEffectID>(geSave.GroundEffectID));
+	location.x = geSave.XLocation;
+	location.y = geSave.YLocation;
+	currentDuration = geSave.CurrentDuration;
+	nextTick = geSave.NextTick;
+	currentRank = geSave.Rank;
+	sourceIndex = geSave.SourceIndex;
+	snapshotDamage = geSave.SSDamage;
+	snapshotCritChance = geSave.SSCritChance;
+	snapshotResistancePen = geSave.SSResPen;
+}
+
 void GroundEffect::Initialize(GroundEffectID id) {
 	groundEffectID = id;
 	groundEffectData = &groundEffectList[id];

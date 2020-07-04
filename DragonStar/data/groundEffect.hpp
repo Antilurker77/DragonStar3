@@ -20,11 +20,13 @@ enum class GroundEffectID;
 #include <SFML/System.hpp>
 #include "groundEffectData.hpp"
 #include "../core/combat.hpp"
+#include "../core/saveFile.hpp"
 
 class GroundEffect {
 public:
 	GroundEffect();
 	GroundEffect(GroundEffectID id, int rank, sf::Vector2i location, int ssDamage, int ssCritChance, int ssResPen, Actor* user, size_t userIndex);
+	GroundEffect(GroundEffectSave& geSave);
 
 	// Sets the ground effect ID and data for this ground effect.
 	void Initialize(GroundEffectID id);

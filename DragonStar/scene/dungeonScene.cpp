@@ -119,6 +119,16 @@ bool DungeonScene::LoadGame() {
 		lootPiles.push_back(Loot(loot));
 	}
 
+	// load ground effects
+	groundEffects.clear();
+	groundEffects.reserve(saveFile.GroundEffects.size());
+	for (auto& ge : saveFile.GroundEffects) {
+		GroundEffect groundEffect(ge);
+		groundEffect.SetOwnerPointer(this);
+		groundEffects.push_back(groundEffect);
+	}
+	buildGroundEffectVertexArray();
+
 	// load inventory
 	inventory.Load(saveFile.PlayerGold, saveFile.Inventory);
 
@@ -1384,6 +1394,25 @@ void DungeonScene::saveGame() {
 			lootSave.Items.push_back(itemSave);
 		}
 		saveFile.Loot.push_back(lootSave);
+	}
+
+	saveFile.GroundEffects.clear();
+	saveFile.GroundEffects.reserve(groundEffects.size());
+	for (auto& ge : groundEffects) {
+		GroundEffectSave geSave;
+		sf::Vector2i loc = ge.GetLocation();
+		geSave.XLocation = loc.x;
+		geSave.YLocation = loc.y;
+		geSave.GroundEffectID = static_cast<int>(ge.GetGroundEffectID());
+		geSave.SourceIndex = ge.GetSourceIndex();
+		geSave.CurrentDuration = ge.GetCurrentDuration();
+		geSave.NextTick = ge.GetNextTick();
+		geSave.Rank = ge.GetRank();
+		geSave.SSDamage = ge.GetSnapshotDamage();
+		geSave.SSCritChance = ge.GetSnapshotCritChance();
+		geSave.SSResPen = ge.GetSnapshotResistancePen();
+
+		saveFile.GroundEffects.push_back(geSave);
 	}
 
 	saveFile.PlayerGold = inventory.GetGold();

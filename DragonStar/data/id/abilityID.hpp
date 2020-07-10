@@ -97,6 +97,7 @@ enum class AbilityID {
 	Constitution,
 	DeadlyForce,
 	Focus,
+	HealingEfficiency,
 	ImprovedDexterity,
 	ImprovedMagic,
 	ImprovedSpirit,

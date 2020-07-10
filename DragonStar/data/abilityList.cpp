@@ -3216,7 +3216,6 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 
 			desc = "Call upon divine energy, restoring " + amount + "HP.";
 			return desc;
-			return desc;
 		};
 		ad.Execute = [Values = ad.Values](Actor* user, std::vector<Actor*>& targets, sf::Vector2i cursor, std::vector<sf::Vector2i>& targetArea, EventOptions& eventOptions, int rank) {
 			if (!targets.empty()) {
@@ -5384,6 +5383,99 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 		ad.Execute = [Values = ad.Values](Actor* user, std::vector<Actor*>& targets, sf::Vector2i cursor, std::vector<sf::Vector2i>& targetArea, EventOptions& eventOptions, int rank) {
 			if (!targets.empty()) {
 				Combat::SpellDamage(user, targets[0], eventOptions, Values[0][rank]);
+			}
+		};
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
+
+		};
+
+		return ad;
+	}();
+	list[AbilityID::SwiftHeal] = [] {
+		AbilityData ad;
+
+		ad.Name = "Swift Heal";
+		ad.Icon = "placeholder.png";
+		ad.ID = AbilityID::Heal;
+
+		ad.Categories = {
+			Category::SingleTarget,
+			Category::Healing,
+			Category::Spell,
+			Category::Direct
+		};
+		ad.Elements = { Element::Healing };
+		ad.RequiredWeaponTypes = {};
+
+		ad.IsPassive = false;
+		ad.MaxRank = 4;
+
+		ad.Range = { 350, 350, 350, 350, 350 };
+		ad.UseTime = { 100, 100, 100, 100, 100 };
+		ad.Cooldown = { 3000, 3000, 3000, 3000, 3000 };
+		ad.MaxCharges = { 2, 2, 2, 2, 2 };
+		ad.HPCost = { 0, 0, 0, 0, 0 };
+		ad.MPCost = { 15, 15, 15, 15, 15 };
+		ad.SPCost = { 0, 0, 0, 0, 0 };
+
+		ad.Values = {
+			{ 1200, 1260, 1320, 1380, 1440 }
+		};
+		ad.PassiveBonuses = {};
+
+		ad.CanDodge = false;
+		ad.CanBlock = false;
+		ad.CanCounter = false;
+		ad.CanCrit = true;
+		ad.CanDoubleStrike = false;
+
+		ad.HitChance = { 1000, 1000, 1000, 1000, 1000 };
+		ad.BonusArmorPen = { 0, 0, 0, 0, 0 };
+		ad.BonusResistancePen = { 0, 0, 0, 0, 0 };
+		ad.BonusCritChance = { 0, 0, 0, 0, 0 };
+		ad.BonusCritPower = { 0, 0, 0, 0, 0 };
+		ad.BonusDoubleStrikeChance = { 0, 0, 0, 0, 0 };
+		ad.BonusHPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusMPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusSPLeech = { 0, 0, 0, 0, 0 };
+
+		ad.FixedRange = false;
+		ad.HideRange = false;
+
+		ad.IsProjectile = false;
+		ad.IgnoreLineOfSight = false;
+
+		ad.AreaIgnoreLineOfSight = false;
+		ad.AreaIgnoreBodyBlock = false;
+
+		ad.GetTargetArea = [&](Actor* user, DungeonScene* dungeonScene, sf::Vector2i cursorTarget, int rank) {
+			return std::vector<sf::Vector2i>{ cursorTarget };
+		};
+
+		ad.GetExtraArea = [&](Actor* user, DungeonScene* dungeonScene, sf::Vector2i cursorTarget, int rank) {
+			return std::vector<sf::Vector2i>{};
+		};
+
+		ad.CustomUseCondition = []() {
+			return true;
+		};
+		ad.GetDescription = [Values = ad.Values](Actor* user, EventOptions& eventOptions, int rank) {
+			std::string desc;
+			std::string amount;
+
+			if (user == nullptr) {
+				amount = "#heal " + std::to_string(Values[0][rank] / 10) + "% Spell Power #default ";
+			}
+			else {
+				amount = "#heal " + std::to_string(Combat::SpellHealEstimate(user, eventOptions, Values[0][rank])) + " #default ";
+			}
+
+			desc = "Swiftly summon divine energy, restoring " + amount + "HP. Has 2 charges.";
+			return desc;
+		};
+		ad.Execute = [Values = ad.Values](Actor* user, std::vector<Actor*>& targets, sf::Vector2i cursor, std::vector<sf::Vector2i>& targetArea, EventOptions& eventOptions, int rank) {
+			if (!targets.empty()) {
+				Combat::SpellHeal(user, targets[0], eventOptions, Values[0][rank], AttributeType::HP);
 			}
 		};
 		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {

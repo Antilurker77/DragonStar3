@@ -66,6 +66,7 @@ enum class AbilityID {
 	Splash,
 	Sprint,
 	Stalagmite,
+	SwiftHeal,
 	Teleport,
 	ThunderStrike,
 	TornadoStrike,

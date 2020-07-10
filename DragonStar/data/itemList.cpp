@@ -1061,6 +1061,50 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		return itd;
 	}();
+	list[ItemID::TomeBasicsOfHealing] = [] {
+		ItemData itd;
+
+		itd.Name = "Tome: Basics of Healing";
+		itd.IconFilePath = "tome.png";
+		itd.EquipFilePath = "";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::TomeBasicsOfHealing;
+		itd.ItemType = ItemType::Tome;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 100;
+
+		itd.Artifact = false;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::Undefined;
+		itd.AttackElement = Element::Undefined;
+		itd.HitChance = 0;
+		itd.AttackRange = 0;
+		itd.AttackSpeed = 0;
+		itd.WeaponDamageMultiplier = 0;
+
+		itd.TeachableAbilities = {
+			AbilityID::Heal,
+			AbilityID::GrandHeal,
+			AbilityID::SwitftHeal,
+			AbilityID::Regenerate,
+			AbilityID::HealingEfficiency
+		};
+
+		itd.ImplicitStatMods = {};
+		itd.ExplicitStatMods = {};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
 	list[ItemID::TomeBodyMindAndSoul] = [] {
 		ItemData itd;
 

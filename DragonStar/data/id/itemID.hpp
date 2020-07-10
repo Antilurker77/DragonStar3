@@ -43,6 +43,7 @@ enum class ItemID {
 	TomeIntroductionToSpirituality,
 	TomeSpaceManipulation,
 	TomeArtOfFlame,
+	TomeBasicsOfHealing,
 	TomeBodyMindAndSoul,
 
 	// Rations

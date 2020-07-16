@@ -529,7 +529,8 @@ static std::unordered_map<ItemID, ItemData> initList() {
 			AbilityID::Vigor,
 			AbilityID::FuriousStrike,
 			AbilityID::Blaze,
-			AbilityID::CastingCircle
+			AbilityID::CastingCircle,
+			AbilityID::Freeze
 		};
 
 		itd.ImplicitStatMods = {};
@@ -1091,7 +1092,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 		itd.TeachableAbilities = {
 			AbilityID::Heal,
 			AbilityID::GrandHeal,
-			AbilityID::SwitftHeal,
+			AbilityID::SwiftHeal,
 			AbilityID::Regenerate,
 			AbilityID::HealingEfficiency
 		};

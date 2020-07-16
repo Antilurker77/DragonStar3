@@ -39,6 +39,7 @@ enum class AbilityID {
 	FlameBolt,
 	FlameStrike,
 	FlashStrike,
+	Freeze,
 	FuriousStrike,
 	GrandHeal,
 	HasteAllies,

@@ -1224,11 +1224,11 @@ static std::unordered_map<AuraID, AuraData> initList() {
 			{ 100, 100, 100, 100, 100 }
 		};
 		ad.StatMods = {
-			{ StatMod(StatModType::Damage, ad.Values[0][0], Element::Fire), StatMod(StatModType::SnapshotDamage, ad.Values[0][0], Element::Fire) },
-			{ StatMod(StatModType::Damage, ad.Values[0][1], Element::Fire), StatMod(StatModType::SnapshotDamage, ad.Values[0][1], Element::Fire) },
-			{ StatMod(StatModType::Damage, ad.Values[0][2], Element::Fire), StatMod(StatModType::SnapshotDamage, ad.Values[0][2], Element::Fire) },
-			{ StatMod(StatModType::Damage, ad.Values[0][3], Element::Fire), StatMod(StatModType::SnapshotDamage, ad.Values[0][3], Element::Fire) },
-			{ StatMod(StatModType::Damage, ad.Values[0][4], Element::Fire), StatMod(StatModType::SnapshotDamage, ad.Values[0][4], Element::Fire) }
+			{ StatMod(StatModType::Damage, ad.Values[0][0], Category::Direct, Element::Fire), StatMod(StatModType::SnapshotDamage, ad.Values[0][0], Element::Fire) },
+			{ StatMod(StatModType::Damage, ad.Values[0][1], Category::Direct, Element::Fire), StatMod(StatModType::SnapshotDamage, ad.Values[0][1], Element::Fire) },
+			{ StatMod(StatModType::Damage, ad.Values[0][2], Category::Direct, Element::Fire), StatMod(StatModType::SnapshotDamage, ad.Values[0][2], Element::Fire) },
+			{ StatMod(StatModType::Damage, ad.Values[0][3], Category::Direct, Element::Fire), StatMod(StatModType::SnapshotDamage, ad.Values[0][3], Element::Fire) },
+			{ StatMod(StatModType::Damage, ad.Values[0][4], Category::Direct, Element::Fire), StatMod(StatModType::SnapshotDamage, ad.Values[0][4], Element::Fire) }
 		};
 
 		ad.IsBuff = true;

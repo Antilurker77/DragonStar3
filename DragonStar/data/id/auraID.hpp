@@ -42,6 +42,7 @@ enum class AuraID {
 	ShadowEnergy,
 	ShiningPrism,
 	SlimeSplash,
+	SpectralSlash,
 	Speed,
 	SpellProtection,
 	Sprint,

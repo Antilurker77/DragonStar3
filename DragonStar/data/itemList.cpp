@@ -526,11 +526,8 @@ static std::unordered_map<ItemID, ItemData> initList() {
 		itd.WeaponDamageMultiplier = 0;
 
 		itd.TeachableAbilities = {
-			AbilityID::MagicWeapon,
-			AbilityID::FuriousStrike,
-			AbilityID::Blaze,
-			AbilityID::CastingCircle,
-			AbilityID::Freeze
+			AbilityID::FlameStrike,
+			AbilityID::Ignite
 		};
 
 		itd.ImplicitStatMods = {};
@@ -8303,7 +8300,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 		return itd;
 	}();
 
-	// Neck
+	// Artifact Neck
 	list[ItemID::RubyNecklace] = [] {
 		ItemData itd;
 

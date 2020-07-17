@@ -64,6 +64,7 @@ enum class AbilityID {
 	ShiningPrism,
 	Shock,
 	SlimeSplash,
+	SpectralSlash,
 	Splash,
 	Sprint,
 	Stalagmite,

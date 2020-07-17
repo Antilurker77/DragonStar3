@@ -705,8 +705,8 @@ EventResult Combat::FixedHeal(Actor* user, Actor* target, EventOptions& eventOpt
 	return result;
 }
 
-void Combat::AddAuraStack(Actor* user, Actor* target, EventOptions& eventOptions, AuraID id, int rank) {
-	target->AddAura(id, rank, user->GetSnapshotDamage(eventOptions, true), user->GetSnapshotCritChance(eventOptions, true), user->GetSnapshotResistancePen(eventOptions, true), user);
+void Combat::AddAuraStack(Actor* user, Actor* target, EventOptions& eventOptions, AuraID id, int rank, int stacks) {
+	target->AddAura(id, rank, stacks, user->GetSnapshotDamage(eventOptions, true), user->GetSnapshotCritChance(eventOptions, true), user->GetSnapshotResistancePen(eventOptions, true), user);
 }
 
 void Combat::RemoveAuraStack(Actor* target, AuraID id) {

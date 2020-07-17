@@ -527,7 +527,8 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		itd.TeachableAbilities = {
 			AbilityID::FlameStrike,
-			AbilityID::Ignite
+			AbilityID::Ignite,
+			AbilityID::SpectralSlash
 		};
 
 		itd.ImplicitStatMods = {};

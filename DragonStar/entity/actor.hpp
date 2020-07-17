@@ -118,7 +118,7 @@ public:
 
 	// Adds an aura to this actor. Will increase the stack of an existing aura if possible. Will add to duration if an aura already exists. 
 	// Unique auras will be overwritten if the source is different.
-	void AddAura(AuraID auraID, int rank, int ssDamage, int ssCritChance, int ssResPen, Actor* source);
+	void AddAura(AuraID auraID, int rank, int stacks, int ssDamage, int ssCritChance, int ssResPen, Actor* source);
 
 	// Sets the pointer reference for the actor's auras.
 	void SetAuraOwnerPointer();

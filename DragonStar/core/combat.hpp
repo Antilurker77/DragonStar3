@@ -100,7 +100,7 @@ namespace Combat {
 	EventResult FixedHeal(Actor* user, Actor* target, EventOptions& eventOptions, int amount, AttributeType healingType);
 
 	// Adds a stack of the specified aura to the target.
-	void AddAuraStack(Actor* user, Actor* target, EventOptions& eventOptions, AuraID id, int rank);
+	void AddAuraStack(Actor* user, Actor* target, EventOptions& eventOptions, AuraID id, int rank, int stacks = 1);
 
 	// Removes a stack of the specified aura, if possible.
 	void RemoveAuraStack(Actor* target, AuraID id);

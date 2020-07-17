@@ -2424,7 +2424,7 @@ static std::unordered_map<AuraID, AuraData> initList() {
 			std::string value;
 
 			value = std::to_string(Values[0][rank] / 10);
-			desc = "Increases the damage of your next fire ability by " + value + "%.";
+			desc = "Increases the damage of your next attack by " + value + "%.";
 
 			return desc;
 		};

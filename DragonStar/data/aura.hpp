@@ -23,7 +23,7 @@ enum class EventType;
 class Aura {
 public:
 	Aura();
-	Aura(AuraID id, int rank, int ssDamage, int ssCritChance, int ssResPen, Actor* user, size_t userIndex);
+	Aura(AuraID id, int rank, int stacks, int ssDamage, int ssCritChance, int ssResPen, Actor* user, size_t userIndex);
 	Aura(AuraID, int rank, int duration, int nextTick, int stacks, int ssDamage, int ssCritChance, int ssResPen, size_t userIndex);
 
 	// Sets the ID of this aura.

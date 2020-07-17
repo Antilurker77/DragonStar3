@@ -13,8 +13,9 @@ Aura::Aura() {
 
 }
 
-Aura::Aura(AuraID id, int rank, int ssDamage, int ssCritChance, int ssResPen, Actor* user, size_t userIndex) {
+Aura::Aura(AuraID id, int rank, int stacks, int ssDamage, int ssCritChance, int ssResPen, Actor* user, size_t userIndex) {
 	currentRank = rank;
+	currentStacks = stacks;
 	source = user;
 	sourceIndex = userIndex;
 	snapshotDamage = ssDamage;
@@ -41,7 +42,6 @@ void Aura::Initialize(AuraID id) {
 
 	currentDuration = auraData->BaseDuration[currentRank];
 	nextTick = auraData->TickRate;
-	currentStacks = 1;
 }
 
 void Aura::SetOwnerPointer(DungeonScene* dungeonScene) {

@@ -286,7 +286,7 @@ bool Actor::HasAura(AuraID id) {
 	return false;
 }
 
-void Actor::AddAura(AuraID auraID, int rank, int ssDamage, int ssCritChance, int ssResPen, Actor* source) {
+void Actor::AddAura(AuraID auraID, int rank, int stacks, int ssDamage, int ssCritChance, int ssResPen, Actor* source) {
 	size_t sourceIndex = source->GetIndex();
 	for (size_t i = 0; i < auras.size(); i++) {
 		if (auras[i].GetAuraID() == auraID) {
@@ -306,7 +306,7 @@ void Actor::AddAura(AuraID auraID, int rank, int ssDamage, int ssCritChance, int
 	}
 
 	// Did not match existing auras, safe to add.
-	Aura aura(auraID, rank, ssDamage, ssCritChance, ssResPen, source, sourceIndex);
+	Aura aura(auraID, rank, stacks, ssDamage, ssCritChance, ssResPen, source, sourceIndex);
 	auras.push_back(aura);
 	fctManager.AddAuraUnit(aura.GetName(), aura.IsBuff(), false);
 

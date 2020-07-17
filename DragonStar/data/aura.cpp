@@ -80,9 +80,8 @@ void Aura::Tick(Actor* owner) {
 	if (wasUsed && auraData->ConsumeOnUse) {
 		EventOptions eo = getEventOptions();
 		auraData->OnExpiry(source, owner, eo, currentRank, this);
-		if (auraData->StacksExpireOneByOne) {
+		if (auraData->StacksConsumeOneByOne) {
 			currentStacks--;
-			currentDuration = auraData->BaseDuration[currentRank];
 		}
 		else {
 			currentStacks = 0;

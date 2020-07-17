@@ -46,6 +46,7 @@ struct AuraData {
 	bool UniqueByActor = false; // If true, each actor can apply one copy of this aura to an actor.
 	bool ConsumeOnUse = false; // If true, the aura will lose a stack when one of it's stat mods is used in a combat calculation.
 	bool StacksExpireOneByOne = false; // If true, the aura will lose one stack instead of all of them when an aura expires.
+	bool StacksConsumeOneByOne = false; // If true, stacks will be consumed one at a time. Only valid when ConsumeOnUse is true.
 	bool MultiplyStatModsByStacks = false; // If true, the value of stat mods will be multiplied by the number of stacks.
 
 	bool IsRest = false;

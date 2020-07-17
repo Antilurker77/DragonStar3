@@ -104,6 +104,7 @@ enum class AbilityID {
 	ImprovedSpirit,
 	ImprovedStrength,
 	ImprovedVitality,
+	MagicWeapon,
 	ManaSpring,
 	Quickness,
 	VenomousWound,

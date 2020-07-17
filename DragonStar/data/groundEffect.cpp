@@ -216,7 +216,7 @@ bool GroundEffect::IsSilence() {
 }
 
 std::vector<StatMod> GroundEffect::GetStatMods() {
-	if (groundEffectData != nullptr) {
+	if (groundEffectData != nullptr && !groundEffectData->StatMods.empty()) {
 		return groundEffectData->StatMods[currentRank];
 	}
 	return {};

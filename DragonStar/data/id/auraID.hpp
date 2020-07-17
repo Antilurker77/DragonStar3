@@ -33,6 +33,7 @@ enum class AuraID {
 	FuriousStrike,
 	Ignite,
 	Infect,
+	MagicWeapon,
 	Maul,
 	MysticBlast,
 	PoisonArrow,

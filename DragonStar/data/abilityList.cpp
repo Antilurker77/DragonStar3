@@ -8194,6 +8194,102 @@ static std::unordered_map<AbilityID, AbilityData> initList() {
 
 		return ad;
 	}();
+	list[AbilityID::MagicWeapon] = [] {
+		AbilityData ad;
+
+		ad.Name = "Magic Weapon";
+		ad.Icon = "placeholder.png";
+		ad.ID = AbilityID::MagicWeapon;
+
+		ad.Categories = {
+			Category::Passive,
+			Category::Attack
+		};
+		ad.Elements = { Element::Arcane };
+		ad.RequiredWeaponTypes = {};
+
+		ad.IsPassive = true;
+		ad.MaxRank = 4;
+
+		ad.Range = { 0, 0, 0, 0, 0 };
+		ad.UseTime = { 0, 0, 0, 0, 0 };
+		ad.Cooldown = { 0, 0, 0, 0, 0 };
+		ad.MaxCharges = { 0, 0, 0, 0, 0 };
+		ad.HPCost = { 0, 0, 0, 0, 0 };
+		ad.MPCost = { 0, 0, 0, 0, 0 };
+		ad.SPCost = { 0, 0, 0, 0, 0 };
+
+		ad.Values = {
+			{ 3, 6, 9, 12, 15 }, // Chance
+			{ 1000, 1000, 1000, 1000, 1000 }, // Haste
+			{ 1000, 1000, 1000, 1000, 1000 } // Duration
+		};
+		ad.PassiveBonuses = {};
+
+		ad.CanDodge = false;
+		ad.CanBlock = false;
+		ad.CanCounter = false;
+		ad.CanCrit = false;
+		ad.CanDoubleStrike = false;
+
+		ad.HitChance = { 0, 0, 0, 0, 0 };
+		ad.BonusArmorPen = { 0, 0, 0, 0, 0 };
+		ad.BonusResistancePen = { 0, 0, 0, 0, 0 };
+		ad.BonusCritChance = { 0, 0, 0, 0, 0 };
+		ad.BonusCritPower = { 0, 0, 0, 0, 0 };
+		ad.BonusDoubleStrikeChance = { 0, 0, 0, 0, 0 };
+		ad.BonusHPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusMPLeech = { 0, 0, 0, 0, 0 };
+		ad.BonusSPLeech = { 0, 0, 0, 0, 0 };
+
+		ad.FixedRange = false;
+		ad.HideRange = false;
+
+		ad.IsProjectile = false;
+		ad.IgnoreLineOfSight = false;
+
+		ad.AreaIgnoreLineOfSight = false;
+		ad.AreaIgnoreBodyBlock = false;
+
+		ad.GetTargetArea = [&](Actor* user, DungeonScene* dungeonScene, sf::Vector2i cursorTarget, int rank) {
+			return std::vector<sf::Vector2i>{ cursorTarget };
+		};
+
+		ad.GetExtraArea = [&](Actor* user, DungeonScene* dungeonScene, sf::Vector2i cursorTarget, int rank) {
+			return std::vector<sf::Vector2i>{};
+		};
+
+		ad.CustomUseCondition = []() {
+			return true;
+		};
+		ad.GetDescription = [Values = ad.Values](Actor* user, EventOptions& eventOptions, int rank) {
+			std::string desc;
+			std::string chance = std::to_string(Values[0][rank]);
+			std::string haste = std::to_string(Values[1][rank] / 10);
+			std::string duration = std::to_string(Values[2][rank] / 100);
+
+			desc = "Your direct attacks have a " + chance + "% chance to make your next spell gain " + haste + "% haste. Lasts " + duration + "s.";
+
+			return desc;
+		};
+		ad.Execute = [Values = ad.Values](Actor* user, std::vector<Actor*>& targets, sf::Vector2i cursor, std::vector<sf::Vector2i>& targetArea, EventOptions& eventOptions, int rank) {
+
+		};
+		ad.OnEvent = [Values = ad.Values](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount, Ability* ability) {
+			if (eventType == EventType::Damage) {
+				auto& cat = eventOptions.Categories;
+				if (std::find(cat.begin(), cat.end(), Category::Attack) != cat.end() && std::find(cat.begin(), cat.end(), Category::Direct) != cat.end()) {
+					int rank = ability->GetCurrentRank();
+					int chance = Values[0][rank];
+					if (Random::RandomInt(1, 100) <= chance) {
+						Combat::AddAuraStack(user, user, eventOptions, AuraID::MagicWeapon, rank);
+					}
+				}
+			}
+		};
+
+		return ad;
+	}();
 	list[AbilityID::ManaSpring] = [] {
 		AbilityData ad;
 

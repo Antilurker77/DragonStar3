@@ -75,6 +75,7 @@ enum class AbilityID {
 	Trample,
 	Venom,
 	WaterBolt,
+	Waterfall,
 
 	// Potions
 	PotionFruitJuice,

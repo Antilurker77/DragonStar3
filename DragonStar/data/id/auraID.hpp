@@ -49,5 +49,6 @@ enum class AuraID {
 	ThunderStrike,
 	Trample,
 	Venom,
-	VenomousWound
+	VenomousWound,
+	Waterfall
 };

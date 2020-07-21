@@ -51,6 +51,7 @@ enum class AbilityID {
 	Infect,
 	MagicMissile,
 	Maul,
+	Multithrust,
 	MysticBlast,
 	PhaseDoor,
 	PhoenixRaid,

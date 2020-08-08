@@ -31,6 +31,7 @@ enum class AuraID {
 	FlameStrike,
 	Freeze,
 	FuriousStrike,
+	IcyJet,
 	Ignite,
 	Infect,
 	MagicWeapon,

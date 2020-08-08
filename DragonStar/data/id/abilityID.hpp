@@ -46,6 +46,7 @@ enum class AbilityID {
 	Heal,
 	HerosTriumph,
 	Icicle,
+	IcyJet,
 	Ignite,
 	ImpactWave,
 	Infect,

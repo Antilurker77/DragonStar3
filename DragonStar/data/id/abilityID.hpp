@@ -28,6 +28,7 @@ enum class AbilityID {
 	CrushArmor,
 	CrushingBlow,
 	DemonBlade,
+	DestructionRaid,
 	Disarm,
 	DivineStrike,
 	DragonBreath,

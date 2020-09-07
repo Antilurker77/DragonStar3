@@ -4801,7 +4801,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 			StatMod(StatModType::Accuracy, 3),
 			StatMod(StatModType::EvasionMulti, 100),
 			StatMod(StatModType::BlockChance, 50),
-			StatMod(StatModType::Resistance, 300, Element::Light)
+			StatMod(StatModType::Resistance, 250, Element::Light)
 		};
 
 		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
@@ -5749,7 +5749,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 			StatMod(StatModType::VIT, 2),
 			StatMod(StatModType::MovementSpeed, 100),
 			StatMod(StatModType::GoldFind, 200),
-			StatMod(StatModType::Resistance, 300, Element::Lightning)
+			StatMod(StatModType::Resistance, 250, Element::Lightning)
 		};
 
 		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
@@ -6382,7 +6382,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 			StatMod(StatModType::VIT, 1),
 			StatMod(StatModType::Evasion, 3),
 			StatMod(StatModType::HPOnKill, 5),
-			StatMod(StatModType::Resistance, 300, Element::Poison)
+			StatMod(StatModType::Resistance, 250, Element::Poison)
 		};
 
 		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
@@ -6698,8 +6698,8 @@ static std::unordered_map<ItemID, ItemData> initList() {
 			StatMod(StatModType::Damage, 100, Element::Fire),
 			StatMod(StatModType::Damage, 100, Element::Ice),
 			StatMod(StatModType::CritChance, 25),
-			StatMod(StatModType::Resistance, 300, Element::Fire),
-			StatMod(StatModType::Resistance, 300, Element::Ice)
+			StatMod(StatModType::Resistance, 250, Element::Fire),
+			StatMod(StatModType::Resistance, 250, Element::Ice)
 		};
 
 		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
@@ -7324,7 +7324,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 			StatMod(StatModType::STR, 1),
 			StatMod(StatModType::Armor, 3),
 			StatMod(StatModType::Damage, 100, Element::Physical),
-			StatMod(StatModType::Resistance, 300, Element::Dark)
+			StatMod(StatModType::Resistance, 250, Element::Dark)
 		};
 
 		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
@@ -7631,7 +7631,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 			StatMod(StatModType::HP, 10),
 			StatMod(StatModType::VIT, 2),
 			StatMod(StatModType::GoldFind, 150),
-			StatMod(StatModType::Resistance, 300, Element::Light)
+			StatMod(StatModType::Resistance, 250, Element::Light)
 		};
 
 		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
@@ -8255,7 +8255,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 			StatMod(StatModType::VIT, 1),
 			StatMod(StatModType::SnareResistance, 750),
 			StatMod(StatModType::MovementSpeed, 100),
-			StatMod(StatModType::Resistance, 300, Element::Ice)
+			StatMod(StatModType::Resistance, 250, Element::Ice)
 		};
 
 		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
@@ -8331,7 +8331,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 		itd.ExplicitStatMods = {
 			StatMod(StatModType::HP, 30),
 			StatMod(StatModType::HPOnKill, 5),
-			StatMod(StatModType::Resistance, 300, Element::Fire)
+			StatMod(StatModType::Resistance, 250, Element::Fire)
 		};
 
 		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
@@ -8478,7 +8478,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 		};
 		itd.ExplicitStatMods = {
 			StatMod(StatModType::AllAttributes, 2),
-			StatMod(StatModType::Resistance, 300, Element::Light)
+			StatMod(StatModType::Resistance, 250, Element::Light)
 		};
 
 		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {

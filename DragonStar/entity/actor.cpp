@@ -697,9 +697,9 @@ int Actor::GetResistance(EventOptions& eventOptions, bool consumeBuffs) {
 
 	int base = getStat(0, StatModType::Resistance, eventOptions, false, consumeBuffs);
 
-	// Players are capped at 60% resistance, monsters at 100%.
+	// Players are capped at 50% resistance, monsters at 100%.
 	if (isPlayer) {
-		result = std::min(600, base);
+		result = std::min(500, base);
 	}
 	else {
 		result = std::min(1000, base);

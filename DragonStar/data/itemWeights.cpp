@@ -543,7 +543,7 @@ static std::unordered_map<EquipType, std::vector<AffixWeight>> initAffixWeights(
 		{1, 750, StatModType::Accuracy, 2, 12},
 		{1, 1000, StatModType::Armor, 8, 80},
 		{1, 1000, StatModType::MagicArmor, 6, 60},
-		{1, 1000, StatModType::Resistance, 300, 300},
+		{1, 1000, StatModType::Resistance, 250, 250},
 		{1, 750, StatModType::BlockChance, 100, 400}
 	};
 
@@ -561,7 +561,7 @@ static std::unordered_map<EquipType, std::vector<AffixWeight>> initAffixWeights(
 		{1, 500, StatModType::Evasion, 1, 10},
 		{1, 1000, StatModType::Accuracy, 2, 15},
 		{20, 1000, StatModType::CritPower, 100, 250},
-		{1, 1000, StatModType::Resistance, 300, 300}
+		{1, 1000, StatModType::Resistance, 250, 250}
 	};
 
 	list[EquipType::LightBody] = {
@@ -577,7 +577,7 @@ static std::unordered_map<EquipType, std::vector<AffixWeight>> initAffixWeights(
 		{1, 1000, StatModType::MagicArmor, 5, 50},
 		{1, 500, StatModType::Evasion, 1, 10},
 		//{1, 500, StatModType::CooldownReduction, 50, 100},
-		{1, 1000, StatModType::Resistance, 300, 300}
+		{1, 1000, StatModType::Resistance, 250, 250}
 	};
 
 	list[EquipType::LightHands] = {
@@ -599,7 +599,7 @@ static std::unordered_map<EquipType, std::vector<AffixWeight>> initAffixWeights(
 		{1, 750, StatModType::DoubleStrikeChance, 50, 150},
 		//{10, 750, StatModType::CooldownReduction, 50, 100},
 		{1, 750, StatModType::OnHitDamage, 1, 25},
-		{1, 1000, StatModType::Resistance, 300, 300}
+		{1, 1000, StatModType::Resistance, 250, 250}
 	};
 
 	list[EquipType::LightFeet] = {
@@ -614,7 +614,7 @@ static std::unordered_map<EquipType, std::vector<AffixWeight>> initAffixWeights(
 		{1, 1000, StatModType::Armor, 2, 40},
 		{1, 1000, StatModType::MagicArmor, 5, 50},
 		{1, 500, StatModType::Evasion, 1, 10},
-		{1, 1000, StatModType::Resistance, 300, 300},
+		{1, 1000, StatModType::Resistance, 250, 250},
 		{1, 1000, StatModType::MovementSpeed, 100, 250},
 	};
 
@@ -632,7 +632,7 @@ static std::unordered_map<EquipType, std::vector<AffixWeight>> initAffixWeights(
 		{1, 500, StatModType::Evasion, 1, 10},
 		{1, 1000, StatModType::Accuracy, 2, 15},
 		{20, 1000, StatModType::CritPower, 100, 250},
-		{1, 1000, StatModType::Resistance, 300, 300}
+		{1, 1000, StatModType::Resistance, 250, 250}
 	};
 
 	list[EquipType::MediumBody] = {
@@ -648,7 +648,7 @@ static std::unordered_map<EquipType, std::vector<AffixWeight>> initAffixWeights(
 		{1, 1000, StatModType::MagicArmor, 5, 50},
 		{1, 500, StatModType::Evasion, 1, 10},
 		//{1, 500, StatModType::CooldownReduction, 50, 100},
-		{1, 1000, StatModType::Resistance, 300, 300}
+		{1, 1000, StatModType::Resistance, 250, 250}
 	};
 
 	list[EquipType::MediumHands] = {
@@ -670,7 +670,7 @@ static std::unordered_map<EquipType, std::vector<AffixWeight>> initAffixWeights(
 		{1, 750, StatModType::DoubleStrikeChance, 50, 150},
 		//{10, 750, StatModType::CooldownReduction, 50, 100},
 		{1, 750, StatModType::OnHitDamage, 1, 25},
-		{1, 1000, StatModType::Resistance, 300, 300}
+		{1, 1000, StatModType::Resistance, 250, 250}
 	};
 
 	list[EquipType::MediumFeet] = {
@@ -685,7 +685,7 @@ static std::unordered_map<EquipType, std::vector<AffixWeight>> initAffixWeights(
 		{1, 1000, StatModType::Armor, 2, 40},
 		{1, 1000, StatModType::MagicArmor, 5, 50},
 		{1, 500, StatModType::Evasion, 1, 10},
-		{1, 1000, StatModType::Resistance, 300, 300},
+		{1, 1000, StatModType::Resistance, 250, 250},
 		{1, 1000, StatModType::MovementSpeed, 100, 250},
 	};
 
@@ -703,7 +703,7 @@ static std::unordered_map<EquipType, std::vector<AffixWeight>> initAffixWeights(
 		{1, 500, StatModType::Evasion, 1, 10},
 		{1, 1000, StatModType::Accuracy, 2, 15},
 		{20, 1000, StatModType::CritPower, 100, 250},
-		{1, 1000, StatModType::Resistance, 300, 300}
+		{1, 1000, StatModType::Resistance, 250, 250}
 	};
 
 	list[EquipType::HeavyBody] = {
@@ -719,7 +719,7 @@ static std::unordered_map<EquipType, std::vector<AffixWeight>> initAffixWeights(
 		{1, 1000, StatModType::MagicArmor, 5, 50},
 		{1, 500, StatModType::Evasion, 1, 10},
 		//{1, 500, StatModType::CooldownReduction, 50, 100},
-		{1, 1000, StatModType::Resistance, 300, 300}
+		{1, 1000, StatModType::Resistance, 250, 250}
 	};
 
 	list[EquipType::HeavyHands] = {
@@ -741,7 +741,7 @@ static std::unordered_map<EquipType, std::vector<AffixWeight>> initAffixWeights(
 		{1, 750, StatModType::DoubleStrikeChance, 50, 150},
 		//{10, 750, StatModType::CooldownReduction, 50, 100},
 		{1, 750, StatModType::OnHitDamage, 1, 25},
-		{1, 1000, StatModType::Resistance, 300, 300}
+		{1, 1000, StatModType::Resistance, 250, 250}
 	};
 
 	list[EquipType::HeavyFeet] = {
@@ -756,7 +756,7 @@ static std::unordered_map<EquipType, std::vector<AffixWeight>> initAffixWeights(
 		{1, 1000, StatModType::Armor, 2, 40},
 		{1, 1000, StatModType::MagicArmor, 5, 50},
 		{1, 500, StatModType::Evasion, 1, 10},
-		{1, 1000, StatModType::Resistance, 300, 300},
+		{1, 1000, StatModType::Resistance, 250, 250},
 		{1, 1000, StatModType::MovementSpeed, 100, 250},
 	};
 
@@ -771,7 +771,7 @@ static std::unordered_map<EquipType, std::vector<AffixWeight>> initAffixWeights(
 		{1, 250, StatModType::SPI, 1, 7},
 		{15, 1000, StatModType::ArmorPen, 50, 200},
 		{1, 750, StatModType::MagicArmor, 3, 30},
-		{1, 1000, StatModType::Resistance, 300, 300},
+		{1, 1000, StatModType::Resistance, 250, 250},
 		{1, 1000, StatModType::Accuracy, 1, 12},
 		{1, 1000, StatModType::CritChance, 40, 120},
 		{5, 1000, StatModType::CritPower, 50, 150},
@@ -791,7 +791,7 @@ static std::unordered_map<EquipType, std::vector<AffixWeight>> initAffixWeights(
 		{1, 250, StatModType::SPI, 1, 5},
 		{1, 750, StatModType::Armor, 2, 15},
 		{15, 750, StatModType::ArmorPen, 30, 100},
-		{1, 1000, StatModType::Resistance, 300, 300},
+		{1, 1000, StatModType::Resistance, 250, 250},
 		{1, 1000, StatModType::Accuracy, 1, 7},
 		{1, 1000, StatModType::CritChance, 20, 80},
 		{1, 1000, StatModType::Haste, 30, 80},
@@ -808,7 +808,7 @@ static std::unordered_map<EquipType, std::vector<AffixWeight>> initAffixWeights(
 		{1, 750, StatModType::MAG, 1, 7},
 		{1, 375, StatModType::VIT, 1, 7},
 		{1, 375, StatModType::SPI, 1, 7},
-		{1, 1000, StatModType::Resistance, 300, 300},
+		{1, 1000, StatModType::Resistance, 250, 250},
 		{1, 750, StatModType::Accuracy, 1, 7},
 		{1, 500, StatModType::SightRadius, 100, 200},
 		{1, 100, StatModType::GoldFind, 100, 250}

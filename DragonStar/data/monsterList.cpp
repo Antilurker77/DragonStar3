@@ -291,8 +291,8 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.LootDrop = 2500;
 
 		md.StatMods = {
-			StatMod(StatModType::Resistance, 600, Element::Water),
-			StatMod(StatModType::Resistance, 300, Element::Poison)
+			StatMod(StatModType::Resistance, 500, Element::Water),
+			StatMod(StatModType::Resistance, 250, Element::Poison)
 		};
 		md.Abilities = {
 			{AbilityID::SlimeSplash, 0}
@@ -564,8 +564,8 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.LootDrop = 2000;
 
 		md.StatMods = {
-			StatMod(StatModType::Resistance, 300, Element::Light),
-			StatMod(StatModType::Resistance, -300, Element::Dark)
+			StatMod(StatModType::Resistance, 250, Element::Light),
+			StatMod(StatModType::Resistance, -250, Element::Dark)
 		};
 		md.Abilities = {
 			{AbilityID::DivineStrike, 0}
@@ -1166,8 +1166,8 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.LootDrop = 2500;
 
 		md.StatMods = {
-			StatMod(StatModType::Resistance, 300, Element::Water),
-			StatMod(StatModType::Resistance, 300, Element::Poison)
+			StatMod(StatModType::Resistance, 250, Element::Water),
+			StatMod(StatModType::Resistance, 250, Element::Poison)
 		};
 		md.Abilities = {};
 
@@ -1232,7 +1232,7 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		md.StatMods = {
 			StatMod(StatModType::Resistance, 1000, Element::Ice),
-			StatMod(StatModType::Resistance, -300, Element::Fire)
+			StatMod(StatModType::Resistance, -250, Element::Fire)
 		};
 		md.Abilities = {
 			{AbilityID::Bonechill, 0},
@@ -1381,8 +1381,8 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.LootDrop = 1250;
 
 		md.StatMods = {
-			StatMod(StatModType::Resistance, 300, Element::Dark),
-			StatMod(StatModType::Resistance, -300, Element::Light)
+			StatMod(StatModType::Resistance, 250, Element::Dark),
+			StatMod(StatModType::Resistance, -250, Element::Light)
 		};
 		md.Abilities = {
 			{AbilityID::BoltOfDarkness, 0}
@@ -1958,7 +1958,7 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		md.StatMods = {
 			StatMod(StatModType::Resistance, 1000, Element::Fire),
-			StatMod(StatModType::Resistance, -300, Element::Water)
+			StatMod(StatModType::Resistance, -250, Element::Water)
 		};
 		md.Abilities = {
 			{AbilityID::FlameStrike, 0},
@@ -2037,7 +2037,7 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		md.StatMods = {
 			StatMod(StatModType::Resistance, 1000, Element::Lightning),
-			StatMod(StatModType::Resistance, -300, Element::Ice)
+			StatMod(StatModType::Resistance, -250, Element::Ice)
 		};
 		md.Abilities = {
 			{AbilityID::ElectricSurge, 0}
@@ -2258,8 +2258,8 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.LootDrop = 3000;
 
 		md.StatMods = {
-			StatMod(StatModType::Resistance, 300, Element::Dark),
-			StatMod(StatModType::Resistance, -300, Element::Light)
+			StatMod(StatModType::Resistance, 250, Element::Dark),
+			StatMod(StatModType::Resistance, -250, Element::Light)
 		};
 		md.Abilities = {
 			{AbilityID::ShadowFlay, 0},
@@ -2482,7 +2482,7 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 
 		md.StatMods = {
 			StatMod(StatModType::Resistance, 1000, Element::Water),
-			StatMod(StatModType::Resistance, -300, Element::Lightning)
+			StatMod(StatModType::Resistance, -250, Element::Lightning)
 		};
 		md.Abilities = {
 			{AbilityID::Trample, 0}
@@ -3051,7 +3051,7 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.LootDrop = 5000;
 
 		md.StatMods = {
-			StatMod(StatModType::Resistance, 300, Element::Fire)
+			StatMod(StatModType::Resistance, 250, Element::Fire)
 		};
 		md.Abilities = {
 			{ AbilityID::FlameBolt, 1 },
@@ -3209,8 +3209,8 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.LootDrop = 5000;
 
 		md.StatMods = {
-			StatMod(StatModType::Resistance, 300, Element::Dark),
-			StatMod(StatModType::Resistance, -300, Element::Light),
+			StatMod(StatModType::Resistance, 250, Element::Dark),
+			StatMod(StatModType::Resistance, -250, Element::Light),
 			StatMod(StatModType::BlockChance, 200),
 			StatMod(StatModType::Haste, 50)
 		};
@@ -3366,7 +3366,7 @@ static std::unordered_map<MonsterID, MonsterData> initList() {
 		md.LootDrop = 6000;
 
 		md.StatMods = {
-			StatMod(StatModType::Resistance, 300, Element::Poison)
+			StatMod(StatModType::Resistance, 250, Element::Poison)
 		};
 		md.Abilities = {
 			{ AbilityID::HasteAllies, 0 }

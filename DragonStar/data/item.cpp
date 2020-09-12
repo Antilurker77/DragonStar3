@@ -26,6 +26,7 @@ Item::Item(ItemID id) {
 
 Item::Item(ItemSave& itemSave) {
 	rarity = static_cast<Rarity>(itemSave.Rarity);
+	randArtifactName = itemSave.RandArtName;
 	Initialize(static_cast<ItemID>(itemSave.ItemID));
 	
 	randomStatMods.reserve(itemSave.StatModTypes.size());
@@ -210,6 +211,7 @@ void Item::InitEquipment(int itemLevel) {
 			break;
 		case Rarity::RandomArtifact:
 			affixes = 6;
+			genRandArtName();
 			break;
 		default:
 			break;
@@ -412,8 +414,14 @@ std::string Item::GetName() {
 		}
 		return name;
 	}
-
+	if (rarity == Rarity::RandomArtifact) {
+		return randArtifactName;
+	}
 	return itemData->Name;
+}
+
+std::string Item::GetRandArtName() {
+	return randArtifactName;
 }
 
 std::string Item::GetIconFilePath() {
@@ -671,4 +679,20 @@ std::vector<StatMod>& Item::GetRandomStatMods() {
 
 std::vector<std::string>& Item::GetBonusModStrings() {
 	return itemData->BonusModStrings;
+}
+
+void Item::genRandArtName() {
+	randArtifactName = "";
+
+	size_t syllables = Random::RandomSizeT(1, 3) + Random::RandomSizeT(1, 2);
+	bool hasTitle = Random::RandomInt(1, 100) <= 10;
+
+	for (size_t i = 0; i < syllables; i++) {
+		randArtifactName += randArtSyllables[Random::RandomSizeT(0, randArtSyllables.size() - 1)];
+	}
+	randArtifactName[0] = toupper(randArtifactName[0]);
+
+	if (hasTitle) {
+		randArtifactName += " " + randArtTitles[Random::RandomSizeT(0, randArtTitles.size() - 1)];
+	}
 }

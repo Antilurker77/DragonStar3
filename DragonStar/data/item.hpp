@@ -93,6 +93,9 @@ public:
 	// Returns the name of the item.
 	std::string GetName();
 
+	// Returns the random artifact name. If not a random artifact, string will be empty.
+	std::string GetRandArtName();
+
 	// Returns the file name of the texture used for inventory icons.
 	std::string GetIconFilePath();
 
@@ -145,6 +148,9 @@ public:
 	std::vector<std::string>& GetBonusModStrings();
 
 private:
+	// Generates a random artifact name.
+	void genRandArtName();
+	
 	// List of all items.
 	static std::unordered_map<ItemID, ItemData> itemList;
 
@@ -160,9 +166,13 @@ private:
 	static std::vector<ItemWeight> scrollWeights;
 	static std::vector<ItemWeight> tomeWeights;
 
+	static std::vector<std::string> randArtSyllables;
+	static std::vector<std::string> randArtTitles;
+
 	Ability invokedAbility;
 	ItemID itemID{};
 	ItemData* itemData = nullptr;
 	Rarity rarity{};
 	std::vector<StatMod> randomStatMods;
+	std::string randArtifactName;
 };

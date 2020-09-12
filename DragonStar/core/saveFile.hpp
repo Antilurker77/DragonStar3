@@ -21,6 +21,7 @@ struct ItemSave {
 	std::vector<int> StatModTypes;
 	std::vector<int> StatModElements;
 	std::vector<int> StatModValues;
+	std::string RandArtName;
 
 	template<class Archive>
 	void serialize(Archive& archive) {
@@ -30,7 +31,8 @@ struct ItemSave {
 			StackSize,
 			StatModTypes,
 			StatModElements,
-			StatModValues
+			StatModValues,
+			RandArtName
 		);
 	}
 };

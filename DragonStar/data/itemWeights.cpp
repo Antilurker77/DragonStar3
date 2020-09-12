@@ -873,6 +873,77 @@ static std::vector<ItemWeight> initTomeWeights() {
 	return list;
 }
 
+static std::vector<std::string> initRandArtSyllables() {
+	std::vector<std::string> list;
+
+	list = {
+		"aba",
+		"ade",
+		"adi",
+		"aki",
+		"aj",
+		"al",
+		"eth",
+		"en",
+		"ette"
+		"eko",
+		"eco",
+		"eld",
+		"elm",
+		"em",
+		"ith",
+		"ion",
+		"ik",
+		"ig",
+		"id",
+		"oah",
+		"ore",
+		"ort",
+		"orth",
+		"occ",
+		"ol",
+		"on",
+		"om",
+		"ul",
+		"uth",
+		"uk",
+		"un",
+		"um",
+		"tre",
+		"tros",
+		"trok",
+		"trad",
+		"pon",
+		"pen",
+		"piou",
+		"ba",
+		"be",
+		"ben",
+		"ceth",
+		"dorn",
+		"do",
+		"di"
+	};
+
+	return list;
+}
+
+static std::vector<std::string> initRandArtTitles() {
+	std::vector<std::string> list;
+
+	list = {
+		"the Lost",
+		"the Forgotten",
+		"the Legendary",
+		"the Magnificent",
+		"the Exceptional",
+		"the Mythical",
+		"the Well-crafted"
+	};
+
+	return list;
+}
+
 std::vector<std::pair<ItemType, int>> Item::itemTypeWeights = initItemTypeWeights();
 std::vector<std::pair<EquipType, int>> Item::equipTypeWeights = initEquipTypeWeights();
 std::vector<std::pair<Rarity, int>> Item::rarityWeights = initRarityWeights();
@@ -883,3 +954,6 @@ std::unordered_map<EquipType, std::vector<AffixWeight>> Item::affixWeights = ini
 std::vector<ItemWeight> Item::potionWeights = initPotionWeights();
 std::vector<ItemWeight> Item::scrollWeights = initScrollWeights();
 std::vector<ItemWeight> Item::tomeWeights = initTomeWeights();
+
+std::vector<std::string> Item::randArtSyllables = initRandArtSyllables();
+std::vector<std::string> Item::randArtTitles = initRandArtTitles();

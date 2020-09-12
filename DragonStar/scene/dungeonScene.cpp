@@ -1359,6 +1359,7 @@ void DungeonScene::saveGame() {
 	for (size_t i = 0; i < equipment.size(); i++) {
 		saveFile.Player.Equipment[i].ItemID = static_cast<int>(equipment[i].GetItemID());
 		saveFile.Player.Equipment[i].Rarity = static_cast<int>(equipment[i].GetRarity());
+		saveFile.Player.Equipment[i].RandArtName = equipment[i].GetRandArtName();
 		saveFile.Player.Equipment[i].StackSize = 1;
 		auto statMods = equipment[i].GetRandomStatMods();
 		saveFile.Player.Equipment[i].StatModTypes.clear();
@@ -1389,6 +1390,7 @@ void DungeonScene::saveGame() {
 			ItemSave itemSave;
 			itemSave.ItemID = static_cast<int>(item.GetItemID());
 			itemSave.Rarity = static_cast<int>(item.GetRarity());
+			itemSave.RandArtName = item.GetRandArtName();
 			itemSave.StackSize = 1;
 			auto statMods = item.GetRandomStatMods();
 			for (auto& sm : statMods) {
@@ -1431,6 +1433,7 @@ void DungeonScene::saveGame() {
 		saveFile.Inventory[i].StackSize = slots[i].StackCount;
 		saveFile.Inventory[i].ItemID = static_cast<int>(slots[i].Item.GetItemID());
 		saveFile.Inventory[i].Rarity = static_cast<int>(slots[i].Item.GetRarity());
+		saveFile.Inventory[i].RandArtName = slots[i].Item.GetRandArtName();
 		saveFile.Inventory[i].StatModTypes.clear();
 		saveFile.Inventory[i].StatModValues.clear();
 		saveFile.Inventory[i].StatModElements.clear();
@@ -1456,6 +1459,7 @@ void DungeonScene::saveGame() {
 			itemSaves[i].StackSize = 1;
 			itemSaves[i].ItemID = static_cast<int>(items[i].GetItemID());
 			itemSaves[i].Rarity = static_cast<int>(items[i].GetRarity());
+			itemSaves[i].RandArtName = items[i].GetRandArtName();
 			auto statMods = items[i].GetRandomStatMods();
 			for (auto& sm : statMods) {
 				itemSaves[i].StatModTypes.push_back(static_cast<int>(sm.statModType));

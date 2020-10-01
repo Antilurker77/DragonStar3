@@ -42,7 +42,7 @@ static bool hitRoll(Actor* user, Actor* target, EventOptions& eventOptions) {
 
 // Block roll.
 static bool blockRoll(Actor* user, Actor* target, EventOptions& eventOptions) {
-	int blockChance = user->GetBlockChance(eventOptions, true);
+	int blockChance = target->GetBlockChance(eventOptions, true);
 
 	if (blockChance > 0) {
 		int roll = Random::RandomInt(1, 1000);

@@ -776,8 +776,8 @@ static std::unordered_map<EquipType, std::vector<AffixWeight>> initAffixWeights(
 		{1, 1000, StatModType::CritChance, 40, 120},
 		{5, 1000, StatModType::CritPower, 50, 150},
 		{1, 1000, StatModType::Haste, 25, 100},
-		{1, 1000, StatModType::DoubleStrikeChance, 50, 150}
-		{1, 1000, StatModType::CooldownRecution, 50, 100}
+		{1, 1000, StatModType::DoubleStrikeChance, 50, 150},
+		{1, 1000, StatModType::CooldownReduction, 50, 100}
 	};
 
 	list[EquipType::Ring] = {

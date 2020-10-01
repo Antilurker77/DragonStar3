@@ -10,6 +10,7 @@
 #include "../core/assetManager.hpp"
 #include "../core/settings.hpp"
 #include "../data/id/abilityID.hpp"
+#include "../data/id/category.hpp"
 #include "../data/id/element.hpp"
 #include "../data/id/equipType.hpp"
 #include "../data/id/itemID.hpp"
@@ -402,6 +403,41 @@ Element Player::GetAttackElement() {
 		element = equipment[0].GetAttackElement();
 	}
 	return element;
+}
+
+Category Player::GetAttackCategory() {
+	Category category = Category::Unarmed;
+	if (!equipment[0].IsNull()) {
+		switch (equipment[0].GetEquipType()) {
+		case EquipType::Sword:
+			category = Category::Sword;
+			break;
+		case EquipType::Axe:
+			category = Category::Axe;
+			break;
+		case EquipType::Mace:
+			category = Category::Mace;
+			break;
+		case EquipType::Dagger:
+			category = Category::Dagger;
+			break;
+		case EquipType::Spear:
+			category = Category::Spear;
+			break;
+		case EquipType::Bow:
+			category = Category::Bow;
+			break;
+		case EquipType::Wand:
+			category = Category::Wand;
+			break;
+		case EquipType::Staff:
+			category = Category::Staff;
+			break;
+		default:
+			break;
+		}
+	}
+	return category;
 }
 
 int Player::GetWeaponDamageMultiplier() {

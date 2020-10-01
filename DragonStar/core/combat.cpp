@@ -394,6 +394,9 @@ EventResult Combat::SkillDamage(Actor* user, Actor* target, EventOptions& eventO
 		eventOptions.Elements = { user->GetAttackElement() };
 	}
 
+	// Add weapon categories to event.
+
+
 	damage = user->GetAttackPower(eventOptions, true) * coefficient; // intentionally not dividing by 1000 for better precision
 	damage = damage * user->GetWeaponDamageMultiplier() / 1000;
 

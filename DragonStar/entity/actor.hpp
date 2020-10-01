@@ -9,6 +9,7 @@
 
 #pragma once
 
+enum class Category;
 enum class Element;
 enum class EventType;
 enum class StatModType;
@@ -364,6 +365,9 @@ public:
 
 	// Returns the element of the actors weapon. Unarmed attacks are physical, monsters have their's set in their data.
 	virtual Element GetAttackElement() = 0;
+
+	// Returns a category based on the actor's weapon.
+	virtual Category GetAttackCategory() = 0;
 
 	// Returns the damage multiplier of the actor's weapon. Unarmed attacks are 1000, monsters have their's set in their data.
 	virtual int GetWeaponDamageMultiplier() = 0;

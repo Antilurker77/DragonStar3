@@ -12,7 +12,9 @@
 #include "../core/random.hpp"
 #include "../core/settings.hpp"
 #include "../core/tileMath.hpp"
+#include "../data/id/category.hpp"
 #include "../data/id/element.hpp"
+#include "../data/id/equipType.hpp"
 //#include "../data/id/monsterID.hpp"
 #include "../scene/dungeonScene.hpp"
 
@@ -410,7 +412,44 @@ int Monster::GetAttackSpeed() {
 }
 
 Element Monster::GetAttackElement() {
-	return monsterData->AttackElement; //todo: monster attack element
+	return monsterData->AttackElement;
+}
+
+Category Monster::GetAttackCategory() {
+	Category category = Category::Unarmed;
+
+	if (monsterData != nullptr) {
+		switch (monsterData->AttackType) {
+		case EquipType::Sword:
+			category = Category::Sword;
+			break;
+		case EquipType::Axe:
+			category = Category::Axe;
+			break;
+		case EquipType::Mace:
+			category = Category::Mace;
+			break;
+		case EquipType::Dagger:
+			category = Category::Dagger;
+			break;
+		case EquipType::Spear:
+			category = Category::Spear;
+			break;
+		case EquipType::Bow:
+			category = Category::Bow;
+			break;
+		case EquipType::Wand:
+			category = Category::Wand;
+			break;
+		case EquipType::Staff:
+			category = Category::Staff;
+			break;
+		default:
+			break;
+		}
+	}
+
+	return category;
 }
 
 int Monster::GetWeaponDamageMultiplier() {

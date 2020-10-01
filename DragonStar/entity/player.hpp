@@ -71,6 +71,7 @@ public:
 	int GetAttackRange();
 	int GetAttackSpeed();
 	Element GetAttackElement();
+	Category GetAttackCategory();
 	int GetWeaponDamageMultiplier();
 
 	int GetEXPReward();

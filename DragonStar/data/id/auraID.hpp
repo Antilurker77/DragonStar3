@@ -25,6 +25,7 @@ enum class AuraID {
 	DeadlyForce,
 	DemonBlade,
 	Disarm,
+	DustDevil,
 	ElectricSurge,
 	ElementalEnergy,
 	FearfulGaze,

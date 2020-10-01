@@ -63,6 +63,7 @@ enum class ItemID {
 
 	// Artifact Sword
 	Flametongue,
+	DustDevil,
 
 	// Axe
 	IronAxe,

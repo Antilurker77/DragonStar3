@@ -1593,6 +1593,58 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		return itd;
 	}();
+	list[ItemID::DustDevil] = [] {
+		ItemData itd;
+
+		itd.Name = "Dust Devil";
+		itd.IconFilePath = "sword.png";
+		itd.EquipFilePath = "iron_sword.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::DustDevil;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 80;
+
+		itd.Artifact = true;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::Sword;
+		itd.AttackElement = Element::Physical;
+		itd.HitChance = 750;
+		itd.AttackRange = 150;
+		itd.AttackSpeed = 200;
+		itd.WeaponDamageMultiplier = 1000;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::AttackPower, 27)
+		};
+		itd.ExplicitStatMods = {
+			StatMod(StatModType::STR, 4),
+			StatMod(StatModType::DEX, 2),
+			StatMod(StatModType::Haste, 50),
+			StatMod(StatModType::DoubleStrikeChance, 100)
+		};
+		itd.BonusModStrings = {
+			"On Attack: Reduce target's accuracy by 7 for 5s."
+		};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+			if (eventType == EventType::Damage) {
+				if (std::find(eventOptions.Categories.begin(), eventOptions.Categories.end(), Category::Direct) != eventOptions.Categories.end()) {
+					if (std::find(eventOptions.Categories.begin(), eventOptions.Categories.end(), Category::Attack) != eventOptions.Categories.end()) {
+						Combat::AddAuraStack(user, target, eventOptions, AuraID::DustDevil, 0);
+					}
+				}
+			}
+		};
+
+		return itd;
+	}();
 
 	// Axe
 	list[ItemID::IronAxe] = [] {

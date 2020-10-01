@@ -1975,7 +1975,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 			StatMod(StatModType::DEX, 1),
 			StatMod(StatModType::OnHitDamage, 3, Category::Direct),
 			StatMod(StatModType::HPLeech, 200),
-			StatMod(StatModType::Resistance, 300, Element::Dark)
+			StatMod(StatModType::Resistance, 250, Element::Dark)
 		};
 
 		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {

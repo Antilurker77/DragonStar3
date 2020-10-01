@@ -576,7 +576,7 @@ static std::unordered_map<EquipType, std::vector<AffixWeight>> initAffixWeights(
 		{1, 1000, StatModType::Armor, 2, 40},
 		{1, 1000, StatModType::MagicArmor, 5, 50},
 		{1, 500, StatModType::Evasion, 1, 10},
-		//{1, 500, StatModType::CooldownReduction, 50, 100},
+		{1, 500, StatModType::CooldownReduction, 50, 100},
 		{1, 1000, StatModType::Resistance, 250, 250}
 	};
 
@@ -597,7 +597,7 @@ static std::unordered_map<EquipType, std::vector<AffixWeight>> initAffixWeights(
 		{1, 750, StatModType::CritChance, 30, 100},
 		{1, 750, StatModType::Haste, 25, 80},
 		{1, 750, StatModType::DoubleStrikeChance, 50, 150},
-		//{10, 750, StatModType::CooldownReduction, 50, 100},
+		{10, 750, StatModType::CooldownReduction, 50, 100},
 		{1, 750, StatModType::OnHitDamage, 1, 25},
 		{1, 1000, StatModType::Resistance, 250, 250}
 	};
@@ -647,7 +647,7 @@ static std::unordered_map<EquipType, std::vector<AffixWeight>> initAffixWeights(
 		{1, 1000, StatModType::Armor, 2, 40},
 		{1, 1000, StatModType::MagicArmor, 5, 50},
 		{1, 500, StatModType::Evasion, 1, 10},
-		//{1, 500, StatModType::CooldownReduction, 50, 100},
+		{1, 500, StatModType::CooldownReduction, 50, 100},
 		{1, 1000, StatModType::Resistance, 250, 250}
 	};
 
@@ -668,7 +668,7 @@ static std::unordered_map<EquipType, std::vector<AffixWeight>> initAffixWeights(
 		{1, 750, StatModType::CritChance, 30, 100},
 		{1, 750, StatModType::Haste, 25, 80},
 		{1, 750, StatModType::DoubleStrikeChance, 50, 150},
-		//{10, 750, StatModType::CooldownReduction, 50, 100},
+		{10, 750, StatModType::CooldownReduction, 50, 100},
 		{1, 750, StatModType::OnHitDamage, 1, 25},
 		{1, 1000, StatModType::Resistance, 250, 250}
 	};
@@ -718,7 +718,7 @@ static std::unordered_map<EquipType, std::vector<AffixWeight>> initAffixWeights(
 		{1, 1000, StatModType::Armor, 2, 40},
 		{1, 1000, StatModType::MagicArmor, 5, 50},
 		{1, 500, StatModType::Evasion, 1, 10},
-		//{1, 500, StatModType::CooldownReduction, 50, 100},
+		{1, 500, StatModType::CooldownReduction, 50, 100},
 		{1, 1000, StatModType::Resistance, 250, 250}
 	};
 
@@ -739,7 +739,7 @@ static std::unordered_map<EquipType, std::vector<AffixWeight>> initAffixWeights(
 		{1, 750, StatModType::CritChance, 30, 100},
 		{1, 750, StatModType::Haste, 25, 80},
 		{1, 750, StatModType::DoubleStrikeChance, 50, 150},
-		//{10, 750, StatModType::CooldownReduction, 50, 100},
+		{10, 750, StatModType::CooldownReduction, 50, 100},
 		{1, 750, StatModType::OnHitDamage, 1, 25},
 		{1, 1000, StatModType::Resistance, 250, 250}
 	};
@@ -777,7 +777,7 @@ static std::unordered_map<EquipType, std::vector<AffixWeight>> initAffixWeights(
 		{5, 1000, StatModType::CritPower, 50, 150},
 		{1, 1000, StatModType::Haste, 25, 100},
 		{1, 1000, StatModType::DoubleStrikeChance, 50, 150}
-		//{1, 1000, StatModType::CooldownRecution, 50, 100}
+		{1, 1000, StatModType::CooldownRecution, 50, 100}
 	};
 
 	list[EquipType::Ring] = {
@@ -796,7 +796,7 @@ static std::unordered_map<EquipType, std::vector<AffixWeight>> initAffixWeights(
 		{1, 1000, StatModType::CritChance, 20, 80},
 		{1, 1000, StatModType::Haste, 30, 80},
 		{1, 1000, StatModType::DoubleStrikeChance, 30, 10},
-		//{25, 1000, StatModType::CooldownReduction, 30, 50}
+		{25, 1000, StatModType::CooldownReduction, 30, 50}
 	};
 
 	list[EquipType::LightSource] = {

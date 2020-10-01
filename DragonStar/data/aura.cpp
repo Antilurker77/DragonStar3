@@ -269,6 +269,13 @@ bool Aura::IsDisarm() {
 	return false;
 }
 
+bool Aura::IsSilence() {
+	if (auraData != nullptr) {
+		return auraData->IsSilence;
+	}
+	return false;
+}
+
 std::vector<StatMod> Aura::GetStatMods() {
 	if (!auraData->StatMods.empty()) {
 		return auraData->StatMods[currentRank];

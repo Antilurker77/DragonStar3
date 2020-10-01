@@ -402,6 +402,15 @@ bool Actor::IsDisarmed() {
 	return false;
 }
 
+bool Actor::IsSilenced() {
+	for (auto& aura : auras) {
+		if (aura.IsSilence()) {
+			return true;
+		}
+	}
+	return false;
+}
+
 int Actor::GetCurrentHP() {
 	return currentHP;
 }

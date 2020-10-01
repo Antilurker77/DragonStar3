@@ -158,6 +158,9 @@ public:
 	// Returns true if the actor is disarmed.
 	bool IsDisarmed();
 
+	// Returns true if the actor is silenced.
+	bool IsSilenced();
+
 	// Returns the current HP of the actor.
 	int GetCurrentHP();
 

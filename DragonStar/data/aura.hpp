@@ -113,6 +113,9 @@ public:
 	// Returns true if the aura disarms.
 	bool IsDisarm();
 
+	// Returns true if the aura silences.
+	bool IsSilence();
+
 	// Returns the stat mods for this aura.
 	std::vector<StatMod> GetStatMods();
 

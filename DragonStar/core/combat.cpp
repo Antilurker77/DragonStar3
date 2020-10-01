@@ -229,6 +229,11 @@ static void outputDamage(Actor* user, Actor* target, EventOptions& eventOptions,
 		s << "#monster ";
 	}
 	s << target->GetName() << "#default .";
+
+	if (eventResult.DidBlock) {
+		s << " (Blocked)";
+	}
+
 	messageLog.AddMessage(s.str());
 }
 

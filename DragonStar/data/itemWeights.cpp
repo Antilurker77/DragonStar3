@@ -16,11 +16,11 @@ static std::vector<std::pair<ItemType, int>> initItemTypeWeights() {
 	std::vector<std::pair<ItemType, int>> list;
 
 	list = {
-		{ItemType::Equipment, 550},
-		{ItemType::Potion, 150},
-		{ItemType::Scroll, 150},
-		{ItemType::Consumable, 100},
-		{ItemType::Tome, 50}
+		{ItemType::Equipment,   550},
+		{ItemType::Potion,      150},
+		{ItemType::Scroll,      150},
+		{ItemType::Consumable,  100},
+		{ItemType::Tome,         50}
 	};
 
 	return list;
@@ -30,30 +30,30 @@ static std::vector<std::pair<EquipType, int>> initEquipTypeWeights() {
 	std::vector<std::pair<EquipType, int>> list;
 
 	list = {
-		{EquipType::Sword, 250},
-		{EquipType::Axe, 250},
-		{EquipType::Mace, 250},
-		{EquipType::Dagger, 250},
-		{EquipType::Spear, 250},
-		{EquipType::Bow, 250},
-		{EquipType::Wand, 250},
-		{EquipType::Staff, 250},
-		{EquipType::Shield, 500},
-		{EquipType::LightHead, 333},
-		{EquipType::LightBody, 333},
-		{EquipType::LightHands, 333},
-		{EquipType::LightFeet, 333},
-		{EquipType::MediumHead, 334},
-		{EquipType::MediumBody, 334},
-		{EquipType::MediumHands, 334},
-		{EquipType::MediumFeet, 334},
-		{EquipType::HeavyHead, 333},
-		{EquipType::HeavyBody, 333},
-		{EquipType::HeavyHands, 333},
-		{EquipType::HeavyFeet, 333},
-		{EquipType::Neck, 500},
-		{EquipType::Ring, 1000},
-		{EquipType::LightSource, 300}
+		{EquipType::Sword,        250},
+		{EquipType::Axe,          250},
+		{EquipType::Mace,         250},
+		{EquipType::Dagger,       250},
+		{EquipType::Spear,        250},
+		{EquipType::Bow,          250},
+		{EquipType::Wand,         250},
+		{EquipType::Staff,        250},
+		{EquipType::Shield,       500},
+		{EquipType::LightHead,    333},
+		{EquipType::LightBody,    333},
+		{EquipType::LightHands,   333},
+		{EquipType::LightFeet,    333},
+		{EquipType::MediumHead,   334},
+		{EquipType::MediumBody,   334},
+		{EquipType::MediumHands,  334},
+		{EquipType::MediumFeet,   334},
+		{EquipType::HeavyHead,    333},
+		{EquipType::HeavyBody,    333},
+		{EquipType::HeavyHands,   333},
+		{EquipType::HeavyFeet,    333},
+		{EquipType::Neck,         500},
+		{EquipType::Ring,        1000},
+		{EquipType::LightSource,  300}
 	};
 
 	return list;
@@ -340,95 +340,95 @@ static std::unordered_map<EquipType, std::vector<ItemWeight>> initArtifactWeight
 	};
 
 	list[EquipType::Axe] = {
-		{1, 10, 1000, ItemID::BloodDrinker}
+		{  1,  10, 1000, ItemID::BloodDrinker}
 	};
 
 	list[EquipType::Mace] = {
-		{1, 10, 1000, ItemID::Serenity}
+		{  1,  10, 1000, ItemID::Serenity}
 	};
 
 	list[EquipType::Dagger] = {
-		{1, 10, 1000, ItemID::TaintedBlade}
+		{  1,  10, 1000, ItemID::TaintedBlade}
 	};
 
 	list[EquipType::Spear] = {
-		{1, 10, 1000, ItemID::WindScar}
+		{  1,  10, 1000, ItemID::WindScar}
 	};
 
 	list[EquipType::Bow] = {
-		{1, 10, 1000, ItemID::LongShot}
+		{  1,  10, 1000, ItemID::LongShot}
 	};
 
 	list[EquipType::Wand] = {
-		{1, 10, 1000, ItemID::SpiritfireTorch}
+		{  1,  10, 1000, ItemID::SpiritfireTorch}
 	};
 
 	list[EquipType::Staff] = {
-		{1, 10, 1000, ItemID::StaffOfTheNovice}
+		{  1,  10, 1000, ItemID::StaffOfTheNovice}
 	};
 
 	list[EquipType::Shield] = {
-		{1, 10, 1000, ItemID::LastDefender}
+		{  1,  10, 1000, ItemID::LastDefender}
 	};
 
 	list[EquipType::LightHead] = {
-		{1, 10, 1000, ItemID::OraclesMonacle}
+		{  1,  10, 1000, ItemID::OraclesMonacle}
 	};
 
 	list[EquipType::LightBody] = {
-		{1, 10, 1000, ItemID::BerserkerVest}
+		{  1,  10, 1000, ItemID::BerserkerVest}
 	};
 
 	list[EquipType::LightHands] = {
-		{1, 10, 1000, ItemID::ArcanistGloves}
+		{  1,  10, 1000, ItemID::ArcanistGloves}
 	};
 
 	list[EquipType::LightFeet] = {
-		{1, 10, 1000, ItemID::Goldweave}
+		{  1,  10, 1000, ItemID::Goldweave}
 	};
 
 	list[EquipType::MediumHead] = {
-		{1, 10, 1000, ItemID::SniperHelmet}
+		{  1,  10, 1000, ItemID::SniperHelmet}
 	};
 
 	list[EquipType::MediumBody] = {
-		{1, 10, 1000, ItemID::SurvivalArmor}
+		{  1,  10, 1000, ItemID::SurvivalArmor}
 	};
 
 	list[EquipType::MediumHands] = {
-		{1, 10, 1000, ItemID::FrostfireGloves}
+		{  1,  10, 1000, ItemID::FrostfireGloves}
 	};
 
 	list[EquipType::MediumFeet] = {
-		{1, 10, 1000, ItemID::Windriders}
+		{  1,  10, 1000, ItemID::Windriders}
 	};
 
 	list[EquipType::HeavyHead] = {
-		{1, 10, 1000, ItemID::HeraldOfVictory}
+		{  1,  10, 1000, ItemID::HeraldOfVictory}
 	};
 
 	list[EquipType::HeavyBody] = {
-		{1, 10, 1000, ItemID::GoldenArmor}
+		{  1,  10, 1000, ItemID::GoldenArmor}
 	};
 
 	list[EquipType::HeavyHands] = {
-		{1, 10, 1000, ItemID::ArenaGauntlets}
+		{  1,  10, 1000, ItemID::ArenaGauntlets}
 	};
 
 	list[EquipType::HeavyFeet] = {
-		{1, 10, 1000, ItemID::LostMountainGreaves}
+		{  1,  10, 1000, ItemID::LostMountainGreaves}
 	};
 
 	list[EquipType::Neck] = {
-		{1, 100, 1000, ItemID::RubyNecklace}
+		{  1, 100, 1000, ItemID::RubyNecklace}
 	};
 
 	list[EquipType::Ring] = {
-		{1, 100, 1000, ItemID::RingOfVitality}
+		{  1, 100, 1000, ItemID::RingOfVitality}
 	};
 
 	list[EquipType::LightSource] = {
-		{1, 100, 1000, ItemID::SpectralLantern}
+		{  1, 100, 1000, ItemID::SpectralLantern}
 	};
 
 	return list;
@@ -439,380 +439,380 @@ static std::unordered_map<EquipType, std::vector<AffixWeight>> initAffixWeights(
 
 	// MinItemLevel, Weight, StatModType, MinValue, MaxValue
 	list[EquipType::Sword] = {
-		{1, 1000, StatModType::STR, 1, 20},
-		{1, 500, StatModType::DEX, 1, 20},
-		{1, 500, StatModType::MAG, 1, 15},
-		{10, 600, StatModType::ArmorPen, 100, 400},
-		{1, 1000, StatModType::Accuracy, 2, 25},
-		{1, 750, StatModType::CritChance, 40, 120},
-		{1, 750, StatModType::Haste, 30, 80},
-		{1, 750, StatModType::DoubleStrikeChance, 50, 200},
-		{1, 750, StatModType::OnHitDamage, 3, 50},
-		{25, 50, StatModType::EXPBoost, 50, 100}
+		{  1, 1000, StatModType::STR, 1, 20},
+		{  1,  500, StatModType::DEX, 1, 20},
+		{  1,  500, StatModType::MAG, 1, 15},
+		{ 10,  600, StatModType::ArmorPen, 100, 400},
+		{  1, 1000, StatModType::Accuracy, 2, 25},
+		{  1,  750, StatModType::CritChance, 40, 120},
+		{  1,  750, StatModType::Haste, 30, 80},
+		{  1,  750, StatModType::DoubleStrikeChance, 50, 200},
+		{  1,  750, StatModType::OnHitDamage, 3, 50},
+		{ 25,   50, StatModType::EXPBoost, 50, 100}
 	};
 
 	list[EquipType::Axe] = {
-		{1, 1000, StatModType::STR, 1, 20},
-		{1, 500, StatModType::DEX, 1, 20},
-		{10, 600, StatModType::ArmorPen, 100, 400},
-		{1, 1000, StatModType::Accuracy, 2, 25},
-		{1, 750, StatModType::CritChance, 40, 120},
-		{1, 750, StatModType::Haste, 30, 80},
-		{1, 750, StatModType::DoubleStrikeChance, 50, 300},
-		{1, 1000, StatModType::OnHitDamage, 3, 30},
-		{25, 50, StatModType::EXPBoost, 50, 100}
+		{  1, 1000, StatModType::STR, 1, 20},
+		{  1,  500, StatModType::DEX, 1, 20},
+		{ 10,  600, StatModType::ArmorPen, 100, 400},
+		{  1, 1000, StatModType::Accuracy, 2, 25},
+		{  1,  750, StatModType::CritChance, 40, 120},
+		{  1,  750, StatModType::Haste, 30, 80},
+		{  1,  750, StatModType::DoubleStrikeChance, 50, 300},
+		{  1, 1000, StatModType::OnHitDamage, 3, 30},
+		{ 25,   50, StatModType::EXPBoost, 50, 100}
 	};
 
 	list[EquipType::Mace] = {
-		{1, 1000, StatModType::STR, 1, 20},
-		{1, 500, StatModType::MAG, 1, 15},
-		{10, 800, StatModType::ArmorPen, 100, 500},
-		{1, 1000, StatModType::Accuracy, 2, 25},
-		{1, 750, StatModType::CritChance, 40, 120},
-		{1, 750, StatModType::Haste, 20, 50},
-		{1, 500, StatModType::DoubleStrikeChance, 50, 100},
-		{1, 750, StatModType::OnHitDamage, 3, 30},
-		{25, 50, StatModType::EXPBoost, 50, 100}
+		{  1, 1000, StatModType::STR, 1, 20},
+		{  1,  500, StatModType::MAG, 1, 15},
+		{ 10,  800, StatModType::ArmorPen, 100, 500},
+		{  1, 1000, StatModType::Accuracy, 2, 25},
+		{  1,  750, StatModType::CritChance, 40, 120},
+		{  1,  750, StatModType::Haste, 20, 50},
+		{  1,  500, StatModType::DoubleStrikeChance, 50, 100},
+		{  1,  750, StatModType::OnHitDamage, 3, 30},
+		{ 25,   50, StatModType::EXPBoost, 50, 100}
 	};
 
 	list[EquipType::Dagger] = {
-		{1, 750, StatModType::STR, 1, 20},
-		{1, 1000, StatModType::DEX, 1, 20},
-		{1, 500, StatModType::MAG, 1, 15},
-		{10, 1000, StatModType::ArmorPen, 100, 400},
-		{1, 1000, StatModType::Accuracy, 2, 25},
-		{1, 750, StatModType::CritChance, 40, 120},
-		{1, 750, StatModType::Haste, 40, 100},
-		{1, 750, StatModType::DoubleStrikeChance, 50, 200},
-		{1, 1000, StatModType::OnHitDamage, 3, 30},
-		{25, 50, StatModType::EXPBoost, 50, 100}
+		{  1,  750, StatModType::STR, 1, 20},
+		{  1, 1000, StatModType::DEX, 1, 20},
+		{  1,  500, StatModType::MAG, 1, 15},
+		{ 10, 1000, StatModType::ArmorPen, 100, 400},
+		{  1, 1000, StatModType::Accuracy, 2, 25},
+		{  1,  750, StatModType::CritChance, 40, 120},
+		{  1,  750, StatModType::Haste, 40, 100},
+		{  1,  750, StatModType::DoubleStrikeChance, 50, 200},
+		{  1, 1000, StatModType::OnHitDamage, 3, 30},
+		{ 25,   50, StatModType::EXPBoost, 50, 100}
 	};
 
 	list[EquipType::Spear] = {
-		{1, 750, StatModType::STR, 1, 20},
-		{1, 1000, StatModType::DEX, 1, 20},
-		{1, 500, StatModType::MAG, 1, 15},
-		{10, 600, StatModType::ArmorPen, 100, 400},
-		{1, 1000, StatModType::Accuracy, 2, 25},
-		{1, 750, StatModType::CritChance, 40, 120},
-		{1, 750, StatModType::Haste, 30, 80},
-		{1, 750, StatModType::DoubleStrikeChance, 50, 200},
-		{1, 1000, StatModType::OnHitDamage, 4, 35},
-		{25, 50, StatModType::EXPBoost, 50, 100}
+		{  1,  750, StatModType::STR, 1, 20},
+		{  1, 1000, StatModType::DEX, 1, 20},
+		{  1,  500, StatModType::MAG, 1, 15},
+		{ 10,  600, StatModType::ArmorPen, 100, 400},
+		{  1, 1000, StatModType::Accuracy, 2, 25},
+		{  1,  750, StatModType::CritChance, 40, 120},
+		{  1,  750, StatModType::Haste, 30, 80},
+		{  1,  750, StatModType::DoubleStrikeChance, 50, 200},
+		{  1, 1000, StatModType::OnHitDamage, 4, 35},
+		{ 25,   50, StatModType::EXPBoost, 50, 100}
 	};
 
 	list[EquipType::Bow] = {
-		{1, 1000, StatModType::STR, 1, 30},
-		{1, 1000, StatModType::DEX, 1, 30},
-		{10, 600, StatModType::ArmorPen, 100, 400},
-		{1, 1000, StatModType::Accuracy, 3, 40},
-		{1, 750, StatModType::CritChance, 40, 160},
-		{1, 750, StatModType::Haste, 30, 80},
-		{1, 1000, StatModType::OnHitDamage, 3, 30},
-		{25, 50, StatModType::EXPBoost, 50, 100}
+		{  1, 1000, StatModType::STR, 1, 30},
+		{  1, 1000, StatModType::DEX, 1, 30},
+		{ 10,  600, StatModType::ArmorPen, 100, 400},
+		{  1, 1000, StatModType::Accuracy, 3, 40},
+		{  1,  750, StatModType::CritChance, 40, 160},
+		{  1,  750, StatModType::Haste, 30, 80},
+		{  1, 1000, StatModType::OnHitDamage, 3, 30},
+		{ 25,   50, StatModType::EXPBoost, 50, 100}
 	};
 
 	list[EquipType::Wand] = {
-		{1, 1000, StatModType::MPOnKill, 1, 20},
-		{1, 500, StatModType::DEX, 1, 20},
-		{1, 1000, StatModType::MAG, 1, 20},
-		{1, 1000, StatModType::Accuracy, 2, 25},
-		{1, 750, StatModType::CritChance, 40, 120},
-		{1, 750, StatModType::Haste, 30, 80},
-		{1, 500, StatModType::OnHitDamage, 3, 50},
-		{25, 50, StatModType::EXPBoost, 50, 100}
+		{  1, 1000, StatModType::MPOnKill, 1, 20},
+		{  1,  500, StatModType::DEX, 1, 20},
+		{  1, 1000, StatModType::MAG, 1, 20},
+		{  1, 1000, StatModType::Accuracy, 2, 25},
+		{  1,  750, StatModType::CritChance, 40, 120},
+		{  1,  750, StatModType::Haste, 30, 80},
+		{  1,  500, StatModType::OnHitDamage, 3, 50},
+		{ 25,   50, StatModType::EXPBoost, 50, 100}
 	};
 
 	list[EquipType::Staff] = {
-		{1, 1000, StatModType::MPOnKill, 1, 20},
-		{1, 250, StatModType::STR, 1, 15},
-		{1, 500, StatModType::DEX, 1, 20},
-		{1, 1000, StatModType::MAG, 1, 20},
-		{1, 1000, StatModType::Accuracy, 2, 25},
-		{5, 750, StatModType::Healing, 10, 20},
-		{1, 750, StatModType::CritChance, 40, 120},
-		{1, 750, StatModType::Haste, 30, 80},
-		{25, 50, StatModType::EXPBoost, 50, 100}
+		{  1, 1000, StatModType::MPOnKill, 1, 20},
+		{  1,  250, StatModType::STR, 1, 15},
+		{  1,  500, StatModType::DEX, 1, 20},
+		{  1, 1000, StatModType::MAG, 1, 20},
+		{  1, 1000, StatModType::Accuracy, 2, 25},
+		{  5,  750, StatModType::Healing, 10, 20},
+		{  1,  750, StatModType::CritChance, 40, 120},
+		{  1,  750, StatModType::Haste, 30, 80},
+		{ 25,   50, StatModType::EXPBoost, 50, 100}
 	};
 
 	list[EquipType::Shield] = {
-		{1, 1000, StatModType::HP, 6, 60},
-		{1, 500, StatModType::MP, 2, 25},
-		{1, 500, StatModType::SP, 1, 5},
-		{1, 1000, StatModType::STR, 1, 10},
-		{1, 1000, StatModType::MAG, 1, 10},
-		{1, 750, StatModType::Accuracy, 2, 12},
-		{1, 1000, StatModType::Armor, 8, 80},
-		{1, 1000, StatModType::MagicArmor, 6, 60},
-		{1, 1000, StatModType::Resistance, 250, 250},
-		{1, 750, StatModType::BlockChance, 100, 400}
+		{  1, 1000, StatModType::HP, 6, 60},
+		{  1,  500, StatModType::MP, 2, 25},
+		{  1,  500, StatModType::SP, 1, 5},
+		{  1, 1000, StatModType::STR, 1, 10},
+		{  1, 1000, StatModType::MAG, 1, 10},
+		{  1,  750, StatModType::Accuracy, 2, 12},
+		{  1, 1000, StatModType::Armor, 8, 80},
+		{  1, 1000, StatModType::MagicArmor, 6, 60},
+		{  1, 1000, StatModType::Resistance, 250, 250},
+		{  1,  750, StatModType::BlockChance, 100, 400}
 	};
 
 	list[EquipType::LightHead] = {
-		{1, 1000, StatModType::HP, 6, 75},
-		{1, 500, StatModType::MP, 2, 30},
-		{1, 500, StatModType::SP, 1, 5},
-		{1, 250, StatModType::STR, 1, 10},
-		{1, 500, StatModType::DEX, 1, 10},
-		{1, 1000, StatModType::MAG, 1, 10},
-		{1, 250, StatModType::VIT, 1, 10},
-		{1, 500, StatModType::SPI, 1, 10},
-		{1, 1000, StatModType::Armor, 2, 40},
-		{1, 1000, StatModType::MagicArmor, 5, 50},
-		{1, 500, StatModType::Evasion, 1, 10},
-		{1, 1000, StatModType::Accuracy, 2, 15},
-		{20, 1000, StatModType::CritPower, 100, 250},
-		{1, 1000, StatModType::Resistance, 250, 250}
+		{  1, 1000, StatModType::HP, 6, 75},
+		{  1,  500, StatModType::MP, 2, 30},
+		{  1,  500, StatModType::SP, 1, 5},
+		{  1,  250, StatModType::STR, 1, 10},
+		{  1,  500, StatModType::DEX, 1, 10},
+		{  1, 1000, StatModType::MAG, 1, 10},
+		{  1,  250, StatModType::VIT, 1, 10},
+		{  1,  500, StatModType::SPI, 1, 10},
+		{  1, 1000, StatModType::Armor, 2, 40},
+		{  1, 1000, StatModType::MagicArmor, 5, 50},
+		{  1,  500, StatModType::Evasion, 1, 10},
+		{  1, 1000, StatModType::Accuracy, 2, 15},
+		{ 20, 1000, StatModType::CritPower, 100, 250},
+		{  1, 1000, StatModType::Resistance, 250, 250}
 	};
 
 	list[EquipType::LightBody] = {
-		{1, 1000, StatModType::HP, 6, 75},
-		{1, 500, StatModType::MP, 2, 30},
-		{1, 500, StatModType::SP, 1, 5},
-		{1, 250, StatModType::STR, 1, 10},
-		{1, 500, StatModType::DEX, 1, 10},
-		{1, 1000, StatModType::MAG, 1, 10},
-		{1, 250, StatModType::VIT, 1, 10},
-		{1, 500, StatModType::SPI, 1, 10},
-		{1, 1000, StatModType::Armor, 2, 40},
-		{1, 1000, StatModType::MagicArmor, 5, 50},
-		{1, 500, StatModType::Evasion, 1, 10},
-		{1, 500, StatModType::CooldownReduction, 50, 100},
-		{1, 1000, StatModType::Resistance, 250, 250}
+		{  1, 1000, StatModType::HP, 6, 75},
+		{  1,  500, StatModType::MP, 2, 30},
+		{  1,  500, StatModType::SP, 1, 5},
+		{  1,  250, StatModType::STR, 1, 10},
+		{  1,  500, StatModType::DEX, 1, 10},
+		{  1, 1000, StatModType::MAG, 1, 10},
+		{  1,  250, StatModType::VIT, 1, 10},
+		{  1,  500, StatModType::SPI, 1, 10},
+		{  1, 1000, StatModType::Armor, 2, 40},
+		{  1, 1000, StatModType::MagicArmor, 5, 50},
+		{  1,  500, StatModType::Evasion, 1, 10},
+		{  1,  500, StatModType::CooldownReduction, 50, 100},
+		{  1, 1000, StatModType::Resistance, 250, 250}
 	};
 
 	list[EquipType::LightHands] = {
-		{1, 1000, StatModType::HP, 6, 75},
-		{1, 500, StatModType::MP, 2, 30},
-		{1, 500, StatModType::SP, 1, 5},
-		{1, 250, StatModType::STR, 1, 10},
-		{1, 500, StatModType::DEX, 1, 10},
-		{1, 1000, StatModType::MAG, 1, 10},
-		{1, 250, StatModType::VIT, 1, 10},
-		{1, 500, StatModType::SPI, 1, 10},
-		{1, 1000, StatModType::Armor, 2, 40},
-		//{15, 500, StatModType::ArmorPen, 50, 200},
-		{1, 1000, StatModType::MagicArmor, 5, 50},
-		{1, 500, StatModType::Evasion, 1, 10},
-		{1, 750, StatModType::Accuracy, 2, 15},
-		{1, 750, StatModType::CritChance, 30, 100},
-		{1, 750, StatModType::Haste, 25, 80},
-		{1, 750, StatModType::DoubleStrikeChance, 50, 150},
-		{10, 750, StatModType::CooldownReduction, 50, 100},
-		{1, 750, StatModType::OnHitDamage, 1, 25},
-		{1, 1000, StatModType::Resistance, 250, 250}
+		{  1, 1000, StatModType::HP, 6, 75},
+		{  1,  500, StatModType::MP, 2, 30},
+		{  1,  500, StatModType::SP, 1, 5},
+		{  1,  250, StatModType::STR, 1, 10},
+		{  1,  500, StatModType::DEX, 1, 10},
+		{  1, 1000, StatModType::MAG, 1, 10},
+		{  1,  250, StatModType::VIT, 1, 10},
+		{  1,  500, StatModType::SPI, 1, 10},
+		{  1, 1000, StatModType::Armor, 2, 40},
+		//{ 15,  500, StatModType::ArmorPen, 50, 200},
+		{  1, 1000, StatModType::MagicArmor, 5, 50},
+		{  1,  500, StatModType::Evasion, 1, 10},
+		{  1,  750, StatModType::Accuracy, 2, 15},
+		{  1,  750, StatModType::CritChance, 30, 100},
+		{  1,  750, StatModType::Haste, 25, 80},
+		{  1,  750, StatModType::DoubleStrikeChance, 50, 150},
+		{ 10,  750, StatModType::CooldownReduction, 50, 100},
+		{  1,  750, StatModType::OnHitDamage, 1, 25},
+		{  1, 1000, StatModType::Resistance, 250, 250}
 	};
 
 	list[EquipType::LightFeet] = {
-		{1, 1000, StatModType::HP, 6, 75},
-		{1, 500, StatModType::MP, 2, 30},
-		{1, 500, StatModType::SP, 1, 5},
-		{1, 250, StatModType::STR, 1, 10},
-		{1, 500, StatModType::DEX, 1, 10},
-		{1, 1000, StatModType::MAG, 1, 10},
-		{1, 250, StatModType::VIT, 1, 10},
-		{1, 500, StatModType::SPI, 1, 10},
-		{1, 1000, StatModType::Armor, 2, 40},
-		{1, 1000, StatModType::MagicArmor, 5, 50},
-		{1, 500, StatModType::Evasion, 1, 10},
-		{1, 1000, StatModType::Resistance, 250, 250},
-		{1, 1000, StatModType::MovementSpeed, 100, 250},
+		{  1, 1000, StatModType::HP, 6, 75},
+		{  1,  500, StatModType::MP, 2, 30},
+		{  1,  500, StatModType::SP, 1, 5},
+		{  1,  250, StatModType::STR, 1, 10},
+		{  1,  500, StatModType::DEX, 1, 10},
+		{  1, 1000, StatModType::MAG, 1, 10},
+		{  1,  250, StatModType::VIT, 1, 10},
+		{  1,  500, StatModType::SPI, 1, 10},
+		{  1, 1000, StatModType::Armor, 2, 40},
+		{  1, 1000, StatModType::MagicArmor, 5, 50},
+		{  1,  500, StatModType::Evasion, 1, 10},
+		{  1, 1000, StatModType::Resistance, 250, 250},
+		{  1, 1000, StatModType::MovementSpeed, 100, 250},
 	};
 
 	list[EquipType::MediumHead] = {
-		{1, 1000, StatModType::HP, 6, 75},
-		{1, 500, StatModType::MP, 2, 30},
-		{1, 500, StatModType::SP, 1, 5},
-		{1, 500, StatModType::STR, 1, 10},
-		{1, 1000, StatModType::DEX, 1, 10},
-		{1, 250, StatModType::MAG, 1, 10},
-		{1, 375, StatModType::VIT, 1, 10},
-		{1, 375, StatModType::SPI, 1, 10},
-		{1, 1000, StatModType::Armor, 2, 40},
-		{1, 1000, StatModType::MagicArmor, 5, 50},
-		{1, 500, StatModType::Evasion, 1, 10},
-		{1, 1000, StatModType::Accuracy, 2, 15},
-		{20, 1000, StatModType::CritPower, 100, 250},
-		{1, 1000, StatModType::Resistance, 250, 250}
+		{  1, 1000, StatModType::HP, 6, 75},
+		{  1,  500, StatModType::MP, 2, 30},
+		{  1,  500, StatModType::SP, 1, 5},
+		{  1,  500, StatModType::STR, 1, 10},
+		{  1, 1000, StatModType::DEX, 1, 10},
+		{  1,  250, StatModType::MAG, 1, 10},
+		{  1,  375, StatModType::VIT, 1, 10},
+		{  1,  375, StatModType::SPI, 1, 10},
+		{  1, 1000, StatModType::Armor, 2, 40},
+		{  1, 1000, StatModType::MagicArmor, 5, 50},
+		{  1,  500, StatModType::Evasion, 1, 10},
+		{  1, 1000, StatModType::Accuracy, 2, 15},
+		{ 20, 1000, StatModType::CritPower, 100, 250},
+		{  1, 1000, StatModType::Resistance, 250, 250}
 	};
 
 	list[EquipType::MediumBody] = {
-		{1, 1000, StatModType::HP, 6, 75},
-		{1, 500, StatModType::MP, 2, 30},
-		{1, 500, StatModType::SP, 1, 5},
-		{1, 500, StatModType::STR, 1, 10},
-		{1, 1000, StatModType::DEX, 1, 10},
-		{1, 250, StatModType::MAG, 1, 10},
-		{1, 375, StatModType::VIT, 1, 10},
-		{1, 375, StatModType::SPI, 1, 10},
-		{1, 1000, StatModType::Armor, 2, 40},
-		{1, 1000, StatModType::MagicArmor, 5, 50},
-		{1, 500, StatModType::Evasion, 1, 10},
-		{1, 500, StatModType::CooldownReduction, 50, 100},
-		{1, 1000, StatModType::Resistance, 250, 250}
+		{  1, 1000, StatModType::HP, 6, 75},
+		{  1,  500, StatModType::MP, 2, 30},
+		{  1,  500, StatModType::SP, 1, 5},
+		{  1,  500, StatModType::STR, 1, 10},
+		{  1, 1000, StatModType::DEX, 1, 10},
+		{  1,  250, StatModType::MAG, 1, 10},
+		{  1,  375, StatModType::VIT, 1, 10},
+		{  1,  375, StatModType::SPI, 1, 10},
+		{  1, 1000, StatModType::Armor, 2, 40},
+		{  1, 1000, StatModType::MagicArmor, 5, 50},
+		{  1,  500, StatModType::Evasion, 1, 10},
+		{  1,  500, StatModType::CooldownReduction, 50, 100},
+		{  1, 1000, StatModType::Resistance, 250, 250}
 	};
 
 	list[EquipType::MediumHands] = {
-		{1, 1000, StatModType::HP, 6, 75},
-		{1, 500, StatModType::MP, 2, 30},
-		{1, 500, StatModType::SP, 1, 5},
-		{1, 500, StatModType::STR, 1, 10},
-		{1, 1000, StatModType::DEX, 1, 10},
-		{1, 250, StatModType::MAG, 1, 10},
-		{1, 375, StatModType::VIT, 1, 10},
-		{1, 375, StatModType::SPI, 1, 10},
-		{1, 1000, StatModType::Armor, 2, 40},
-		{15, 500, StatModType::ArmorPen, 50, 200},
-		{1, 1000, StatModType::MagicArmor, 5, 50},
-		{1, 500, StatModType::Evasion, 1, 10},
-		{1, 750, StatModType::Accuracy, 2, 15},
-		{1, 750, StatModType::CritChance, 30, 100},
-		{1, 750, StatModType::Haste, 25, 80},
-		{1, 750, StatModType::DoubleStrikeChance, 50, 150},
-		{10, 750, StatModType::CooldownReduction, 50, 100},
-		{1, 750, StatModType::OnHitDamage, 1, 25},
-		{1, 1000, StatModType::Resistance, 250, 250}
+		{  1, 1000, StatModType::HP, 6, 75},
+		{  1,  500, StatModType::MP, 2, 30},
+		{  1,  500, StatModType::SP, 1, 5},
+		{  1,  500, StatModType::STR, 1, 10},
+		{  1, 1000, StatModType::DEX, 1, 10},
+		{  1,  250, StatModType::MAG, 1, 10},
+		{  1,  375, StatModType::VIT, 1, 10},
+		{  1,  375, StatModType::SPI, 1, 10},
+		{  1, 1000, StatModType::Armor, 2, 40},
+		{ 15,  500, StatModType::ArmorPen, 50, 200},
+		{  1, 1000, StatModType::MagicArmor, 5, 50},
+		{  1,  500, StatModType::Evasion, 1, 10},
+		{  1,  750, StatModType::Accuracy, 2, 15},
+		{  1,  750, StatModType::CritChance, 30, 100},
+		{  1,  750, StatModType::Haste, 25, 80},
+		{  1,  750, StatModType::DoubleStrikeChance, 50, 150},
+		{ 10,  750, StatModType::CooldownReduction, 50, 100},
+		{  1,  750, StatModType::OnHitDamage, 1, 25},
+		{  1, 1000, StatModType::Resistance, 250, 250}
 	};
 
 	list[EquipType::MediumFeet] = {
-		{1, 1000, StatModType::HP, 6, 75},
-		{1, 500, StatModType::MP, 2, 30},
-		{1, 500, StatModType::SP, 1, 5},
-		{1, 500, StatModType::STR, 1, 10},
-		{1, 1000, StatModType::DEX, 1, 10},
-		{1, 750, StatModType::MAG, 1, 10},
-		{1, 375, StatModType::VIT, 1, 10},
-		{1, 375, StatModType::SPI, 1, 10},
-		{1, 1000, StatModType::Armor, 2, 40},
-		{1, 1000, StatModType::MagicArmor, 5, 50},
-		{1, 500, StatModType::Evasion, 1, 10},
-		{1, 1000, StatModType::Resistance, 250, 250},
-		{1, 1000, StatModType::MovementSpeed, 100, 250},
+		{  1, 1000, StatModType::HP, 6, 75},
+		{  1,  500, StatModType::MP, 2, 30},
+		{  1,  500, StatModType::SP, 1, 5},
+		{  1,  500, StatModType::STR, 1, 10},
+		{  1, 1000, StatModType::DEX, 1, 10},
+		{  1,  750, StatModType::MAG, 1, 10},
+		{  1,  375, StatModType::VIT, 1, 10},
+		{  1,  375, StatModType::SPI, 1, 10},
+		{  1, 1000, StatModType::Armor, 2, 40},
+		{  1, 1000, StatModType::MagicArmor, 5, 50},
+		{  1,  500, StatModType::Evasion, 1, 10},
+		{  1, 1000, StatModType::Resistance, 250, 250},
+		{  1, 1000, StatModType::MovementSpeed, 100, 250},
 	};
 
 	list[EquipType::HeavyHead] = {
-		{1, 1000, StatModType::HP, 6, 75},
-		{1, 500, StatModType::MP, 2, 30},
-		{1, 500, StatModType::SP, 1, 5},
-		{1, 1000, StatModType::STR, 1, 10},
-		{1, 250, StatModType::DEX, 1, 10},
-		{1, 500, StatModType::MAG, 1, 10},
-		{1, 500, StatModType::VIT, 1, 10},
-		{1, 250, StatModType::SPI, 1, 10},
-		{1, 1000, StatModType::Armor, 2, 40},
-		{1, 1000, StatModType::MagicArmor, 5, 50},
-		{1, 500, StatModType::Evasion, 1, 10},
-		{1, 1000, StatModType::Accuracy, 2, 15},
-		{20, 1000, StatModType::CritPower, 100, 250},
-		{1, 1000, StatModType::Resistance, 250, 250}
+		{  1, 1000, StatModType::HP, 6, 75},
+		{  1,  500, StatModType::MP, 2, 30},
+		{  1,  500, StatModType::SP, 1, 5},
+		{  1, 1000, StatModType::STR, 1, 10},
+		{  1,  250, StatModType::DEX, 1, 10},
+		{  1,  500, StatModType::MAG, 1, 10},
+		{  1,  500, StatModType::VIT, 1, 10},
+		{  1,  250, StatModType::SPI, 1, 10},
+		{  1, 1000, StatModType::Armor, 2, 40},
+		{  1, 1000, StatModType::MagicArmor, 5, 50},
+		{  1,  500, StatModType::Evasion, 1, 10},
+		{  1, 1000, StatModType::Accuracy, 2, 15},
+		{ 20, 1000, StatModType::CritPower, 100, 250},
+		{  1, 1000, StatModType::Resistance, 250, 250}
 	};
 
 	list[EquipType::HeavyBody] = {
-		{1, 1000, StatModType::HP, 6, 75},
-		{1, 500, StatModType::MP, 2, 30},
-		{1, 500, StatModType::SP, 1, 5},
-		{1, 1000, StatModType::STR, 1, 10},
-		{1, 250, StatModType::DEX, 1, 10},
-		{1, 500, StatModType::MAG, 1, 10},
-		{1, 500, StatModType::VIT, 1, 10},
-		{1, 250, StatModType::SPI, 1, 10},
-		{1, 1000, StatModType::Armor, 2, 40},
-		{1, 1000, StatModType::MagicArmor, 5, 50},
-		{1, 500, StatModType::Evasion, 1, 10},
-		{1, 500, StatModType::CooldownReduction, 50, 100},
-		{1, 1000, StatModType::Resistance, 250, 250}
+		{  1, 1000, StatModType::HP, 6, 75},
+		{  1,  500, StatModType::MP, 2, 30},
+		{  1,  500, StatModType::SP, 1, 5},
+		{  1, 1000, StatModType::STR, 1, 10},
+		{  1,  250, StatModType::DEX, 1, 10},
+		{  1,  500, StatModType::MAG, 1, 10},
+		{  1,  500, StatModType::VIT, 1, 10},
+		{  1,  250, StatModType::SPI, 1, 10},
+		{  1, 1000, StatModType::Armor, 2, 40},
+		{  1, 1000, StatModType::MagicArmor, 5, 50},
+		{  1,  500, StatModType::Evasion, 1, 10},
+		{  1,  500, StatModType::CooldownReduction, 50, 100},
+		{  1, 1000, StatModType::Resistance, 250, 250}
 	};
 
 	list[EquipType::HeavyHands] = {
-		{1, 1000, StatModType::HP, 6, 75},
-		{1, 500, StatModType::MP, 2, 30},
-		{1, 500, StatModType::SP, 1, 5},
-		{1, 1000, StatModType::STR, 1, 10},
-		{1, 250, StatModType::DEX, 1, 10},
-		{1, 500, StatModType::MAG, 1, 10},
-		{1, 500, StatModType::VIT, 1, 10},
-		{1, 250, StatModType::SPI, 1, 10},
-		{1, 1000, StatModType::Armor, 2, 40},
-		{15, 500, StatModType::ArmorPen, 50, 200},
-		{1, 1000, StatModType::MagicArmor, 5, 50},
-		{1, 500, StatModType::Evasion, 1, 10},
-		{1, 750, StatModType::Accuracy, 2, 15},
-		{1, 750, StatModType::CritChance, 30, 100},
-		{1, 750, StatModType::Haste, 25, 80},
-		{1, 750, StatModType::DoubleStrikeChance, 50, 150},
-		{10, 750, StatModType::CooldownReduction, 50, 100},
-		{1, 750, StatModType::OnHitDamage, 1, 25},
-		{1, 1000, StatModType::Resistance, 250, 250}
+		{  1, 1000, StatModType::HP, 6, 75},
+		{  1,  500, StatModType::MP, 2, 30},
+		{  1,  500, StatModType::SP, 1, 5},
+		{  1, 1000, StatModType::STR, 1, 10},
+		{  1,  250, StatModType::DEX, 1, 10},
+		{  1,  500, StatModType::MAG, 1, 10},
+		{  1,  500, StatModType::VIT, 1, 10},
+		{  1,  250, StatModType::SPI, 1, 10},
+		{  1, 1000, StatModType::Armor, 2, 40},
+		{ 15,  500, StatModType::ArmorPen, 50, 200},
+		{  1, 1000, StatModType::MagicArmor, 5, 50},
+		{  1,  500, StatModType::Evasion, 1, 10},
+		{  1,  750, StatModType::Accuracy, 2, 15},
+		{  1,  750, StatModType::CritChance, 30, 100},
+		{  1,  750, StatModType::Haste, 25, 80},
+		{  1,  750, StatModType::DoubleStrikeChance, 50, 150},
+		{ 10,  750, StatModType::CooldownReduction, 50, 100},
+		{  1,  750, StatModType::OnHitDamage, 1, 25},
+		{  1, 1000, StatModType::Resistance, 250, 250}
 	};
 
 	list[EquipType::HeavyFeet] = {
-		{1, 1000, StatModType::HP, 6, 75},
-		{1, 500, StatModType::MP, 2, 30},
-		{1, 500, StatModType::SP, 1, 5},
-		{1, 1000, StatModType::STR, 1, 10},
-		{1, 250, StatModType::DEX, 1, 10},
-		{1, 500, StatModType::MAG, 1, 10},
-		{1, 500, StatModType::VIT, 1, 10},
-		{1, 250, StatModType::SPI, 1, 10},
-		{1, 1000, StatModType::Armor, 2, 40},
-		{1, 1000, StatModType::MagicArmor, 5, 50},
-		{1, 500, StatModType::Evasion, 1, 10},
-		{1, 1000, StatModType::Resistance, 250, 250},
-		{1, 1000, StatModType::MovementSpeed, 100, 250},
+		{  1, 1000, StatModType::HP, 6, 75},
+		{  1,  500, StatModType::MP, 2, 30},
+		{  1,  500, StatModType::SP, 1, 5},
+		{  1, 1000, StatModType::STR, 1, 10},
+		{  1,  250, StatModType::DEX, 1, 10},
+		{  1,  500, StatModType::MAG, 1, 10},
+		{  1,  500, StatModType::VIT, 1, 10},
+		{  1,  250, StatModType::SPI, 1, 10},
+		{  1, 1000, StatModType::Armor, 2, 40},
+		{  1, 1000, StatModType::MagicArmor, 5, 50},
+		{  1,  500, StatModType::Evasion, 1, 10},
+		{  1, 1000, StatModType::Resistance, 250, 250},
+		{  1, 1000, StatModType::MovementSpeed, 100, 250},
 	};
 
 	list[EquipType::Neck] = {
-		{1, 1000, StatModType::HP, 6, 40},
-		{1, 500, StatModType::MP, 3, 16},
-		{1, 500, StatModType::SP, 1, 6},
-		{1, 500, StatModType::STR, 1, 7},
-		{1, 500, StatModType::DEX, 1, 7},
-		{1, 500, StatModType::MAG, 1, 7},
-		{1, 250, StatModType::VIT, 1, 7},
-		{1, 250, StatModType::SPI, 1, 7},
-		{15, 1000, StatModType::ArmorPen, 50, 200},
-		{1, 750, StatModType::MagicArmor, 3, 30},
-		{1, 1000, StatModType::Resistance, 250, 250},
-		{1, 1000, StatModType::Accuracy, 1, 12},
-		{1, 1000, StatModType::CritChance, 40, 120},
-		{5, 1000, StatModType::CritPower, 50, 150},
-		{1, 1000, StatModType::Haste, 25, 100},
-		{1, 1000, StatModType::DoubleStrikeChance, 50, 150},
-		{1, 1000, StatModType::CooldownReduction, 50, 100}
+		{  1, 1000, StatModType::HP, 6, 40},
+		{  1,  500, StatModType::MP, 3, 16},
+		{  1,  500, StatModType::SP, 1, 6},
+		{  1,  500, StatModType::STR, 1, 7},
+		{  1,  500, StatModType::DEX, 1, 7},
+		{  1,  500, StatModType::MAG, 1, 7},
+		{  1,  250, StatModType::VIT, 1, 7},
+		{  1,  250, StatModType::SPI, 1, 7},
+		{ 15, 1000, StatModType::ArmorPen, 50, 200},
+		{  1,  750, StatModType::MagicArmor, 3, 30},
+		{  1, 1000, StatModType::Resistance, 250, 250},
+		{  1, 1000, StatModType::Accuracy, 1, 12},
+		{  1, 1000, StatModType::CritChance, 40, 120},
+		{  5, 1000, StatModType::CritPower, 50, 150},
+		{  1, 1000, StatModType::Haste, 25, 100},
+		{  1, 1000, StatModType::DoubleStrikeChance, 50, 150},
+		{  1, 1000, StatModType::CooldownReduction, 50, 100}
 	};
 
 	list[EquipType::Ring] = {
-		{1, 1000, StatModType::HP, 6, 30},
-		{1, 500, StatModType::MP, 3, 12},
-		{1, 500, StatModType::SP, 1, 3},
-		{1, 500, StatModType::STR, 1, 5},
-		{1, 500, StatModType::DEX, 1, 5},
-		{1, 500, StatModType::MAG, 1, 5},
-		{1, 250, StatModType::VIT, 1, 5},
-		{1, 250, StatModType::SPI, 1, 5},
-		{1, 750, StatModType::Armor, 2, 15},
-		{15, 750, StatModType::ArmorPen, 30, 100},
-		{1, 1000, StatModType::Resistance, 250, 250},
-		{1, 1000, StatModType::Accuracy, 1, 7},
-		{1, 1000, StatModType::CritChance, 20, 80},
-		{1, 1000, StatModType::Haste, 30, 80},
-		{1, 1000, StatModType::DoubleStrikeChance, 30, 10},
-		{25, 1000, StatModType::CooldownReduction, 30, 50}
+		{  1, 1000, StatModType::HP, 6, 30},
+		{  1,  500, StatModType::MP, 3, 12},
+		{  1,  500, StatModType::SP, 1, 3},
+		{  1,  500, StatModType::STR, 1, 5},
+		{  1,  500, StatModType::DEX, 1, 5},
+		{  1,  500, StatModType::MAG, 1, 5},
+		{  1,  250, StatModType::VIT, 1, 5},
+		{  1,  250, StatModType::SPI, 1, 5},
+		{  1,  750, StatModType::Armor, 2, 15},
+		{ 15,  750, StatModType::ArmorPen, 30, 100},
+		{  1, 1000, StatModType::Resistance, 250, 250},
+		{  1, 1000, StatModType::Accuracy, 1, 7},
+		{  1, 1000, StatModType::CritChance, 20, 80},
+		{  1, 1000, StatModType::Haste, 30, 80},
+		{  1, 1000, StatModType::DoubleStrikeChance, 30, 10},
+		{ 25, 1000, StatModType::CooldownReduction, 30, 50}
 	};
 
 	list[EquipType::LightSource] = {
-		{1, 1000, StatModType::HP, 6, 30},
-		{1, 500, StatModType::MP, 3, 12},
-		{1, 500, StatModType::SP, 1, 3},
-		{1, 750, StatModType::STR, 1, 7},
-		{1, 750, StatModType::DEX, 1, 7},
-		{1, 750, StatModType::MAG, 1, 7},
-		{1, 375, StatModType::VIT, 1, 7},
-		{1, 375, StatModType::SPI, 1, 7},
-		{1, 1000, StatModType::Resistance, 250, 250},
-		{1, 750, StatModType::Accuracy, 1, 7},
-		{1, 500, StatModType::SightRadius, 100, 200},
-		{1, 100, StatModType::GoldFind, 100, 250}
+		{  1, 1000, StatModType::HP, 6, 30},
+		{  1,  500, StatModType::MP, 3, 12},
+		{  1,  500, StatModType::SP, 1, 3},
+		{  1,  750, StatModType::STR, 1, 7},
+		{  1,  750, StatModType::DEX, 1, 7},
+		{  1,  750, StatModType::MAG, 1, 7},
+		{  1,  375, StatModType::VIT, 1, 7},
+		{  1,  375, StatModType::SPI, 1, 7},
+		{  1, 1000, StatModType::Resistance, 250, 250},
+		{  1,  750, StatModType::Accuracy, 1, 7},
+		{  1,  500, StatModType::SightRadius, 100, 200},
+		{  1,  100, StatModType::GoldFind, 100, 250}
 	};
 
 	return list;

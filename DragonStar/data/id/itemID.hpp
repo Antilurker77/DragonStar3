@@ -78,6 +78,7 @@ enum class ItemID {
 
 	// Artifact Axe
 	BloodDrinker,
+	Chaotica,
 
 	// Mace
 	IronMace,

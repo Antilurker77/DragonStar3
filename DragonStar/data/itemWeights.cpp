@@ -335,88 +335,89 @@ static std::unordered_map<EquipType, std::vector<ItemWeight>> initArtifactWeight
 	// MinItemLevel, MaxItemLevel, Weight, ItemID
 
 	list[EquipType::Sword] = {
-		{  1,  10, 1000, ItemID::Flametongue},
+		{  1,  15, 1000, ItemID::Flametongue},
 		{ 12,  28, 1000, ItemID::DustDevil}
 	};
 
 	list[EquipType::Axe] = {
-		{  1,  10, 1000, ItemID::BloodDrinker}
+		{  1,  15, 1000, ItemID::BloodDrinker},
+		{ 12,  28, 1000, ItemID::Chaotica}
 	};
 
 	list[EquipType::Mace] = {
-		{  1,  10, 1000, ItemID::Serenity}
+		{  1,  15, 1000, ItemID::Serenity}
 	};
 
 	list[EquipType::Dagger] = {
-		{  1,  10, 1000, ItemID::TaintedBlade}
+		{  1,  15, 1000, ItemID::TaintedBlade}
 	};
 
 	list[EquipType::Spear] = {
-		{  1,  10, 1000, ItemID::WindScar}
+		{  1,  15, 1000, ItemID::WindScar}
 	};
 
 	list[EquipType::Bow] = {
-		{  1,  10, 1000, ItemID::LongShot}
+		{  1,  15, 1000, ItemID::LongShot}
 	};
 
 	list[EquipType::Wand] = {
-		{  1,  10, 1000, ItemID::SpiritfireTorch}
+		{  1,  15, 1000, ItemID::SpiritfireTorch}
 	};
 
 	list[EquipType::Staff] = {
-		{  1,  10, 1000, ItemID::StaffOfTheNovice}
+		{  1,  15, 1000, ItemID::StaffOfTheNovice}
 	};
 
 	list[EquipType::Shield] = {
-		{  1,  10, 1000, ItemID::LastDefender}
+		{  1,  15, 1000, ItemID::LastDefender}
 	};
 
 	list[EquipType::LightHead] = {
-		{  1,  10, 1000, ItemID::OraclesMonacle}
+		{  1,  15, 1000, ItemID::OraclesMonacle}
 	};
 
 	list[EquipType::LightBody] = {
-		{  1,  10, 1000, ItemID::BerserkerVest}
+		{  1,  15, 1000, ItemID::BerserkerVest}
 	};
 
 	list[EquipType::LightHands] = {
-		{  1,  10, 1000, ItemID::ArcanistGloves}
+		{  1,  15, 1000, ItemID::ArcanistGloves}
 	};
 
 	list[EquipType::LightFeet] = {
-		{  1,  10, 1000, ItemID::Goldweave}
+		{  1,  15, 1000, ItemID::Goldweave}
 	};
 
 	list[EquipType::MediumHead] = {
-		{  1,  10, 1000, ItemID::SniperHelmet}
+		{  1,  15, 1000, ItemID::SniperHelmet}
 	};
 
 	list[EquipType::MediumBody] = {
-		{  1,  10, 1000, ItemID::SurvivalArmor}
+		{  1,  15, 1000, ItemID::SurvivalArmor}
 	};
 
 	list[EquipType::MediumHands] = {
-		{  1,  10, 1000, ItemID::FrostfireGloves}
+		{  1,  15, 1000, ItemID::FrostfireGloves}
 	};
 
 	list[EquipType::MediumFeet] = {
-		{  1,  10, 1000, ItemID::Windriders}
+		{  1,  15, 1000, ItemID::Windriders}
 	};
 
 	list[EquipType::HeavyHead] = {
-		{  1,  10, 1000, ItemID::HeraldOfVictory}
+		{  1,  15, 1000, ItemID::HeraldOfVictory}
 	};
 
 	list[EquipType::HeavyBody] = {
-		{  1,  10, 1000, ItemID::GoldenArmor}
+		{  1,  15, 1000, ItemID::GoldenArmor}
 	};
 
 	list[EquipType::HeavyHands] = {
-		{  1,  10, 1000, ItemID::ArenaGauntlets}
+		{  1,  15, 1000, ItemID::ArenaGauntlets}
 	};
 
 	list[EquipType::HeavyFeet] = {
-		{  1,  10, 1000, ItemID::LostMountainGreaves}
+		{  1,  15, 1000, ItemID::LostMountainGreaves}
 	};
 
 	list[EquipType::Neck] = {

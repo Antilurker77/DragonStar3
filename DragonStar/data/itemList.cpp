@@ -2036,6 +2036,68 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		return itd;
 	}();
+	list[ItemID::Chaotica] = [] {
+		ItemData itd;
+
+		itd.Name = "Chaotica";
+		itd.IconFilePath = "axe.png";
+		itd.EquipFilePath = "iron_sword.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::Chaotica;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 80;
+
+		itd.Artifact = false;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::Axe;
+		itd.AttackElement = Element::Physical;
+		itd.HitChance = 750;
+		itd.AttackRange = 150;
+		itd.AttackSpeed = 180;
+		itd.WeaponDamageMultiplier = 900;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::AttackPower, 27)
+		};
+		itd.ExplicitStatMods = {
+			StatMod(StatModType::STR, 5),
+			StatMod(StatModType::Accuracy, 4),
+			StatMod(StatModType::Haste, 50),
+			StatMod(StatModType::DoubleStrikeChance, 90)
+		};
+		itd.BonusModStrings = {
+			"On Hit: Deals 1 to 20 bonus dark damage."
+		};
+
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+			if (eventType == EventType::Damage) {
+				if (std::find(eventOptions.Categories.begin(), eventOptions.Categories.end(), Category::Direct) != eventOptions.Categories.end()) {
+					if (std::find(eventOptions.Categories.begin(), eventOptions.Categories.end(), Category::Attack) != eventOptions.Categories.end()) {
+						EventOptions proc;
+						proc.EventName = "Chaotica";
+						proc.Elements = { Element::Dark };
+						proc.Categories = { Category::Attack, Category::SingleTarget, Category::Damaging };
+						proc.CanDodge = false;
+
+						int damage = Random::RandomInt(1, 20);
+
+						Combat::FixedDamage(user, target, proc, damage);
+					}
+				}
+			}
+		};
+
+		return itd;
+	}();
+
 
 	// Mace
 	list[ItemID::IronMace] = [] {

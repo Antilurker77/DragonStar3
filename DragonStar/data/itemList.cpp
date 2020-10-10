@@ -2449,6 +2449,60 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		return itd;
 	}();
+	list[ItemID::SiegeBreaker] = [] {
+		ItemData itd;
+
+		itd.Name = "Siege Breaker";
+		itd.IconFilePath = "mace.png";
+		itd.EquipFilePath = "iron_sword.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::SiegeBreaker;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 80;
+
+		itd.Artifact = false;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::Mace;
+		itd.AttackElement = Element::Physical;
+		itd.HitChance = 750;
+		itd.AttackRange = 150;
+		itd.AttackSpeed = 220;
+		itd.WeaponDamageMultiplier = 1100;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::AttackPower, 28)
+		};
+		itd.ExplicitStatMods = {
+			StatMod(StatModType::STR, 5),
+			StatMod(StatModType::VIT, 2),
+			StatMod(StatModType::CritChance, 60),
+			StatMod(StatModType::CritPower, 100)
+		};
+		itd.BonusModStrings = {
+			"On Direct Crit: Stuns for 0.5s."
+		};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+			if (eventType == EventType::Damage) {
+				if (std::find(eventOptions.Categories.begin(), eventOptions.Categories.end(), Category::Direct) != eventOptions.Categories.end()) {
+					if (std::find(eventOptions.Categories.begin(), eventOptions.Categories.end(), Category::Attack) != eventOptions.Categories.end()) {
+						if (eventResult.DidCrit) {
+							Combat::AddAuraStack(user, target, eventOptions, AuraID::SiegeBreaker, 0);
+						}
+					}
+				}
+			}
+		};
+
+		return itd;
+	}();
 
 	// Dagger
 	list[ItemID::IronDagger] = [] {

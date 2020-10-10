@@ -92,6 +92,7 @@ enum class ItemID {
 
 	// Artifact Mace
 	Serenity,
+	SiegeBreaker,
 
 	// Dagger
 	IronDagger,

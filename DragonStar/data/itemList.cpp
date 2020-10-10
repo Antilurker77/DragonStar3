@@ -2054,7 +2054,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		itd.BaseValue = 80;
 
-		itd.Artifact = false;
+		itd.Artifact = true;
 		itd.TwoHanded = false;
 		itd.EquipType = EquipType::Axe;
 		itd.AttackElement = Element::Physical;
@@ -2467,7 +2467,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		itd.BaseValue = 80;
 
-		itd.Artifact = false;
+		itd.Artifact = true;
 		itd.TwoHanded = false;
 		itd.EquipType = EquipType::Mace;
 		itd.AttackElement = Element::Physical;
@@ -2873,7 +2873,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		itd.BaseValue = 80;
 
-		itd.Artifact = false;
+		itd.Artifact = true;
 		itd.TwoHanded = false;
 		itd.EquipType = EquipType::Dagger;
 		itd.AttackElement = Element::Physical;

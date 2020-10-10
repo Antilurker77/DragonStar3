@@ -106,6 +106,7 @@ enum class ItemID {
 
 	// Artifact Dagger
 	TaintedBlade,
+	CrimsonDagger,
 
 	// Spear
 	IronSpear,

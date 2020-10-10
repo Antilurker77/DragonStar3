@@ -2855,6 +2855,49 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		return itd;
 	}();
+	list[ItemID::CrimsonDagger] = [] {
+		ItemData itd;
+
+		itd.Name = "Crimson Dagger";
+		itd.IconFilePath = "dagger.png";
+		itd.EquipFilePath = "iron_sword.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::CrimsonDagger;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 80;
+
+		itd.Artifact = false;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::Dagger;
+		itd.AttackElement = Element::Physical;
+		itd.HitChance = 750;
+		itd.AttackRange = 100;
+		itd.AttackSpeed = 150;
+		itd.WeaponDamageMultiplier = 750;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::AttackPower, 27)
+		};
+		itd.ExplicitStatMods = {
+			StatMod(StatModType::STR, 3),
+			StatMod(StatModType::DEX, 4),
+			StatMod(StatModType::Damage, 250, Category::OverTime, Element::Physical),
+			StatMod(StatModType::CooldownReduction, 150)
+		};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
 
 	// Spear
 	list[ItemID::IronSpear] = [] {

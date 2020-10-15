@@ -149,6 +149,7 @@ enum class ItemID {
 
 	// Artifact Wand
 	SpiritfireTorch,
+	BatteryWand,
 
 	// Staff
 	RunedStick,

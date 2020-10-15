@@ -164,6 +164,7 @@ enum class ItemID {
 
 	// Artifact Staff
 	StaffOfTheNovice,
+	CalcifiedSnake,
 
 	// Shield
 	IronShield,

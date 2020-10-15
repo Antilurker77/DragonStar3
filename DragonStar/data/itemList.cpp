@@ -4547,6 +4547,51 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		return itd;
 	}();
+	list[ItemID::CalcifiedSnake] = [] {
+		ItemData itd;
+
+		itd.Name = "Calcified Snake";
+		itd.IconFilePath = "staff.png";
+		itd.EquipFilePath = "wooden_staff.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::CalcifiedSnake;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 80;
+
+		itd.Artifact = false;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::Staff;
+		itd.AttackElement = Element::Physical;
+		itd.HitChance = 750;
+		itd.AttackRange = 150;
+		itd.AttackSpeed = 250;
+		itd.WeaponDamageMultiplier = 1250;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::AttackPower, 15),
+			StatMod(StatModType::SpellPower, 38)
+		};
+		itd.ExplicitStatMods = {
+			StatMod(StatModType::MAG, 4),
+			StatMod(StatModType::VIT, 2),
+			StatMod(StatModType::SPI, 3),
+			StatMod(StatModType::CooldownReduction, 100),
+			StatMod(StatModType::Damage, 300, Category::OverTime, Element::Poison)
+		};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
 
 	// Shield
 	list[ItemID::IronShield] = [] {

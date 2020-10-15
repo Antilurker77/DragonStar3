@@ -3249,6 +3249,67 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		return itd;
 	}();
+	list[ItemID::RagingRiver] = [] {
+		ItemData itd;
+
+		itd.Name = "Raging River";
+		itd.IconFilePath = "spear.png";
+		itd.EquipFilePath = "iron_sword.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::SteelSpear;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 80;
+
+		itd.Artifact = true;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::Spear;
+		itd.AttackElement = Element::Physical;
+		itd.HitChance = 750;
+		itd.AttackRange = 200;
+		itd.AttackSpeed = 200;
+		itd.WeaponDamageMultiplier = 1000;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::AttackPower, 26)
+		};
+		itd.ExplicitStatMods = {
+			StatMod(StatModType::STR, 3),
+			StatMod(StatModType::DEX, 4),
+			StatMod(StatModType::MAG, 3),
+			StatMod(StatModType::Haste, 50)
+		};
+		itd.BonusModStrings = {
+			"8% Chance on Direct Attack: Deal 60 water damage and reduce the MP cost of your next spell by 25%."
+		};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+			if (eventType == EventType::Damage) {
+				if (std::find(eventOptions.Categories.begin(), eventOptions.Categories.end(), Category::Direct) != eventOptions.Categories.end()) {
+					if (std::find(eventOptions.Categories.begin(), eventOptions.Categories.end(), Category::Attack) != eventOptions.Categories.end()) {
+						if (Random::RandomInt(1, 100) <= 8) {
+							EventOptions proc;
+							proc.EventName = "Raging River";
+							proc.Elements = { Element::Water };
+							proc.Categories = { Category::Attack, Category::SingleTarget, Category::Damaging };
+							proc.CanDodge = false;
+
+							Combat::FixedDamage(user, target, proc, 60);
+							Combat::AddAuraStack(user, user, eventOptions, AuraID::Waterfall, 0);
+						}
+					}
+				}
+			}
+		};
+
+		return itd;
+	}();
 
 	// Bow
 	list[ItemID::TrainingBow] = [] {

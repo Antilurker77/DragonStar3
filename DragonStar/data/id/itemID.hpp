@@ -120,6 +120,7 @@ enum class ItemID {
 
 	// Artifact Spear
 	WindScar,
+	RagingRiver,
 
 	// Bow
 	TrainingBow,

@@ -135,6 +135,7 @@ enum class ItemID {
 
 	// Artifact Bow
 	LongShot,
+	HomingBow,
 
 	// Wand
 	WoodenWand,

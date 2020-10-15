@@ -360,7 +360,8 @@ static std::unordered_map<EquipType, std::vector<ItemWeight>> initArtifactWeight
 	};
 
 	list[EquipType::Bow] = {
-		{  1,  15, 1000, ItemID::LongShot}
+		{  1,  15, 1000, ItemID::LongShot},
+		{ 12,  28, 1000, ItemID::HomingBow}
 	};
 
 	list[EquipType::Wand] = {

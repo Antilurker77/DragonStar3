@@ -178,6 +178,7 @@ enum class ItemID {
 
 	// Artifact Shield
 	LastDefender,
+	ArcanistBulwark,
 
 	// Light Head
 	SilkHat,

@@ -4908,6 +4908,47 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		return itd;
 	}();
+	list[ItemID::ArcanistBulwark] = [] {
+		ItemData itd;
+
+		itd.Name = "Arcanist Bulwark";
+		itd.IconFilePath = "shield.png";
+		itd.EquipFilePath = "iron_shield.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::ArcanistBulwark;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 40;
+
+		itd.Artifact = true;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::Shield;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::Armor, 9),
+			StatMod(StatModType::MagicArmor, 9),
+			StatMod(StatModType::BlockChance, 120)
+		};
+		itd.ExplicitStatMods = {
+			StatMod(StatModType::MAG, 3),
+			StatMod(StatModType::SPI, 3),
+			StatMod(StatModType::MagicArmor, 6),
+			StatMod(StatModType::BlockChance, 120, Category::Spell),
+			StatMod(StatModType::DamageTaken, -150, { Category::OverTime, Category::Spell })
+		};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
 
 	// Light Head
 	list[ItemID::SilkHat] = [] {

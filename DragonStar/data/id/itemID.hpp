@@ -192,6 +192,7 @@ enum class ItemID {
 
 	// Artifact Light Head
 	OraclesMonacle,
+	DundreHat,
 
 	// Light Body
 	SilkRobes,

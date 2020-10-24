@@ -2098,7 +2098,6 @@ static std::unordered_map<ItemID, ItemData> initList() {
 		return itd;
 	}();
 
-
 	// Mace
 	list[ItemID::IronMace] = [] {
 		ItemData itd;
@@ -5253,6 +5252,56 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
 
+		};
+
+		return itd;
+	}();
+	list[ItemID::DundreHat] = [] {
+		ItemData itd;
+
+		itd.Name = "Dundre's Hat";
+		itd.IconFilePath = "head.png";
+		itd.EquipFilePath = "silk_hat.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::DundreHat;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 40;
+
+		itd.IsArtifact = true;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::LightHead;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::Armor, 4),
+			StatMod(StatModType::MagicArmor, 9)
+		};
+		itd.ExplicitStatMods = {
+			StatMod(StatModType::HP, 10),
+			StatMod(StatModType::MAG, 2),
+			StatMod(StatModType::SPI, 2),
+			StatMod(StatModType::Armor, 4)
+		};
+		itd.BonusModStrings = {
+			"Deal 25% more spell damage to targets at or above 99% of their max HP."
+		};
+
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+			if (eventType == EventType::PostCalcDamage) {
+				if (std::find(eventOptions.Categories.begin(), eventOptions.Categories.end(), Category::Spell) != eventOptions.Categories.end()) {
+					int hpPercent = target->GetCurrentHP() * 1000 / target->GetMaxHP();
+					if (hpPercent >= 990) {
+						amount = amount * 1250 / 1000;
+					}
+				}
+			}
 		};
 
 		return itd;

@@ -5621,6 +5621,44 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		return itd;
 	}();
+	list[ItemID::SirenEmbrace] = [] {
+		ItemData itd;
+
+		itd.Name = "Siren's Embrace";
+		itd.IconFilePath = "body.png";
+		itd.EquipFilePath = "silk_robes.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::SirenEmbrace;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 60;
+
+		itd.IsArtifact = true;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::LightBody;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::Evasion, 6)
+		};
+		itd.ExplicitStatMods = {
+			StatMod(StatModType::MP, 10),
+			StatMod(StatModType::Evasion, 24),
+			StatMod(StatModType::MovementSpeed, 50),
+			StatMod(StatModType::Resistance, 500, Element::Water)
+		};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
 
 	// Light Hands
 	list[ItemID::SilkGloves] = [] {

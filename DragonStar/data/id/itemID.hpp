@@ -206,6 +206,7 @@ enum class ItemID {
 
 	// Artifact Light Body
 	BerserkerVest,
+	SirenEmbrace,
 
 	// Light Hands
 	SilkGloves,

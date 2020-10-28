@@ -220,6 +220,7 @@ enum class ItemID {
 
 	// Artifact Light Hands
 	ArcanistGloves,
+	TetraGloves,
 
 	// Light Feet
 	SilkBoots,

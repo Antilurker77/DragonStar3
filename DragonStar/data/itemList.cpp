@@ -5274,7 +5274,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		itd.BaseValue = 40;
 
-		itd.IsArtifact = true;
+		itd.Artifact = true;
 		itd.TwoHanded = false;
 		itd.EquipType = EquipType::LightHead;
 
@@ -5639,7 +5639,7 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		itd.BaseValue = 60;
 
-		itd.IsArtifact = true;
+		itd.Artifact = true;
 		itd.TwoHanded = false;
 		itd.EquipType = EquipType::LightBody;
 
@@ -5972,6 +5972,49 @@ static std::unordered_map<ItemID, ItemData> initList() {
 					}
 				}
 			}
+		};
+
+		return itd;
+	}();
+	list[ItemID::TetraGloves] = [] {
+		ItemData itd;
+
+		itd.Name = "Tetra Gloves";
+		itd.IconFilePath = "hands.png";
+		itd.EquipFilePath = "silk_gloves.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::TetraGloves;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 40;
+
+		itd.Artifact = true;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::LightHands;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::Armor, 2),
+			StatMod(StatModType::MagicArmor, 5)
+		};
+		itd.ExplicitStatMods = {
+			StatMod(StatModType::MAG, 3),
+			StatMod(StatModType::SPI, 2),
+			StatMod(StatModType::CritChance, 50),
+			StatMod(StatModType::Haste, 40),
+			StatMod(StatModType::Damage, 150, Element::Fire),
+			StatMod(StatModType::Damage, 150, Element::Ice),
+			StatMod(StatModType::Damage, 150, Element::Lightning),
+			StatMod(StatModType::Damage, 150, Element::Water)
+		};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
 		};
 
 		return itd;

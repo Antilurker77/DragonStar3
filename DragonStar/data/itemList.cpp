@@ -6335,6 +6335,62 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		return itd;
 	}();
+	list[ItemID::ManaChargers] = [] {
+		ItemData itd;
+
+		itd.Name = "Mana Chargers";
+		itd.IconFilePath = "feet.png";
+		itd.EquipFilePath = "silk_boots.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::ManaChargers;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 40;
+
+		itd.Artifact = true;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::LightFeet;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::Armor, 2),
+			StatMod(StatModType::MagicArmor, 5),
+			StatMod(StatModType::Evasion, 4)
+		};
+		itd.ExplicitStatMods = {
+			StatMod(StatModType::MAG, 2),
+			StatMod(StatModType::SPI, 2),
+			StatMod(StatModType::CritChance, 30),
+			StatMod(StatModType::MovementSpeed, 120)
+		};
+		itd.BonusModStrings = {
+			"On Direct Spell Crit: Restore 2 MP."
+		};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+			if (eventType == EventType::Damage) {
+				if (std::find(eventOptions.Categories.begin(), eventOptions.Categories.end(), Category::Direct) != eventOptions.Categories.end()) {
+					if (std::find(eventOptions.Categories.begin(), eventOptions.Categories.end(), Category::Spell) != eventOptions.Categories.end()) {
+						if (eventResult.DidCrit == true) {
+							EventOptions eo;
+							eo.EventName = "Mana Chargers";
+							eo.Categories = { Category::Healing };
+							eo.Elements = { Element::Healing };
+							eo.CanCrit = false;
+							Combat::FixedHeal(user, user, eo, 2, AttributeType::MP);
+						}
+					}
+				}
+			}
+		};
+
+		return itd;
+	}();
 
 	// Medium Head
 	list[ItemID::LeatherHelmet] = [] {

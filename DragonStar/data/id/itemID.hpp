@@ -234,6 +234,7 @@ enum class ItemID {
 
 	// Artifact Light Feet
 	Goldweave,
+	ManaChargers,
 
 	// Medium Head
 	LeatherHelmet,

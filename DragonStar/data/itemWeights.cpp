@@ -415,7 +415,8 @@ static std::unordered_map<EquipType, std::vector<ItemWeight>> initArtifactWeight
 	};
 
 	list[EquipType::MediumFeet] = {
-		{  1,  15, 1000, ItemID::Windriders}
+		{  1,  15, 1000, ItemID::Windriders},
+		{ 12,  28, 1000, ItemID::TrekkingBoots}
 	};
 
 	list[EquipType::HeavyHead] = {

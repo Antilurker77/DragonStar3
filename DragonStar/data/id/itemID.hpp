@@ -290,6 +290,7 @@ enum class ItemID {
 
 	// Artifact Medium Feet
 	Windriders,
+	TrekkingBoots,
 
 	// Heavy Head
 	IronHelm,

@@ -7808,6 +7808,47 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		return itd;
 	}();
+	list[ItemID::TrekkingBoots] = [] {
+		ItemData itd;
+
+		itd.Name = "Trekking Boots";
+		itd.IconFilePath = "feet.png";
+		itd.EquipFilePath = "silk_boots.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::TrekkingBoots;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 40;
+
+		itd.Artifact = true;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::MediumFeet;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::Armor, 7),
+			StatMod(StatModType::MagicArmor, 4),
+			StatMod(StatModType::Evasion, 8)
+		};
+		itd.ExplicitStatMods = {
+			StatMod(StatModType::HP, 12),
+			StatMod(StatModType::SP, 20),
+			StatMod(StatModType::DEX, 3),
+			StatMod(StatModType::CooldownReduction, 100),
+			StatMod(StatModType::MovementSpeed, 150)
+		};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
 
 	// Heavy Head
 	list[ItemID::IronHelm] = [] {

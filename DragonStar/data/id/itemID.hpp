@@ -262,6 +262,7 @@ enum class ItemID {
 
 	// Artifact Medium Body
 	SurvivalArmor,
+	PrismaticScaleArmor,
 		
 	// Medium Hands
 	LeatherGloves,

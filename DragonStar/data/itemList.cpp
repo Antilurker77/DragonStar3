@@ -7079,6 +7079,51 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		return itd;
 	}();
+	list[ItemID::PrismaticScaleArmor] = [] {
+		ItemData itd;
+
+		itd.Name = "Prismatic Scale Armor";
+		itd.IconFilePath = "body.png";
+		itd.EquipFilePath = "silk_robes.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::PrismaticScaleArmor;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.Artifact = true;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::MediumBody;
+
+		itd.BaseValue = 60;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::Armor, 13),
+			StatMod(StatModType::MagicArmor, 13),
+			StatMod(StatModType::Evasion, 13)
+		};
+		itd.ExplicitStatMods = {
+			StatMod(StatModType::AllAttributes, 1),
+			StatMod(StatModType::Resistance, 250, Element::Arcane),
+			StatMod(StatModType::Resistance, 250, Element::Fire),
+			StatMod(StatModType::Resistance, 250, Element::Ice),
+			StatMod(StatModType::Resistance, 250, Element::Lightning),
+			StatMod(StatModType::Resistance, 250, Element::Water),
+			StatMod(StatModType::Resistance, 250, Element::Poison),
+			StatMod(StatModType::Resistance, 250, Element::Light),
+			StatMod(StatModType::Resistance, 250, Element::Dark)
+		};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return itd;
+	}();
 
 	// Medium Hands
 	list[ItemID::LeatherGloves] = [] {

@@ -153,6 +153,9 @@ public:
 	// Returns the shop at the designated location.
 	Shop* GetShopAtLocation(sf::Vector2i tile);
 
+	// Returns a pointer to the player's inventory.
+	Inventory* GetInventory();
+
 	// Returns all ground effects at the designated location.
 	std::vector<GroundEffect*> GetGroundEffectsAtLocation(sf::Vector2i tile);
 

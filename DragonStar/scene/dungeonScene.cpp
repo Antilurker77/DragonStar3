@@ -835,6 +835,10 @@ Shop* DungeonScene::GetShopAtLocation(sf::Vector2i tile) {
 	return nullptr;
 }
 
+Inventory* DungeonScene::GetInventory() {
+	return &inventory;
+}
+
 std::vector<GroundEffect*> DungeonScene::GetGroundEffectsAtLocation(sf::Vector2i tile) {
 	std::vector<GroundEffect*> result;
 	for (size_t i = 0; i < groundEffects.size(); i++) {

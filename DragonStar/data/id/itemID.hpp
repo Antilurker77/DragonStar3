@@ -248,6 +248,7 @@ enum class ItemID {
 
 	// Artifact Medium Head
 	SniperHelmet,
+	RoguesPlunder,
 
 	// Medium Body
 	LeatherArmor,

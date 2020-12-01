@@ -17,6 +17,8 @@
 #include "../core/combat.hpp"
 #include "../core/random.hpp"
 #include "../entity/actor.hpp"
+#include "../scene/dungeonScene.hpp"
+#include "../ui/inventory.hpp"
 
 static std::unordered_map<ItemID, ItemData> initList() {
 	std::unordered_map<ItemID, ItemData> list;
@@ -6703,6 +6705,59 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
 
+		};
+
+		return itd;
+	}();
+	list[ItemID::RoguesPlunder] = [] {
+		ItemData itd;
+
+		itd.Name = "Rogue's Plunder";
+		itd.IconFilePath = "head.png";
+		itd.EquipFilePath = "silk_hat.png";
+
+		itd.HideHair = true;
+
+		itd.ItemID = ItemID::RoguesPlunder;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 40;
+
+		itd.Artifact = true;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::MediumHead;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::Armor, 5),
+			StatMod(StatModType::MagicArmor, 5),
+			StatMod(StatModType::Evasion, 5)
+		};
+		itd.ExplicitStatMods = {
+			StatMod(StatModType::STR, 1),
+			StatMod(StatModType::DEX, 3),
+			StatMod(StatModType::Resistance, 250, Element::Poison)
+		};
+		itd.BonusModStrings = {
+			"10% On Direct Attack: Loot 1-5 gold."
+		};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+			if (eventType == EventType::Damage) {
+				if (std::find(eventOptions.Categories.begin(), eventOptions.Categories.end(), Category::Direct) != eventOptions.Categories.end()) {
+					if (std::find(eventOptions.Categories.begin(), eventOptions.Categories.end(), Category::Attack) != eventOptions.Categories.end()) {
+						int roll = Random::RandomInt(1, 100);
+						if (roll <= 10) {
+							roll = Random::RandomInt(1, 5);
+							Inventory* inventory = user->GetDungeonScene()->GetInventory();
+							inventory->ChangeGold(roll);
+						}
+					}
+				}
+			}
 		};
 
 		return itd;

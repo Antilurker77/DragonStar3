@@ -276,6 +276,7 @@ enum class ItemID {
 
 	// Artifact Medium Hands
 	FrostfireGloves,
+	GlovesOfAcceleration,
 		
 	// Medium Feet
 	LeatherBoots,

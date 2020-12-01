@@ -7441,6 +7441,56 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		return itd;
 	}();
+	list[ItemID::GlovesOfAcceleration] = [] {
+		ItemData itd;
+
+		itd.Name = "Gloves of Acceleration";
+		itd.IconFilePath = "hands.png";
+		itd.EquipFilePath = "silk_gloves.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::GlovesOfAcceleration;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 40;
+
+		itd.Artifact = true;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::MediumHands;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::Armor, 3),
+			StatMod(StatModType::MagicArmor, 5),
+			StatMod(StatModType::Evasion, 2)
+		};
+		itd.ExplicitStatMods = {
+			StatMod(StatModType::DEX, 3),
+			StatMod(StatModType::MAG, 2),
+			StatMod(StatModType::Accuracy, 5),
+			StatMod(StatModType::CritChance, 50)
+		};
+
+		itd.BonusModStrings = {
+			"On Direct Crit: Increase haste by 2% for 10s. Stacks up to 3 times."
+		};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+			if (eventType == EventType::Damage) {
+				if (std::find(eventOptions.Categories.begin(), eventOptions.Categories.end(), Category::Direct) != eventOptions.Categories.end()) {
+					if (eventResult.DidCrit) {
+						Combat::AddAuraStack(user, user, eventOptions, AuraID::GlovesOfAcceleration, 0);
+					}
+				}
+			}
+		};
+
+		return itd;
+	}();
 
 	// Medium Feet
 	list[ItemID::LeatherBoots] = [] {

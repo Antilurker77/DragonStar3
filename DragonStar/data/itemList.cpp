@@ -16,6 +16,7 @@
 #include "id/itemID.hpp"
 #include "../core/combat.hpp"
 #include "../core/random.hpp"
+#include "../core/tileMath.hpp"
 #include "../entity/actor.hpp"
 #include "../scene/dungeonScene.hpp"
 #include "../ui/inventory.hpp"
@@ -8500,6 +8501,62 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
 
+		};
+
+		return itd;
+	}();
+	list[ItemID::CarbonSpikeArmor] = [] {
+		ItemData itd;
+
+		itd.Name = "Carbon Spike Armor";
+		itd.IconFilePath = "body.png";
+		itd.EquipFilePath = "silk_robes.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::CarbonSpikeArmor;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 60;
+
+		itd.Artifact = true;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::HeavyBody;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::Armor, 30),
+			StatMod(StatModType::MagicArmor, 4)
+		};
+		itd.ExplicitStatMods = {
+			StatMod(StatModType::HP, 18),
+			StatMod(StatModType::STR, 2),
+			StatMod(StatModType::Armor, 15)
+		};
+		itd.BonusModStrings = {
+			"When Hit in Melee: Deal 12 physical damage to the attacker."
+		};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+			if (eventType == EventType::Damaged) {
+				if (std::find(eventOptions.Categories.begin(), eventOptions.Categories.end(), Category::Direct) != eventOptions.Categories.end()) {
+					sf::Vector2i userPos = user->GetLocation();
+					sf::Vector2i targetPos = target->GetLocation();
+					if (TileMath::Distance(userPos, targetPos) <= 1.41) {
+						EventOptions eo;
+						eo.EventName = "Carbon Spike Armor";
+						eo.Categories = { Category::Damaging, Category::SingleTarget };
+						eo.Elements = { Element::Physical };
+						eo.CanCrit = true;
+						eo.CanBlock = true;
+
+						Combat::FixedDamage(user, target, eo, 12);
+					}
+				}
+			}
 		};
 
 		return itd;

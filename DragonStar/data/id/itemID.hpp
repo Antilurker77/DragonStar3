@@ -318,6 +318,7 @@ enum class ItemID {
 
 	// Artifact Heavy Body
 	GoldenArmor,
+	CarbonSpikeArmor,
 
 	// Heavy Hands
 	IronGauntlets,

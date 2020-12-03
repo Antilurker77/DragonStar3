@@ -304,6 +304,7 @@ enum class ItemID {
 
 	// Artifact Heavy Head
 	HeraldOfVictory,
+	HelmOfDevestation,
 
 	// Heavy Body
 	IronArmor,

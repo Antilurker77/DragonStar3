@@ -332,6 +332,7 @@ enum class ItemID {
 
 	// Artifact Heavy Hands
 	ArenaGauntlets,
+	SwiftGauntlets,
 		
 	// Heavy Feet
 	IronGreaves,

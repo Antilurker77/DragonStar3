@@ -8868,6 +8868,56 @@ static std::unordered_map<ItemID, ItemData> initList() {
 
 		return itd;
 	}();
+	list[ItemID::SwiftGauntlets] = [] {
+		ItemData itd;
+
+		itd.Name = "Swift Gauntlets";
+		itd.IconFilePath = "hands.png";
+		itd.EquipFilePath = "silk_gloves.png";
+
+		itd.HideHair = false;
+
+		itd.ItemID = ItemID::SwiftGauntlets;
+		itd.ItemType = ItemType::Equipment;
+
+		itd.InvokeAbility = AbilityID::Undefined;
+
+		itd.MaxStacks = 1;
+
+		itd.BaseValue = 40;
+
+		itd.Artifact = true;
+		itd.TwoHanded = false;
+		itd.EquipType = EquipType::HeavyHands;
+
+		itd.ImplicitStatMods = {
+			StatMod(StatModType::Armor, 9),
+			StatMod(StatModType::MagicArmor, 2)
+		};
+		itd.ExplicitStatMods = {
+			StatMod(StatModType::STR, 3),
+			StatMod(StatModType::DEX, 3),
+			StatMod(StatModType::Accuracy, 5),
+			StatMod(StatModType::Haste, 40)
+		};
+		itd.BonusModStrings = {
+			"5% on Direct Attack Hit: Increase double strike chance by 12% for 10s."
+		};
+
+		itd.OnEvent = [](EventType eventType, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+			if (eventType == EventType::Damage) {
+				if (std::find(eventOptions.Categories.begin(), eventOptions.Categories.end(), Category::Direct) != eventOptions.Categories.end()) {
+					if (std::find(eventOptions.Categories.begin(), eventOptions.Categories.end(), Category::Attack) != eventOptions.Categories.end()) {
+						if (Random::RandomInt(1, 100) <= 5) {
+							Combat::AddAuraStack(user, user, eventOptions, AuraID::SwiftGauntlets, 0);
+						}
+					}
+				}
+			}
+		};
+
+		return itd;
+	}();
 
 	// Heavy Feet
 	list[ItemID::IronGreaves] = [] {

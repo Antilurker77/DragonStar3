@@ -50,6 +50,7 @@ enum class AuraID {
 	Speed,
 	SpellProtection,
 	Sprint,
+	SwiftGauntlets,
 	ThunderStrike,
 	Trample,
 	Venom,

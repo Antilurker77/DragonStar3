@@ -2996,6 +2996,87 @@ static std::unordered_map<AuraID, AuraData> initList() {
 
 		return ad;
 	}();
+	list[AuraID::SwiftGauntlets] = [] {
+		AuraData ad;
+
+		ad.Name = "Swift Gauntlets";
+		ad.Icon = "placeholder.png";
+		ad.AuraID = AuraID::SwiftGauntlets;
+
+		ad.Categories = {
+
+		};
+		ad.Elements = {
+			Element::Physical
+		};
+
+		ad.MaxRank = 0;
+
+		ad.BaseDuration = { 1000 };
+		ad.MaxDuration = { 1000 };
+		ad.MaxStacks = { 1 };
+
+		ad.Values = {
+			{ 120 }
+		};
+		ad.StatMods = {
+			{
+				StatMod(StatModType::DoubleStrikeChance, ad.Values[0][0])
+			}
+		};
+
+		ad.IsBuff = true;
+		ad.Unique = true;
+		ad.UniqueByActor = true;
+		ad.ConsumeOnUse = false;
+		ad.StacksExpireOneByOne = false;
+		ad.StacksConsumeOneByOne = false;
+		ad.MultiplyStatModsByStacks = false;
+
+		ad.IsRest = false;
+		ad.IsStun = false;
+		ad.IsDisarm = false;
+		ad.IsSilence = false;
+		ad.IsSnare = false;
+
+		ad.CanCrit = false;
+		ad.BonusArmorPen = { 0 };
+		ad.BonusResistancePen = { 0 };
+		ad.BonusCritChance = { 0 };
+		ad.BonusCritPower = { 0 };
+		ad.BonusDoubleStrikeChance = { 0 };
+		ad.BonusHPLeech = { 0 };
+		ad.BonusMPLeech = { 0 };
+		ad.BonusSPLeech = { 0 };
+
+		ad.GetDescription = [Values = ad.Values](Actor* user, EventOptions& eventOptions, int rank, Aura* aura){
+			std::string desc;
+			std::string value;
+
+			value = std::to_string(Values[0][rank] / 10);
+			desc = "Increases double strike chance by " + value + "%.";
+
+			return desc;
+		};
+
+		ad.OnApplication = [Values = ad.Values](Actor* user, Actor* target, EventOptions& eventOptions, int rank, Aura* aura) {
+
+		};
+
+		ad.OnTick = [Values = ad.Values](Actor* user, Actor* target, EventOptions& eventOptions, int rank, Aura* aura) {
+
+		};
+
+		ad.OnExpiry = [Values = ad.Values](Actor* user, Actor* target, EventOptions& eventOptions, int rank, Aura* aura) {
+
+		};
+
+		ad.OnEvent = [Values = ad.Values](EventType eventType, EventOptions& auraOptions, int rank, Aura* aura, Actor* user, Actor* target, EventOptions& eventOptions, EventResult& eventResult, int64_t& amount) {
+
+		};
+
+		return ad;
+	}();
 	list[AuraID::ThunderStrike] = [] {
 		AuraData ad;
 

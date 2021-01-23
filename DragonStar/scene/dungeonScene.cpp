@@ -261,12 +261,12 @@ void DungeonScene::ReadInput(sf::RenderWindow& window) {
 			break;
 
 		case sf::Event::KeyReleased:
-			//if (ev.key.code == sf::Keyboard::R) {
-			//	// test seeds
-			//	floorSeeds[currentFloor - 1] = Random::RandomSeed();
-			//	generateDungeon();
-			//	camera->SetPosition({ actors[0]->GetSpritePosition().x + 16.f, actors[0]->GetSpritePosition().y + 16.f });
-			//}
+			if (ev.key.code == sf::Keyboard::R) {
+				// test seeds
+				floorSeeds[currentFloor - 1] = Random::RandomSeed();
+				generateDungeon();
+				camera->SetPosition({ actors[0]->GetSpritePosition().x + 16.f, actors[0]->GetSpritePosition().y + 16.f });
+			}
 			//// Quit
 			//if (ev.key.code == sf::Keyboard::Escape) {
 			//	saveGame();

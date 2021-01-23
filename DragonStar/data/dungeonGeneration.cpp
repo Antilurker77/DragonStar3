@@ -433,6 +433,8 @@ void DungeonScene::dgStandard(std::mt19937_64& mt) {
 				}
 
 
+				connections.push_back({ std::min(i, connectTo), std::max(i, connectTo) });
+
 				// Create the corridor.
 				sf::Vector2<size_t> start(Random::RandomSizeT(rooms[i].left, rooms[i].left + rooms[i].width - 1, mt), Random::RandomSizeT(rooms[i].top, rooms[i].top + rooms[i].height - 1, mt));
 				sf::Vector2<size_t> end(Random::RandomSizeT(rooms[connectTo].left, rooms[connectTo].left + rooms[connectTo].width - 1, mt), Random::RandomSizeT(rooms[connectTo].top, rooms[connectTo].top + rooms[connectTo].height - 1, mt));
@@ -463,5 +465,53 @@ void DungeonScene::dgStandard(std::mt19937_64& mt) {
 			}
 		}
 
+	}
+
+	// Add additional corridors to break up the linearity of the dungeon.
+	size_t numberOfExtraCorridors = Random::RandomSizeT(3, 5, mt);
+
+	size_t attempts = 0;
+	size_t corridorsAdded = 0;
+
+	while (corridorsAdded < numberOfExtraCorridors && attempts < 10000) {
+		size_t startingRoom = Random::RandomSizeT(0, rooms.size() - 1, mt);
+		size_t endingRoom = Random::RandomSizeT(0, rooms.size() - 1, mt);
+		if (startingRoom != endingRoom) {
+			// Make sure the rooms aren't already connected.
+			std::pair<size_t, size_t> connection = { std::min(startingRoom, endingRoom), std::max(startingRoom, endingRoom) };
+			if (std::find(connections.begin(), connections.end(), connection) == connections.end()) {
+				connections.push_back(connection);
+
+				// Create the corridor.
+				sf::Vector2<size_t> start(Random::RandomSizeT(rooms[startingRoom].left, rooms[startingRoom].left + rooms[startingRoom].width - 1, mt), Random::RandomSizeT(rooms[startingRoom].top, rooms[startingRoom].top + rooms[startingRoom].height - 1, mt));
+				sf::Vector2<size_t> end(Random::RandomSizeT(rooms[endingRoom].left, rooms[endingRoom].left + rooms[endingRoom].width - 1, mt), Random::RandomSizeT(rooms[endingRoom].top, rooms[endingRoom].top + rooms[endingRoom].height - 1, mt));
+
+
+				int dir = Random::RandomInt(0, 1, mt);
+				if (dir == 0) {
+					for (size_t x = std::min(start.x, end.x); x <= std::max(start.x, end.x); x++) {
+						floor[x][start.y] = TileInfo::GetTile(TileID::StoneFloor);
+					}
+
+					for (size_t y = std::min(start.y, end.y); y <= std::max(start.y, end.y); y++) {
+						floor[end.x][y] = TileInfo::GetTile(TileID::StoneFloor);
+					}
+				}
+				else {
+					for (size_t x = std::min(start.x, end.x); x <= std::max(start.x, end.x); x++) {
+						floor[x][end.y] = TileInfo::GetTile(TileID::StoneFloor);
+					}
+
+					for (size_t y = std::min(start.y, end.y); y <= std::max(start.y, end.y); y++) {
+						floor[start.x][y] = TileInfo::GetTile(TileID::StoneFloor);
+					}
+				}
+
+				corridorsAdded++;
+				continue;
+			}
+		}
+
+		attempts++;
 	}
 }

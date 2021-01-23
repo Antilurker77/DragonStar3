@@ -106,13 +106,13 @@ void Minimap::UpdateMinimap(DungeonScene* dungeonScene) {
 			float posY = static_cast<float>(y) * tileSize + pos.y;
 
 			switch (dungeonScene->GetTileVisionState(sf::Vector2<size_t>(x, y))) {
-				case VisionState::Unexplored:
-					quad[0].color = sf::Color(0, 0, 0, 255);
-					quad[1].color = sf::Color(0, 0, 0, 255);
-					quad[2].color = sf::Color(0, 0, 0, 255);
-					quad[3].color = sf::Color(0, 0, 0, 255);
+				case VisionState::Unexplored: // 255
+					quad[0].color = sf::Color(0, 0, 0, 127);
+					quad[1].color = sf::Color(0, 0, 0, 127);
+					quad[2].color = sf::Color(0, 0, 0, 127);
+					quad[3].color = sf::Color(0, 0, 0, 127);
 					break;
-				case VisionState::OutOfSight:
+				case VisionState::OutOfSight: // 127
 					quad[0].color = sf::Color(0, 0, 0, 127);
 					quad[1].color = sf::Color(0, 0, 0, 127);
 					quad[2].color = sf::Color(0, 0, 0, 127);
